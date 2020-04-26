@@ -1,4 +1,8 @@
 /**
+ * Todo:
+ * css parts
+ *
+ * DOCS:
  * generic-tab should have a label attribute
  *
  * Tabs should be buttons

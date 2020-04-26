@@ -88,7 +88,6 @@ export class GenericDisclosure extends HTMLElement {
           padding: 0;
           overflow: visible;
           background: transparent;
-          height: 60px;
         }
       
         button:hover {

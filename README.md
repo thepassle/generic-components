@@ -25,3 +25,10 @@ The goal of this project is to create a common library of generic web components
 | [generic-tabs](/generic-tabs/README.md)                       | [Wai Aria Practice](https://www.w3.org/TR/wai-aria-practices/#tabpanel)     | ❌ To do       |                                                                                                                                 |
 | [generic-tooltip](/generic-tooltip/README.md)                 | [Wai Aria Practice](https://www.w3.org/TR/wai-aria-practices/#tooltip)      | ✅ Implemented | Reexport from [howto-components](https://github.com/GoogleChromeLabs/howto-components)                                          |
 | [generic-visually-hidden](/generic-visually-hidden/README.md) | [WebAIM](https://webaim.org/techniques/css/invisiblecontent/)               | ✅ Implemented |                                                                                                                                 |
+
+## Todo:
+
+- Rationale
+- Documentation
+- Tests
+- How to style

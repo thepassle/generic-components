@@ -1,5 +1,15 @@
 import { dialog } from './dialog.js';
 
+const template = document.createElement('template');
+template.innerHTML = `
+  <slot name="invoker">
+    <button>open dialog</button>
+  </slot>   
+
+  <slot hidden name="content">
+  </slot>   
+`;
+
 export class GenericDialog extends HTMLElement {
   constructor() {
     super();
@@ -7,14 +17,7 @@ export class GenericDialog extends HTMLElement {
   }
 
   connectedCallback() {
-    this.shadowRoot.innerHTML = `
-      <slot name="invoker">
-        <button>open dialog</button>
-      </slot>   
-      
-      <slot hidden name="content">
-      </slot>   
-    `;
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
 
     const invoker = this.shadowRoot.querySelector('slot[name="invoker"]');
     const content = this.shadowRoot.querySelector('slot[name="content"]');

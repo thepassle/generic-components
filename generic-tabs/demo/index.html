@@ -10,6 +10,10 @@
     generic-tabs:not(:defined) {
       display: none;
     }
+
+    button[active] {
+      border-bottom: solid 3px blue;
+    }
   </style>
   <title>generic-tabs</title>
 </head>
@@ -18,9 +22,40 @@
   <a href="../../index.html">generic-components</a>
   <h1>generic-tabs</h1>
 
-  <p>Todo</p>
+  <generic-tabs label="people">
+    <button slot="tab">
+      John
+    </button>
+    <div slot="panel">
+      My name is John. I like dogs.
+      <br/>
+      <button>click</button>
+      <br/>
+      <br/>
+      <br/>
+      <button>click</button>
+    </div>
 
-  <!-- <script type="module" src="../../generic-tabs.js"></script> -->
+    <button slot="tab">
+      Mark
+    </button>
+    <div slot="panel">
+      And I am Mark. I dont like dogs!
+    </div>
+
+    <button slot="tab">
+      Ron
+    </button>
+    <div slot="panel">
+      Hello I am Ron
+      <a href="/">foo</a>
+      <br>
+      i like cats
+      <button>click</button>
+    </div>
+  </generic-tabs>
+
+  <script type="module" src="../../generic-tabs.js"></script>
 </body>
 
 </html>

@@ -1,3 +1,22 @@
+const template = document.createElement('template');
+template.innerHTML = `
+  <style>
+    :host {
+      display: block;
+    }
+
+    .alert {
+      padding: 10px;
+      border: 2px solid hsl(206, 74%, 54%);
+      border-radius: 4px;
+      background: hsl(206, 74%, 90%);
+    }
+  </style>
+  <div class="alert" part="alert">
+    <slot></slot>
+  </div>
+`;
+
 export class GenericAlert extends HTMLElement {
   constructor() {
     super();
@@ -14,22 +33,6 @@ export class GenericAlert extends HTMLElement {
     if (!this.hasAttribute('aria-atomic')) {
       this.setAttribute('aria-atomic', 'true');
     }
-
-    this.shadowRoot.innerHTML = `
-      <style>
-        :host {
-          display: block;
-        }
-
-        .alert {
-          padding: 10px;
-          border: 2px solid hsl(206, 74%, 54%);
-          border-radius: 4px;
-          background: hsl(206, 74%, 90%);
-        }
-      </style>
-      <div class="alert" part="alert">
-        <slot></slot>
-      </div>`;
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 }

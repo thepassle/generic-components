@@ -64,18 +64,18 @@ export class GenericTabs extends HTMLElement {
 
     switch (event.keyCode) {
       case KEYCODE.LEFT:
-        if (this.index - 1 < 0) {
+        if (this.index === 0) {
           this.index = tabs.length - 1;
         } else {
-          this.index = this.index - 1;
+          this.index--; // eslint-disable-line
         }
         break;
 
       case KEYCODE.RIGHT:
-        if (this.index + 1 >= tabs.length) {
+        if (this.index === tabs.length - 1) {
           this.index = 0;
         } else {
-          this.index = this.index + 1;
+          this.index++; // eslint-disable-line
         }
         break;
 

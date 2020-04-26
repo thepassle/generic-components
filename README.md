@@ -29,6 +29,8 @@ The goal of this project is to create a common library of generic web components
 
 ## Todo:
 
+- Events for components
+- Parts for components
 - Rationale
 - Documentation
 - Tests

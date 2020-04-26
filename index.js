@@ -10,3 +10,4 @@ export { GenericTabs } from './generic-tabs/GenericTabs.js';
 export { GenericTooltip } from './generic-tooltip/GenericTooltip.js';
 export { GenericVisuallyHidden } from './generic-visually-hidden/GenericVisuallyHidden.js';
 export { EventTargetShim } from './utils/EventTargetShim.js';
+export { RovingTabindexMixin } from './utils/RovingTabindexMixin.js';

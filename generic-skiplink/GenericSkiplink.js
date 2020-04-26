@@ -33,8 +33,8 @@ export class GenericSkiplink extends HTMLElement {
         }
         
         a:focus {
-          top: 20px;
-          left: 40px;
+          top: 0px;
+          left: 0px;
           height: auto;
           width: auto;
           margin: auto;

@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "index.js",
   "module": "index.js",
-  "homepage": "https://github.com/thepassle/generic-components",
+  "homepage": "https://modest-bhaskara-e8742f.netlify.app/",
   "repository": "https://github.com/thepassle/generic-components",
   "scripts": {
     "start": "es-dev-server --node-resolve --open --watch",

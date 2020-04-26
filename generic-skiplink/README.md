@@ -1,3 +1,3 @@
 # generic-skiplink
 
-[demo](https://thepassle.github.io/generic-components/generic-skiplink/demo/index.html)
+[demo](https://modest-bhaskara-e8742f.netlify.app/generic-skiplink/demo/index.html) | [spec](https://webaim.org/techniques/skipnav/)

@@ -1,3 +1,3 @@
 # generic-visually-hidden
 
-[demo](https://thepassle.github.io/generic-components/generic-visually-hidden/demo/index.html)
+[demo](https://modest-bhaskara-e8742f.netlify.app/generic-visually-hidden/demo/index.html) | [spec](https://webaim.org/techniques/css/invisiblecontent/)

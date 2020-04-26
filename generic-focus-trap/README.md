@@ -1,3 +1,3 @@
 # generic-focus-trap
 
-[demo](https://thepassle.github.io/generic-components/generic-focus-trap/demo/index.html)
+[demo](https://modest-bhaskara-e8742f.netlify.app/generic-focus-trap/demo/index.html)

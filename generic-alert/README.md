@@ -1,1 +1,1 @@
-## `generic-alert`
+# `generic-alert`

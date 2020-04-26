@@ -1,1 +1,1 @@
-## `generic-focus-trap`
+# `generic-focus-trap`

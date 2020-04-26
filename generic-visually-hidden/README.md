@@ -1,1 +1,1 @@
-## `generic-visually-hidden`
+# `generic-visually-hidden`

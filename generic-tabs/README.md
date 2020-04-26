@@ -1,1 +1,1 @@
-## `generic-tabs`
+# `generic-tabs`

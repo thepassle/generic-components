@@ -1,1 +1,1 @@
-## `generic-disclosure`
+# `generic-disclosure`

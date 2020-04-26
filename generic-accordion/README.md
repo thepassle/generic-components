@@ -1,1 +1,1 @@
-## `generic-accordion`
+# `generic-accordion`

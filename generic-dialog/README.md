@@ -1,1 +1,1 @@
-## `generic-dialog`
+# `generic-dialog`

@@ -1,1 +1,1 @@
-## `generic-tooltip`
+# `generic-tooltip`

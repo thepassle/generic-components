@@ -1,1 +1,1 @@
-## `generic-switch`
+# `generic-switch`

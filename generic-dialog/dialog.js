@@ -7,7 +7,7 @@ const KEYCODE_ESC = 27;
  * TODO:
  * when setting everything else as aria-hidden, check if something already has aria-hidden, if it does, dont touch it
  * same for resetting the aria-hidden
- * add media query to be fullscreen on mobile like ing dialog
+ * add media query to be fullscreen on mobile
  *
  * Maybe refactor to use a web component internally to remove a bunch of imperative code
  */

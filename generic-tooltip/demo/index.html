@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="Description" content="Put your description here.">
+  <link rel="stylesheet" type="text/css" href="../../demo/styles.css">
+  <style>
+    .custom-style {
+      background-color: black;
+      color: white;
+      padding: 0 10px;
+      border-radius: 10px;
+    }
+  </style>
+  <title>generic-tooltip</title>
+</head>
+
+<body>
+  <a href="../../index.html">generic-components</a>
+  <h1>generic-tooltip</h1>
+
+  <button aria-describedby="tooltipTarget">Click me</button>
+  <generic-tooltip id="tooltipTarget">Im a tooltip!</generic-tooltip>
+  
+  <br/>
+  
+  <button aria-describedby="tooltipTarget2">Click me</button>
+  <generic-tooltip class="custom-style" id="tooltipTarget2">Im a tooltip!</generic-tooltip>
+  
+  <script type="module" src="../../generic-tooltip.js"></script>
+</body>
+
+</html>

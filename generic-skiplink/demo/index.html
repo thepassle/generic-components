@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="Description" content="Put your description here.">
+  <link rel="stylesheet" type="text/css" href="../../demo/styles.css">
+  <style>
+    .custom-style::part(generic-skiplink-anchor) {
+      background-color: lightgrey;
+      border: solid 2px blue;
+    }
+  </style>
+  <title>generic-skiplink</title>
+</head>
+
+<body>
+  <generic-skiplink for="main"></generic-skiplink>
+  
+  <generic-skiplink for="main2" class="custom-style">Go to main content</generic-skiplink>
+  
+  <a href="../../index.html">generic-components</a>
+  <h1>generic-skiplink</h1>
+  
+  <main id="main">
+    Main content
+    <button id="main2">some button</button>
+  </main>
+
+  <script type="module" src="../../generic-skiplink.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="Description" content="Put your description here.">
+  <link rel="stylesheet" type="text/css" href="../../demo/styles.css">
+  <style>
+    .long {
+      margin-left: 10px;
+      border-left: solid 4px grey;
+      height: 1200px;
+    }
+
+    generic-dialog:not(:defined) {
+      display: none;
+    }
+  </style>
+  <title>generic-dialog</title>
+</head>
+
+<body>
+  <a href="../../index.html">generic-components</a>
+  <h1>generic-dialog</h1>
+  <button id="defaultExample">closes on escape, and outside click</button><br/>
+  <button id="closeOnEscape">closes on escape</button><br/>
+  <button id="closeOnButtonClick">only closes on button click</button><br/>
+  <button id="litHtml">render with lit-html</button><br/>
+
+  <generic-dialog>
+    <button slot="invoker">open me</button>
+    <div slot="content">
+      <h1>Im used as a web component!</h1>
+      <p>dialog content</p>
+    </div>
+  </generic-dialog>
+
+  <div class="long">
+    Super long item to check for scrolling
+  </div>
+
+  <script type="module">
+    import { dialog } from '../dialog.js';
+    import '../../generic-dialog.js';
+    import { render, html } from 'https://unpkg.com/lit-html@1.2.1/lit-html.js?module';
+
+    defaultExample.addEventListener('click', (e) => {
+      dialog.open({
+        invokerNode: e.target,
+        content: (dialogNode) => {
+          dialogNode.style.width = '400px';
+          dialogNode.style.height = '400px';
+          
+          dialogNode.innerHTML = 'default example, closes on escape, and on outside click';
+          
+          const button = document.createElement('button');
+          button.innerHTML = 'close';
+
+          button.addEventListener('click', () => {
+            dialog.close();
+          })
+
+          dialogNode.appendChild(button);
+        }
+      });
+    });
+    
+    closeOnEscape.addEventListener('click', (e) => {
+      dialog.open({
+        invokerNode: e.target,
+        closeOnOutsideClick: false,
+        content: (dialogNode) => {
+          dialogNode.style.width = '400px';
+          dialogNode.style.height = '400px';
+
+          dialogNode.innerHTML = 'only closes on escape';
+          const button = document.createElement('button');
+          button.innerHTML = 'close';
+
+          button.addEventListener('click', () => {
+            dialog.close();
+          })
+
+          dialogNode.appendChild(button);
+        }
+      });
+    });
+
+    closeOnButtonClick.addEventListener('click', (e) => {
+      dialog.open({
+        invokerNode: e.target,
+        closeOnEscape: false,
+        closeOnOutsideClick: false,
+        content: (dialogNode) => {
+          dialogNode.style.width = '400px';
+          dialogNode.style.height = '400px';
+
+          dialogNode.innerHTML = 'doesnt close on escape or outside click';
+          const button = document.createElement('button');
+          button.innerHTML = 'close';
+
+          button.addEventListener('click', () => {
+            dialog.close();
+          })
+
+          dialogNode.appendChild(button);
+        }
+      });
+    });
+
+    litHtml.addEventListener('click', (e) => {
+      dialog.open({
+        invokerNode: e.target,
+        content: (dialogNode) => {
+          dialogNode.style.width = '400px';
+          dialogNode.style.height = '400px';
+          
+          render(html`
+            <h1>Im rendered by lit-html!</h1>
+            <button @click=${() => dialog.close()}>Close</button>
+            <button @click=${() => dialog.close()}>Close</button>
+            <button @click=${() => dialog.close()}>Close</button>
+          `, dialogNode);
+        }
+      });
+    });
+
+    dialog.addEventListener('dialog-opened', () => {
+      console.log('dialog opened!');
+    });
+
+    dialog.addEventListener('dialog-closed', () => {
+      console.log('dialog closed!');
+    });
+  </script>
+</body>
+
+</html>

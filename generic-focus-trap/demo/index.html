@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="Description" content="Put your description here.">
+  <link rel="stylesheet" type="text/css" href="../../demo/styles.css">
+  <style>
+    .trap {
+      padding: 20px;
+      border: solid 1px gray;
+      border-radius: 10px;
+      width: auto;
+      background-color: lightgray;
+    }
+  </style>
+  <title>generic-focus-trap</title>
+</head>
+
+<body>
+  <a href="../../index.html">generic-components</a>
+  <h1>generic-focus-trap</h1>
+
+  <p>This is a re-export from <a href="https://npmjs.com/package/@a11y/focus-trap">@a11y/focus-trap</a> by <a href="https://twitter.com/RuneMehlsen">Rune Mehlsen</a></p>
+
+  <div class="trap">
+    <generic-focus-trap>
+      <h2>Focus will be trapped here</h2>
+      <button>click</button>
+      <input type="text"></input>
+      <a href="/">link</a>
+    </generic-focus-trap>
+  </div>
+  <script type="module" src="../../generic-focus-trap.js"></script>
+</body>
+
+</html>

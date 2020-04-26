@@ -1,0 +1,14 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #ededed;
+}
+
+*:focus {
+  outline: 0px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px blue, 0 0 0px 3px deepskyblue !important;
+  transition: box-shadow 0.1s ease-in-out;
+}

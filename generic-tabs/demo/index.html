@@ -24,7 +24,13 @@
   <a href="https://www.w3.org/TR/wai-aria-practices/#tabpanel">spec</a>
   <br/>
   
-  <hr/>
+  <br/>
+  <br/>
+  <b>Vanilla:</b>
+  <br/>
+
+  default:
+  <br/>
   <generic-tabs label="people">
     <button slot="tab">
       John
@@ -57,7 +63,11 @@
       <button>click</button>
     </div>
   </generic-tabs>
-  <hr/>
+  <br/>
+  <br/>
+
+  active item:
+  <br/>
   <generic-tabs active-item="1" label="people">
     <button slot="tab">
       Jim
@@ -73,7 +83,49 @@
       And I am Jack. I am opened by default.
     </div>
   </generic-tabs>
+  <br/>
+  <br/>
 
+  <div id="foo"></div>
+
+  <script type="module">
+    import { render, html } from 'https://unpkg.com/lit-html@1.2.1/lit-html.js?module';
+    render(html`
+      <b>Rendered with lit-html:</b><br/>
+      default:<br/>
+      <generic-tabs>
+        <button slot="tab">
+          Jim
+        </button>
+        <div slot="panel">
+          My name is Jim. Im not opened by default.
+        </div>
+
+        <button slot="tab">
+          Jack
+        </button>
+        <div slot="panel">
+          And I am Jack. I am opened by default.
+        </div>
+      </generic-tabs><br/><br/>
+      active item:<br/>
+      <generic-tabs active-item="1">
+        <button slot="tab">
+          Jim
+        </button>
+        <div slot="panel">
+          My name is Jim. Im not opened by default.
+        </div>
+
+        <button slot="tab">
+          Jack
+        </button>
+        <div slot="panel">
+          And I am Jack. I am opened by default.
+        </div>
+      </generic-tabs><br/><br/>
+    `, foo);
+  </script>
   <script type="module" src="../../generic-tabs.js"></script>
 </body>
 

@@ -10,12 +10,12 @@ describe('generic-switch', () => {
     expect(el).to.be.accessible();
   });
 
-  it('has role switch and tabindex', async () => {
+  it('has role switch and tabindex 0', async () => {
     const el = await fixture(html`
       <generic-switch></generic-switch>
     `);
-
     const btn = el.shadowRoot.querySelector('.button');
+
     expect(btn.getAttribute('role')).to.equal('switch');
     expect(btn.getAttribute('tabindex')).to.equal('0');
   });
@@ -24,13 +24,78 @@ describe('generic-switch', () => {
     const el = await fixture(html`
       <generic-switch></generic-switch>
     `);
+    const btn = el.shadowRoot.querySelector('.button');
 
     el.shadowRoot.querySelector('div').click();
-    const btn = el.shadowRoot.querySelector('.button');
 
     expect(btn.getAttribute('aria-checked')).to.equal('true');
     expect(btn.hasAttribute('checked')).to.equal(true);
     expect(el.hasAttribute('checked')).to.equal(true);
+  });
+
+  it('toggles on enter', async () => {
+    const el = await fixture(html`
+      <generic-switch></generic-switch>
+    `);
+    const btn = el.shadowRoot.querySelector('.button');
+
+    el.__onKeyDown({
+      keyCode: 13,
+    });
+
+    expect(btn.getAttribute('aria-checked')).to.equal('true');
+    expect(btn.hasAttribute('checked')).to.equal(true);
+    expect(el.hasAttribute('checked')).to.equal(true);
+
+    el.__onKeyDown({
+      keyCode: 13,
+    });
+
+    expect(btn.getAttribute('aria-checked')).to.equal('false');
+    expect(btn.hasAttribute('checked')).to.equal(false);
+    expect(el.hasAttribute('checked')).to.equal(false);
+  });
+
+  it('toggles on space', async () => {
+    const el = await fixture(html`
+      <generic-switch></generic-switch>
+    `);
+    const btn = el.shadowRoot.querySelector('.button');
+
+    el.__onKeyDown({
+      keyCode: 32,
+    });
+
+    expect(btn.getAttribute('aria-checked')).to.equal('true');
+    expect(btn.hasAttribute('checked')).to.equal(true);
+    expect(el.hasAttribute('checked')).to.equal(true);
+
+    el.__onKeyDown({
+      keyCode: 32,
+    });
+
+    expect(btn.getAttribute('aria-checked')).to.equal('false');
+    expect(btn.hasAttribute('checked')).to.equal(false);
+    expect(el.hasAttribute('checked')).to.equal(false);
+  });
+
+  it('reacts to disabled attribute change', async () => {
+    const el = await fixture(html`
+      <generic-switch></generic-switch>
+    `);
+    const btn = el.shadowRoot.querySelector('.button');
+
+    el.setAttribute('disabled', '');
+
+    expect(btn.getAttribute('aria-checked')).to.equal('false');
+    expect(btn.hasAttribute('disabled')).to.equal(true);
+    expect(el.hasAttribute('disabled')).to.equal(true);
+
+    el.removeAttribute('disabled');
+
+    expect(btn.getAttribute('aria-checked')).to.equal('false');
+    expect(btn.hasAttribute('disabled')).to.equal(false);
+    expect(el.hasAttribute('disabled')).to.equal(false);
   });
 
   it('reacts to checked attribute change', async () => {
@@ -81,7 +146,7 @@ describe('generic-switch', () => {
       <generic-switch disabled>foo</generic-switch>
     `);
 
-    el.shadowRoot.querySelector('div').click();
+    el.shadowRoot.querySelector('.button').click();
 
     expect(el.hasAttribute('checked')).to.equal(false);
   });

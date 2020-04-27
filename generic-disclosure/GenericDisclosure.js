@@ -1,6 +1,6 @@
-const random = Math.random()
-  .toString(36)
-  .substr(2, 9);
+import { randomId } from '../utils/randomId.js';
+
+const random = randomId();
 
 const template = document.createElement('template');
 template.innerHTML = `

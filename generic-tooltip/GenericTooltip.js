@@ -41,7 +41,7 @@ export class GenericTooltip extends HTMLElement {
 
     // The element that triggers the tooltip references the tooltip
     // element with `aria-describedby`.
-    this._target = document.querySelector(`[aria-describedby=${this.id}]`);
+    this._target = this.parentElement.querySelector(`[aria-describedby=${this.id}]`);
     if (!this._target) return;
     // The tooltip needs to listen to `focus`/`blur` events from the target,
     // as well as `hover` events over the target.

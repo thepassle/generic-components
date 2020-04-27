@@ -34,8 +34,8 @@ template.innerHTML = `
     <slot name="tab"></slot>
   </div>
 
-  <div>
-    <slot part="panel" name="panel"></slot>
+  <div part="panel">
+    <slot name="panel"></slot>
   </div>
 `;
 
@@ -43,11 +43,16 @@ export class GenericTabs extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-    this.index = 0;
   }
 
   connectedCallback() {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
+
+    if (this.hasAttribute('active-item')) {
+      this._activeItem = Number(this.getAttribute('active-item'));
+    } else {
+      this._activeItem = 0;
+    }
 
     this.addEventListener('keydown', this._onKeyDown.bind(this));
 
@@ -59,32 +64,55 @@ export class GenericTabs extends HTMLElement {
     this._updateActive(false);
   }
 
+  static get observedAttributes() {
+    return ['active-item'];
+  }
+
+  // eslint-disable-next-line
+  attributeChangedCallback(name, newVal, oldVal) {
+    if (name === 'active-item') {
+      if (newVal !== oldVal) {
+        this._activeItem = Number(this.getAttribute('active-item'));
+        this._updateActive(true);
+      }
+    }
+  }
+
+  get activeItem() {
+    return this._activeItem;
+  }
+
+  set activeItem(val) {
+    this._activeItem = val;
+    this.setAttribute('active-item', this._activeItem);
+  }
+
   _onKeyDown(event) {
     const tabs = this._getTabs();
 
     switch (event.keyCode) {
       case KEYCODE.LEFT:
-        if (this.index === 0) {
-          this.index = tabs.length - 1;
+        if (this._activeItem === 0) {
+          this._activeItem = tabs.length - 1;
         } else {
-          this.index--; // eslint-disable-line
+          this._activeItem--; // eslint-disable-line
         }
         break;
 
       case KEYCODE.RIGHT:
-        if (this.index === tabs.length - 1) {
-          this.index = 0;
+        if (this._activeItem === tabs.length - 1) {
+          this._activeItem = 0;
         } else {
-          this.index++; // eslint-disable-line
+          this._activeItem++; // eslint-disable-line
         }
         break;
 
       case KEYCODE.HOME:
-        this.index = 0;
+        this._activeItem = 0;
         break;
 
       case KEYCODE.END:
-        this.index = tabs.length - 1;
+        this._activeItem = tabs.length - 1;
         break;
       default:
         return;
@@ -97,7 +125,7 @@ export class GenericTabs extends HTMLElement {
     const panels = this._getPanels();
 
     tabs.forEach((_, i) => {
-      if (i === this.index) {
+      if (i === this._activeItem) {
         if (focus) {
           tabs[i].focus();
         }
@@ -120,17 +148,19 @@ export class GenericTabs extends HTMLElement {
       panels[i].setAttribute('aria-labelledby', `generic-tab-${i}`);
     });
 
-    const { index } = this;
+    this.setAttribute('active-item', this._activeItem);
+
+    const { _activeItem } = this;
     this.dispatchEvent(
       new CustomEvent('active-changed', {
-        detail: index,
+        detail: _activeItem,
       }),
     );
   }
 
   _onTabClicked(e) {
     if (e.target.getAttribute('role') !== 'tab') return;
-    this.index = this._getTabs().indexOf(e.target);
+    this._activeItem = this._getTabs().indexOf(e.target);
     this._updateActive(false);
   }
 
@@ -140,5 +170,10 @@ export class GenericTabs extends HTMLElement {
 
   _getPanels() {
     return [...this.querySelectorAll('[slot="panel"]')];
+  }
+
+  setActive(index) {
+    this._activeItem = index;
+    this._updateActive(true);
   }
 }

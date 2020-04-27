@@ -10,7 +10,7 @@
   "repository": "https://github.com/thepassle/generic-components",
   "scripts": {
     "start": "es-dev-server --node-resolve --open --watch",
-    "lint:eslint": "eslint --ext .js,.html . --ignore-path .gitignore",
+    "lint:eslint": "eslint --ext .js . --ignore-path .gitignore",
     "format:eslint": "eslint --ext .js,.html . --fix --ignore-path .gitignore",
     "lint:prettier": "prettier \"**/*.js\" --check --ignore-path .gitignore",
     "format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore",

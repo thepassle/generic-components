@@ -23,7 +23,9 @@
   <generic-skiplink for="main"></generic-skiplink>
   
   <generic-skiplink for="main2" class="custom-style">Go to main content</generic-skiplink>
-  
+
+  <div id="foo"></div>
+
   <a href="../../index.html">generic-components</a>
   <h1>generic-skiplink</h1>
   <a href="https://webaim.org/techniques/skipnav/">spec</a>
@@ -33,6 +35,14 @@
     Main content
     <button id="main2">some button</button>
   </main>
+
+
+  <script type="module">
+    import { render, html } from 'https://unpkg.com/lit-html@1.2.1/lit-html.js?module';
+    render(html`
+      <generic-skiplink for="main">Im rendered with lit-html</generic-skiplink><br/><br/>
+    `, foo);
+  </script>
 
   <script type="module" src="../../generic-skiplink.js"></script>
 </body>

@@ -9,4 +9,14 @@ describe('generic-alert', () => {
 
     expect(el).to.be.accessible();
   });
+
+  it('has correct aria attributes', async () => {
+    const el = await fixture(html`
+      <generic-alert></generic-alert>
+    `);
+
+    expect(el.getAttribute('role')).to.equal('alert');
+    expect(el.getAttribute('aria-live')).to.equal('assertive');
+    expect(el.getAttribute('aria-atomic')).to.equal('true');
+  });
 });

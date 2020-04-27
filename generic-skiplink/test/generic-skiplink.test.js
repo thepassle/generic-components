@@ -9,4 +9,12 @@ describe('generic-skiplink', () => {
 
     expect(el).to.be.accessible();
   });
+
+  it('correctly renders the `for` attribute', async () => {
+    const el = await fixture(html`
+      <generic-skiplink for="main"></generic-skiplink>
+    `);
+
+    expect(el.shadowRoot.querySelector('a').getAttribute('href')).to.equal('#main');
+  });
 });

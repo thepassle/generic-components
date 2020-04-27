@@ -34,6 +34,16 @@
   <generic-alert class="info">
     Here is some info
   </generic-alert>
+  <br/><br/>
+  <div id="foo"></div>
+
+  <script type="module">
+    import { render, html } from 'https://unpkg.com/lit-html@1.2.1/lit-html.js?module';
+    render(html`
+      <b>Rendered with lit-html:</b><br/>
+      <generic-alert>Im rendered with lit-html</generic-switch>
+    `, foo);
+  </script>
 
   <script type="module" src="../../generic-alert.js"></script>
 </body>

@@ -33,6 +33,25 @@ describe('generic-switch', () => {
     expect(el.hasAttribute('checked')).to.equal(true);
   });
 
+  it('reacts to checked attribute change', async () => {
+    const el = await fixture(html`
+      <generic-switch></generic-switch>
+    `);
+    el.setAttribute('checked', '');
+
+    const btn = el.shadowRoot.querySelector('.button');
+
+    expect(btn.getAttribute('aria-checked')).to.equal('true');
+    expect(btn.hasAttribute('checked')).to.equal(true);
+    expect(el.hasAttribute('checked')).to.equal(true);
+
+    el.removeAttribute('checked');
+
+    expect(btn.getAttribute('aria-checked')).to.equal('false');
+    expect(btn.hasAttribute('checked')).to.equal(false);
+    expect(el.hasAttribute('checked')).to.equal(false);
+  });
+
   it('is unchecked when clicked again', async () => {
     const el = await fixture(html`
       <generic-switch checked></generic-switch>

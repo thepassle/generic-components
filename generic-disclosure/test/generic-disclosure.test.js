@@ -26,4 +26,38 @@ describe('generic-disclosure', () => {
     expect(el.hasAttribute('expanded')).to.equal(false);
     expect(btn.getAttribute('aria-expanded')).to.equal('false');
   });
+
+  it('reacts to attribute changes', async () => {
+    const el = await fixture(html`
+      <generic-disclosure></generic-disclosure>
+    `);
+    const btn = el.shadowRoot.querySelector('button');
+
+    el.setAttribute('expanded', '');
+
+    expect(el.hasAttribute('expanded')).to.equal(true);
+    expect(btn.getAttribute('aria-expanded')).to.equal('true');
+
+    el.removeAttribute('expanded');
+
+    expect(el.hasAttribute('expanded')).to.equal(false);
+    expect(btn.getAttribute('aria-expanded')).to.equal('false');
+  });
+
+  it('reacts to property changes', async () => {
+    const el = await fixture(html`
+      <generic-disclosure></generic-disclosure>
+    `);
+    const btn = el.shadowRoot.querySelector('button');
+
+    el.expanded = true;
+
+    expect(el.hasAttribute('expanded')).to.equal(true);
+    expect(btn.getAttribute('aria-expanded')).to.equal('true');
+
+    el.expanded = false;
+
+    expect(el.hasAttribute('expanded')).to.equal(false);
+    expect(btn.getAttribute('aria-expanded')).to.equal('false');
+  });
 });

@@ -30,12 +30,12 @@ template.innerHTML = `
     }
   </style>
 
-  <div role="tablist">
+  <div part="tablist" role="tablist">
     <slot name="tab"></slot>
   </div>
 
   <div>
-    <slot name="panel"></slot>
+    <slot part="panel" name="panel"></slot>
   </div>
 `;
 
@@ -119,6 +119,13 @@ export class GenericTabs extends HTMLElement {
       tabs[i].setAttribute('aria-controls', `generic-tab-${i}`);
       panels[i].setAttribute('aria-labelledby', `generic-tab-${i}`);
     });
+
+    const { index } = this;
+    this.dispatchEvent(
+      new CustomEvent('active-changed', {
+        detail: index,
+      }),
+    );
   }
 
   _onTabClicked(e) {

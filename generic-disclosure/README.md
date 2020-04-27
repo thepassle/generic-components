@@ -4,5 +4,4 @@
 
 ## To do
 
-- Slot for svg
-- Expanded attribute
+- Optional svg, slot

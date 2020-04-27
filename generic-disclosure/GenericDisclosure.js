@@ -99,14 +99,14 @@ export class GenericDisclosure extends HTMLElement {
   }
 
   __open() {
-    this.dispatchEvent(new Event('generic-disclosure-opened'));
+    this.dispatchEvent(new Event('disclosure-opened'));
     this.button.setAttribute('aria-expanded', 'true');
     this.detail.classList.add('opened');
     this.detail.classList.remove('closed');
   }
 
   __close() {
-    this.dispatchEvent(new Event('generic-disclosure-closed'));
+    this.dispatchEvent(new Event('disclosure-closed'));
     this.button.removeAttribute('aria-expanded');
     this.detail.classList.add('closed');
     this.detail.classList.remove('opened');

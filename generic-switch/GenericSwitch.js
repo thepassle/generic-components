@@ -57,7 +57,7 @@ export class GenericSwitch extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-    this.checked = false;
+    this.__checked = false;
   }
 
   static get observedAttributes() {
@@ -115,7 +115,7 @@ export class GenericSwitch extends HTMLElement {
   }
 
   __update() {
-    if (this.checked && !this.hasAttribute('disabled')) {
+    if (this.__checked && !this.hasAttribute('disabled')) {
       this.button.setAttribute('aria-checked', 'true');
       this.button.setAttribute('checked', '');
     } else {
@@ -130,11 +130,11 @@ export class GenericSwitch extends HTMLElement {
     if (newVal !== oldVal) {
       switch (name) {
         case 'disabled':
-          this.checked = !this.checked;
+          this.__checked = !this.__checked;
           this.__handleDisabled();
           break;
         case 'checked':
-          this.checked = !this.checked;
+          this.__checked = !this.__checked;
           this.__update();
           break;
         default:

@@ -21,8 +21,8 @@
 <body>
   <a href="../../index.html">generic-components</a>
   <h1>generic-tabs</h1>
-
-  <generic-tabs active-item="1" label="people">
+  <hr/>
+  <generic-tabs label="people">
     <button slot="tab">
       John
     </button>
@@ -52,6 +52,22 @@
       <br>
       i like cats
       <button>click</button>
+    </div>
+  </generic-tabs>
+  <hr/>
+  <generic-tabs active-item="1" label="people">
+    <button slot="tab">
+      Jim
+    </button>
+    <div slot="panel">
+      My name is Jim. Im not opened by default.
+    </div>
+
+    <button slot="tab">
+      Jack
+    </button>
+    <div slot="panel">
+      And I am Jack. I am opened by default.
     </div>
   </generic-tabs>
 

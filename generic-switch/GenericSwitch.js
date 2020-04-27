@@ -1,14 +1,7 @@
-/**
- * https://lion-web-components.netlify.app/?path=/story/buttons-switch--checked
- */
 import { randomId } from '../utils/randomId.js';
+import { KEYCODES } from '../utils/keycodes.js';
 
 const random = randomId();
-
-const KEYCODE = {
-  SPACE: 32,
-  ENTER: 13,
-};
 
 const template = document.createElement('template');
 template.innerHTML = `
@@ -71,10 +64,6 @@ export class GenericSwitch extends HTMLElement {
     return ['disabled', 'checked'];
   }
 
-  /**
-   * TODO:
-   * attr/prop reflection
-   */
   connectedCallback() {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
 
@@ -103,30 +92,33 @@ export class GenericSwitch extends HTMLElement {
   }
 
   __onClick() {
-    this.checked = !this.checked;
-    this.__update();
+    if (this.hasAttribute('checked')) {
+      this.removeAttribute('checked');
+    } else {
+      this.setAttribute('checked', '');
+    }
   }
 
-  // eslint-disable-next-line
   __onKeyDown(event) {
     switch (event.keyCode) {
-      case KEYCODE.SPACE:
-      case KEYCODE.ENTER:
-        this.checked = !this.checked;
+      case KEYCODES.SPACE:
+      case KEYCODES.ENTER:
+        if (this.hasAttribute('checked')) {
+          this.removeAttribute('checked');
+        } else {
+          this.setAttribute('checked', '');
+        }
         break;
       default:
         break;
     }
-    this.__update();
   }
 
   __update() {
     if (this.checked && !this.hasAttribute('disabled')) {
-      this.setAttribute('checked', '');
       this.button.setAttribute('aria-checked', 'true');
       this.button.setAttribute('checked', '');
     } else {
-      this.removeAttribute('checked');
       this.button.setAttribute('aria-checked', 'false');
       this.button.removeAttribute('checked');
     }
@@ -134,14 +126,20 @@ export class GenericSwitch extends HTMLElement {
     this.dispatchEvent(new Event('checked-changed'));
   }
 
-  // eslint-disable-next-line
   attributeChangedCallback(name, newVal, oldVal) {
-    // eslint-disable-next-line
-    switch (name) {
-      case 'disabled':
-        break;
-      case 'checked':
-        break;
+    if (newVal !== oldVal) {
+      switch (name) {
+        case 'disabled':
+          this.checked = !this.checked;
+          this.__handleDisabled();
+          break;
+        case 'checked':
+          this.checked = !this.checked;
+          this.__update();
+          break;
+        default:
+          break;
+      }
     }
   }
 }

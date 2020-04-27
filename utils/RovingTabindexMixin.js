@@ -29,12 +29,7 @@
  * </foo-bar>
  */
 
-const KEYCODE = {
-  LEFT: 37,
-  RIGHT: 39,
-  HOME: 36,
-  END: 35,
-};
+import { KEYCODES } from './keycodes.js';
 
 export const RovingTabindexMixin = superclass =>
   // eslint-disable-next-line
@@ -64,7 +59,7 @@ export const RovingTabindexMixin = superclass =>
       const elements = this.__getElements();
 
       switch (event.keyCode) {
-        case KEYCODE.LEFT:
+        case KEYCODES.LEFT:
           if (this.__index === 0) {
             this.__index = elements.length - 1;
           } else {
@@ -72,7 +67,7 @@ export const RovingTabindexMixin = superclass =>
           }
           break;
 
-        case KEYCODE.RIGHT:
+        case KEYCODES.RIGHT:
           if (this.__index === elements.length - 1) {
             this.__index = 0;
           } else {
@@ -80,11 +75,11 @@ export const RovingTabindexMixin = superclass =>
           }
           break;
 
-        case KEYCODE.HOME:
+        case KEYCODES.HOME:
           this.__index = 0;
           break;
 
-        case KEYCODE.END:
+        case KEYCODES.END:
           this.__index = elements.length - 1;
           break;
         default:

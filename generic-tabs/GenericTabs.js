@@ -11,12 +11,7 @@
  * Panels should have slot panel
  */
 
-const KEYCODE = {
-  LEFT: 37,
-  RIGHT: 39,
-  HOME: 36,
-  END: 35,
-};
+import { KEYCODES } from '../utils/keycodes.js';
 
 const template = document.createElement('template');
 template.innerHTML = `
@@ -91,7 +86,7 @@ export class GenericTabs extends HTMLElement {
     const tabs = this._getTabs();
 
     switch (event.keyCode) {
-      case KEYCODE.LEFT:
+      case KEYCODES.LEFT:
         if (this._activeItem === 0) {
           this._activeItem = tabs.length - 1;
         } else {
@@ -99,7 +94,7 @@ export class GenericTabs extends HTMLElement {
         }
         break;
 
-      case KEYCODE.RIGHT:
+      case KEYCODES.RIGHT:
         if (this._activeItem === tabs.length - 1) {
           this._activeItem = 0;
         } else {
@@ -107,11 +102,11 @@ export class GenericTabs extends HTMLElement {
         }
         break;
 
-      case KEYCODE.HOME:
+      case KEYCODES.HOME:
         this._activeItem = 0;
         break;
 
-      case KEYCODE.END:
+      case KEYCODES.END:
         this._activeItem = tabs.length - 1;
         break;
       default:

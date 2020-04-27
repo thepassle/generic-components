@@ -1,8 +1,7 @@
 import { EventTargetShim } from '../utils/EventTargetShim.js';
 import { getFocusableElements } from '../utils/getFocusableElements.js';
+import { KEYCODES } from '../utils/keycodes.js';
 import '../generic-focus-trap.js';
-
-const KEYCODE_ESC = 27;
 
 /**
  * TODO:
@@ -114,7 +113,7 @@ class Dialog extends EventTargetShim {
   }
 
   __onKeyDown(e) {
-    if (e.keyCode === KEYCODE_ESC && this.__dialogOpen && this.__closeOnEscape) {
+    if (e.keyCode === KEYCODES.ESC && this.__dialogOpen && this.__closeOnEscape) {
       this.close();
       window.removeEventListener('keydown', this.__onKeyDown.bind(this), true);
     }

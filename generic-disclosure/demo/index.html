@@ -45,8 +45,24 @@
     <span slot="toggle">toggle me</span>
     <p slot="detail">i am content</p>
   </generic-disclosure>
+  <br/>
+  <br/>
 
-  <script type="module" src="../../generic-disclosure.js"></script>
+  <div id="foo"></div>
+  
+  <script type="module">
+    import { render, html } from 'https://unpkg.com/lit-html@1.2.1/lit-html.js?module';
+    render(html`
+    <b>Rendered with lit-html:</b><br/>
+    default:<br/>
+    <generic-disclosure>
+      <span slot="toggle">toggle me</span>
+      <p slot="detail">i am content</p>
+    </generic-disclosure>
+    `, foo);
+  </script>
+  
+  <script type="module" src="../../generic-disclosure.js"></script>  <br/><br/>
 </body>
 
 </html>

@@ -53,15 +53,10 @@ template.innerHTML = `
   </div>
 `;
 
-/**
- * disabled still toggles on click :/
- */
-
 export class GenericSwitch extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-    this.__checked = false;
   }
 
   static get observedAttributes() {
@@ -80,7 +75,11 @@ export class GenericSwitch extends HTMLElement {
     this.button.setAttribute('aria-describedby', `label-${random}`);
     this.button.setAttribute('role', 'switch');
 
+    this.__checked = this.hasAttribute('checked') || false;
+
+    this.__update();
     this.__handleDisabled();
+    this.domReady = true;
   }
 
   __handleDisabled() {
@@ -133,6 +132,7 @@ export class GenericSwitch extends HTMLElement {
   }
 
   attributeChangedCallback(name, newVal, oldVal) {
+    if (!this.domReady) return;
     if (newVal !== oldVal) {
       switch (name) {
         case 'disabled':

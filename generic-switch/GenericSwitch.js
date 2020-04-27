@@ -53,6 +53,10 @@ template.innerHTML = `
   </div>
 `;
 
+/**
+ * disabled still toggles on click :/
+ */
+
 export class GenericSwitch extends HTMLElement {
   constructor() {
     super();
@@ -92,10 +96,12 @@ export class GenericSwitch extends HTMLElement {
   }
 
   __onClick() {
-    if (this.hasAttribute('checked')) {
-      this.removeAttribute('checked');
-    } else {
-      this.setAttribute('checked', '');
+    if (!this.hasAttribute('disabled')) {
+      if (this.hasAttribute('checked')) {
+        this.removeAttribute('checked');
+      } else {
+        this.setAttribute('checked', '');
+      }
     }
   }
 

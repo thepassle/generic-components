@@ -79,7 +79,7 @@ export class GenericSwitch extends HTMLElement {
 
     this.__update();
     this.__handleDisabled();
-    this.domReady = true;
+    this.__domReady = true;
   }
 
   __handleDisabled() {
@@ -132,7 +132,7 @@ export class GenericSwitch extends HTMLElement {
   }
 
   attributeChangedCallback(name, newVal, oldVal) {
-    if (!this.domReady) return;
+    if (!this.__domReady) return;
     if (newVal !== oldVal) {
       switch (name) {
         case 'disabled':

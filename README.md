@@ -21,16 +21,13 @@ The goal of this project is to create a common library of generic web components
 | [generic-disclosure](/generic-disclosure/README.md)           | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-disclosure/demo/index.html)      | [Wai Aria Practices](https://www.w3.org/TR/wai-aria-practices/#disclosure)   | ✅          |                                                                                                                                 |
 | [generic-focus-trap](/generic-focus-trap/README.md)           | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-focus-trap/demo/index.html)      | N/A                                                                         | ✅ | Reexport from [@a11y/focus-trap](https://npmjs.com/package/@a11y/focus-trap) by [Rune Mehlsen](https://twitter.com/RuneMehlsen) |
 | [generic-skiplink](/generic-skiplink/README.md)               | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-skiplink/demo/index.html)        | [Wai Aria Practices](https://webaim.org/techniques/skipnav/)                 | ✅ |                                                                                                                                 |
-| [generic-switch](/generic-switch/README.md)                   | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-switch/demo/index.html)          | [Wai Aria Practices](https://www.w3.org/TR/wai-aria-1.1/#switch)             | 🏗        |                                                                                                                                 |
+| [generic-switch](/generic-switch/README.md)                   | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-switch/demo/index.html)          | [Wai Aria Practices](https://www.w3.org/TR/wai-aria-1.1/#switch)             | ✅        |                                                                                                                                 |
 | [generic-tabs](/generic-tabs/README.md)                       | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-tabs/demo/index.html)            | [Wai Aria Practices](https://www.w3.org/TR/wai-aria-practices/#tabpanel)     | ✅        |                                                                                                                                 |
 | [generic-tooltip](/generic-tooltip/README.md)                 | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-tooltip/demo/index.html)         | [Wai Aria Practices](https://www.w3.org/TR/wai-aria-practices/#tooltip)      | ✅ | Reexport from [howto-components](https://github.com/GoogleChromeLabs/howto-components)                                          |
 | [generic-visually-hidden](/generic-visually-hidden/README.md) | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-visually-hidden/demo/index.html) | [WebAIM](https://webaim.org/techniques/css/invisiblecontent/)               | ✅ |                                                                                                                                 |                                                                                 |
 
 ## Todo:
 
-- Events for components
-- Parts for components
 - Rationale
 - Documentation
-- Tests
 - How to style

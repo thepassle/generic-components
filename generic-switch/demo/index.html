@@ -19,10 +19,21 @@
   <h1>generic-switch</h1>
   <a href="https://www.w3.org/TR/wai-aria-1.1/#switch">spec</a>
   <br/>
+  <br/>
   
-  <generic-switch></generic-switch><br/>
-  <generic-switch>Custom label</generic-switch><br/>
-  <generic-switch disabled>Disabled</generic-switch><br/>
+  <b>Vanilla:</b>
+  <br/>
+  default:<br/>
+  <generic-switch>Default</generic-switch><br/><br/>
+  custom label:<br/>
+  <generic-switch>Custom label</generic-switch><br/><br/>
+  disabled:<br/>
+  <generic-switch disabled>Disabled</generic-switch><br/><br/>
+  checked:<br/>
+  <generic-switch checked>Checked</generic-switch><br/><br/>
+  checked and disabled:<br/>
+  <generic-switch checked disabled>Checked and disabled</generic-switch><br/><br/>
+
   <br/><br/>
   <div id="foo"></div>
 
@@ -30,12 +41,16 @@
     import { render, html } from 'https://unpkg.com/lit-html@1.2.1/lit-html.js?module';
     render(html`
       <b>Rendered with lit-html:</b><br/>
-      checked:<br/>
-      <generic-switch checked></generic-switch><br/><br/>
-      disabled:<br/>
-      <generic-switch disabled></generic-switch><br/><br/>
       default:<br/>
-      <generic-switch></generic-switch>
+      <generic-switch>Default</generic-switch><br/><br/>
+      custom label:<br/>
+      <generic-switch>Custom label</generic-switch><br/><br/>
+      disabled:<br/>
+      <generic-switch disabled>Disabled</generic-switch><br/><br/>
+      checked:<br/>
+      <generic-switch checked>Checked</generic-switch><br/><br/>
+      checked and disabled:<br/>
+      <generic-switch checked disabled>Checked and disabled</generic-switch><br/><br/>
     `, foo);
   </script>
   

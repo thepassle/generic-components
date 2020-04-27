@@ -1,4 +1,5 @@
 import { EventTargetShim } from '../utils/EventTargetShim.js';
+import { getFocusableElements } from '../utils/getFocusableElements.js';
 import '../generic-focus-trap.js';
 
 const KEYCODE_ESC = 27;
@@ -128,9 +129,7 @@ class Dialog extends EventTargetShim {
 
   __onFocusIn() {
     if (this.__dialogOpen) {
-      const focusable = this.__dialogOverlay.querySelectorAll(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-      );
+      const focusable = getFocusableElements(this.__dialogOverlay);
       const firstFocusable = focusable[0];
 
       if (!this.__dialogOverlay.contains(document.activeElement)) {

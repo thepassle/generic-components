@@ -9,5 +9,7 @@ export { GenericSwitch } from './generic-switch/GenericSwitch.js';
 export { GenericTabs } from './generic-tabs/GenericTabs.js';
 export { GenericTooltip } from './generic-tooltip/GenericTooltip.js';
 export { GenericVisuallyHidden } from './generic-visually-hidden/GenericVisuallyHidden.js';
+// utils
 export { EventTargetShim } from './utils/EventTargetShim.js';
 export { RovingTabindexMixin } from './utils/RovingTabindexMixin.js';
+export { getFocusableElements } from './utils/getFocusableElements.js';

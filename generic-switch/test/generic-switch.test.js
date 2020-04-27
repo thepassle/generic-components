@@ -41,6 +41,7 @@ describe('generic-switch', () => {
 
     el.__onKeyDown({
       keyCode: 13,
+      preventDefault: () => {},
     });
 
     expect(btn.getAttribute('aria-checked')).to.equal('true');
@@ -49,6 +50,7 @@ describe('generic-switch', () => {
 
     el.__onKeyDown({
       keyCode: 13,
+      preventDefault: () => {},
     });
 
     expect(btn.getAttribute('aria-checked')).to.equal('false');
@@ -64,6 +66,7 @@ describe('generic-switch', () => {
 
     el.__onKeyDown({
       keyCode: 32,
+      preventDefault: () => {},
     });
 
     expect(btn.getAttribute('aria-checked')).to.equal('true');
@@ -72,6 +75,7 @@ describe('generic-switch', () => {
 
     el.__onKeyDown({
       keyCode: 32,
+      preventDefault: () => {},
     });
 
     expect(btn.getAttribute('aria-checked')).to.equal('false');

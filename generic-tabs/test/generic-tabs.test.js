@@ -88,9 +88,9 @@ describe('generic-tabs', () => {
     expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
   });
 
-  it('reacts to active-item attribute changed', async () => {
+  it('reacts to activeItem property changed', async () => {
     const el = await fixture(tabsFixture);
-    el.setAttribute('active-item', '1');
+    el.activeItem = 1;
     const buttons = el.querySelectorAll('button');
 
     expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
@@ -101,9 +101,9 @@ describe('generic-tabs', () => {
     expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
   });
 
-  it('reacts to activeItem property changed', async () => {
+  it('reacts to active-item attribute changed', async () => {
     const el = await fixture(tabsFixture);
-    el.activeItem = 1;
+    el.setAttribute('active-item', '1');
     const buttons = el.querySelectorAll('button');
 
     expect(buttons[1].getAttribute('aria-selected')).to.equal('true');

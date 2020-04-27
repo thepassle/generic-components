@@ -6,9 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="Description" content="Put your description here.">
   <link rel="stylesheet" type="text/css" href="../../demo/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;900&display=swap" rel="stylesheet">
   <style>
     generic-alert:not(:defined) {
       display: none;
+    }
+
+    generic-alert {
+      flex: 1;
     }
     
     .info::part(alert) {
@@ -17,38 +22,91 @@
       color: black;
     }
   </style>
-  <title>generic-alert</title>
+  
+  <title>generic-components</title>
 </head>
 
 <body>
-  <a href="../../index.html">generic-components</a>
-  <h1>generic-alert</h1>
-  <a href="https://www.w3.org/TR/wai-aria-practices/#alert">spec</a>
-  <br/>
-  <br/>
+  <div class="app">
+    <div class="nav">
+      <h1 class="title"><a href="/index.html">generic</a></h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="/generic-accordion/demo/index.html">generic-accordion</a>
+          </li>
+          <li>
+            <a href="/generic-alert/demo/index.html">generic-alert</a>
+          </li>
+          <li>
+            <a href="/generic-dialog/demo/index.html">generic-dialog</a>
+          </li>
+          <li>
+            <a href="/generic-disclosure/demo/index.html">generic-disclosure</a>
+          </li>
+          <li>
+            <a href="/generic-focus-trap/demo/index.html">generic-focus-trap</a>
+          </li>
+          <li>
+            <a href="/generic-skiplink/demo/index.html">generic-skiplink</a>
+          </li>
+          <li>
+            <a href="/generic-switch/demo/index.html">generic-switch</a>
+          </li>
+          <li>
+            <a href="/generic-tabs/demo/index.html">generic-tabs</a>
+          </li>
+          <li>
+            <a href="/generic-tooltip/demo/index.html">generic-tooltip</a>
+          </li>
+          <li>
+            <a href="/generic-visually-hidden/demo/index.html">generic-visually-hidden</a>
+          </li>
+          <hr>
+          <li>
+            <a href="https://github.com/thepassle/generic-components">Github</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <main class="content">
+      <h1>generic-alert</h1>
+      <a href="https://www.w3.org/TR/wai-aria-practices/#alert">spec</a>
+      <br/>
+      <br/>
+    
+      <h2>Vanilla:</h2>
+      <p>Default:</p>
+      <div class="demo">
+        <generic-alert>
+          This is an alert
+        </generic-alert>
+      </div>
+      <br/>
+      <p>Custom style:</p>
+      <div class="demo">
+        <generic-alert class="info">
+          Here is some info
+        </generic-alert>
+      </div>
+      <br/><br/>
 
-  <b>Vanilla:</b>
-  <br/>
-  <generic-alert>
-    This is an alert
-  </generic-alert>
-  <br/>
-
-  <generic-alert class="info">
-    Here is some info
-  </generic-alert>
-  <br/><br/>
-  <div id="foo"></div>
-
-  <script type="module">
-    import { render, html } from 'https://unpkg.com/lit-html@1.2.1/lit-html.js?module';
-    render(html`
-      <b>Rendered with lit-html:</b><br/>
-      <generic-alert>Im rendered with lit-html</generic-switch>
-    `, foo);
-  </script>
-
-  <script type="module" src="../../generic-alert.js"></script>
+      <div id="foo"></div>
+    
+      <script type="module">
+        import { render, html } from 'https://unpkg.com/lit-html@1.2.1/lit-html.js?module';
+        render(html`
+          <h2>Rendered with lit-html:</h2>
+          <p>Default:</p>
+          <div class="demo">
+            <generic-alert>Im rendered with lit-html</generic-switch>
+          </div>
+        `, foo);
+      </script>
+    
+      <script type="module" src="../../generic-alert.js"></script>    
+    </main>
+  </div>
+  
 </body>
-
 </html>

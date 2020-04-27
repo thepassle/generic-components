@@ -108,6 +108,7 @@ export class GenericSwitch extends HTMLElement {
     switch (event.keyCode) {
       case KEYCODES.SPACE:
       case KEYCODES.ENTER:
+        event.preventDefault();
         if (this.hasAttribute('checked')) {
           this.removeAttribute('checked');
         } else {

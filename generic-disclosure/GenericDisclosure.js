@@ -78,6 +78,11 @@ export class GenericDisclosure extends HTMLElement {
         this._expanded = true;
       }
     });
+
+    this.__domReady = true;
+    if (this.hasAttribute('expanded')) {
+      this.__open();
+    }
   }
 
   static get observedAttributes() {
@@ -85,6 +90,7 @@ export class GenericDisclosure extends HTMLElement {
   }
 
   attributeChangedCallback(name, newVal, oldVal) {
+    if (!this.__domReady) return;
     if (name === 'expanded') {
       if (newVal !== oldVal) {
         if (this.hasAttribute('expanded')) {

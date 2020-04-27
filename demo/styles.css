@@ -8,7 +8,84 @@ body {
 
 *:focus {
   outline: 0px;
-  border-radius: 4px;
-  box-shadow: 0 0 0 1px blue, 0 0 0px 3px deepskyblue !important;
+  /* border-radius: 4px; */
+  box-shadow: 0 0 0 1px blue, 0 0 0px 3px #145dce !important;
   transition: box-shadow 0.1s ease-in-out;
+}
+
+* {
+  font-family: 'Roboto Slab', sans-serif;
+}
+
+.app {
+  display: flex;
+}
+
+.nav {
+  height: calc(100vh - 80px);
+  padding: 40px;
+  background-color: #303136;
+  color: white;
+  flex-shrink: 0;
+}
+
+.content {
+  overflow: auto;
+  height: calc(100vh - 90px);
+  width: calc(100% - 100px);
+  padding: 50px;
+  padding-top: 40px;
+}
+
+.content h1 {
+  margin-top: 0;
+}
+
+.nav a {
+  color: white;
+}
+
+.nav ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.nav ul li {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+hr {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.demo {
+  border-radius: 10px;
+  border: solid 1px gray;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+.title {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 960px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .nav {
+    height: 100%;
+  }
+}
+
+generic-accordion:not(:defined) {
+  display: none;
 }

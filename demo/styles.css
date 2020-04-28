@@ -58,6 +58,18 @@ pre {
   margin-top: 0;
 }
 
+.description {
+  font-style: italic;
+  border-left: solid 4px black;
+  padding-left: 15px;
+  font-size: 18px;
+  color: #444444;
+}
+
+code {
+  font-family: monospace;
+}
+
 details {
   margin-bottom: 20px;
 }

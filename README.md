@@ -10,7 +10,7 @@ A collection of generic web components with a focus on:
 
 The goal of this project is to create a common library of generic web components, that are accessible, framework agnostic, easy to style, and easy to consume.
 
-All components in these repo extend from HTMLElement and dont use any libraries or framework.
+All components in these repo extend from HTMLElement and dont use any libraries or framework.s
 
 You can think of these components like using a native `<button>` element, you get all the functionality, and accessibility, keyboard nav, etc for free, you just have to style the button to your liking.
 

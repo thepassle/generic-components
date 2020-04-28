@@ -42,7 +42,7 @@ export class GenericSkiplink extends HTMLElement {
       </style>
 
       <a
-        part="generic-skiplink-anchor"
+        part="anchor"
         class="skiplink" 
         href="#${this.getAttribute('for')}">
           <slot>Continue to main</slot>

@@ -41,8 +41,8 @@ template.innerHTML = `
       background-color: grey;
     }
 
-    #button-${random}:focus .thumb {
-      box-shadow: 0 0 0 2px skyblue;
+    div[part="button"]:focus .thumb {
+      box-shadow: 0 0 0 2px var(--generic-switch-focus, skyblue);
     }
 
   </style>
@@ -129,7 +129,8 @@ export class GenericSwitch extends HTMLElement {
       this.button.removeAttribute('checked');
     }
 
-    this.dispatchEvent(new Event('checked-changed'));
+    const { __checked } = this;
+    this.dispatchEvent(new CustomEvent('checked-changed', { detail: __checked }));
   }
 
   attributeChangedCallback(name, newVal, oldVal) {

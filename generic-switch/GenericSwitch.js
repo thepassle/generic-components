@@ -7,7 +7,8 @@ const template = document.createElement('template');
 template.innerHTML = `
   <style>
     :host {
-      display: inline-block;
+      display: flex;
+      align-items: center;
       height: 16px;
     }
 
@@ -43,6 +44,10 @@ template.innerHTML = `
 
     div[part="button"]:focus .thumb {
       box-shadow: 0 0 0 2px var(--generic-switch-focus, skyblue);
+    }
+
+    #label-${random} {
+      margin-right: 10px;
     }
 
   </style>

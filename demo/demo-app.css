@@ -61,7 +61,7 @@ body {
   color: white;
   padding: 80px;
   width: calc(100% - 160px);
-  height: calc(100% - 60px);
+  height: calc(100% - 160px);
   background-color: var(--col-light);
 }
 
@@ -75,7 +75,7 @@ body {
   padding-top: 80px;
   width: calc(400px - 40px);
   background-color: var(--col-dark);
-  height: calc(100% - 60px);
+  height: calc(100% - 80px);
 }
 
 .panel-button {
@@ -137,7 +137,7 @@ generic-disclosure::part(toggle):hover {
 }
 
 .dialog-button {
-  background-color: #768ad4;
+  background-color: #8ea2ea;
   color: black; 
   border: 0;
   border-radius: 5px;
@@ -154,7 +154,7 @@ generic-disclosure::part(toggle):hover {
 }
 
 .dialog-button:hover {
-  background-color: #5b6eb1;
+  background-color: #768ad4;
 }
 
 generic-alert::part(alert) {

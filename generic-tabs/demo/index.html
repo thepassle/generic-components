@@ -7,6 +7,8 @@
   <meta name="Description" content="Put your description here.">
   <link rel="stylesheet" type="text/css" href="../../demo/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css">
+  <script src="https://unpkg.com/prismjs@1.20.0/prism.js"></script>
   <style>
     generic-tabs:not(:defined) {
       display: none;
@@ -72,10 +74,41 @@
     <main id="main" class="content">
       <h1>generic-tabs</h1>
       <a href="https://www.w3.org/TR/wai-aria-practices/#tabpanel">spec</a>
-      
-      <h2>Vanilla:</h2>
     
-      <p>Default:</p>
+      <h2>Default:</h2>
+      <details>
+          <summary>Show code</summary> 
+      <pre><code class="language-markup"><script type="prism-html-markup"><generic-tabs label="people">
+  <button slot="tab">
+    John
+  </button>
+  <div slot="panel">
+    <p>My name is John. I like dogs.</p>
+    <button>click</button>
+    <p>some text</p>
+    <button>click</button>
+  </div>
+
+  <button slot="tab">
+    Mark
+  </button>
+  <div slot="panel">
+    <p>And I am Mark. I dont like dogs!</p>
+  </div>
+
+  <button slot="tab">
+    Ron
+  </button>
+  <div slot="panel">
+    <p>Hello I am Ron</p>
+    <a href="/">foo</a>
+    <p>i like cats</p>
+    <button>click</button>
+  </div>
+</generic-tabs>
+</script></code></pre>
+</details>
+
       <div class="demo">
         <generic-tabs label="people">
           <button slot="tab">
@@ -109,25 +142,44 @@
 
       
       
-      <p>Active item:</p>
+      <h2>Active item:</h2>
+      <details>
+          <summary>Show code</summary>      
+      <pre><code class="language-markup"><script type="prism-html-markup"><generic-tabs active-item="1" label="people">
+  <button slot="tab">
+      Jim
+    </button>
+    <div slot="panel">
+      <p>And my name is Jim. Im not opened by default.</p>
+    </div>
+
+    <button slot="tab">
+      Jack
+    </button>
+    <div slot="panel">
+      <p>I am Jack. I am opened by default.</p>
+    </div>
+</generic-tabs>
+</script></code></pre>
+</details>
       <div class="demo">
         <generic-tabs active-item="1" label="people">
           <button slot="tab">
             Jim
           </button>
           <div slot="panel">
-            <p>My name is Jim. Im not opened by default.</p>
+            <p>And my name is Jim. Im not opened by default.</p>
           </div>
       
           <button slot="tab">
             Jack
           </button>
           <div slot="panel">
-            <p>And I am Jack. I am opened by default.</p>
+            <p>I am Jack. I am opened by default.</p>
           </div>
         </generic-tabs>
       </div>
-      
+<!--       
       <div id="foo"></div>
     
       <script type="module">
@@ -174,7 +226,7 @@
             </generic-tabs>
           </div>
         `, foo);
-      </script>
+      </script> -->
       <script type="module" src="../../generic-tabs.js"></script>
     </main>
   </div>

@@ -7,6 +7,8 @@
   <meta name="Description" content="Put your description here.">
   <link rel="stylesheet" type="text/css" href="../../demo/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css">
+  <script src="https://unpkg.com/prismjs@1.20.0/prism.js"></script>
   <style>
     generic-switch:not(:defined) {
       display: none;
@@ -69,30 +71,34 @@
       <br/>
       <br/>
       
-      <h2>Vanilla:</h2>
-      <p>Default:</p>
-      <div class="demo">
-        <generic-switch>Default</generic-switch><br/><br/>
-      </div>
-      <p>Custom label:</p>
+      <h2>Default:</h2>
+      <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch></generic-skiplink></script></code></pre></details>
+        <div class="demo">
+          <generic-switch>Default</generic-switch><br/><br/>
+        </div>
+      <h2>Custom label:</h2>
+      <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch>Custom label</generic-skiplink></script></code></pre></details>
       <div class="demo">
         <generic-switch>Custom label</generic-switch><br/><br/>
       </div>
-      <p>Disabled:</p>
+      <h2>Disabled:</h2>
+      <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch disabled>Disabled</generic-skiplink></script></code></pre></details>
       <div class="demo">
         <generic-switch disabled>Disabled</generic-switch><br/><br/>
       </div>
-      <p>Checked:</p>
+      <h2>Checked:</h2>
+      <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch checked>Checked</generic-skiplink></script></code></pre></details>
       <div class="demo">
         <generic-switch checked>Checked</generic-switch><br/><br/>
       </div>
-      <p>Checked and disabled:</p>
+      <h2>Checked and disabled:</h2>
+      <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch checked disabled>Checked and disabled</generic-skiplink></script></code></pre></details>
       <div class="demo">
         <generic-switch checked disabled>Checked and disabled</generic-switch><br/><br/>
       </div>
     
       <br/><br/>
-      <div id="foo"></div>
+      <!-- <div id="foo"></div>
     
       <script type="module">
         import { render, html } from 'https://unpkg.com/lit-html@1.2.1/lit-html.js?module';
@@ -119,7 +125,7 @@
             <generic-switch checked disabled>Checked and disabled</generic-switch><br/><br/>
           </div>
         `, foo);
-      </script>
+      </script> -->
       
       <script type="module" src="../../generic-switch.js"></script>
     </main>

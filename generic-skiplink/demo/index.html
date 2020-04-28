@@ -7,6 +7,8 @@
   <meta name="Description" content="Put your description here.">
   <link rel="stylesheet" type="text/css" href="../../demo/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css">
+  <script src="https://unpkg.com/prismjs@1.20.0/prism.js"></script>
   <style>
     generic-skiplink:not(:defined) {
       display: none;
@@ -82,6 +84,17 @@
       <br/>
       <h2>Example</h2>
       <p>Try tabbing from the browser URL bar into the page, and the skiplinks will show up.</p>
+      <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-skiplink for="main">Continue to main content</generic-skiplink>
+<main id="main"></main></script></code></pre></details>
+      <p>You can override styles like so:</p>
+      <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><style>
+  .custom-style::part(anchor) {
+    background-color: lightgrey;
+    border: solid 2px blue;
+  }
+</style>
+<generic-skiplink for="main" class="custom-style">Go to main content</generic-skiplink>
+<main id="main"></main></script></code></pre></details>
       
       <script type="module">
         import { render, html } from 'https://unpkg.com/lit-html@1.2.1/lit-html.js?module';

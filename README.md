@@ -3,15 +3,16 @@
 A collection of generic web components with a focus on:
 
 - 🚹 Accessibility
-- 🏗 Ease of use
-- 🍨 White-label
-- 📦 Zero dependencies
+- 🏗 Ease to use
+- 🎨 Easy to style
 
 ## Goal
 
 The goal of this project is to create a common library of generic web components, that are accessible, framework agnostic, easy to style, and easy to consume.
 
-The components in this repo are _white-label_. In short, this means they're ugly. But you can think of these components like using a native `<button>` element, you get all the functionality, and accessibility, keyboard nav, etc for free, you just have to style the button to your liking.
+All components in these repo extend from HTMLElement and dont use any libraries or framework.
+
+You can think of these components like using a native `<button>` element, you get all the functionality, and accessibility, keyboard nav, etc for free, you just have to style the button to your liking.
 
 ## Usage
     
@@ -47,7 +48,6 @@ Alternatively you can load the components from a CDN and drop them in your HTML 
 | [generic-alert](/generic-alert/README.md)                     | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-alert/demo/index.html)           | [Wai Aria Practices](https://www.w3.org/TR/wai-aria-practices/#alert)        | ✅ |                                                                                                                                 |
 | [generic-dialog](/generic-dialog/README.md)                   | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-dialog/demo/index.html)          | [Wai Aria Practices](https://www.w3.org/TR/wai-aria-practices/#dialog_modal) | 🏗          |                                                                                                                                 |
 | [generic-disclosure](/generic-disclosure/README.md)           | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-disclosure/demo/index.html)      | [Wai Aria Practices](https://www.w3.org/TR/wai-aria-practices/#disclosure)   | ✅          |                                                                                                                                 |
-| [generic-focus-trap](/generic-focus-trap/README.md)           | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-focus-trap/demo/index.html)      | N/A                                                                         | ✅ | Reexport from [@a11y/focus-trap](https://npmjs.com/package/@a11y/focus-trap) by [Rune Mehlsen](https://twitter.com/RuneMehlsen) |
 | [generic-skiplink](/generic-skiplink/README.md)               | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-skiplink/demo/index.html)        | [Wai Aria Practices](https://webaim.org/techniques/skipnav/)                 | ✅ |                                                                                                                                 |
 | [generic-switch](/generic-switch/README.md)                   | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-switch/demo/index.html)          | [Wai Aria Practices](https://www.w3.org/TR/wai-aria-1.1/#switch)             | ✅        |                                                                                                                                 |
 | [generic-tabs](/generic-tabs/README.md)                       | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-tabs/demo/index.html)            | [Wai Aria Practices](https://www.w3.org/TR/wai-aria-practices/#tabpanel)     | ✅        |                                                                                                                                 |

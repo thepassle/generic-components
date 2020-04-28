@@ -33,11 +33,10 @@ function queryShadowRoot(root, skipNode, isMatch, maxDepth = 20, depth = 0) {
   // Even though the typing says that children can't be undefined, Edge 15 sometimes gives an undefined value.
   // Therefore we fallback to an empty array if it is undefined.
   const children = Array.from(root.children || []);
-  // eslint-disable-next-line
   for (const $child of children) {
     // Check if the node and its descendants should be skipped
     if (skipNode($child)) {
-      continue; // eslint-disable-line
+      continue;
     }
     // If the child matches we always add it
     if (isMatch($child)) {
@@ -113,7 +112,6 @@ function isFocusable($elem) {
 }
 
 const timeouts = new Map();
-
 /**
  * Debounces a callback.
  * @param cb
@@ -141,17 +139,17 @@ function debounce(cb, ms, id) {
  */
 const template = document.createElement('template');
 template.innerHTML = `
-<div id="start"></div>
-<div id="backup"></div>
-<slot></slot>
-<div id="end"></div>
+	<div id="start"></div>
+	<div id="backup"></div>
+	<slot></slot>
+	<div id="end"></div>
 `;
 /**
  * Focus trap web component.
  * @customElement focus-trap
  * @slot - Default content.
  */
-class GenericFocusTrap extends HTMLElement {
+class FocusTrap extends HTMLElement {
   /**
    * Attaches the shadow root.
    */
@@ -185,7 +183,7 @@ class GenericFocusTrap extends HTMLElement {
   }
 
   set inactive(value) {
-    value ? this.setAttribute('inactive', '') : this.removeAttribute('inactive'); // eslint-disable-line
+    value ? this.setAttribute('inactive', '') : this.removeAttribute('inactive');
   }
 
   /**
@@ -310,8 +308,9 @@ class GenericFocusTrap extends HTMLElement {
   render() {
     this.$start.setAttribute('tabindex', !this.focused || this.inactive ? `-1` : `0`);
     this.$end.setAttribute('tabindex', !this.focused || this.inactive ? `-1` : `0`);
-    this.focused ? this.setAttribute('focused', '') : this.removeAttribute('focused'); // eslint-disable-line
+    this.focused ? this.setAttribute('focused', '') : this.removeAttribute('focused');
   }
 }
+window.customElements.define('focus-trap', FocusTrap);
 
-export { GenericFocusTrap };
+export { FocusTrap, isDisabled, isFocusable, isHidden, queryShadowRoot };

@@ -1,7 +1,7 @@
 import { EventTargetShim } from '../utils/EventTargetShim.js';
 import { getFocusableElements } from '../utils/getFocusableElements.js';
 import { KEYCODES } from '../utils/keycodes.js';
-import '../generic-focus-trap.js';
+import '../web_modules/@a11y/focus-trap.js';
 
 /**
  * TODO:
@@ -67,7 +67,7 @@ class Dialog extends EventTargetShim {
       this.__dialogOverlay.addEventListener('click', this.__onClick.bind(this), true);
     }
 
-    const focusTrap = document.createElement('generic-focus-trap');
+    const focusTrap = document.createElement('focus-trap');
     focusTrap.style.marginLeft = 'auto';
     focusTrap.style.marginRight = 'auto';
     dialogOverlay.appendChild(focusTrap);

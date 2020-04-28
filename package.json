@@ -10,8 +10,8 @@
   "repository": "https://github.com/thepassle/generic-components",
   "scripts": {
     "start": "es-dev-server --node-resolve --open --watch",
-    "lint:eslint": "eslint --ext .js . --ignore-path .gitignore",
-    "format:eslint": "eslint --ext .js,.html . --fix --ignore-path .gitignore",
+    "lint:eslint": "eslint --ext .js . --ignore-path .gitignore --ignore-pattern web_modules/**/*.*",
+    "format:eslint": "eslint --ext .js,.html . --fix --ignore-path .gitignore --ignore-pattern web_modules/**/*.*",
     "lint:prettier": "prettier \"**/*.js\" --check --ignore-path .gitignore",
     "format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore",
     "lint": "npm run lint:eslint && npm run lint:prettier",
@@ -47,9 +47,12 @@
   },
   "lint-staged": {
     "*.js": [
-      "eslint --fix",
+      "eslint --fix --ignore-pattern web_modules/**/*.*",
       "prettier --write",
       "git add"
     ]
+  },
+  "dependencies": {
+    "@a11y/focus-trap": "^1.0.5"
   }
 }

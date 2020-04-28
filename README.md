@@ -7,10 +7,6 @@ A collection of generic web components with a focus on:
 - 🍨 White-label
 - 📦 Zero dependencies
 
-## Status
-
-🏗 Work in progress!
-
 ## Goal
 
 The goal of this project is to create a common library of generic web components, that are accessible, framework agnostic, easy to style, and easy to consume.

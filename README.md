@@ -11,6 +11,8 @@ A collection of generic web components with a focus on:
 
 The goal of this project is to create a common library of generic web components, that are accessible, framework agnostic, easy to style, and easy to consume.
 
+The components in this repo are _white-label_. In short, this means they're ugly. But you can think of these components like using a native `<button>` element, you get all the functionality, and accessibility, keyboard nav, etc for free, you just have to style the button to your liking.
+
 ## Collection
 
 | Component                                                     | Demo                                                                                           | Spec                                                                        | Status        | Source/Credit                                                                                                                   |

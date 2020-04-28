@@ -208,6 +208,10 @@ generic-switch::part(thumb){
   border: solid 2px var(--col-dark);
 }
 
+generic-switch::part(thumbChecked) {
+  right: -3px;
+}
+
 generic-switch::part(button):focus {
   outline: 0;
   border-radius: 5px;

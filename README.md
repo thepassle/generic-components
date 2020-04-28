@@ -19,7 +19,7 @@ The goal of this project is to create a common library of generic web components
 
 | Component                                                     | Demo                                                                                           | Spec                                                                        | Status        | Source/Credit                                                                                                                   |
 |---------------------------------------------------------------|------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|---------------|---------------------------------------------------------------------------------------------------------------------------------|
-| [generic-accordion](/generic-accordion/README.md)             | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-accordion/demo/index.html)       | [Wai Aria Practices](https://www.w3.org/TR/wai-aria-practices/#accordion)    | ❌        |                                                                                                                                 |
+| [generic-accordion](/generic-accordion/README.md)             | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-accordion/demo/index.html)       | [Wai Aria Practices](https://www.w3.org/TR/wai-aria-practices/#accordion)    | 🏗        |                                                                                                                                 |
 | [generic-alert](/generic-alert/README.md)                     | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-alert/demo/index.html)           | [Wai Aria Practices](https://www.w3.org/TR/wai-aria-practices/#alert)        | ✅ |                                                                                                                                 |
 | [generic-dialog](/generic-dialog/README.md)                   | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-dialog/demo/index.html)          | [Wai Aria Practices](https://www.w3.org/TR/wai-aria-practices/#dialog_modal) | 🏗          |                                                                                                                                 |
 | [generic-disclosure](/generic-disclosure/README.md)           | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-disclosure/demo/index.html)      | [Wai Aria Practices](https://www.w3.org/TR/wai-aria-practices/#disclosure)   | ✅          |                                                                                                                                 |
@@ -32,6 +32,13 @@ The goal of this project is to create a common library of generic web components
 
 ## Todo:
 
+### general
+
 - Rationale
 - Documentation
-- How to style
+- Styling guide
+
+### generic-dialog
+- Tests
+- Finish implementation as web component
+

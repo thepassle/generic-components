@@ -10,7 +10,15 @@
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css">
   <script src="https://unpkg.com/prismjs@1.20.0/prism.js"></script>
   <style>
+    generic-accordion {
+      width: 200px;
+    }
 
+    generic-accordion [role="region"] {
+      height: 200px;
+      overflow: auto;
+      border: solid 1px black;
+    }
   </style>
   <title>generic-components</title>
 </head>
@@ -67,9 +75,41 @@
       <a href="https://www.w3.org/TR/wai-aria-practices/#accordion">spec</a>
       <br/>
     
-      <p>Todo</p>
+      <h2>Default:</h2>
+      <details><summary>Show code</summary>
+      <pre><code class="language-markup"><script type="prism-html-markup"><generic-accordion>
+  <button>One</button>
+  <div role="region">
+    <p>foo</p>
+    <a href="/">asdfa</a>
+    <p>foo</p>
+  </div>
+
+  <button>Two</button>
+  <div role="region">Hi</div>
+
+  <button>Three</button>
+  <div role="region">Bar</div>
+</generic-accordion></script></code></pre>
+      </details>
+      <div class="demo">
+        <generic-accordion>
+          <button>One</button>
+          <div role="region">
+            <p>foo</p>
+            <a href="/">asdfa</a>
+            <p>foo</p>
+          </div>
+
+          <button>Two</button>
+          <div role="region">Hi</div>
+
+          <button>Three</button>
+          <div role="region">Bar</div>
+        </generic-accordion>
+      </div>
     
-      <!-- <script type="module" src="../../generic-accordion.js"></script> -->
+      <script type="module" src="../../generic-accordion.js"></script>
     </main>
   </div>
 

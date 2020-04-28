@@ -130,13 +130,9 @@ export class GenericSwitch extends HTMLElement {
     if (this.__checked && !this.hasAttribute('disabled')) {
       this.button.setAttribute('aria-checked', 'true');
       this.button.setAttribute('checked', '');
-      this.track.setAttribute('part', `${this.track.getAttribute('part')} trackChecked`);
-      this.thumb.setAttribute('part', `${this.thumb.getAttribute('part')} thumbChecked`);
     } else {
       this.button.setAttribute('aria-checked', 'false');
       this.button.removeAttribute('checked');
-      this.track.setAttribute('part', 'track');
-      this.thumb.setAttribute('part', 'thumb');
     }
 
     const { __checked } = this;

@@ -209,7 +209,7 @@ generic-switch::part(thumb){
   border: solid 2px var(--col-dark);
 }
 
-generic-switch::part(thumbChecked) {
+generic-switch[checked]::part(thumb) {
   right: -3px;
 }
 

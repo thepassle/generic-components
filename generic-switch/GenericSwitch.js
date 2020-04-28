@@ -73,6 +73,7 @@ export class GenericSwitch extends HTMLElement {
 
     this.button = this.shadowRoot.getElementById(`button-${random}`);
     this.thumb = this.shadowRoot.getElementById(`thumb-${random}`);
+    this.track = this.shadowRoot.getElementById(`track-${random}`);
     this.button.addEventListener('click', this.__onClick.bind(this));
     this.button.addEventListener('keydown', this.__onKeyDown.bind(this));
 
@@ -129,10 +130,12 @@ export class GenericSwitch extends HTMLElement {
     if (this.__checked && !this.hasAttribute('disabled')) {
       this.button.setAttribute('aria-checked', 'true');
       this.button.setAttribute('checked', '');
+      this.track.setAttribute('part', `${this.track.getAttribute('part')} trackChecked`);
       this.thumb.setAttribute('part', `${this.thumb.getAttribute('part')} thumbChecked`);
     } else {
       this.button.setAttribute('aria-checked', 'false');
       this.button.removeAttribute('checked');
+      this.track.setAttribute('part', 'track');
       this.thumb.setAttribute('part', 'thumb');
     }
 

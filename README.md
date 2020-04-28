@@ -13,6 +13,32 @@ The goal of this project is to create a common library of generic web components
 
 The components in this repo are _white-label_. In short, this means they're ugly. But you can think of these components like using a native `<button>` element, you get all the functionality, and accessibility, keyboard nav, etc for free, you just have to style the button to your liking.
 
+## Usage
+    
+### Via npm
+Components can be installed via npm
+
+```bash
+npm i --save generic-components
+```
+
+And imported in your code via ES imports:
+
+```js
+import 'generic-components/generic-switch.js';
+```
+
+### Via CDN
+Alternatively you can load the components from a CDN and drop them in your HTML file as a script tag
+
+```html
+<script src="https://unpkg.com/generic-components@1.0.0/generic-switch.js"></script>
+```
+
+```html
+<generic-switch></generic-switch>
+```
+
 ## Collection
 
 | Component                                                     | Demo                                                                                           | Spec                                                                        | Status        | Source/Credit                                                                                                                   |
@@ -32,9 +58,7 @@ The components in this repo are _white-label_. In short, this means they're ugly
 
 ### general
 
-- Rationale
-- Documentation
-- Styling guide
+- Add api table for components
 
 ### generic-dialog
 - Tests

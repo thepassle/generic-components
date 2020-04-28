@@ -27,11 +27,12 @@ describe('generic-accordion', () => {
 
   it('throws error if no buttons or regions are provided', async () => {
     try {
+      // eslint-disable-next-line
       const el = await fixture(
         html`
           <generic-accordion></generic-accordion>
         `,
-      ); // eslint-disable-line
+      );
     } catch {
       expect(true).to.equal(true);
     }
@@ -45,6 +46,7 @@ describe('generic-accordion', () => {
     expect(regions[0].hasAttribute('aria-labelledby')).to.equal(true);
     expect(btns[0].id.startsWith('__generic')).to.equal(true);
     expect(btns[0].getAttribute('aria-expanded')).to.equal('true');
+    expect(btns[0].getAttribute('aria-disabled')).to.equal('true');
     expect(btns[1].getAttribute('aria-expanded')).to.equal('false');
   });
 

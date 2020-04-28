@@ -102,9 +102,11 @@ export class GenericAccordion extends HTMLElement {
           el.focus();
         }
         this.__buttons[i].setAttribute('aria-expanded', 'true');
+        this.__buttons[i].setAttribute('aria-disabled', 'true');
         this.__regions[i].hidden = false;
       } else {
         this.__buttons[i].setAttribute('aria-expanded', 'false');
+        this.__buttons[i].removeAttribute('aria-disabled');
         this.__regions[i].hidden = true;
       }
 

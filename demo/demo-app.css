@@ -224,6 +224,47 @@ generic-switch::part(label) {
   padding-right: 20px;
 }
 
+generic-accordion {
+  margin-top: 40px;
+}
+
+generic-accordion button {
+  font-weight: 700;
+  font-size: 16px;
+  color:black;
+
+  border-radius: 5px;
+  border: 0;
+  margin: 0;
+  overflow: visible;
+  background: transparent;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  background-color: #8ea2ea;
+  margin-bottom: 5px;
+}
+
+generic-accordion[aria-expanded="true"] button {
+  color: var(--col-active);
+}
+
+generic-accordion div[role="region"] {
+  background-color: var(--col-light);
+  padding: 20px;
+  border: solid 1px black;
+}
+
+generic-accordion div[role="region"] p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+generic-accordion a {
+  display: block;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 
 @media (max-width: 768px) {
   .app {

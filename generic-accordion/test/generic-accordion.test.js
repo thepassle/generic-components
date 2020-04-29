@@ -77,7 +77,11 @@ describe('generic-accordion', () => {
       const el = await fixture(defaultFixture);
       const btns = el.querySelectorAll('button');
 
-      el.__onKeyDown({ keyCode: 40, target: { id: '__generic-accordion-button-' } });
+      el.__onKeyDown({
+        preventDefault: () => {},
+        keyCode: 40,
+        target: { id: '__generic-accordion-button-' },
+      });
 
       expect(btns[1]).to.equal(document.activeElement);
     });
@@ -86,8 +90,16 @@ describe('generic-accordion', () => {
       const el = await fixture(defaultFixture);
       const btns = el.querySelectorAll('button');
 
-      el.__onKeyDown({ keyCode: 40, target: { id: '__generic-accordion-button-' } });
-      el.__onKeyDown({ keyCode: 40, target: { id: '__generic-accordion-button-' } });
+      el.__onKeyDown({
+        preventDefault: () => {},
+        keyCode: 40,
+        target: { id: '__generic-accordion-button-' },
+      });
+      el.__onKeyDown({
+        preventDefault: () => {},
+        keyCode: 40,
+        target: { id: '__generic-accordion-button-' },
+      });
 
       expect(btns[2]).to.equal(document.activeElement);
     });
@@ -96,7 +108,11 @@ describe('generic-accordion', () => {
       const el = await fixture(defaultFixture);
       const btns = el.querySelectorAll('button');
 
-      el.__onKeyDown({ keyCode: 38, target: { id: '__generic-accordion-button-' } });
+      el.__onKeyDown({
+        preventDefault: () => {},
+        keyCode: 38,
+        target: { id: '__generic-accordion-button-' },
+      });
 
       expect(btns[2]).to.equal(document.activeElement);
     });
@@ -105,8 +121,16 @@ describe('generic-accordion', () => {
       const el = await fixture(defaultFixture);
       const btns = el.querySelectorAll('button');
 
-      el.__onKeyDown({ keyCode: 38, target: { id: '__generic-accordion-button-' } });
-      el.__onKeyDown({ keyCode: 38, target: { id: '__generic-accordion-button-' } });
+      el.__onKeyDown({
+        preventDefault: () => {},
+        keyCode: 38,
+        target: { id: '__generic-accordion-button-' },
+      });
+      el.__onKeyDown({
+        preventDefault: () => {},
+        keyCode: 38,
+        target: { id: '__generic-accordion-button-' },
+      });
 
       expect(btns[1]).to.equal(document.activeElement);
     });
@@ -115,7 +139,11 @@ describe('generic-accordion', () => {
       const el = await fixture(defaultFixture);
       const btns = el.querySelectorAll('button');
 
-      el.__onKeyDown({ keyCode: 36, target: { id: '__generic-accordion-button-' } });
+      el.__onKeyDown({
+        preventDefault: () => {},
+        keyCode: 36,
+        target: { id: '__generic-accordion-button-' },
+      });
 
       expect(btns[0]).to.equal(document.activeElement);
     });
@@ -124,7 +152,11 @@ describe('generic-accordion', () => {
       const el = await fixture(defaultFixture);
       const btns = el.querySelectorAll('button');
 
-      el.__onKeyDown({ keyCode: 35, target: { id: '__generic-accordion-button-' } });
+      el.__onKeyDown({
+        preventDefault: () => {},
+        keyCode: 35,
+        target: { id: '__generic-accordion-button-' },
+      });
 
       expect(btns[2]).to.equal(document.activeElement);
     });

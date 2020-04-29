@@ -219,10 +219,10 @@ generic-switch::part(button):focus {
   box-shadow: 0 0 0 3px var(--col-active)!important;
   transition: box-shadow .1s ease-in-out;
 }
-
+/* 
 generic-switch::part(label) {
   padding-right: 20px;
-}
+} */
 
 generic-accordion {
   margin-top: 40px;
@@ -244,6 +244,10 @@ generic-accordion button {
   margin-bottom: 5px;
 }
 
+generic-accordion button:hover, generic-accordion button:focus {
+  background-color: #768ad4;
+}
+
 generic-accordion[aria-expanded="true"] button {
   color: var(--col-active);
 }
@@ -259,10 +263,14 @@ generic-accordion div[role="region"] p {
   margin-bottom: 0;
 }
 
+#switchAlert {
+  display: none;
+}
+
 generic-accordion a {
   display: block;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 

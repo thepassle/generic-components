@@ -13,12 +13,22 @@
     generic-tooltip:not(:defined) {
       display: none;
     }
+
+    generic-tooltip [role="tooltip"] {
+      background-color: white;
+    }
     
     .custom-style {
       background-color: black;
       color: white;
       padding: 0 10px;
       border-radius: 10px;
+    }
+
+    .custom-style [role="tooltip"] {
+      margin-top: 5px;
+      background-color: black;
+      color: white;
     }
   </style>
   
@@ -74,20 +84,23 @@
       <a href="https://www.w3.org/TR/wai-aria-practices/#tooltip">WAI ARIA Practices</a>
       <br/>
       <br/>
-      <p>This is a re-export from <a href="https://developers.google.com/web/fundamentals/web-components/examples/howto-tooltip">howto-tooltip</a></p>
 
       <p class="description">A tooltip is a popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.</p>
       <h2>Usage:</h2>
-      <p>The tooltip requires an id, and a sibling node with a corresponding <code>aria-describedby="id"</code>. See the examples down below for an example.</p>
+      <p>The tooltip requires a <code>slot="target"</code> and a <code>slot="tooltip"</code>. See the examples for more info.</p>
 
 
       <h2>Default:</h2>
-      <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><button aria-describyedby="tooltipTarget">Click me</button>
-<generic-tooltip id="tooltipTarget">I'm a tooltip!</generic-tooltip></script></code></pre></details>
+      <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-tooltip>
+  <div slot="target">Hi im the target</div>
+  <span slot="tooltip">Im a tooltip</span>
+</generic-tooltip></script></code></pre></details>
 
       <div class="demo">
-        <button aria-describedby="tooltipTarget">Click me</button>
-        <generic-tooltip id="tooltipTarget">Im a tooltip!</generic-tooltip>
+        <generic-tooltip>
+          <div slot="target">Hi im the target</div>
+          <span slot="tooltip">Im a tooltip</span>
+        </generic-tooltip>
       </div>
 
       <h2>Custom styles:</h2>
@@ -97,13 +110,23 @@
     color: white;
     padding: 0 10px;
     border-radius: 10px;
-  }      
+  }
+
+  .custom-style [role="tooltip"] {
+    margin-top: 5px;
+    background-color: black;
+    color: white;
+  }    
 </style>
-<button aria-describyedby="tooltipTarget">Click me</button>
-<generic-tooltip class="cuustom-style" id="tooltipTarget">I'm a tooltip!</generic-tooltip></script></code></pre></details>
+<generic-tooltip class="custom-style" id="tooltipTarget2">
+  <div slot="target">Hi im the target</div>
+  <span slot="tooltip">Im a tooltip</span>
+</generic-tooltip></script></code></pre></details>
       <div class="demo">
-        <button aria-describedby="tooltipTarget2">Click me</button>
-        <generic-tooltip class="custom-style" id="tooltipTarget2">Im a tooltip!</generic-tooltip>
+        <generic-tooltip class="custom-style" id="tooltipTarget2">
+          <div slot="target">Hi im the target</div>
+          <span slot="tooltip">Im a tooltip</span>
+        </generic-tooltip>
       </div>
       <script type="module" src="../../generic-tooltip.js"></script>
     </main>

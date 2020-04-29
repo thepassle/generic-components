@@ -50,7 +50,8 @@
             <h2>Settings</h2>
             <generic-switch></generic-switch>
             <generic-switch></generic-switch>
-            <generic-switch></generic-switch>
+            <generic-switch id="switchEl">Dont toggle me</generic-switch>
+            <generic-alert id="switchAlert" hidden>❌ I said don't toggle me!</generic-alert>
           </div>
 
           <button class="panel-button" slot="tab">update</button>
@@ -94,6 +95,14 @@
     </div>
     <script type="module">
       import { dialog } from '../generic-dialog/dialog.js';
+
+      switchEl.addEventListener('checked-changed', (e) => {
+        if(e.detail) {
+          switchAlert.style.display = 'block';
+        } else {
+          switchAlert.style.display = 'none';
+        }
+      });
 
       invoker.addEventListener('click', (e) => {
         dialog.open({

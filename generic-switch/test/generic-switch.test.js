@@ -24,9 +24,10 @@ describe('generic-switch', () => {
     const el = await fixture(html`
       <generic-switch></generic-switch>
     `);
+
     const btn = el.shadowRoot.querySelector('.button');
 
-    el.shadowRoot.querySelector('div').click();
+    btn.click();
 
     expect(btn.getAttribute('aria-checked')).to.equal('true');
     expect(btn.hasAttribute('checked')).to.equal(true);

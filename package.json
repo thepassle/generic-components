@@ -17,7 +17,7 @@
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "format": "npm run format:eslint && npm run format:prettier",
     "test": "karma start --coverage",
-    "test:watch": "karma start --auto-watch=true --single-run=false"
+    "test:watch": "karma start --auto-watch=true --single-run=false  --browsers=Chrome --single-run=false"
   },
   "devDependencies": {
     "@open-wc/eslint-config": "^1.0.0",

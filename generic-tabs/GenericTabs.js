@@ -91,6 +91,7 @@ export class GenericTabs extends HTMLElement {
         } else {
           this.__activeItem--; // eslint-disable-line
         }
+        event.preventDefault();
         break;
 
       case KEYCODES.RIGHT:
@@ -99,6 +100,7 @@ export class GenericTabs extends HTMLElement {
         } else {
           this.__activeItem++; // eslint-disable-line
         }
+        event.preventDefault();
         break;
 
       case KEYCODES.HOME:

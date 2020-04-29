@@ -17,12 +17,6 @@ template.innerHTML = `
   </slot>
 `;
 
-/**
- * DOCS:
- * requiress a button
- * requiress a content element with role="region"
- */
-
 export class GenericAccordion extends HTMLElement {
   constructor() {
     super();
@@ -40,6 +34,20 @@ export class GenericAccordion extends HTMLElement {
     this.__regions = [...this.querySelectorAll('[role="region"]')];
 
     this.__updateActive(false);
+  }
+
+  static get observedAttributes() {
+    return ['active-item'];
+  }
+
+  attributeChangedCallback(name, newVal, oldVal) {
+    if (name === 'active-item') {
+      if (newVal !== oldVal) {
+        this.__index = Number(this.getAttribute('active-item'));
+        if (!this.__buttons) return;
+        this.__updateActive(true);
+      }
+    }
   }
 
   __onFocus(event) {
@@ -62,6 +70,7 @@ export class GenericAccordion extends HTMLElement {
         } else {
           this.__index--; // eslint-disable-line
         }
+        event.preventDefault();
         break;
       case KEYCODES.DOWN:
         if (this.__index === this.__buttons.length - 1) {
@@ -69,6 +78,7 @@ export class GenericAccordion extends HTMLElement {
         } else {
           this.__index++; // eslint-disable-line
         }
+        event.preventDefault();
         break;
 
       case KEYCODES.HOME:

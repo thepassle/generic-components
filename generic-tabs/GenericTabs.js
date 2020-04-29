@@ -49,11 +49,11 @@ export class GenericTabs extends HTMLElement {
       this.__activeItem = 0;
     }
 
-    this.tablist = this.shadowRoot.querySelector('div[role="tablist"]');
-    this.tablist.addEventListener('keydown', this._onKeyDown.bind(this));
+    this.__tablist = this.shadowRoot.querySelector('div[role="tablist"]');
+    this.__tablist.addEventListener('keydown', this._onKeyDown.bind(this));
 
-    this.tablist.setAttribute('aria-label', this.getAttribute('label') || 'tablist');
-    this.tablist.addEventListener('click', this._onTabClicked.bind(this));
+    this.__tablist.setAttribute('aria-label', this.getAttribute('label') || 'tablist');
+    this.__tablist.addEventListener('click', this._onTabClicked.bind(this));
     this.renderOnInit = false;
     this._updateActive(false);
   }

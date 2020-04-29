@@ -1,4 +1,3 @@
-import { randomId } from '../utils/randomId.js';
 import { KEYCODES } from '../utils/keycodes.js';
 
 const template = document.createElement('template');
@@ -51,18 +50,18 @@ export class GenericAccordion extends HTMLElement {
   }
 
   __onFocus(event) {
-    if (!event.target.id.startsWith('__generic-accordion-button-')) return;
+    if (!event.target.id.startsWith('generic-accordion-')) return;
     this.__index = this.__buttons.indexOf(event.target);
   }
 
   __onClick(event) {
-    if (!event.target.id.startsWith('__generic-accordion-button-')) return;
+    if (!event.target.id.startsWith('generic-accordion-')) return;
     this.__index = this.__buttons.indexOf(event.target);
     this.__updateActive(false);
   }
 
   __onKeyDown(event) {
-    if (!event.target.id.startsWith('__generic-accordion-button-')) return;
+    if (!event.target.id.startsWith('generic-accordion-')) return;
     switch (event.keyCode) {
       case KEYCODES.UP:
         if (this.__index === 0) {
@@ -120,10 +119,9 @@ export class GenericAccordion extends HTMLElement {
         this.__regions[i].hidden = true;
       }
 
-      if (!this.__buttons[i].id.startsWith('__generic-accordion-button-')) {
-        const random = randomId();
-        this.__buttons[i].id = `__generic-accordion-button-${random}`;
-        this.__regions[i].setAttribute('aria-labelledby', `__generic-accordion-button-${random}`);
+      if (!this.__buttons[i].id.startsWith('generic-accordion-')) {
+        this.__buttons[i].id = `generic-accordion-${i}`;
+        this.__regions[i].setAttribute('aria-labelledby', `generic-accordion-${i}`);
       }
     });
   }

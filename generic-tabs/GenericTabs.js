@@ -54,8 +54,8 @@ export class GenericTabs extends HTMLElement {
 
     this.__tablist.setAttribute('aria-label', this.getAttribute('label') || 'tablist');
     this.__tablist.addEventListener('click', this._onTabClicked.bind(this));
-    this.renderOnInit = false;
-    this._updateActive(false);
+
+    this.__updateActive(false);
   }
 
   static get observedAttributes() {
@@ -67,7 +67,7 @@ export class GenericTabs extends HTMLElement {
     if (name === 'active-item') {
       if (newVal !== oldVal) {
         this.__activeItem = Number(this.getAttribute('active-item'));
-        this._updateActive(true);
+        this.__updateActive(true);
       }
     }
   }
@@ -82,7 +82,7 @@ export class GenericTabs extends HTMLElement {
   }
 
   _onKeyDown(event) {
-    const tabs = this._getTabs();
+    const tabs = this.__getTabs();
 
     switch (event.keyCode) {
       case KEYCODES.LEFT:
@@ -113,17 +113,17 @@ export class GenericTabs extends HTMLElement {
       default:
         return;
     }
-    this._updateActive(true);
+    this.__updateActive(true);
   }
 
-  _updateActive(focus) {
-    const tabs = this._getTabs();
-    const panels = this._getPanels();
+  __updateActive(focus) {
+    const tabs = this.__getTabs();
+    const panels = this.__getPanels();
 
+    if (!tabs || !panels) return;
     tabs.forEach((_, i) => {
       if (i === this.__activeItem) {
-        if (focus && !this.renderOnInit) {
-          this.renderOnInit = false;
+        if (focus) {
           tabs[i].focus();
         }
         tabs[i].setAttribute('active', '');
@@ -155,20 +155,20 @@ export class GenericTabs extends HTMLElement {
 
   _onTabClicked(e) {
     if (e.target.getAttribute('role') !== 'tab') return;
-    this.__activeItem = this._getTabs().indexOf(e.target);
-    this._updateActive(false);
+    this.__activeItem = this.__getTabs().indexOf(e.target);
+    this.__updateActive(false);
   }
 
-  _getTabs() {
+  __getTabs() {
     return [...this.querySelectorAll('[slot="tab"]')];
   }
 
-  _getPanels() {
+  __getPanels() {
     return [...this.querySelectorAll('[slot="panel"]')];
   }
 
   setActive(index) {
     this.__activeItem = index;
-    this._updateActive(true);
+    this.__updateActive(true);
   }
 }

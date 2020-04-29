@@ -71,32 +71,30 @@ export class GenericSwitch extends HTMLElement {
   connectedCallback() {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-    this.button = this.shadowRoot.getElementById(`button-${random}`);
-    this.thumb = this.shadowRoot.getElementById(`thumb-${random}`);
-    this.track = this.shadowRoot.getElementById(`track-${random}`);
-    this.button.addEventListener('click', this.__onClick.bind(this));
-    this.button.addEventListener('keydown', this.__onKeyDown.bind(this));
+    this.__button = this.shadowRoot.getElementById(`button-${random}`);
 
-    this.button.setAttribute('aria-labelledby', `label-${random}`);
-    this.button.setAttribute('aria-describedby', `label-${random}`);
-    this.button.setAttribute('role', 'switch');
+    this.__button.addEventListener('click', this.__onClick.bind(this));
+    this.__button.addEventListener('keydown', this.__onKeyDown.bind(this));
+
+    this.__button.setAttribute('aria-labelledby', `label-${random}`);
+    this.__button.setAttribute('aria-describedby', `label-${random}`);
+    this.__button.setAttribute('role', 'switch');
 
     this.__checked = this.hasAttribute('checked') || false;
 
     this.__update();
     this.__handleDisabled();
-    this.__domReady = true;
   }
 
   __handleDisabled() {
     if (this.hasAttribute('disabled')) {
       this.setAttribute('disabled', '');
-      this.button.setAttribute('disabled', '');
-      this.button.removeAttribute('tabindex');
+      this.__button.setAttribute('disabled', '');
+      this.__button.removeAttribute('tabindex');
     } else {
       this.removeAttribute('disabled');
-      this.button.removeAttribute('disabled');
-      this.button.setAttribute('tabindex', '0');
+      this.__button.removeAttribute('disabled');
+      this.__button.setAttribute('tabindex', '0');
     }
   }
 
@@ -128,11 +126,11 @@ export class GenericSwitch extends HTMLElement {
 
   __update() {
     if (this.__checked && !this.hasAttribute('disabled')) {
-      this.button.setAttribute('aria-checked', 'true');
-      this.button.setAttribute('checked', '');
+      this.__button.setAttribute('aria-checked', 'true');
+      this.__button.setAttribute('checked', '');
     } else {
-      this.button.setAttribute('aria-checked', 'false');
-      this.button.removeAttribute('checked');
+      this.__button.setAttribute('aria-checked', 'false');
+      this.__button.removeAttribute('checked');
     }
 
     const { __checked } = this;
@@ -140,11 +138,11 @@ export class GenericSwitch extends HTMLElement {
   }
 
   attributeChangedCallback(name, newVal, oldVal) {
-    if (!this.__domReady) return;
+    if (!this.__button) return;
     if (newVal !== oldVal) {
       switch (name) {
         case 'disabled':
-          this.__checked = !this.__checked;
+          this.__disabled = !this.__disabled;
           this.__handleDisabled();
           break;
         case 'checked':

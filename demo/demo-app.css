@@ -179,9 +179,7 @@ a {
 generic-skiplink::part(anchor) {
   background-color: var(--col-light);
   color: var(--col-active);
-  /* border: solid 2px var(--col-active); */
   top: 4px;
-  /* left: 2px; */
 }
 
 generic-skiplink::part(anchor):focus {

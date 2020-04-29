@@ -80,7 +80,7 @@ describe('generic-accordion', () => {
       el.__onKeyDown({
         preventDefault: () => {},
         keyCode: 40,
-        target: { id: '__generic-accordion-button-' },
+        target: { id: 'generic-accordion-' },
       });
 
       expect(btns[1]).to.equal(document.activeElement);
@@ -93,12 +93,12 @@ describe('generic-accordion', () => {
       el.__onKeyDown({
         preventDefault: () => {},
         keyCode: 40,
-        target: { id: '__generic-accordion-button-' },
+        target: { id: 'generic-accordion-' },
       });
       el.__onKeyDown({
         preventDefault: () => {},
         keyCode: 40,
-        target: { id: '__generic-accordion-button-' },
+        target: { id: 'generic-accordion-' },
       });
 
       expect(btns[2]).to.equal(document.activeElement);
@@ -111,7 +111,7 @@ describe('generic-accordion', () => {
       el.__onKeyDown({
         preventDefault: () => {},
         keyCode: 38,
-        target: { id: '__generic-accordion-button-' },
+        target: { id: 'generic-accordion-' },
       });
 
       expect(btns[2]).to.equal(document.activeElement);
@@ -124,12 +124,12 @@ describe('generic-accordion', () => {
       el.__onKeyDown({
         preventDefault: () => {},
         keyCode: 38,
-        target: { id: '__generic-accordion-button-' },
+        target: { id: 'generic-accordion-' },
       });
       el.__onKeyDown({
         preventDefault: () => {},
         keyCode: 38,
-        target: { id: '__generic-accordion-button-' },
+        target: { id: 'generic-accordion-' },
       });
 
       expect(btns[1]).to.equal(document.activeElement);
@@ -142,7 +142,7 @@ describe('generic-accordion', () => {
       el.__onKeyDown({
         preventDefault: () => {},
         keyCode: 36,
-        target: { id: '__generic-accordion-button-' },
+        target: { id: 'generic-accordion-' },
       });
 
       expect(btns[0]).to.equal(document.activeElement);
@@ -155,7 +155,7 @@ describe('generic-accordion', () => {
       el.__onKeyDown({
         preventDefault: () => {},
         keyCode: 35,
-        target: { id: '__generic-accordion-button-' },
+        target: { id: 'generic-accordion-' },
       });
 
       expect(btns[2]).to.equal(document.activeElement);

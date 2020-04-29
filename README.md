@@ -57,10 +57,11 @@ Alternatively you can load the components from a CDN and drop them in your HTML 
 ## Todo:
 
 ### general
-
 - Add api table for components
 
 ### generic-dialog
 - Tests
 - Finish implementation as web component
 
+### generic-tooltip
+- Tests

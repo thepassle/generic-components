@@ -3,16 +3,14 @@ template.innerHTML = `
   <style>
     :host {
       display: block;
-    }
-
-    .alert {
       padding: 10px;
       border: 1px solid hsl(206, 74%, 54%);
       border-radius: 4px;
       background: hsl(206, 74%, 90%);
     }
+
   </style>
-  <div class="alert" part="alert">
+  <div>
     <slot></slot>
   </div>
 `;

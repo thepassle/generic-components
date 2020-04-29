@@ -4,7 +4,9 @@ import '../../generic-disclosure.js';
 describe('generic-disclosure', () => {
   it('a11y', async () => {
     const el = await fixture(html`
-      <generic-disclosure></generic-disclosure>
+      <generic-disclosure
+        ><button slot="toggle"></button><span slot="detail"></span
+      ></generic-disclosure>
     `);
 
     expect(el).to.be.accessible();
@@ -12,10 +14,12 @@ describe('generic-disclosure', () => {
 
   it('opens and closes on click', async () => {
     const el = await fixture(html`
-      <generic-disclosure></generic-disclosure>
+      <generic-disclosure
+        ><button slot="toggle"></button><span slot="detail"></span
+      ></generic-disclosure>
     `);
 
-    const btn = el.shadowRoot.querySelector('button');
+    const btn = el.querySelector('button');
     btn.click();
 
     expect(el.hasAttribute('expanded')).to.equal(true);
@@ -29,9 +33,11 @@ describe('generic-disclosure', () => {
 
   it('reacts to attribute changes', async () => {
     const el = await fixture(html`
-      <generic-disclosure></generic-disclosure>
+      <generic-disclosure
+        ><button slot="toggle"></button><span slot="detail"></span
+      ></generic-disclosure>
     `);
-    const btn = el.shadowRoot.querySelector('button');
+    const btn = el.querySelector('button');
 
     el.setAttribute('expanded', '');
 
@@ -46,9 +52,11 @@ describe('generic-disclosure', () => {
 
   it('reacts to property changes', async () => {
     const el = await fixture(html`
-      <generic-disclosure></generic-disclosure>
+      <generic-disclosure
+        ><button slot="toggle"></button><span slot="detail"></span
+      ></generic-disclosure>
     `);
-    const btn = el.shadowRoot.querySelector('button');
+    const btn = el.querySelector('button');
 
     el.expanded = true;
 

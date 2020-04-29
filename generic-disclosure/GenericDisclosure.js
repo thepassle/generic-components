@@ -1,7 +1,3 @@
-import { randomId } from '../utils/randomId.js';
-
-const random = randomId();
-
 const template = document.createElement('template');
 template.innerHTML = `
   <style>
@@ -12,74 +8,68 @@ template.innerHTML = `
       border-bottom: lightgrey solid 1px;
     }
 
-    .expanded {
+    :host([expanded]) ::slotted([slot="detail"]) {
       display: block;
       padding: 10px;
     }
 
-    .closed {
+    :host ::slotted([slot="detail"]) {
       display: none;
     }
 
-    button {
+    ::slotted(button) {
       text-align: left;
       width: 100%;
       display: flex;
 
       border: none;
       margin: 0;
-      padding: 0;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 0;
+      padding-right: 0;
       overflow: visible;
       background: transparent;
+      font-size: 16px;
     }
 
-    button:hover {
+    ::slotted(button):hover {
       background-color: #dedede;
     }
   </style>
 
-  <button 
-    part="toggle"
+  <slot 
+    name="toggle"
     class="toggle"
-    id="toggle-${random}"
   >   
-    <slot name="toggle"></slot>  
-  </button>
+  </slot>
 
-  <div
-    part="detail"
-    class="detail closed"
-    role="region"
-    id="detail-${random}"
-  >
-    <slot name="detail"></slot>
-  </div>
+  <slot name="detail"></slot>
 `;
 
 export class GenericDisclosure extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-    this._expanded = false;
+    this.__expanded = false;
   }
 
   connectedCallback() {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-    this.button = this.shadowRoot.getElementById(`toggle-${random}`);
-    this.detail = this.shadowRoot.getElementById(`detail-${random}`);
+    this.__button = this.querySelector('button[slot="toggle"]');
+    this.__detail = this.querySelector('[slot="detail"]');
 
-    this.button.addEventListener('click', () => {
+    this.__button.addEventListener('click', () => {
       if (this.hasAttribute('expanded')) {
         this.removeAttribute('expanded');
-        this._expanded = false;
+        this.__expanded = false;
       } else {
         this.setAttribute('expanded', '');
-        this._expanded = true;
+        this.__expanded = true;
       }
     });
 
-    this.__domReady = true;
     if (this.hasAttribute('expanded')) {
       this.__open();
     }
@@ -90,14 +80,14 @@ export class GenericDisclosure extends HTMLElement {
   }
 
   attributeChangedCallback(name, newVal, oldVal) {
-    if (!this.__domReady) return;
+    if (!this.__button) return;
     if (name === 'expanded') {
       if (newVal !== oldVal) {
         if (this.hasAttribute('expanded')) {
-          this._expanded = true;
+          this.__expanded = true;
           this.__open();
         } else {
-          this._expanded = false;
+          this.__expanded = false;
           this.__close();
         }
       }
@@ -106,20 +96,16 @@ export class GenericDisclosure extends HTMLElement {
 
   __open() {
     this.dispatchEvent(new Event('disclosure-opened'));
-    this.button.setAttribute('aria-expanded', 'true');
-    this.detail.classList.add('opened');
-    this.detail.classList.remove('closed');
+    this.__button.setAttribute('aria-expanded', 'true');
   }
 
   __close() {
     this.dispatchEvent(new Event('disclosure-closed'));
-    this.button.setAttribute('aria-expanded', 'false');
-    this.detail.classList.add('closed');
-    this.detail.classList.remove('opened');
+    this.__button.setAttribute('aria-expanded', 'false');
   }
 
   get expanded() {
-    return this._expanded;
+    return this.__expanded;
   }
 
   set expanded(val) {

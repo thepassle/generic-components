@@ -93,13 +93,13 @@ describe('generic-switch', () => {
     el.setAttribute('disabled', '');
 
     expect(btn.getAttribute('aria-checked')).to.equal('false');
-    expect(btn.hasAttribute('disabled')).to.equal(true);
+    expect(btn.hasAttribute('aria-disabled')).to.equal(true);
     expect(el.hasAttribute('disabled')).to.equal(true);
 
     el.removeAttribute('disabled');
 
     expect(btn.getAttribute('aria-checked')).to.equal('false');
-    expect(btn.hasAttribute('disabled')).to.equal(false);
+    expect(btn.hasAttribute('aria-disabled')).to.equal(false);
     expect(el.hasAttribute('disabled')).to.equal(false);
   });
 

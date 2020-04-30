@@ -19,7 +19,7 @@ template.innerHTML = `
     :host([disabled]) {
       opacity: 50%;
     }
-    
+
     .button {
       display: inline-block;
       position: relative;
@@ -89,11 +89,11 @@ export class GenericSwitch extends HTMLElement {
   __handleDisabled() {
     if (this.hasAttribute('disabled')) {
       this.setAttribute('disabled', '');
-      this.__button.setAttribute('disabled', '');
+      this.__button.setAttribute('aria-disabled', 'true');
       this.__button.removeAttribute('tabindex');
     } else {
       this.removeAttribute('disabled');
-      this.__button.removeAttribute('disabled');
+      this.__button.removeAttribute('aria-disabled');
       this.__button.setAttribute('tabindex', '0');
     }
   }

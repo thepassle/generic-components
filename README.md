@@ -50,6 +50,7 @@ Alternatively you can load the components from a CDN and drop them in your HTML 
 | [generic-alert](/generic-alert/README.md)                     | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-alert/demo/index.html)           | [Wai Aria Practices](https://www.w3.org/TR/wai-aria-practices/#alert)           | ✅ |               
 | [generic-dialog](/generic-dialog/README.md)                   | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-dialog/demo/index.html)          | [Wai Aria Practices](https://www.w3.org/TR/wai-aria-practices/#dialog_modal)    | 🏗          |     
 | [generic-disclosure](/generic-disclosure/README.md)           | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-disclosure/demo/index.html)      | [Wai Aria Practices](https://www.w3.org/TR/wai-aria-practices/#disclosure)      | ✅          |      
+| [generic-listbox](/generic-listbox/README.md)           | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-listbox/demo/index.html)      | [Wai Aria Practices](https://www.w3.org/TR/wai-aria-practices/#Listbox)      | ✅          |      
 | [generic-skiplink](/generic-skiplink/README.md)               | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-skiplink/demo/index.html)        | [Wai Aria Practices](https://webaim.org/techniques/skipnav/)                    | ✅ |               
 | [generic-switch](/generic-switch/README.md)                   | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-switch/demo/index.html)          | [Wai Aria Practices](https://www.w3.org/TR/wai-aria-1.1/#switch)                | ✅        |        
 | [generic-tabs](/generic-tabs/README.md)                       | [demo](https://modest-bhaskara-e8742f.netlify.app/generic-tabs/demo/index.html)            | [Wai Aria Practices](https://www.w3.org/TR/wai-aria-practices/#tabpanel)        | ✅        |        
@@ -59,11 +60,16 @@ Alternatively you can load the components from a CDN and drop them in your HTML 
 ## Todo:
 
 ### general
-- Add api table for components
+- Convert docs to [11ty](https://www.11ty.dev/) + [mdjs](https://github.com/open-wc/open-wc/tree/master/packages/mdjs) 
+- Add api table for components with [custom-elements.json](https://github.com/webcomponents/custom-elements-json)
 
 ### generic-dialog
 - Tests
+- Responsive style for mobile
 - Finish implementation as web component
+
+### generic-listbox
+- Tests
 
 ### generic-tooltip
 - Tests

@@ -99,11 +99,7 @@ export class GenericAccordion extends HTMLElement {
   }
 
   __updateActive(focus) {
-    if (!this.__buttons || !this.__regions) {
-      throw new Error(
-        `generic-accordion requires buttons and corresponding content elements with a role="region"`,
-      );
-    }
+    if (!this.__buttons || !this.__regions) return;
 
     this.__buttons.forEach((el, i) => {
       if (i === this.__index) {

@@ -14,6 +14,8 @@ All components in these repo extend from HTMLElement and dont use any libraries 
 
 You can think of these components like using a native `<button>` element, you get all the functionality, and accessibility, keyboard nav, etc for free, you just have to style the button to your liking.
 
+You can use these components to build an app, or compose them and build your own components with them.
+
 ## Usage
     
 ### Via npm

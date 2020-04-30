@@ -13,6 +13,14 @@ body {
   transition: box-shadow 0.1s ease-in-out;
 }
 
+.nav {
+  font-family: 'Roboto Slab';
+}
+
+.content h1, h2, h3, a {
+  font-family: 'Roboto Slab';
+}
+
 pre code span {
   font-family: monospace;
   font-size: 15px;
@@ -28,10 +36,6 @@ pre code span {
 
 pre {
   background-color: #303136!important;
-}
-
-* {
-  font-family: 'Roboto Slab', sans-serif;
 }
 
 .app {

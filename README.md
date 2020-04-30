@@ -22,7 +22,7 @@ You can use these components to build an app, or compose them and build your own
 Components can be installed via npm
 
 ```bash
-npm i --save generic-components
+npm i --save @thepassle/generic-components
 ```
 
 And imported in your code via ES imports:

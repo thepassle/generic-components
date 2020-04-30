@@ -1,6 +1,6 @@
 {
   "name": "@thepassle/generic-components",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Set of generic, accessible, zero dependency components",
   "author": "Pascal Schilp",
   "license": "MIT",

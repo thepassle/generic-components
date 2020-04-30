@@ -35,7 +35,7 @@ import '@thepassle/generic-components/generic-switch.js';
 Alternatively you can load the components from a CDN and drop them in your HTML file as a script tag
 
 ```html
-<script src="https://unpkg.com/@thepassle/generic-components@0.1.0/generic-switch.js"></script>
+<script src="https://unpkg.com/@thepassle/generic-components@0.1.0/generic-switch.js" type="module"></script>
 ```
 
 ```html

@@ -96,6 +96,7 @@ export class GenericListbox extends HTMLElement {
       this.__li[i].setAttribute('role', 'option');
 
       if (i === this.__index) {
+        this.setAttribute('active-item', this.__index);
         this.__li[i].setAttribute('aria-selected', 'true');
         this.__li[i].setAttribute('active', '');
         this.__ul.setAttribute('aria-activedescendant', this.__li[i].id);
@@ -105,6 +106,13 @@ export class GenericListbox extends HTMLElement {
         this.__li[i].removeAttribute('active');
       }
     });
+
+    const { __index } = this;
+    this.dispatchEvent(
+      new CustomEvent('active-changed', {
+        detail: __index,
+      }),
+    );
   }
 
   __scrollIntoView(li) {

@@ -126,6 +126,7 @@ export class GenericTabs extends HTMLElement {
         if (focus) {
           tabs[i].focus();
         }
+        this.setAttribute('active-item', this.__activeItem);
         tabs[i].setAttribute('active', '');
         tabs[i].setAttribute('aria-selected', 'true');
         tabs[i].removeAttribute('tabindex');

@@ -106,6 +106,7 @@ export class GenericAccordion extends HTMLElement {
         if (focus) {
           el.focus();
         }
+        this.setAttribute('active-item', this.__index);
         this.__buttons[i].setAttribute('active', '');
         this.__buttons[i].setAttribute('aria-expanded', 'true');
         this.__buttons[i].setAttribute('aria-disabled', 'true');
@@ -122,5 +123,12 @@ export class GenericAccordion extends HTMLElement {
         this.__regions[i].setAttribute('aria-labelledby', `generic-accordion-${i}`);
       }
     });
+
+    const { __index } = this;
+    this.dispatchEvent(
+      new CustomEvent('active-changed', {
+        detail: __index,
+      }),
+    );
   }
 }

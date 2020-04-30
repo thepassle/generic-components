@@ -32,8 +32,8 @@ class Dialog extends EventTargetShim {
 
     if (!invokerNode) {
       throw new Error(`
-        No invoker node found. This is required to reset the focus when the dialog closes. 
-        
+        No invoker node found. This is required to reset the focus when the dialog closes.
+
         You can add an invoker node like so:
         dialog.open({
           invokerNode: /* reference to a node */
@@ -46,9 +46,13 @@ class Dialog extends EventTargetShim {
     }
 
     [...document.body.children].forEach(node => {
-      // check if something already has aria-hidden or not, if it has, dont change it
-      node.setAttribute('aria-hidden', 'true');
-      node.setAttribute('inert', '');
+      if (node.localName !== 'script') {
+        if (!node.hasAttribute('aria-hidden')) {
+          node.setAttribute('dialog-disabled', '');
+          node.setAttribute('aria-hidden', 'true');
+          node.setAttribute('inert', '');
+        }
+      }
     });
 
     // backdrop
@@ -90,7 +94,6 @@ class Dialog extends EventTargetShim {
 
     window.addEventListener('focusin', this.__onFocusIn.bind(this));
 
-    // pass the dialog node here
     content(dialogContainer);
     this.dispatchEvent(new Event('dialog-opened'));
   }
@@ -100,8 +103,13 @@ class Dialog extends EventTargetShim {
     this.__dialogOpen = false;
 
     [...document.body.children].forEach(node => {
-      node.removeAttribute('aria-hidden');
-      node.removeAttribute('inert');
+      if (node.localName !== 'script') {
+        if (node.hasAttribute('dialog-disabled')) {
+          node.removeAttribute('dialog-disabled');
+          node.removeAttribute('aria-hidden');
+          node.removeAttribute('inert');
+        }
+      }
     });
     document.getElementById('__dialogOverlay').remove();
 

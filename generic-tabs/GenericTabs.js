@@ -67,7 +67,7 @@ export class GenericTabs extends HTMLElement {
     if (name === 'active-item') {
       if (newVal !== oldVal) {
         this.__activeItem = Number(this.getAttribute('active-item'));
-        this.__updateActive(true);
+        this.__updateActive(false);
       }
     }
   }

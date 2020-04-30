@@ -44,7 +44,7 @@ export class GenericAccordion extends HTMLElement {
       if (newVal !== oldVal) {
         this.__index = Number(this.getAttribute('active-item'));
         if (!this.__buttons) return;
-        this.__updateActive(true);
+        this.__updateActive(false);
       }
     }
   }

@@ -38,6 +38,7 @@ export class GenericTabs extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
+    this.__initDone = false;
   }
 
   connectedCallback() {
@@ -55,7 +56,7 @@ export class GenericTabs extends HTMLElement {
     this.__tablist.setAttribute('aria-label', this.getAttribute('label') || 'tablist');
     this.__tablist.addEventListener('click', this._onTabClicked.bind(this));
 
-    this.__updateActive(false);
+    this.setAttribute('active-item', this.__activeItem);
   }
 
   static get observedAttributes() {
@@ -67,7 +68,7 @@ export class GenericTabs extends HTMLElement {
     if (name === 'active-item') {
       if (newVal !== oldVal) {
         this.__activeItem = Number(this.getAttribute('active-item'));
-        this.__updateActive(false);
+        this.__updateActive();
       }
     }
   }
@@ -113,17 +114,17 @@ export class GenericTabs extends HTMLElement {
       default:
         return;
     }
-    this.__updateActive(true);
+    this.setAttribute('active-item', this.__activeItem);
   }
 
-  __updateActive(focus) {
+  __updateActive() {
     const tabs = this.__getTabs();
     const panels = this.__getPanels();
 
     if (!tabs || !panels) return;
     tabs.forEach((_, i) => {
       if (i === this.__activeItem) {
-        if (focus) {
+        if (this.__initDone) {
           tabs[i].focus();
         }
         this.setAttribute('active-item', this.__activeItem);
@@ -131,6 +132,7 @@ export class GenericTabs extends HTMLElement {
         tabs[i].setAttribute('aria-selected', 'true');
         tabs[i].removeAttribute('tabindex');
         panels[i].removeAttribute('hidden');
+        this.value = tabs[i].textContent.trim();
       } else {
         tabs[i].removeAttribute('active');
         tabs[i].setAttribute('aria-selected', 'false');
@@ -152,12 +154,13 @@ export class GenericTabs extends HTMLElement {
         detail: __activeItem,
       }),
     );
+    this.__initDone = true;
   }
 
   _onTabClicked(e) {
     if (e.target.getAttribute('role') !== 'tab') return;
     this.__activeItem = this.__getTabs().indexOf(e.target);
-    this.__updateActive(false);
+    this.setAttribute('active-item', this.__activeItem);
   }
 
   __getTabs() {
@@ -170,6 +173,6 @@ export class GenericTabs extends HTMLElement {
 
   setActive(index) {
     this.__activeItem = index;
-    this.__updateActive(true);
+    this.setAttribute('active-item', this.__activeItem);
   }
 }

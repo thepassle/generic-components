@@ -20,11 +20,17 @@ export class GenericAccordion extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-    this.__index = 0;
+    this.__initDone = false;
   }
 
   connectedCallback() {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
+
+    if (this.hasAttribute('active-item')) {
+      this.__index = Number(this.getAttribute('active-item'));
+    } else {
+      this.__index = 0;
+    }
 
     this.addEventListener('keydown', this.__onKeyDown.bind(this));
     this.addEventListener('click', this.__onClick.bind(this));
@@ -32,7 +38,7 @@ export class GenericAccordion extends HTMLElement {
     this.__buttons = [...this.querySelectorAll('button')];
     this.__regions = [...this.querySelectorAll('[role="region"]')];
 
-    this.__updateActive(false);
+    this.setAttribute('active-item', this.__index);
   }
 
   static get observedAttributes() {
@@ -43,8 +49,7 @@ export class GenericAccordion extends HTMLElement {
     if (name === 'active-item') {
       if (newVal !== oldVal) {
         this.__index = Number(this.getAttribute('active-item'));
-        if (!this.__buttons) return;
-        this.__updateActive(false);
+        this.__updateActive();
       }
     }
   }
@@ -57,7 +62,7 @@ export class GenericAccordion extends HTMLElement {
   __onClick(event) {
     if (!event.target.id.startsWith('generic-accordion-')) return;
     this.__index = this.__buttons.indexOf(event.target);
-    this.__updateActive(false);
+    this.setAttribute('active-item', this.__index);
   }
 
   __onKeyDown(event) {
@@ -98,29 +103,32 @@ export class GenericAccordion extends HTMLElement {
     this.__buttons[this.__index].focus();
   }
 
-  __updateActive(focus) {
-    if (!this.__buttons || !this.__regions) return;
+  __updateActive() {
+    const buttons = this.__getButtons();
+    const regions = this.__getRegions();
 
-    this.__buttons.forEach((el, i) => {
+    if (!buttons || !regions) return;
+    buttons.forEach((el, i) => {
       if (i === this.__index) {
-        if (focus) {
+        if (this.__initDone) {
           el.focus();
         }
         this.setAttribute('active-item', this.__index);
-        this.__buttons[i].setAttribute('active', '');
-        this.__buttons[i].setAttribute('aria-expanded', 'true');
-        this.__buttons[i].setAttribute('aria-disabled', 'true');
-        this.__regions[i].hidden = false;
+        buttons[i].setAttribute('active', '');
+        buttons[i].setAttribute('aria-expanded', 'true');
+        buttons[i].setAttribute('aria-disabled', 'true');
+        regions[i].hidden = false;
+        this.value = buttons[i].textContent.trim();
       } else {
-        this.__buttons[i].setAttribute('aria-expanded', 'false');
-        this.__buttons[i].removeAttribute('aria-disabled');
-        this.__buttons[i].removeAttribute('active');
-        this.__regions[i].hidden = true;
+        buttons[i].setAttribute('aria-expanded', 'false');
+        buttons[i].removeAttribute('aria-disabled');
+        buttons[i].removeAttribute('active');
+        regions[i].hidden = true;
       }
 
-      if (!this.__buttons[i].id.startsWith('generic-accordion-')) {
-        this.__buttons[i].id = `generic-accordion-${i}`;
-        this.__regions[i].setAttribute('aria-labelledby', `generic-accordion-${i}`);
+      if (!buttons[i].id.startsWith('generic-accordion-')) {
+        buttons[i].id = `generic-accordion-${i}`;
+        regions[i].setAttribute('aria-labelledby', `generic-accordion-${i}`);
       }
     });
 
@@ -130,5 +138,15 @@ export class GenericAccordion extends HTMLElement {
         detail: __index,
       }),
     );
+
+    this.__initDone = true;
+  }
+
+  __getButtons() {
+    return [...this.querySelectorAll('button')];
+  }
+
+  __getRegions() {
+    return [...this.querySelectorAll('[role="region"]')];
   }
 }

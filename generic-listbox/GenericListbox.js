@@ -32,7 +32,7 @@ export class GenericListbox extends HTMLElement {
     this.addEventListener('keydown', this.__onKeyDown.bind(this));
     this.addEventListener('click', this.__onClick.bind(this));
 
-    this.__updateActive();
+    this.setAttribute('active-item', this.__index);
   }
 
   static get observedAttributes() {
@@ -43,7 +43,6 @@ export class GenericListbox extends HTMLElement {
     if (name === 'active-item') {
       if (newVal !== oldVal) {
         this.__index = Number(this.getAttribute('active-item'));
-        if (!this.__ul || !this.__li) return;
         this.__updateActive();
       }
     }
@@ -52,7 +51,7 @@ export class GenericListbox extends HTMLElement {
   __onClick(event) {
     if (!event.target.localName.includes('li')) return;
     this.__index = this.__li.indexOf(event.target);
-    this.__updateActive();
+    this.setAttribute('active-item', this.__index);
   }
 
   __onKeyDown(event) {
@@ -86,24 +85,28 @@ export class GenericListbox extends HTMLElement {
         return;
     }
 
-    this.__updateActive();
+    this.setAttribute('active-item', this.__index);
   }
 
   __updateActive() {
-    if (!this.__ul || !this.__li) return;
-    this.__li.forEach((el, i) => {
-      this.__li[i].id = `generic-listbox-${i}`;
-      this.__li[i].setAttribute('role', 'option');
+    const ul = this.__getUl();
+    const li = this.__getLi();
+
+    if (!ul || !li) return;
+    li.forEach((el, i) => {
+      li[i].id = `generic-listbox-${i}`;
+      li[i].setAttribute('role', 'option');
 
       if (i === this.__index) {
         this.setAttribute('active-item', this.__index);
-        this.__li[i].setAttribute('aria-selected', 'true');
-        this.__li[i].setAttribute('active', '');
-        this.__ul.setAttribute('aria-activedescendant', this.__li[i].id);
-        this.__scrollIntoView(this.__li[i]);
+        li[i].setAttribute('aria-selected', 'true');
+        li[i].setAttribute('active', '');
+        ul.setAttribute('aria-activedescendant', li[i].id);
+        this.__scrollIntoView(li[i]);
+        this.value = li[i].textContent.trim();
       } else {
-        this.__li[i].removeAttribute('aria-selected');
-        this.__li[i].removeAttribute('active');
+        li[i].removeAttribute('aria-selected');
+        li[i].removeAttribute('active');
       }
     });
 
@@ -116,8 +119,7 @@ export class GenericListbox extends HTMLElement {
   }
 
   __scrollIntoView(li) {
-    const ul = this.__ul;
-
+    const ul = this.__getUl();
     if (ul.scrollHeight > ul.clientHeight) {
       const elOffsetBottom = li.offsetTop - ul.offsetTop + li.clientHeight;
       const elOffsetTop = li.offsetTop - ul.offsetTop;
@@ -134,5 +136,13 @@ export class GenericListbox extends HTMLElement {
         }
       }
     }
+  }
+
+  __getUl() {
+    return this.querySelector('[slot="listbox"]');
+  }
+
+  __getLi() {
+    return [...this.querySelectorAll('[slot="listbox"] li')];
   }
 }

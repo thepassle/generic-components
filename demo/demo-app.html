@@ -12,7 +12,7 @@
         display: none;
       }
     </style>
-    
+
     <title>generic-components</title>
   </head>
 
@@ -74,10 +74,10 @@
                 <a href="/">Click here to join</a>
                 <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
               </div>
-    
+
               <button>Frontend</button>
               <div role="region">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</div>
-    
+
               <button>Backend</button>
               <div role="region">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</div>
             </generic-accordion>
@@ -94,7 +94,7 @@
       </main>
     </div>
     <script type="module">
-      import { dialog } from '../generic-dialog/dialog.js';
+      import { dialog } from '../../generic-dialog/dialog.js';
 
       switchEl.addEventListener('checked-changed', (e) => {
         if(e.detail) {
@@ -122,22 +122,22 @@
             const button = document.createElement('button');
             button.innerHTML = 'Close';
             button.classList.add('dialog-button');
-  
+
             button.addEventListener('click', () => {
               dialog.close();
             })
-  
+
             dialogNode.appendChild(button);
           }
         })
       })
     </script>
 
-    <script type="module" src="../generic-tabs.js"></script>
-    <script type="module" src="../generic-accordion.js"></script>
-    <script type="module" src="../generic-disclosure.js"></script>
-    <script type="module" src="../generic-skiplink.js"></script>
-    <script type="module" src="../generic-alert.js"></script>
-    <script type="module" src="../generic-switch.js"></script>
+    <script type="module" src="../../generic-tabs.js"></script>
+    <script type="module" src="../../generic-accordion.js"></script>
+    <script type="module" src="../../generic-disclosure.js"></script>
+    <script type="module" src="../../generic-skiplink.js"></script>
+    <script type="module" src="../../generic-alert.js"></script>
+    <script type="module" src="../../generic-switch.js"></script>
   </body>
 </html>

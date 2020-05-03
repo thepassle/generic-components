@@ -1,3 +1,8 @@
+---
+permalink: 'index.html'
+layout: layout.njk
+---
+
 # generic-components
 
 A collection of generic web components with a focus on:

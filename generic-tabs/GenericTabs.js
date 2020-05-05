@@ -43,9 +43,9 @@ export class GenericTabs extends HTMLElement {
 
   connectedCallback() {
     if (this.hasAttribute('active-item')) {
-      this.__activeItem = Number(this.getAttribute('active-item'));
+      this.__index = Number(this.getAttribute('active-item'));
     } else {
-      this.__activeItem = 0;
+      this.__index = 0;
     }
 
     this.__tablist = this.shadowRoot.querySelector('div[role="tablist"]');
@@ -54,7 +54,7 @@ export class GenericTabs extends HTMLElement {
     this.__tablist.setAttribute('aria-label', this.getAttribute('label') || 'tablist');
     this.__tablist.addEventListener('click', this.__onTabClicked.bind(this));
 
-    this.setAttribute('active-item', this.__activeItem);
+    this.setAttribute('active-item', this.__index);
   }
 
   static get observedAttributes() {
@@ -65,19 +65,19 @@ export class GenericTabs extends HTMLElement {
   attributeChangedCallback(name, newVal, oldVal) {
     if (name === 'active-item') {
       if (newVal !== oldVal) {
-        this.__activeItem = Number(this.getAttribute('active-item'));
+        this.__index = Number(this.getAttribute('active-item'));
         this.__updateActive();
       }
     }
   }
 
   get activeItem() {
-    return this.__activeItem;
+    return this.__index;
   }
 
   set activeItem(val) {
-    this.__activeItem = val;
-    this.setAttribute('active-item', this.__activeItem);
+    this.__index = val;
+    this.setAttribute('active-item', this.__index);
   }
 
   __onKeyDown(event) {
@@ -85,34 +85,34 @@ export class GenericTabs extends HTMLElement {
 
     switch (event.keyCode) {
       case KEYCODES.LEFT:
-        if (this.__activeItem === 0) {
-          this.__activeItem = tabs.length - 1;
+        if (this.__index === 0) {
+          this.__index = tabs.length - 1;
         } else {
-          this.__activeItem--; // eslint-disable-line
+          this.__index--; // eslint-disable-line
         }
         event.preventDefault();
         break;
 
       case KEYCODES.RIGHT:
-        if (this.__activeItem === tabs.length - 1) {
-          this.__activeItem = 0;
+        if (this.__index === tabs.length - 1) {
+          this.__index = 0;
         } else {
-          this.__activeItem++; // eslint-disable-line
+          this.__index++; // eslint-disable-line
         }
         event.preventDefault();
         break;
 
       case KEYCODES.HOME:
-        this.__activeItem = 0;
+        this.__index = 0;
         break;
 
       case KEYCODES.END:
-        this.__activeItem = tabs.length - 1;
+        this.__index = tabs.length - 1;
         break;
       default:
         return;
     }
-    this.setAttribute('active-item', this.__activeItem);
+    this.setAttribute('active-item', this.__index);
     this.__focus();
   }
 
@@ -122,8 +122,8 @@ export class GenericTabs extends HTMLElement {
 
     if (!tabs || !panels) return;
     tabs.forEach((_, i) => {
-      if (i === this.__activeItem) {
-        this.setAttribute('active-item', this.__activeItem);
+      if (i === this.__index) {
+        this.setAttribute('active-item', this.__index);
         tabs[i].setAttribute('active', '');
         tabs[i].setAttribute('aria-selected', 'true');
         tabs[i].removeAttribute('tabindex');
@@ -144,24 +144,24 @@ export class GenericTabs extends HTMLElement {
       panels[i].setAttribute('aria-labelledby', `generic-tab-${i}`);
     });
 
-    const { __activeItem } = this;
+    const { __index } = this;
     this.dispatchEvent(
       new CustomEvent('active-changed', {
-        detail: __activeItem,
+        detail: __index,
       }),
     );
   }
 
   __onTabClicked(e) {
     if (e.target.getAttribute('role') !== 'tab') return;
-    this.__activeItem = this.__getTabs().indexOf(e.target);
-    this.setAttribute('active-item', this.__activeItem);
+    this.__index = this.__getTabs().indexOf(e.target);
+    this.setAttribute('active-item', this.__index);
     this.__focus();
   }
 
   __focus() {
     const tabs = this.__getTabs();
-    tabs[this.__activeItem].focus();
+    tabs[this.__index].focus();
   }
 
   __getTabs() {
@@ -173,7 +173,7 @@ export class GenericTabs extends HTMLElement {
   }
 
   setActive(index) {
-    this.__activeItem = index;
-    this.setAttribute('active-item', this.__activeItem);
+    this.__index = index;
+    this.setAttribute('active-item', this.__index);
   }
 }

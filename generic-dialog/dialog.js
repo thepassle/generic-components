@@ -88,8 +88,11 @@ class Dialog extends EventTargetShim {
 
     dialogContainer.setAttribute('tabindex', '-1');
     dialogContainer.focus();
-    dialogContainer.addEventListener('blur', () => {
-      dialogContainer.removeAttribute('tabindex');
+
+    ['click', 'blur'].forEach(event => {
+      dialogContainer.addEventListener(event, () => {
+        dialogContainer.removeAttribute('tabindex');
+      });
     });
 
     window.addEventListener('focusin', this.__onFocusIn.bind(this));

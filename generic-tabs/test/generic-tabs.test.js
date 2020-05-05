@@ -88,7 +88,7 @@ describe('generic-tabs', () => {
     expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
   });
 
-  it.skip('reacts to activeItem property changed', async () => {
+  it('reacts to activeItem property changed', async () => {
     const el = await fixture(tabsFixture);
     el.activeItem = 1;
     const buttons = el.querySelectorAll('button');

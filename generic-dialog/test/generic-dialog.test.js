@@ -38,5 +38,6 @@ describe('generic-dialog', () => {
 
     const dialogNode = document.body.querySelector('div[role="dialog"]');
     expect(dialogNode).to.exist;
+    dialog.close();
   });
 });

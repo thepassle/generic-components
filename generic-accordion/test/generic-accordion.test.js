@@ -44,7 +44,7 @@ describe('generic-accordion', () => {
     const regions = el.querySelectorAll('[role="region"]');
 
     expect(regions[0].hasAttribute('aria-labelledby')).to.equal(true);
-    expect(btns[0].id.startsWith('__generic')).to.equal(true);
+    expect(btns[0].id.startsWith('generic')).to.equal(true);
     expect(btns[0].getAttribute('aria-expanded')).to.equal('true');
     expect(btns[0].getAttribute('aria-disabled')).to.equal('true');
     expect(btns[1].getAttribute('aria-expanded')).to.equal('false');

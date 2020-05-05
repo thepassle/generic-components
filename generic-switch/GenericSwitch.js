@@ -1,7 +1,4 @@
-import { randomId } from '../utils/randomId.js';
 import { KEYCODES } from '../utils/keycodes.js';
-
-const random = randomId();
 
 const template = document.createElement('template');
 template.innerHTML = `
@@ -46,17 +43,19 @@ template.innerHTML = `
       box-shadow: 0 0 0 2px var(--generic-switch-focus, skyblue);
     }
 
-    #label-${random} {
+    label {
       margin-right: 10px;
     }
 
   </style>
-  <label part="label" id="label-${random}"><slot>Label</slot></label>
-  <div part="button" id="button-${random}" class="button">
-    <div part="track" id="track-${random}" class="track"></div>
-    <div part="thumb" id="thumb-${random}" class="thumb"></div>
+  <label part="label"><slot>Label</slot></label>
+  <div part="button" class="button">
+    <div part="track" class="track"></div>
+    <div part="thumb" class="thumb"></div>
   </div>
 `;
+
+let __count = 0;
 
 export class GenericSwitch extends HTMLElement {
   constructor() {
@@ -71,19 +70,28 @@ export class GenericSwitch extends HTMLElement {
   connectedCallback() {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-    this.__button = this.shadowRoot.getElementById(`button-${random}`);
+    this.__label = this.shadowRoot.querySelector('[part="label"]');
+    this.__button = this.shadowRoot.querySelector('[part="button"]');
+    this.__track = this.shadowRoot.querySelector('[part="track"]');
+    this.__thumb = this.shadowRoot.querySelector('[part="thumb"]');
+
+    this.__label.id = `label-${__count}`;
+    this.__button.id = `button-${__count}`;
+    this.__track.id = `track-${__count}`;
+    this.__thumb.id = `thumb-${__count}`;
 
     this.__button.addEventListener('click', this.__onClick.bind(this));
     this.__button.addEventListener('keydown', this.__onKeyDown.bind(this));
 
-    this.__button.setAttribute('aria-labelledby', `label-${random}`);
-    this.__button.setAttribute('aria-describedby', `label-${random}`);
+    this.__button.setAttribute('aria-labelledby', `label-${__count}`);
+    this.__button.setAttribute('aria-describedby', `label-${__count}`);
     this.__button.setAttribute('role', 'switch');
 
     this.__checked = this.hasAttribute('checked') || false;
 
     this.__update();
     this.__handleDisabled();
+    __count++; // eslint-disable-line
   }
 
   __handleDisabled() {

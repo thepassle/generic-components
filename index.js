@@ -12,5 +12,4 @@ export { GenericVisuallyHidden } from './generic-visually-hidden/GenericVisually
 // utils
 export { EventTargetShim } from './utils/EventTargetShim.js';
 export { RovingTabindexMixin } from './utils/RovingTabindexMixin.js';
-export { getFocusableElements } from './utils/getFocusableElements.js';
 export { KEYCODES } from './utils/keycodes.js';

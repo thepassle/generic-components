@@ -1,5 +1,4 @@
 import { EventTargetShim } from '../utils/EventTargetShim.js';
-import { getFocusableElements } from '../utils/getFocusableElements.js';
 import { KEYCODES } from '../utils/keycodes.js';
 import '../web_modules/@a11y/focus-trap.js';
 
@@ -78,6 +77,7 @@ class Dialog extends EventTargetShim {
 
     // container
     const dialogContainer = document.createElement('div');
+    this.__dialogContainer = dialogContainer;
     dialogContainer.setAttribute('role', 'dialog');
     dialogContainer.style.width = 'auto';
     dialogContainer.style.height = 'auto';
@@ -136,11 +136,9 @@ class Dialog extends EventTargetShim {
 
   __onFocusIn() {
     if (this.__dialogOpen) {
-      const focusable = getFocusableElements(this.__dialogOverlay);
-      const firstFocusable = focusable[0];
-
       if (!this.__dialogOverlay.contains(document.activeElement)) {
-        firstFocusable.focus();
+        this.__dialogContainer.setAttribute('tabindex', '-1');
+        this.__dialogContainer.focus();
       }
     }
   }

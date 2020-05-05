@@ -156,7 +156,7 @@ describe('generic-tabs', () => {
       const el = await fixture(tabsFixture);
       const buttons = el.querySelectorAll('button');
 
-      el._onKeyDown({ preventDefault: () => {}, keyCode: 37 });
+      el.__onKeyDown({ preventDefault: () => {}, keyCode: 37 });
 
       expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
       expect(buttons[1].hasAttribute('active')).to.equal(true);
@@ -170,8 +170,8 @@ describe('generic-tabs', () => {
       const el = await fixture(tabsFixture);
       const buttons = el.querySelectorAll('button');
 
-      el._onKeyDown({ preventDefault: () => {}, keyCode: 37 });
-      el._onKeyDown({ preventDefault: () => {}, keyCode: 37 });
+      el.__onKeyDown({ preventDefault: () => {}, keyCode: 37 });
+      el.__onKeyDown({ preventDefault: () => {}, keyCode: 37 });
 
       expect(buttons[0].getAttribute('aria-selected')).to.equal('true');
       expect(buttons[0].hasAttribute('active')).to.equal(true);
@@ -185,7 +185,7 @@ describe('generic-tabs', () => {
       const el = await fixture(tabsFixture);
       const buttons = el.querySelectorAll('button');
 
-      el._onKeyDown({ preventDefault: () => {}, keyCode: 39 });
+      el.__onKeyDown({ preventDefault: () => {}, keyCode: 39 });
 
       expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
       expect(buttons[1].hasAttribute('active')).to.equal(true);
@@ -199,8 +199,8 @@ describe('generic-tabs', () => {
       const el = await fixture(tabsFixture);
       const buttons = el.querySelectorAll('button');
 
-      el._onKeyDown({ preventDefault: () => {}, keyCode: 39 });
-      el._onKeyDown({ preventDefault: () => {}, keyCode: 39 });
+      el.__onKeyDown({ preventDefault: () => {}, keyCode: 39 });
+      el.__onKeyDown({ preventDefault: () => {}, keyCode: 39 });
 
       expect(buttons[0].getAttribute('aria-selected')).to.equal('true');
       expect(buttons[0].hasAttribute('active')).to.equal(true);
@@ -214,7 +214,7 @@ describe('generic-tabs', () => {
       const el = await fixture(tabsFixture);
       const buttons = el.querySelectorAll('button');
 
-      el._onKeyDown({ preventDefault: () => {}, keyCode: 36 });
+      el.__onKeyDown({ preventDefault: () => {}, keyCode: 36 });
 
       expect(buttons[0].getAttribute('aria-selected')).to.equal('true');
       expect(buttons[0].hasAttribute('active')).to.equal(true);
@@ -228,7 +228,7 @@ describe('generic-tabs', () => {
       const el = await fixture(tabsFixture);
       const buttons = el.querySelectorAll('button');
 
-      el._onKeyDown({ preventDefault: () => {}, keyCode: 35 });
+      el.__onKeyDown({ preventDefault: () => {}, keyCode: 35 });
 
       expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
       expect(buttons[1].hasAttribute('active')).to.equal(true);

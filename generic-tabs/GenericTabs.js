@@ -39,7 +39,6 @@ export class GenericTabs extends HTMLElement {
     super();
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
-    this.__initDone = false;
   }
 
   connectedCallback() {
@@ -50,10 +49,10 @@ export class GenericTabs extends HTMLElement {
     }
 
     this.__tablist = this.shadowRoot.querySelector('div[role="tablist"]');
-    this.__tablist.addEventListener('keydown', this._onKeyDown.bind(this));
+    this.__tablist.addEventListener('keydown', this.__onKeyDown.bind(this));
 
     this.__tablist.setAttribute('aria-label', this.getAttribute('label') || 'tablist');
-    this.__tablist.addEventListener('click', this._onTabClicked.bind(this));
+    this.__tablist.addEventListener('click', this.__onTabClicked.bind(this));
 
     this.setAttribute('active-item', this.__activeItem);
   }
@@ -81,7 +80,7 @@ export class GenericTabs extends HTMLElement {
     this.setAttribute('active-item', this.__activeItem);
   }
 
-  _onKeyDown(event) {
+  __onKeyDown(event) {
     const tabs = this.__getTabs();
 
     switch (event.keyCode) {
@@ -114,6 +113,7 @@ export class GenericTabs extends HTMLElement {
         return;
     }
     this.setAttribute('active-item', this.__activeItem);
+    this.__focus();
   }
 
   __updateActive() {
@@ -123,9 +123,6 @@ export class GenericTabs extends HTMLElement {
     if (!tabs || !panels) return;
     tabs.forEach((_, i) => {
       if (i === this.__activeItem) {
-        if (this.__initDone) {
-          tabs[i].focus();
-        }
         this.setAttribute('active-item', this.__activeItem);
         tabs[i].setAttribute('active', '');
         tabs[i].setAttribute('aria-selected', 'true');
@@ -153,13 +150,18 @@ export class GenericTabs extends HTMLElement {
         detail: __activeItem,
       }),
     );
-    this.__initDone = true;
   }
 
-  _onTabClicked(e) {
+  __onTabClicked(e) {
     if (e.target.getAttribute('role') !== 'tab') return;
     this.__activeItem = this.__getTabs().indexOf(e.target);
     this.setAttribute('active-item', this.__activeItem);
+    this.__focus();
+  }
+
+  __focus() {
+    const tabs = this.__getTabs();
+    tabs[this.__activeItem].focus();
   }
 
   __getTabs() {

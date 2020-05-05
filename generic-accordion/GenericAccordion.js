@@ -21,7 +21,6 @@ export class GenericAccordion extends HTMLElement {
     super();
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
-    this.__initDone = false;
   }
 
   connectedCallback() {
@@ -62,6 +61,7 @@ export class GenericAccordion extends HTMLElement {
     if (!event.target.id.startsWith('generic-accordion-')) return;
     this.__index = this.__buttons.indexOf(event.target);
     this.setAttribute('active-item', this.__index);
+    this.__moveFocus();
   }
 
   __onKeyDown(event) {
@@ -109,9 +109,6 @@ export class GenericAccordion extends HTMLElement {
     if (!buttons || !regions) return;
     buttons.forEach((el, i) => {
       if (i === this.__index) {
-        if (this.__initDone) {
-          el.focus();
-        }
         this.setAttribute('active-item', this.__index);
         buttons[i].setAttribute('active', '');
         buttons[i].setAttribute('aria-expanded', 'true');
@@ -137,8 +134,6 @@ export class GenericAccordion extends HTMLElement {
         detail: __index,
       }),
     );
-
-    this.__initDone = true;
   }
 
   __getButtons() {

@@ -14,12 +14,11 @@ export class GenericListbox extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
     this.__index = 0;
   }
 
   connectedCallback() {
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
-
     this.__ul = this.querySelector('[slot="listbox"]');
     this.__li = [...this.querySelectorAll('[slot="listbox"] li')];
     this.__label = this.querySelector('[slot="label"]');

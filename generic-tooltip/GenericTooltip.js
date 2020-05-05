@@ -34,11 +34,10 @@ export class GenericTooltip extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
   connectedCallback() {
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
-
     this.__target = this.querySelector('[slot="target"]');
     this.__tooltip = this.querySelector('[slot="tooltip"]');
 

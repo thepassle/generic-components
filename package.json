@@ -13,7 +13,7 @@
     "lint:eslint": "eslint --ext .js . --ignore-path .gitignore --ignore-pattern web_modules/**/*.*",
     "format:eslint": "eslint --ext .js,.html . --fix --ignore-path .gitignore --ignore-pattern web_modules/**/*.*",
     "lint:prettier": "prettier \"**/*.js\" --check --ignore-path .gitignore",
-    "format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore",
+    "format:prettier": "prettier \"**/*.js\" --write --ignore-path .prettierignore",
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "format": "npm run format:eslint && npm run format:prettier",
     "test": "karma start --coverage",
@@ -37,7 +37,10 @@
     "extends": [
       "@open-wc/eslint-config",
       "eslint-config-prettier"
-    ]
+    ],
+    "rules": {
+      "wc/no-constructor-attributes": "off"
+    }
   },
   "prettier": "@open-wc/prettier-config",
   "husky": {

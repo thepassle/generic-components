@@ -38,10 +38,10 @@ template.innerHTML = `
     }
   </style>
 
-  <slot 
+  <slot
     name="toggle"
     class="toggle"
-  >   
+  >
   </slot>
 
   <slot name="detail"></slot>
@@ -51,12 +51,11 @@ export class GenericDisclosure extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
     this.__expanded = false;
   }
 
   connectedCallback() {
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
-
     this.__button = this.querySelector('button[slot="toggle"]');
     this.__detail = this.querySelector('[slot="detail"]');
 

@@ -38,12 +38,11 @@ export class GenericTabs extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
     this.__initDone = false;
   }
 
   connectedCallback() {
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
-
     if (this.hasAttribute('active-item')) {
       this.__activeItem = Number(this.getAttribute('active-item'));
     } else {

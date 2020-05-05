@@ -61,6 +61,7 @@ export class GenericSwitch extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
   static get observedAttributes() {
@@ -68,8 +69,6 @@ export class GenericSwitch extends HTMLElement {
   }
 
   connectedCallback() {
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
-
     this.__label = this.shadowRoot.querySelector('[part="label"]');
     this.__button = this.shadowRoot.querySelector('[part="button"]');
     this.__track = this.shadowRoot.querySelector('[part="track"]');

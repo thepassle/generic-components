@@ -23,7 +23,10 @@ export class GenericListbox extends HTMLElement {
 
     this.__ul.setAttribute('tabindex', '0');
     this.__ul.setAttribute('role', 'listbox');
-    this.__ul.setAttribute('aria-label', this.getAttribute('label'));
+
+    if (this.hasAttribute('label')) {
+      this.__ul.setAttribute('aria-label', this.getAttribute('label'));
+    }
 
     this.addEventListener('keydown', this.__onKeyDown.bind(this));
     this.addEventListener('click', this.__onClick.bind(this));

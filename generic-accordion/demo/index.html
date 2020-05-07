@@ -20,7 +20,7 @@
       border: solid 1px black;
     }
 
-    button[active] {
+    button[selected] {
       border-bottom: solid 3px blue;
     }
   </style>
@@ -115,9 +115,9 @@
           <div role="region">Bar</div>
         </generic-accordion>
       </div>
-      <h2>active-item:</h2>
+      <h2>Selected:</h2>
       <details><summary>Show code</summary>
-      <pre><code class="language-markup"><script type="prism-html-markup"><generic-accordion active-item="1">
+      <pre><code class="language-markup"><script type="prism-html-markup"><generic-accordion selected="1">
   <button>One</button>
   <div role="region">
     <p>foo</p>
@@ -133,7 +133,7 @@
 </generic-accordion></script></code></pre>
       </details>
       <div class="demo">
-        <generic-accordion active-item="1">
+        <generic-accordion selected="1">
           <button>One</button>
           <div role="region">
             <p>foo</p>

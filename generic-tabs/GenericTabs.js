@@ -42,8 +42,8 @@ export class GenericTabs extends HTMLElement {
   }
 
   connectedCallback() {
-    if (this.hasAttribute('active-item')) {
-      this.__index = Number(this.getAttribute('active-item'));
+    if (this.hasAttribute('selected')) {
+      this.__index = Number(this.getAttribute('selected'));
     } else {
       this.__index = 0;
     }
@@ -54,30 +54,30 @@ export class GenericTabs extends HTMLElement {
     this.__tablist.setAttribute('aria-label', this.getAttribute('label') || 'tablist');
     this.__tablist.addEventListener('click', this.__onTabClicked.bind(this));
 
-    this.setAttribute('active-item', this.__index);
+    this.setAttribute('selected', this.__index);
   }
 
   static get observedAttributes() {
-    return ['active-item'];
+    return ['selected'];
   }
 
   // eslint-disable-next-line
   attributeChangedCallback(name, newVal, oldVal) {
-    if (name === 'active-item') {
+    if (name === 'selected') {
       if (newVal !== oldVal) {
-        this.__index = Number(this.getAttribute('active-item'));
+        this.__index = Number(this.getAttribute('selected'));
         this.__updateActive();
       }
     }
   }
 
-  get activeItem() {
+  get selected() {
     return this.__index;
   }
 
-  set activeItem(val) {
+  set selected(val) {
     this.__index = val;
-    this.setAttribute('active-item', this.__index);
+    this.setAttribute('selected', this.__index);
   }
 
   __onKeyDown(event) {
@@ -112,7 +112,7 @@ export class GenericTabs extends HTMLElement {
       default:
         return;
     }
-    this.setAttribute('active-item', this.__index);
+    this.setAttribute('selected', this.__index);
     this.__focus();
   }
 
@@ -123,14 +123,14 @@ export class GenericTabs extends HTMLElement {
     if (!tabs || !panels) return;
     tabs.forEach((_, i) => {
       if (i === this.__index) {
-        this.setAttribute('active-item', this.__index);
-        tabs[i].setAttribute('active', '');
+        this.setAttribute('selected', this.__index);
+        tabs[i].setAttribute('selected', '');
         tabs[i].setAttribute('aria-selected', 'true');
         tabs[i].removeAttribute('tabindex');
         panels[i].removeAttribute('hidden');
         this.value = tabs[i].textContent.trim();
       } else {
-        tabs[i].removeAttribute('active');
+        tabs[i].removeAttribute('selected');
         tabs[i].setAttribute('aria-selected', 'false');
         tabs[i].setAttribute('tabindex', '-1');
         panels[i].setAttribute('hidden', '');
@@ -146,7 +146,7 @@ export class GenericTabs extends HTMLElement {
 
     const { __index } = this;
     this.dispatchEvent(
-      new CustomEvent('active-changed', {
+      new CustomEvent('selected-changed', {
         detail: __index,
       }),
     );
@@ -155,7 +155,7 @@ export class GenericTabs extends HTMLElement {
   __onTabClicked(e) {
     if (e.target.getAttribute('role') !== 'tab') return;
     this.__index = this.__getTabs().indexOf(e.target);
-    this.setAttribute('active-item', this.__index);
+    this.setAttribute('selected', this.__index);
     this.__focus();
   }
 
@@ -170,10 +170,5 @@ export class GenericTabs extends HTMLElement {
 
   __getPanels() {
     return [...this.querySelectorAll('[slot="panel"]')];
-  }
-
-  setActive(index) {
-    this.__index = index;
-    this.setAttribute('active-item', this.__index);
   }
 }

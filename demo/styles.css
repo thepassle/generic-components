@@ -62,6 +62,14 @@ pre {
   margin-top: 0;
 }
 
+h2 {
+  margin-top: 50px;
+}
+
+h3 {
+  margin-top: 40px;
+}
+
 .description {
   font-style: italic;
   border-left: solid 4px black;
@@ -120,6 +128,10 @@ hr {
 
   .nav {
     height: 100%;
+  }
+
+  .content {
+    height: auto;
   }
 }
 

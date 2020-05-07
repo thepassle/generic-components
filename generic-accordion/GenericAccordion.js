@@ -24,8 +24,8 @@ export class GenericAccordion extends HTMLElement {
   }
 
   connectedCallback() {
-    if (this.hasAttribute('active-item')) {
-      this.__index = Number(this.getAttribute('active-item'));
+    if (this.hasAttribute('selected')) {
+      this.__index = Number(this.getAttribute('selected'));
     } else {
       this.__index = 0;
     }
@@ -36,17 +36,17 @@ export class GenericAccordion extends HTMLElement {
     this.__buttons = [...this.querySelectorAll('button')];
     this.__regions = [...this.querySelectorAll('[role="region"]')];
 
-    this.setAttribute('active-item', this.__index);
+    this.setAttribute('selected', this.__index);
   }
 
   static get observedAttributes() {
-    return ['active-item'];
+    return ['selected'];
   }
 
   attributeChangedCallback(name, newVal, oldVal) {
-    if (name === 'active-item') {
+    if (name === 'selected') {
       if (newVal !== oldVal) {
-        this.__index = Number(this.getAttribute('active-item'));
+        this.__index = Number(this.getAttribute('selected'));
         this.__updateActive();
       }
     }
@@ -60,7 +60,7 @@ export class GenericAccordion extends HTMLElement {
   __onClick(event) {
     if (!event.target.id.startsWith('generic-accordion-')) return;
     this.__index = this.__buttons.indexOf(event.target);
-    this.setAttribute('active-item', this.__index);
+    this.setAttribute('selected', this.__index);
     this.__moveFocus();
   }
 
@@ -109,8 +109,8 @@ export class GenericAccordion extends HTMLElement {
     if (!buttons || !regions) return;
     buttons.forEach((el, i) => {
       if (i === this.__index) {
-        this.setAttribute('active-item', this.__index);
-        buttons[i].setAttribute('active', '');
+        this.setAttribute('selected', this.__index);
+        buttons[i].setAttribute('selected', '');
         buttons[i].setAttribute('aria-expanded', 'true');
         buttons[i].setAttribute('aria-disabled', 'true');
         regions[i].hidden = false;
@@ -118,7 +118,7 @@ export class GenericAccordion extends HTMLElement {
       } else {
         buttons[i].setAttribute('aria-expanded', 'false');
         buttons[i].removeAttribute('aria-disabled');
-        buttons[i].removeAttribute('active');
+        buttons[i].removeAttribute('selected');
         regions[i].hidden = true;
       }
 
@@ -130,7 +130,7 @@ export class GenericAccordion extends HTMLElement {
 
     const { __index } = this;
     this.dispatchEvent(
-      new CustomEvent('active-changed', {
+      new CustomEvent('selected-changed', {
         detail: __index,
       }),
     );
@@ -142,5 +142,14 @@ export class GenericAccordion extends HTMLElement {
 
   __getRegions() {
     return [...this.querySelectorAll('[role="region"]')];
+  }
+
+  get selected() {
+    return this.__index;
+  }
+
+  set selected(val) {
+    this.__index = val;
+    this.setAttribute('selected', this.__index);
   }
 }

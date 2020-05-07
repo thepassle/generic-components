@@ -31,17 +31,17 @@ export class GenericListbox extends HTMLElement {
     this.addEventListener('keydown', this.__onKeyDown.bind(this));
     this.addEventListener('click', this.__onClick.bind(this));
 
-    this.setAttribute('active-item', this.__index);
+    this.setAttribute('selected', this.__index);
   }
 
   static get observedAttributes() {
-    return ['active-item'];
+    return ['selected'];
   }
 
   attributeChangedCallback(name, newVal, oldVal) {
-    if (name === 'active-item') {
+    if (name === 'selected') {
       if (newVal !== oldVal) {
-        this.__index = Number(this.getAttribute('active-item'));
+        this.__index = Number(this.getAttribute('selected'));
         this.__updateActive();
       }
     }
@@ -50,7 +50,7 @@ export class GenericListbox extends HTMLElement {
   __onClick(event) {
     if (!event.target.localName.includes('li')) return;
     this.__index = this.__li.indexOf(event.target);
-    this.setAttribute('active-item', this.__index);
+    this.setAttribute('selected', this.__index);
   }
 
   __onKeyDown(event) {
@@ -84,7 +84,7 @@ export class GenericListbox extends HTMLElement {
         return;
     }
 
-    this.setAttribute('active-item', this.__index);
+    this.setAttribute('selected', this.__index);
   }
 
   __updateActive() {
@@ -97,21 +97,21 @@ export class GenericListbox extends HTMLElement {
       li[i].setAttribute('role', 'option');
 
       if (i === this.__index) {
-        this.setAttribute('active-item', this.__index);
+        this.setAttribute('selected', this.__index);
         li[i].setAttribute('aria-selected', 'true');
-        li[i].setAttribute('active', '');
+        li[i].setAttribute('selected', '');
         ul.setAttribute('aria-activedescendant', li[i].id);
         this.__scrollIntoView(li[i]);
         this.value = li[i].textContent.trim();
       } else {
         li[i].removeAttribute('aria-selected');
-        li[i].removeAttribute('active');
+        li[i].removeAttribute('selected');
       }
     });
 
     const { __index } = this;
     this.dispatchEvent(
-      new CustomEvent('active-changed', {
+      new CustomEvent('selected-changed', {
         detail: __index,
       }),
     );

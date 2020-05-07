@@ -16,7 +16,7 @@
       overflow: scroll;
     }
 
-    li[active] {
+    li[selected] {
       background-color: skyblue;
     }
   </style>
@@ -80,7 +80,7 @@
       <p>The listbox requires a <code>ul</code> with a <code>slot="listbox"</code> and <code>li</code> children, as well as a label that can be placed in the <code>slot="label"</code>.
       <h2>Default:</h2>
       <details><summary>Show code</summary>
-      <pre><code class="language-markup"><script type="prism-html-markup"><generic-listbox active-item="8">
+      <pre><code class="language-markup"><script type="prism-html-markup"><generic-listbox>
   <p slot="label">A list of items</p>
   <ul slot="listbox">
     <li>item 1</li>
@@ -129,9 +129,9 @@
         </generic-listbox>
       </div>
 
-      <h2>Active item:</h2>
+      <h2>Selected:</h2>
       <details><summary>Show code</summary>
-      <pre><code class="language-markup"><script type="prism-html-markup"><generic-listbox active-item="8">
+      <pre><code class="language-markup"><script type="prism-html-markup"><generic-listbox selected="8">
   <p slot="label">A list of items</p>
   <ul slot="listbox">
     <li>item 1</li>
@@ -156,7 +156,7 @@
       </script></code></pre>
       </details>
       <div class="demo">
-        <generic-listbox active-item="8">
+        <generic-listbox selected="8">
           <p slot="label">A list of items</p>
           <ul slot="listbox">
             <li>item 1</li>

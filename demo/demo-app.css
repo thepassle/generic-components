@@ -97,7 +97,7 @@ body {
   text-transform: uppercase;
 }
 
-button[active] {
+button[selected] {
   color: var(--col-active);
   text-decoration: underline;
 }
@@ -139,7 +139,7 @@ generic-disclosure button:hover {
 
 .dialog-button {
   background-color: #8ea2ea;
-  color: black; 
+  color: black;
   border: 0;
   border-radius: 5px;
   font-weight: bold;
@@ -217,7 +217,7 @@ generic-switch::part(button):focus {
   box-shadow: 0 0 0 3px var(--col-active)!important;
   transition: box-shadow .1s ease-in-out;
 }
-/* 
+/*
 generic-switch::part(label) {
   padding-right: 20px;
 } */

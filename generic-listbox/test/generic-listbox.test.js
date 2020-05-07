@@ -50,16 +50,16 @@ describe('generic-listbox', () => {
     expect(firstLi.id).to.equal('generic-listbox-0');
     expect(firstLi.getAttribute('role')).to.equal('option');
     expect(firstLi.getAttribute('aria-selected')).to.equal('true');
-    expect(firstLi.hasAttribute('active')).to.equal(true);
+    expect(firstLi.hasAttribute('selected')).to.equal(true);
 
     // 2nd list item
     expect(secondLi.id).to.equal('generic-listbox-1');
     expect(secondLi.getAttribute('role')).to.equal('option');
     expect(secondLi.hasAttribute('aria-selected')).to.equal(false);
-    expect(secondLi.hasAttribute('active')).to.equal(false);
+    expect(secondLi.hasAttribute('selected')).to.equal(false);
   });
 
-  it('changes active item on click', async () => {
+  it('changes selected on click', async () => {
     const el = await fixture(defaultFixture);
 
     const ul = el.querySelector('ul');
@@ -67,13 +67,13 @@ describe('generic-listbox', () => {
 
     expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-0');
     expect(firstLi.hasAttribute('aria-selected')).to.equal(false);
-    expect(firstLi.hasAttribute('active')).to.equal(false);
+    expect(firstLi.hasAttribute('selected')).to.equal(false);
 
     firstLi.click();
 
     expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-1');
     expect(firstLi.getAttribute('aria-selected')).to.equal('true');
-    expect(firstLi.hasAttribute('active')).to.equal(true);
+    expect(firstLi.hasAttribute('selected')).to.equal(true);
   });
 
   describe('keycodes', () => {
@@ -86,7 +86,7 @@ describe('generic-listbox', () => {
 
       expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-16');
       expect(li[16].getAttribute('aria-selected')).to.equal('true');
-      expect(li[16].hasAttribute('active')).to.equal(true);
+      expect(li[16].hasAttribute('selected')).to.equal(true);
     });
 
     it('down', async () => {
@@ -97,7 +97,7 @@ describe('generic-listbox', () => {
       el.__onKeyDown({ preventDefault: () => {}, keyCode: 40, target: { localName: 'ul' } });
       expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-1');
       expect(li[1].getAttribute('aria-selected')).to.equal('true');
-      expect(li[1].hasAttribute('active')).to.equal(true);
+      expect(li[1].hasAttribute('selected')).to.equal(true);
     });
 
     it('end and home', async () => {
@@ -109,13 +109,13 @@ describe('generic-listbox', () => {
 
       expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-16');
       expect(li[16].getAttribute('aria-selected')).to.equal('true');
-      expect(li[16].hasAttribute('active')).to.equal(true);
+      expect(li[16].hasAttribute('selected')).to.equal(true);
 
       el.__onKeyDown({ preventDefault: () => {}, keyCode: 36, target: { localName: 'ul' } });
 
       expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-0');
       expect(li[0].getAttribute('aria-selected')).to.equal('true');
-      expect(li[0].hasAttribute('active')).to.equal(true);
+      expect(li[0].hasAttribute('selected')).to.equal(true);
     });
   });
 });

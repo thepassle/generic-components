@@ -19,8 +19,8 @@ const tabsFixture = html`
   </generic-tabs>
 `;
 
-const tabsFixtureActiveItem = html`
-  <generic-tabs active-item="1">
+const tabsFixtureSelected = html`
+  <generic-tabs selected="1">
     <button slot="tab">
       Jim
     </button>
@@ -61,7 +61,7 @@ describe('generic-tabs', () => {
     expect(button.getAttribute('role')).to.equal('tab');
     expect(button.getAttribute('aria-selected')).to.equal('true');
     expect(button.hasAttribute('aria-controls')).to.equal(true);
-    expect(button.hasAttribute('active')).to.equal(true);
+    expect(button.hasAttribute('selected')).to.equal(true);
   });
 
   it('activates first tab by default', async () => {
@@ -69,48 +69,48 @@ describe('generic-tabs', () => {
     const buttons = el.querySelectorAll('button');
 
     expect(buttons[0].getAttribute('aria-selected')).to.equal('true');
-    expect(buttons[0].hasAttribute('active')).to.equal(true);
+    expect(buttons[0].hasAttribute('selected')).to.equal(true);
 
     expect(buttons[1].getAttribute('aria-selected')).to.equal('false');
-    expect(buttons[1].hasAttribute('active')).to.equal(false);
+    expect(buttons[1].hasAttribute('selected')).to.equal(false);
     expect(buttons[1].getAttribute('tabindex')).to.equal('-1');
   });
 
-  it('activates the tab if theres an active-item attribute', async () => {
-    const el = await fixture(tabsFixtureActiveItem);
+  it('activates the tab if theres an selected attribute', async () => {
+    const el = await fixture(tabsFixtureSelected);
     const buttons = el.querySelectorAll('button');
 
     expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
-    expect(buttons[1].hasAttribute('active')).to.equal(true);
+    expect(buttons[1].hasAttribute('selected')).to.equal(true);
 
     expect(buttons[0].getAttribute('aria-selected')).to.equal('false');
-    expect(buttons[0].hasAttribute('active')).to.equal(false);
+    expect(buttons[0].hasAttribute('selected')).to.equal(false);
     expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
   });
 
-  it('reacts to activeItem property changed', async () => {
+  it('reacts to selected property changed', async () => {
     const el = await fixture(tabsFixture);
-    el.activeItem = 1;
+    el.selected = 1;
     const buttons = el.querySelectorAll('button');
 
     expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
-    expect(buttons[1].hasAttribute('active')).to.equal(true);
+    expect(buttons[1].hasAttribute('selected')).to.equal(true);
 
     expect(buttons[0].getAttribute('aria-selected')).to.equal('false');
-    expect(buttons[0].hasAttribute('active')).to.equal(false);
+    expect(buttons[0].hasAttribute('selected')).to.equal(false);
     expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
   });
 
-  it('reacts to active-item attribute changed', async () => {
+  it('reacts to selected attribute changed', async () => {
     const el = await fixture(tabsFixture);
-    el.setAttribute('active-item', '1');
+    el.setAttribute('selected', '1');
     const buttons = el.querySelectorAll('button');
 
     expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
-    expect(buttons[1].hasAttribute('active')).to.equal(true);
+    expect(buttons[1].hasAttribute('selected')).to.equal(true);
 
     expect(buttons[0].getAttribute('aria-selected')).to.equal('false');
-    expect(buttons[0].hasAttribute('active')).to.equal(false);
+    expect(buttons[0].hasAttribute('selected')).to.equal(false);
     expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
   });
 
@@ -122,33 +122,20 @@ describe('generic-tabs', () => {
     buttons[1].click();
 
     expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
-    expect(buttons[1].hasAttribute('active')).to.equal(true);
+    expect(buttons[1].hasAttribute('selected')).to.equal(true);
 
     expect(buttons[0].getAttribute('aria-selected')).to.equal('false');
-    expect(buttons[0].hasAttribute('active')).to.equal(false);
+    expect(buttons[0].hasAttribute('selected')).to.equal(false);
     expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
 
     buttons[0].click();
 
     expect(buttons[0].getAttribute('aria-selected')).to.equal('true');
-    expect(buttons[0].hasAttribute('active')).to.equal(true);
+    expect(buttons[0].hasAttribute('selected')).to.equal(true);
 
     expect(buttons[1].getAttribute('aria-selected')).to.equal('false');
-    expect(buttons[1].hasAttribute('active')).to.equal(false);
+    expect(buttons[1].hasAttribute('selected')).to.equal(false);
     expect(buttons[1].getAttribute('tabindex')).to.equal('-1');
-  });
-
-  it('setActive', async () => {
-    const el = await fixture(tabsFixture);
-    el.setActive(1);
-    const buttons = el.querySelectorAll('button');
-
-    expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
-    expect(buttons[1].hasAttribute('active')).to.equal(true);
-
-    expect(buttons[0].getAttribute('aria-selected')).to.equal('false');
-    expect(buttons[0].hasAttribute('active')).to.equal(false);
-    expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
   });
 
   describe('keycodes', () => {
@@ -159,10 +146,10 @@ describe('generic-tabs', () => {
       el.__onKeyDown({ preventDefault: () => {}, keyCode: 37 });
 
       expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
-      expect(buttons[1].hasAttribute('active')).to.equal(true);
+      expect(buttons[1].hasAttribute('selected')).to.equal(true);
 
       expect(buttons[0].getAttribute('aria-selected')).to.equal('false');
-      expect(buttons[0].hasAttribute('active')).to.equal(false);
+      expect(buttons[0].hasAttribute('selected')).to.equal(false);
       expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
     });
 
@@ -174,10 +161,10 @@ describe('generic-tabs', () => {
       el.__onKeyDown({ preventDefault: () => {}, keyCode: 37 });
 
       expect(buttons[0].getAttribute('aria-selected')).to.equal('true');
-      expect(buttons[0].hasAttribute('active')).to.equal(true);
+      expect(buttons[0].hasAttribute('selected')).to.equal(true);
 
       expect(buttons[1].getAttribute('aria-selected')).to.equal('false');
-      expect(buttons[1].hasAttribute('active')).to.equal(false);
+      expect(buttons[1].hasAttribute('selected')).to.equal(false);
       expect(buttons[1].getAttribute('tabindex')).to.equal('-1');
     });
 
@@ -188,10 +175,10 @@ describe('generic-tabs', () => {
       el.__onKeyDown({ preventDefault: () => {}, keyCode: 39 });
 
       expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
-      expect(buttons[1].hasAttribute('active')).to.equal(true);
+      expect(buttons[1].hasAttribute('selected')).to.equal(true);
 
       expect(buttons[0].getAttribute('aria-selected')).to.equal('false');
-      expect(buttons[0].hasAttribute('active')).to.equal(false);
+      expect(buttons[0].hasAttribute('selected')).to.equal(false);
       expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
     });
 
@@ -203,10 +190,10 @@ describe('generic-tabs', () => {
       el.__onKeyDown({ preventDefault: () => {}, keyCode: 39 });
 
       expect(buttons[0].getAttribute('aria-selected')).to.equal('true');
-      expect(buttons[0].hasAttribute('active')).to.equal(true);
+      expect(buttons[0].hasAttribute('selected')).to.equal(true);
 
       expect(buttons[1].getAttribute('aria-selected')).to.equal('false');
-      expect(buttons[1].hasAttribute('active')).to.equal(false);
+      expect(buttons[1].hasAttribute('selected')).to.equal(false);
       expect(buttons[1].getAttribute('tabindex')).to.equal('-1');
     });
 
@@ -217,10 +204,10 @@ describe('generic-tabs', () => {
       el.__onKeyDown({ preventDefault: () => {}, keyCode: 36 });
 
       expect(buttons[0].getAttribute('aria-selected')).to.equal('true');
-      expect(buttons[0].hasAttribute('active')).to.equal(true);
+      expect(buttons[0].hasAttribute('selected')).to.equal(true);
 
       expect(buttons[1].getAttribute('aria-selected')).to.equal('false');
-      expect(buttons[1].hasAttribute('active')).to.equal(false);
+      expect(buttons[1].hasAttribute('selected')).to.equal(false);
       expect(buttons[1].getAttribute('tabindex')).to.equal('-1');
     });
 
@@ -231,10 +218,10 @@ describe('generic-tabs', () => {
       el.__onKeyDown({ preventDefault: () => {}, keyCode: 35 });
 
       expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
-      expect(buttons[1].hasAttribute('active')).to.equal(true);
+      expect(buttons[1].hasAttribute('selected')).to.equal(true);
 
       expect(buttons[0].getAttribute('aria-selected')).to.equal('false');
-      expect(buttons[0].hasAttribute('active')).to.equal(false);
+      expect(buttons[0].hasAttribute('selected')).to.equal(false);
       expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
     });
   });

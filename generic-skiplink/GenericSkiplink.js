@@ -31,7 +31,7 @@ export class GenericSkiplink extends HTMLElement {
           height: 1px;
           top: auto;
         }
-        
+
         a:focus {
           top: 0px;
           left: 0px;
@@ -43,7 +43,7 @@ export class GenericSkiplink extends HTMLElement {
 
       <a
         part="anchor"
-        class="skiplink" 
+        class="skiplink"
         href="#${this.getAttribute('for')}">
           <slot>Continue to main</slot>
       </a>

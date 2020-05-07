@@ -77,11 +77,10 @@
       <br/>
       <p class="description">A listbox widget presents a list of options and allows a user to select one or more of them.</p>
       <h2>Usage:</h2>
-      <p>The listbox requires a <code>ul</code> with a <code>slot="listbox"</code> and <code>li</code> children, as well as a label that can be placed in the <code>slot="label"</code>.
+      <p>The listbox requires a <code>ul</code> with a <code>slot="listbox"</code> and <code>li</code> children, as well as a <code>label</code> attribute.
       <h3>Default:</h3>
       <details><summary>Show code</summary>
-      <pre><code class="language-markup"><script type="prism-html-markup"><generic-listbox>
-  <p slot="label">A list of items</p>
+      <pre><code class="language-markup"><script type="prism-html-markup"><generic-listbox label="list of items">
   <ul slot="listbox">
     <li>item 1</li>
     <li>item 2</li>
@@ -105,8 +104,7 @@
       </script></code></pre>
       </details>
       <div class="demo">
-        <generic-listbox>
-          <p slot="label">A list of items</p>
+        <generic-listbox label="list of items">
           <ul slot="listbox">
             <li>item 1</li>
             <li>item 2</li>
@@ -131,8 +129,7 @@
 
       <h3>Selected:</h3>
       <details><summary>Show code</summary>
-      <pre><code class="language-markup"><script type="prism-html-markup"><generic-listbox selected="8">
-  <p slot="label">A list of items</p>
+      <pre><code class="language-markup"><script type="prism-html-markup"><generic-listbox label="list of items" selected="8">
   <ul slot="listbox">
     <li>item 1</li>
     <li>item 2</li>
@@ -156,8 +153,7 @@
       </script></code></pre>
       </details>
       <div class="demo">
-        <generic-listbox selected="8">
-          <p slot="label">A list of items</p>
+        <generic-listbox label="list of items" selected="8">
           <ul slot="listbox">
             <li>item 1</li>
             <li>item 2</li>

@@ -2,8 +2,7 @@ import { html, fixture, expect } from '@open-wc/testing';
 import '../../generic-listbox.js';
 
 const defaultFixture = html`
-  <generic-listbox>
-    <p slot="label">A list of items</p>
+  <generic-listbox label="list of items">
     <ul slot="listbox">
       <li>item 1</li>
       <li>item 2</li>
@@ -43,7 +42,7 @@ describe('generic-listbox', () => {
     // ul
     expect(ul.getAttribute('role')).to.equal('listbox');
     expect(ul.getAttribute('tabindex')).to.equal('0');
-    expect(ul.getAttribute('aria-labelledby')).to.equal('generic-listbox-label');
+    expect(ul.getAttribute('aria-label')).to.equal('list of items');
     expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-0');
 
     // 1st list item

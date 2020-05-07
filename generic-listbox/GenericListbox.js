@@ -5,7 +5,6 @@ template.innerHTML = `
   <style>
 
   </style>
-  <slot name="label">Default label</slot>
   <slot name="listbox">
   </slot>
 `;
@@ -21,12 +20,10 @@ export class GenericListbox extends HTMLElement {
   connectedCallback() {
     this.__ul = this.querySelector('[slot="listbox"]');
     this.__li = [...this.querySelectorAll('[slot="listbox"] li')];
-    this.__label = this.querySelector('[slot="label"]');
 
     this.__ul.setAttribute('tabindex', '0');
     this.__ul.setAttribute('role', 'listbox');
-    this.__ul.setAttribute('aria-labelledby', 'generic-listbox-label');
-    this.__label.id = 'generic-listbox-label';
+    this.__ul.setAttribute('aria-label', this.getAttribute('label'));
 
     this.addEventListener('keydown', this.__onKeyDown.bind(this));
     this.addEventListener('click', this.__onClick.bind(this));

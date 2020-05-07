@@ -72,6 +72,17 @@ describe('generic-accordion', () => {
     expect(regions[1].hasAttribute('hidden')).to.equal(false);
   });
 
+  it('reacts to selected property change', async () => {
+    const el = await fixture(defaultFixture);
+    const btns = el.querySelectorAll('button');
+    const regions = el.querySelectorAll('[role="region"]');
+
+    el.selected = 1;
+
+    expect(btns[1].getAttribute('aria-expanded')).to.equal('true');
+    expect(regions[1].hasAttribute('hidden')).to.equal(false);
+  });
+
   describe('keycodes', () => {
     it('down', async () => {
       const el = await fixture(defaultFixture);

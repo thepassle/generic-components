@@ -76,6 +76,23 @@ describe('generic-listbox', () => {
     expect(firstLi.hasAttribute('selected')).to.equal(true);
   });
 
+  it('reacts to selected property changed', async () => {
+    const el = await fixture(defaultFixture);
+
+    const ul = el.querySelector('ul');
+    const firstLi = el.querySelectorAll('li')[1];
+
+    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-0');
+    expect(firstLi.hasAttribute('aria-selected')).to.equal(false);
+    expect(firstLi.hasAttribute('selected')).to.equal(false);
+
+    el.selected = 1;
+
+    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-1');
+    expect(firstLi.getAttribute('aria-selected')).to.equal('true');
+    expect(firstLi.hasAttribute('selected')).to.equal(true);
+  });
+
   describe('keycodes', () => {
     it('up', async () => {
       const el = await fixture(defaultFixture);

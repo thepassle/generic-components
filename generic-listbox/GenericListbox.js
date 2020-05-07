@@ -144,4 +144,13 @@ export class GenericListbox extends HTMLElement {
   __getLi() {
     return [...this.querySelectorAll('[slot="listbox"] li')];
   }
+
+  get selected() {
+    return this.__index;
+  }
+
+  set selected(val) {
+    this.__index = val;
+    this.setAttribute('selected', this.__index);
+  }
 }

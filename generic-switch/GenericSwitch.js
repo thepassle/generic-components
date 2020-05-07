@@ -30,7 +30,7 @@ template.innerHTML = `
     }
 
     .thumb {
-      right: 20px;
+      right: 18px;
       transition: right .1s;
       top: 0;
       position: absolute;

@@ -3,7 +3,7 @@ import '../../generic-listbox.js';
 
 const defaultFixture = html`
   <generic-listbox label="list of items">
-    <ul slot="listbox">
+    <ul>
       <li>item 1</li>
       <li>item 2</li>
       <li>item 3</li>

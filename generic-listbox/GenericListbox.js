@@ -5,7 +5,7 @@ template.innerHTML = `
   <style>
 
   </style>
-  <slot name="listbox">
+  <slot>
   </slot>
 `;
 
@@ -18,8 +18,8 @@ export class GenericListbox extends HTMLElement {
   }
 
   connectedCallback() {
-    this.__ul = this.querySelector('[slot="listbox"]');
-    this.__li = [...this.querySelectorAll('[slot="listbox"] li')];
+    this.__ul = this.__getUl();
+    this.__li = this.__getLi();
 
     this.__ul.setAttribute('tabindex', '0');
     this.__ul.setAttribute('role', 'listbox');
@@ -138,11 +138,11 @@ export class GenericListbox extends HTMLElement {
   }
 
   __getUl() {
-    return this.querySelector('[slot="listbox"]');
+    return this.querySelector('ul');
   }
 
   __getLi() {
-    return [...this.querySelectorAll('[slot="listbox"] li')];
+    return [...this.querySelectorAll('ul li')];
   }
 
   get selected() {

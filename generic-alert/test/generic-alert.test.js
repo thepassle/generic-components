@@ -7,7 +7,7 @@ describe('generic-alert', () => {
       <generic-alert></generic-alert>
     `);
 
-    expect(el).to.be.accessible();
+    await expect(el).to.be.accessible();
   });
 
   it('has correct aria attributes', async () => {

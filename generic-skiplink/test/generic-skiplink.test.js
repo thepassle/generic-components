@@ -7,7 +7,7 @@ describe('generic-skiplink', () => {
       <generic-skiplink></generic-skiplink>
     `);
 
-    expect(el).to.be.accessible();
+    await expect(el).to.be.accessible();
   });
 
   it('correctly renders the `for` attribute', async () => {

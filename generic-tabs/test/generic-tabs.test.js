@@ -43,7 +43,7 @@ describe('generic-tabs', () => {
       <generic-tabs></generic-tabs>
     `);
 
-    expect(el).to.be.accessible();
+    await expect(el).to.be.accessible();
   });
 
   it('has required aria attributes', async () => {

@@ -7,6 +7,6 @@ describe('generic-visually-hidden', () => {
       <generic-visually-hidden></generic-visually-hidden>
     `);
 
-    expect(el).to.be.accessible();
+    await expect(el).to.be.accessible();
   });
 });

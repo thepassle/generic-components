@@ -8,7 +8,7 @@ describe('generic-dialog', () => {
       <generic-dialog></generic-dialog>
     `);
 
-    expect(el).to.be.accessible();
+    await expect(el).to.be.accessible();
   });
 
   // closes on escape

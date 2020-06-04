@@ -22,7 +22,7 @@ describe('generic-accordion', () => {
   it('a11y', async () => {
     const el = await fixture(defaultFixture);
 
-    expect(el).to.be.accessible();
+    await expect(el).to.be.accessible();
   });
 
   it('throws error if no buttons or regions are provided', async () => {

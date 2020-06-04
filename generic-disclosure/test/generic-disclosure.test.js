@@ -5,11 +5,11 @@ describe('generic-disclosure', () => {
   it('a11y', async () => {
     const el = await fixture(html`
       <generic-disclosure
-        ><button slot="toggle"></button><span slot="detail"></span
+        ><button slot="toggle">clicky</button><span slot="detail"></span
       ></generic-disclosure>
     `);
 
-    expect(el).to.be.accessible();
+    await expect(el).to.be.accessible();
   });
 
   it('opens and closes on click', async () => {

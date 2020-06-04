@@ -10,6 +10,6 @@ describe('generic-tooltip', () => {
       </generic-tooltip>
     `);
 
-    expect(el).to.be.accessible();
+    await expect(el).to.be.accessible();
   });
 });

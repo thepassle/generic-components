@@ -7,7 +7,7 @@ describe('generic-switch', () => {
       <generic-switch></generic-switch>
     `);
 
-    expect(el).to.be.accessible();
+    await expect(el).to.be.accessible();
   });
 
   it('has role switch and tabindex 0', async () => {

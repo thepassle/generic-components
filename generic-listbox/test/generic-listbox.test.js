@@ -29,7 +29,7 @@ describe('generic-listbox', () => {
   it('a11y', async () => {
     const el = await fixture(defaultFixture);
 
-    expect(el).to.be.accessible();
+    await expect(el).to.be.accessible();
   });
 
   it('has the required aria attributes', async () => {

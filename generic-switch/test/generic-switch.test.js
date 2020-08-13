@@ -4,7 +4,7 @@ import '../../generic-switch.js';
 describe('generic-switch', () => {
   it('a11y', async () => {
     const el = await fixture(html`
-      <generic-switch></generic-switch>
+      <generic-switch label="foo"></generic-switch>
     `);
 
     await expect(el).to.be.accessible();

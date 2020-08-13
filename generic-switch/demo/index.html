@@ -13,6 +13,50 @@
     generic-switch:not(:defined) {
       display: none;
     }
+
+    generic-switch#dark::part(button) {
+      height: 20px;
+      width: 40px;
+    }
+
+    generic-switch#dark::part(thumb) {
+      right: 20px;
+      border: solid 1px #4d4d4d;
+      border-radius: 50%;
+      width: calc(50% - 2px);
+      height: calc(100% - 2px);
+      background-color: white;
+    }
+    generic-switch#dark[checked]::part(thumb) {
+      right: 0px;
+    }
+    generic-switch#dark::part(track) {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      background-color: #4d4d4d;
+    }
+
+    generic-switch#dark[checked]::part(track)::before {
+      content: '🌞';
+      position: absolute;
+      left: 2px;
+      top: 4px;
+      line-height: 14px;
+    }
+
+    generic-switch#dark::part(track)::before {
+      content: '🌛';
+      position: absolute;
+      left: 22px;
+      top: 4px;
+      line-height: 14px;
+    }
+
+    generic-switch#dark {
+      --generic-switch-focus: 0 0 2px 3px #0099e0;
+    }
   </style>
 
   <title>generic-components</title>
@@ -77,9 +121,19 @@
 
       <h3>Default:</h3>
       <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch></generic-switch></script></code></pre></details>
+      <div class="demo">
+        <generic-switch>Default</generic-switch><br/><br/>
+      </div>
+      <h3>Label:</h3>
+      <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch label="darkmode"></generic-switch></script></code></pre></details>
+      <div class="demo">
+        <generic-switch label="darkmode"></generic-switch><br/><br/>
+      </div>
+      <!-- <h3>Darkmode toggle:</h3>
+      <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch></generic-switch></script></code></pre></details>
         <div class="demo">
-          <generic-switch>Default</generic-switch><br/><br/>
-        </div>
+          <generic-switch id="dark">Default</generic-switch><br/><br/>
+        </div> -->
       <h3>Custom label:</h3>
       <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch>Custom label</generic-switch></script></code></pre></details>
       <div class="demo">

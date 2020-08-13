@@ -23,7 +23,7 @@
     "@open-wc/prettier-config": "^0.1.10",
     "@open-wc/testing": "^2.5.17",
     "@web/test-runner": "^0.6.26",
-    "es-dev-server": "^1.5.0",
+    "es-dev-server": "^1.57.2",
     "eslint": "^6.1.0",
     "husky": "^1.0.0",
     "lint-staged": "^8.0.0",

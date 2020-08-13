@@ -40,15 +40,11 @@ template.innerHTML = `
     }
 
     div[part="button"]:focus .thumb {
-      box-shadow: 0 0 0 2px var(--generic-switch-focus, skyblue);
-    }
-
-    label {
-      margin-right: 10px;
+      box-shadow: var(--generic-switch-focus, 0 0 0 2px skyblue);
     }
 
   </style>
-  <label part="label"><slot>Label</slot></label>
+  <label part="label"><slot></slot></label>
   <div part="button" class="button">
     <div part="track" class="track"></div>
     <div part="thumb" class="thumb"></div>
@@ -65,7 +61,7 @@ export class GenericSwitch extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ['disabled', 'checked'];
+    return ['disabled', 'checked', 'label'];
   }
 
   connectedCallback() {
@@ -81,10 +77,15 @@ export class GenericSwitch extends HTMLElement {
 
     this.__button.addEventListener('click', this.__onClick.bind(this));
     this.__button.addEventListener('keydown', this.__onKeyDown.bind(this));
-
-    this.__button.setAttribute('aria-labelledby', `label-${__count}`);
-    this.__button.setAttribute('aria-describedby', `label-${__count}`);
     this.__button.setAttribute('role', 'switch');
+
+    if (!this.hasAttribute('label')) {
+      this.__button.setAttribute('aria-labelledby', `label-${__count}`);
+      this.__button.setAttribute('aria-describedby', `label-${__count}`);
+      this.__label.style.marginRight = '10px';
+    } else {
+      this.__button.setAttribute('aria-label', this.getAttribute('label'));
+    }
 
     this.__checked = this.hasAttribute('checked') || false;
 
@@ -144,7 +145,7 @@ export class GenericSwitch extends HTMLElement {
     this.dispatchEvent(new CustomEvent('checked-changed', { detail: __checked }));
   }
 
-  attributeChangedCallback(name, newVal, oldVal) {
+  attributeChangedCallback(name, oldVal, newVal) {
     if (!this.__button) return;
     if (newVal !== oldVal) {
       switch (name) {
@@ -155,6 +156,9 @@ export class GenericSwitch extends HTMLElement {
         case 'checked':
           this.__checked = !this.__checked;
           this.__update();
+          break;
+        case 'label':
+          this.__button.setAttribute('aria-label', newVal);
           break;
         default:
           break;

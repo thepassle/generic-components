@@ -32,6 +32,17 @@ describe('generic-switch', () => {
     expect(btn.getAttribute('aria-checked')).to.equal('true');
     expect(btn.hasAttribute('checked')).to.equal(true);
     expect(el.hasAttribute('checked')).to.equal(true);
+
+    // still works after moving element around in the dom
+    const wrapper = await fixture(
+      html`
+        <div></div>
+      `,
+    );
+    wrapper.appendChild(el);
+
+    btn.click();
+    expect(el.hasAttribute('checked')).to.equal(false);
   });
 
   it('toggles on enter', async () => {

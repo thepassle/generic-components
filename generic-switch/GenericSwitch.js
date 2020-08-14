@@ -58,6 +58,8 @@ export class GenericSwitch extends HTMLElement {
     super();
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
+    this.__onClick = this.__onClick.bind(this);
+    this.__onKeyDown = this.__onKeyDown.bind(this);
   }
 
   static get observedAttributes() {
@@ -75,8 +77,8 @@ export class GenericSwitch extends HTMLElement {
     this.__track.id = `track-${__count}`;
     this.__thumb.id = `thumb-${__count}`;
 
-    this.__button.addEventListener('click', this.__onClick.bind(this));
-    this.__button.addEventListener('keydown', this.__onKeyDown.bind(this));
+    this.__button.addEventListener('click', this.__onClick);
+    this.__button.addEventListener('keydown', this.__onKeyDown);
     this.__button.setAttribute('role', 'switch');
 
     if (!this.hasAttribute('label')) {
@@ -92,6 +94,11 @@ export class GenericSwitch extends HTMLElement {
     this.__update();
     this.__handleDisabled();
     __count++; // eslint-disable-line
+  }
+
+  disconnectedCallback() {
+    this.__button.removeEventListener('click', this.__onClick);
+    this.__button.removeEventListener('keydown', this.__onKeyDown);
   }
 
   __handleDisabled() {

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="Description" content="Put your description here.">
+    <meta name="Description" content="Generic-components demo app.">
     <link rel="stylesheet" type="text/css" href="../../demo/demo-app.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
 
@@ -11,16 +11,7 @@
       generic-skiplink:not(:defined), generic-disclosure:not(:defined), generic-tabs:not(:defined), generic-switch:not(:defined), generic-alert:not(:defined) {
         display: none;
       }
-
-      #genericDialog {
-        width:400px;
-        height:400px;
-        padding:20px;
-        background-color: var(--col-light);
-        color: white;
-      }
     </style>
-
     <title>generic-components</title>
   </head>
 
@@ -65,8 +56,7 @@
           <button class="panel-button" slot="tab">settings</button>
           <div slot="panel">
             <h2>Settings</h2>
-            <generic-switch></generic-switch>
-            <generic-switch></generic-switch>
+            <generic-switch id="darkmode">Toggle darkmode</generic-switch>
             <generic-switch id="switchEl">Dont toggle me</generic-switch>
             <generic-alert id="switchAlert" hidden>❌ I said don't toggle me!</generic-alert>
           </div>
@@ -111,7 +101,49 @@
       </main>
     </div>
     <script type="module">
+      import { installDarkModeHandler } from 'https://unpkg.com/pwa-helper-components@0.2.10/pwa-dark-mode/installDarkModeHandler.js';
       import { dialog } from '../generic-dialog/dialog.js';
+
+      const darkModeToggle = document.getElementById('darkmode');
+      const html = document.getElementsByTagName('html')[0];
+
+      function handleToggle() {
+        if (html.classList.contains('dark')) {
+          html.classList.remove('dark');
+          localStorage.setItem('darkmode', 'false');
+        } else {
+          html.classList.add('dark');
+          localStorage.setItem('darkmode', 'true');
+        }
+      }
+
+      installDarkModeHandler((darkmode) => {
+        if(darkmode) {
+          darkModeToggle.setAttribute('checked', '');
+          html.classList.add('dark');
+        } else {
+          darkModeToggle.removeAttribute('checked');
+          html.classList.remove('dark');
+        }
+      });
+
+      ['keydown', 'click'].forEach(event => {
+        darkModeToggle.addEventListener(event, (e) => {
+          switch(event) {
+            case 'keydown':
+              if(e.keyCode === 32 || e.keyCode === 13) {
+                e.preventDefault();
+                handleToggle();
+              }
+              break;
+            case 'click':
+              handleToggle();
+              break;
+            default:
+              break;
+          }
+        });
+      });
 
       switchEl.addEventListener('checked-changed', (e) => {
         if(e.detail) {

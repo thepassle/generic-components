@@ -1,16 +1,27 @@
-:root {
-  --col-dark: #2f3136;
-  --col-darker: #26272b;
-  --col-light: #36393e;
-  --col-active: #83fbc3;
+html {
+  --col-dark: white;
+  --col-darker: #ededed;
+  --col-light: #efefef;
+  --col-active: blue;
+  --text-color: black;
   --switch-track: #73767d;
   --switch-thumb: white;
 }
 
-html,
+html.dark {
+  --col-dark: #2f3136;
+  --col-darker: #26272b;
+  --col-light: #36393e;
+  --col-active: #83fbc3;
+  --text-color: white;
+  --switch-track: #73767d;
+  --switch-thumb: white;
+}
+
 body {
   margin: 0;
   padding: 0;
+  color: var(--text-color);
   background-color: var(--col-dark);
 }
 
@@ -32,6 +43,7 @@ body {
 }
 
 .banner {
+  z-index: 1;
   position: fixed;
   width: 100%;
   display: flex;
@@ -45,20 +57,20 @@ body {
 .banner h1 {
   margin: 0;
   font-size: 30px;
-  color: white;
+  color: var(--text-color);
 }
 
 .banner h1 a {
-  color: white;
+  color: var(--text-color);
   text-decoration: none;
 }
 
 .banner h1 a:visited {
-  color: white;
+  color: var(--text-color);
 }
 
 .content {
-  color: white;
+  color: var(--text-color);
   padding: 80px;
   width: calc(100% - 160px);
   height: calc(100% - 160px);
@@ -82,7 +94,7 @@ body {
 .panel-button {
   flex: 1;
   border-radius: 5px;
-  color: white;
+  color: var(--text-color);
   font-family: 'Montserrat',sans-serif;
   border: 0;
   margin: 0;
@@ -104,7 +116,7 @@ button[selected] {
 
 div[slot="panel"] {
   font-size: 14px;
-  color: white;
+  color: var(--text-color);
 }
 
 .panel-button:hover {
@@ -112,7 +124,7 @@ div[slot="panel"] {
 }
 
 generic-disclosure button {
-  color: white;
+  color: var(--text-color);
   font-family: 'Montserrat',sans-serif;
   border: 0;
   margin: 0;
@@ -189,7 +201,7 @@ generic-skiplink::part(anchor):focus {
   transition: box-shadow .1s ease-in-out;
   left: 2px;
 }
-
+/*
 generic-switch::part(track) {
   border-top-left-radius: 8px;
   height: 100%;
@@ -204,7 +216,7 @@ generic-switch::part(thumb){
   border-radius: 50%;
   background-color: var(--switch-thumb);
   width: 16px;
-  border: solid 2px var(--col-dark);
+  border: solid 2px #2f3136;
 }
 
 generic-switch[checked]::part(thumb) {
@@ -216,7 +228,7 @@ generic-switch::part(button):focus {
   border-radius: 5px;
   box-shadow: 0 0 0 3px var(--col-active)!important;
   transition: box-shadow .1s ease-in-out;
-}
+} */
 /*
 generic-switch::part(label) {
   padding-right: 20px;
@@ -269,6 +281,62 @@ generic-accordion a {
   display: block;
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+
+#genericDialog {
+  width:400px;
+  height:400px;
+  padding:20px;
+  background-color: var(--col-light);
+  color: var(--text-color);
+}
+
+generic-switch::part(button) {
+  height: 20px;
+  width: 40px;
+}
+
+generic-switch::part(thumb) {
+  top: -1px;
+  right: 20px;
+  border: solid 2px #4d4d4d;
+  border-radius: 50%;
+  width: calc(50% - 2px);
+  height: calc(100% - 2px);
+  background-color: white;
+}
+generic-switch[checked]::part(thumb) {
+  right: 0px;
+}
+generic-switch::part(track) {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #4d4d4d;
+}
+
+generic-switch[checked]::part(track)::before {
+  position: absolute;
+  left: 2px;
+  top: 4px;
+  line-height: 14px;
+}
+
+generic-switch#darkmode[checked]::part(track)::before {
+  content: '🌞';
+}
+
+generic-switch#darkmode::part(track)::before {
+  content: '🌛';
+}
+
+generic-switch::part(track)::before {
+  position: absolute;
+  left: 22px;
+  top: 4px;
+  line-height: 14px;
 }
 
 

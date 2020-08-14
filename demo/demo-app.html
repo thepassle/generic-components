@@ -11,8 +11,16 @@
       generic-skiplink:not(:defined), generic-disclosure:not(:defined), generic-tabs:not(:defined), generic-switch:not(:defined), generic-alert:not(:defined) {
         display: none;
       }
+
+      #genericDialog {
+        width:400px;
+        height:400px;
+        padding:20px;
+        background-color: var(--col-light);
+        color: white;
+      }
     </style>
-    
+
     <title>generic-components</title>
   </head>
 
@@ -28,7 +36,16 @@
           <div slot="panel">
             <h2>Showcase</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-            <button id="invoker" class="dialog-button centered">Open a dialog!</button>
+
+            <generic-dialog id="myDialog">
+              <button slot="invoker" class="dialog-button centered">Open a dialog!</button>
+              <div slot="content">
+                <h1>I'm a dialog!</h1>
+                <p>And here is some dialog content</p>
+                <button id="closebtn" class="dialog-button">close</button>
+              </div>
+            </generic-dialog>
+
             <generic-disclosure>
               <button slot="toggle">About</button>
               <p slot="detail">Some content</p>
@@ -74,10 +91,10 @@
                 <a href="/">Click here to join</a>
                 <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
               </div>
-    
+
               <button>Frontend</button>
               <div role="region">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</div>
-    
+
               <button>Backend</button>
               <div role="region">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</div>
             </generic-accordion>
@@ -104,38 +121,15 @@
         }
       });
 
-      invoker.addEventListener('click', (e) => {
-        dialog.open({
-          invokerNode: e.target,
-          content: (dialogNode) => {
-            dialogNode.style.width = '400px';
-            dialogNode.style.height = '400px';
-            dialogNode.style.padding = '20px';
-            dialogNode.style.backgroundColor = 'var(--col-light)';
-            dialogNode.style.color = 'white';
-
-            dialogNode.innerHTML = `
-              <h1>I'm a dialog!</h1>
-              <p>And here is some dialog content</p>
-            `;
-
-            const button = document.createElement('button');
-            button.innerHTML = 'Close';
-            button.classList.add('dialog-button');
-  
-            button.addEventListener('click', () => {
-              dialog.close();
-            })
-  
-            dialogNode.appendChild(button);
-          }
-        })
-      })
+      closebtn.addEventListener('click', () => {
+        myDialog.close();
+      });
     </script>
 
     <script type="module" src="../generic-tabs.js"></script>
     <script type="module" src="../generic-accordion.js"></script>
     <script type="module" src="../generic-disclosure.js"></script>
+    <script type="module" src="../generic-dialog.js"></script>
     <script type="module" src="../generic-skiplink.js"></script>
     <script type="module" src="../generic-alert.js"></script>
     <script type="module" src="../generic-switch.js"></script>

@@ -17,9 +17,13 @@ class Dialog extends EventTargetShim {
 
     const style = document.createElement('style');
     style.innerHTML = `
-
+      #genericDialog {
+        width: auto;
+        height: auto;
+        background-color: white;
+      }
     `;
-    document.head.appendChild(style);
+    document.head.prepend(style);
   }
 
   // eslint-disable-next-line
@@ -78,10 +82,8 @@ class Dialog extends EventTargetShim {
     // container
     const dialogContainer = document.createElement('div');
     this.__dialogContainer = dialogContainer;
+    dialogContainer.id = 'genericDialog';
     dialogContainer.setAttribute('role', 'dialog');
-    dialogContainer.style.width = 'auto';
-    dialogContainer.style.height = 'auto';
-    dialogContainer.style.backgroundColor = 'white';
     focusTrap.appendChild(dialogContainer);
 
     document.body.appendChild(dialogOverlay);

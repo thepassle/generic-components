@@ -97,11 +97,12 @@
 
       <h3>Usage as web component:</h3>
       <div class="demo">
-        <generic-dialog>
+        <generic-dialog id="myDialog">
           <button slot="invoker">open</button>
           <div slot="content">
             <h1>Im used as a web component!</h1>
             <p>dialog content</p>
+            <button id="closebtn">close</button>
           </div>
         </generic-dialog>
       </div>
@@ -110,6 +111,10 @@
         import { dialog } from '../dialog.js';
         import '../../generic-dialog.js';
         import { render, html } from 'https://unpkg.com/lit-html@1.2.1/lit-html.js?module';
+
+        closebtn.addEventListener('click', () => {
+          myDialog.close();
+        });
 
         defaultExample.addEventListener('click', (e) => {
           dialog.open({

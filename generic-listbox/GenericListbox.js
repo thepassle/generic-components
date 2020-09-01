@@ -15,6 +15,8 @@ export class GenericListbox extends HTMLElement {
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
     this.__index = 0;
+    this.__onKeyDown = this.__onKeyDown.bind(this);
+    this.__onClick = this.__onClick.bind(this);
   }
 
   connectedCallback() {
@@ -28,8 +30,8 @@ export class GenericListbox extends HTMLElement {
       this.__ul.setAttribute('aria-label', this.getAttribute('label'));
     }
 
-    this.addEventListener('keydown', this.__onKeyDown.bind(this));
-    this.addEventListener('click', this.__onClick.bind(this));
+    this.addEventListener('keydown', this.__onKeyDown);
+    this.addEventListener('click', this.__onClick);
 
     this.setAttribute('selected', this.__index);
   }

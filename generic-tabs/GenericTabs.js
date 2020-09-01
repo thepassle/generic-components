@@ -39,6 +39,9 @@ export class GenericTabs extends HTMLElement {
     super();
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
+
+    this.__onTabClicked = this.__onTabClicked.bind(this);
+    this.__onKeyDown = this.__onKeyDown.bind(this);
   }
 
   connectedCallback() {
@@ -49,10 +52,10 @@ export class GenericTabs extends HTMLElement {
     }
 
     this.__tablist = this.shadowRoot.querySelector('div[role="tablist"]');
-    this.__tablist.addEventListener('keydown', this.__onKeyDown.bind(this));
+    this.__tablist.addEventListener('keydown', this.__onKeyDown);
 
     this.__tablist.setAttribute('aria-label', this.getAttribute('label') || 'tablist');
-    this.__tablist.addEventListener('click', this.__onTabClicked.bind(this));
+    this.__tablist.addEventListener('click', this.__onTabClicked);
 
     this.setAttribute('selected', this.__index);
   }

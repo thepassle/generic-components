@@ -138,6 +138,38 @@ describe('generic-tabs', () => {
     expect(buttons[1].getAttribute('tabindex')).to.equal('-1');
   });
 
+  it('still works when moved in the dom', async () => {
+    const el = await fixture(tabsFixture);
+
+    const buttons = el.querySelectorAll('button');
+
+    buttons[1].click();
+
+    expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
+    expect(buttons[1].hasAttribute('selected')).to.equal(true);
+
+    expect(buttons[0].getAttribute('aria-selected')).to.equal('false');
+    expect(buttons[0].hasAttribute('selected')).to.equal(false);
+    expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
+
+    // still works after moving element around in the dom
+    const wrapper = await fixture(
+      html`
+        <div></div>
+      `,
+    );
+    wrapper.appendChild(el);
+
+    buttons[0].click();
+
+    expect(buttons[0].getAttribute('aria-selected')).to.equal('true');
+    expect(buttons[0].hasAttribute('selected')).to.equal(true);
+
+    expect(buttons[1].getAttribute('aria-selected')).to.equal('false');
+    expect(buttons[1].hasAttribute('selected')).to.equal(false);
+    expect(buttons[1].getAttribute('tabindex')).to.equal('-1');
+  });
+
   describe('keycodes', () => {
     it('left', async () => {
       const el = await fixture(tabsFixture);

@@ -75,6 +75,37 @@ describe('generic-listbox', () => {
     expect(firstLi.hasAttribute('selected')).to.equal(true);
   });
 
+  it('changes selected on click', async () => {
+    const el = await fixture(defaultFixture);
+
+    const ul = el.querySelector('ul');
+    const listItems = el.querySelectorAll('li');
+
+    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-0');
+    expect(listItems[1].hasAttribute('aria-selected')).to.equal(false);
+    expect(listItems[1].hasAttribute('selected')).to.equal(false);
+
+    listItems[1].click();
+
+    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-1');
+    expect(listItems[1].getAttribute('aria-selected')).to.equal('true');
+    expect(listItems[1].hasAttribute('selected')).to.equal(true);
+
+    // still works after moving element around in the dom
+    const wrapper = await fixture(
+      html`
+        <div></div>
+      `,
+    );
+    wrapper.appendChild(el);
+
+    listItems[2].click();
+
+    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-2');
+    expect(listItems[2].getAttribute('aria-selected')).to.equal('true');
+    expect(listItems[2].hasAttribute('selected')).to.equal(true);
+  });
+
   it('reacts to selected property changed', async () => {
     const el = await fixture(defaultFixture);
 

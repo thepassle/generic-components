@@ -21,6 +21,9 @@ export class GenericAccordion extends HTMLElement {
     super();
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
+    this.__onKeyDown = this.__onKeyDown.bind(this);
+    this.__onClick = this.__onClick.bind(this);
+    this.__onFocus = this.__onFocus.bind(this);
   }
 
   connectedCallback() {
@@ -30,9 +33,9 @@ export class GenericAccordion extends HTMLElement {
       this.__index = 0;
     }
 
-    this.addEventListener('keydown', this.__onKeyDown.bind(this));
-    this.addEventListener('click', this.__onClick.bind(this));
-    this.addEventListener('focusin', this.__onFocus.bind(this));
+    this.addEventListener('keydown', this.__onKeyDown);
+    this.addEventListener('click', this.__onClick);
+    this.addEventListener('focusin', this.__onFocus);
     this.__buttons = [...this.querySelectorAll('button')];
     this.__regions = [...this.querySelectorAll('[role="region"]')];
 

@@ -72,6 +72,30 @@ describe('generic-accordion', () => {
     expect(regions[1].hasAttribute('hidden')).to.equal(false);
   });
 
+  it('reacts to click', async () => {
+    const el = await fixture(defaultFixture);
+    const btns = el.querySelectorAll('button');
+    const regions = el.querySelectorAll('[role="region"]');
+
+    btns[1].click();
+
+    expect(btns[1].getAttribute('aria-expanded')).to.equal('true');
+    expect(regions[1].hasAttribute('hidden')).to.equal(false);
+
+    // still works after moving element around in the dom
+    const wrapper = await fixture(
+      html`
+        <div></div>
+      `,
+    );
+    wrapper.appendChild(el);
+
+    btns[2].click();
+
+    expect(btns[2].getAttribute('aria-expanded')).to.equal('true');
+    expect(regions[2].hasAttribute('hidden')).to.equal(false);
+  });
+
   it('reacts to selected property change', async () => {
     const el = await fixture(defaultFixture);
     const btns = el.querySelectorAll('button');

@@ -16,7 +16,8 @@
     "format:prettier": "prettier \"**/*.js\" --write --ignore-path .prettierignore",
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "format": "npm run format:eslint && npm run format:prettier",
-    "test": "web-test-runner generic-*/test/*.test.js --coverage --node-resolve"
+    "test": "web-test-runner generic-*/test/*.test.js --coverage --node-resolve",
+    "test:watch": "web-test-runner generic-*/test/*.test.js --coverage --node-resolve --watch"
   },
   "devDependencies": {
     "@open-wc/eslint-config": "^1.0.0",

@@ -94,12 +94,20 @@ export class GenericDisclosure extends HTMLElement {
   }
 
   __open() {
-    this.dispatchEvent(new Event('disclosure-opened'));
+    this.dispatchEvent(
+      new CustomEvent('opened-changed', {
+        detail: true,
+      }),
+    );
     this.__button.setAttribute('aria-expanded', 'true');
   }
 
   __close() {
-    this.dispatchEvent(new Event('disclosure-closed'));
+    this.dispatchEvent(
+      new CustomEvent('opened-changed', {
+        detail: false,
+      }),
+    );
     this.__button.setAttribute('aria-expanded', 'false');
   }
 

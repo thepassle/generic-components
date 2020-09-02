@@ -1,4 +1,4 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { html, fixture, expect, oneEvent } from '@open-wc/testing';
 import '../../generic-disclosure.js';
 
 describe('generic-disclosure', () => {
@@ -67,5 +67,35 @@ describe('generic-disclosure', () => {
 
     expect(el.hasAttribute('expanded')).to.equal(false);
     expect(btn.getAttribute('aria-expanded')).to.equal('false');
+  });
+
+  it('fires a opened-changed event - on open', async () => {
+    const el = await fixture(html`
+      <generic-disclosure
+        ><button slot="toggle"></button><span slot="detail"></span
+      ></generic-disclosure>
+    `);
+
+    const listener = oneEvent(el, 'opened-changed');
+
+    el.expanded = true;
+
+    const { detail } = await listener;
+    expect(detail).to.equal(true);
+  });
+
+  it('fires a opened-changed event - on close', async () => {
+    const el = await fixture(html`
+      <generic-disclosure expanded
+        ><button slot="toggle"></button><span slot="detail"></span
+      ></generic-disclosure>
+    `);
+
+    const listener = oneEvent(el, 'opened-changed');
+
+    el.expanded = false;
+
+    const { detail } = await listener;
+    expect(detail).to.equal(false);
   });
 });

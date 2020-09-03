@@ -1,4 +1,4 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { html, fixture, expect, oneEvent } from '@open-wc/testing';
 import '../../generic-tabs.js';
 
 const tabsFixture = html`
@@ -62,6 +62,45 @@ describe('generic-tabs', () => {
     expect(button.getAttribute('aria-selected')).to.equal('true');
     expect(button.hasAttribute('aria-controls')).to.equal(true);
     expect(button.hasAttribute('selected')).to.equal(true);
+  });
+
+  it('reacts to slotchanged', async () => {
+    const el = await fixture(tabsFixture);
+    const tablist = el.shadowRoot.querySelector('[role="tablist"]');
+    const panel = el.querySelector('div[slot="panel"]');
+    const button = el.querySelector('button[slot="tab"]');
+
+    expect(tablist.getAttribute('role')).to.equal('tablist');
+    expect(tablist.getAttribute('aria-label')).to.equal('tablist');
+
+    expect(panel.getAttribute('role')).to.equal('tabpanel');
+    expect(panel.hasAttribute('aria-labelledby')).to.equal(true);
+
+    expect(button.getAttribute('role')).to.equal('tab');
+    expect(button.getAttribute('aria-selected')).to.equal('true');
+    expect(button.hasAttribute('aria-controls')).to.equal(true);
+    expect(button.hasAttribute('selected')).to.equal(true);
+
+    const btn = document.createElement('button');
+    btn.setAttribute('slot', 'tab');
+    const div = document.createElement('div');
+    div.setAttribute('slot', 'panel');
+    el.append(btn);
+    el.append(div);
+
+    const listener = oneEvent(el.shadowRoot, 'slotchange');
+    await listener;
+
+    const newpanel = el.querySelectorAll('div[slot="panel"]')[2];
+    const newbutton = el.querySelectorAll('button[slot="tab"]')[2];
+
+    expect(newpanel.getAttribute('role')).to.equal('tabpanel');
+    expect(newpanel.hasAttribute('aria-labelledby')).to.equal(true);
+
+    expect(newbutton.getAttribute('role')).to.equal('tab');
+    expect(newbutton.getAttribute('aria-selected')).to.equal('false');
+    expect(newbutton.hasAttribute('aria-controls')).to.equal(true);
+    expect(newbutton.hasAttribute('selected')).to.equal(false);
   });
 
   it('activates first tab by default', async () => {

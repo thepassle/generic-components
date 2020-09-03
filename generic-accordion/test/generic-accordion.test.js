@@ -1,4 +1,4 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { html, fixture, expect, oneEvent } from '@open-wc/testing';
 import '../../generic-accordion.js';
 
 const defaultFixture = html`
@@ -72,7 +72,7 @@ describe('generic-accordion', () => {
     expect(regions[1].hasAttribute('hidden')).to.equal(false);
   });
 
-  it('reacts to click', async () => {
+  it('still works if moved around in the dom', async () => {
     const el = await fixture(defaultFixture);
     const btns = el.querySelectorAll('button');
     const regions = el.querySelectorAll('[role="region"]');
@@ -94,6 +94,29 @@ describe('generic-accordion', () => {
 
     expect(btns[2].getAttribute('aria-expanded')).to.equal('true');
     expect(regions[2].hasAttribute('hidden')).to.equal(false);
+  });
+
+  it('reacts to slotchanged', async () => {
+    const el = await fixture(defaultFixture);
+    const btns = el.querySelectorAll('button');
+    const regions = el.querySelectorAll('[role="region"]');
+
+    btns[1].click();
+
+    expect(btns[1].getAttribute('aria-expanded')).to.equal('true');
+    expect(regions[1].hasAttribute('hidden')).to.equal(false);
+
+    const div = document.createElement('div');
+    const btn = document.createElement('button');
+    div.setAttribute('role', 'region');
+    el.append(btn);
+    el.append(div);
+
+    const listener = oneEvent(el.shadowRoot, 'slotchange');
+    await listener;
+
+    expect(el.querySelectorAll('button')[3].getAttribute('aria-expanded')).to.equal('false');
+    expect(el.querySelectorAll('[role="region"]')[3].hasAttribute('hidden')).to.equal(true);
   });
 
   it('reacts to selected property change', async () => {

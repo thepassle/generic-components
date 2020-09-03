@@ -1,3 +1,8 @@
+/**
+ * @element generic-skiplink
+ *
+ * @csspart anchor
+ */
 export class GenericSkiplink extends HTMLElement {
   constructor() {
     super();

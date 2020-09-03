@@ -1,16 +1,3 @@
-/**
- * Todo:
- * css parts
- *
- * DOCS:
- * generic-tab should have a label attribute
- *
- * Tabs should be buttons
- * Tabs should have slot tab
- *
- * Panels should have slot panel
- */
-
 import { KEYCODES } from '../utils/keycodes.js';
 
 const template = document.createElement('template');
@@ -34,6 +21,12 @@ template.innerHTML = `
   </div>
 `;
 
+/**
+ * @element generic-tabs
+ *
+ * @csspart tablist
+ * @csspart panel
+ */
 export class GenericTabs extends HTMLElement {
   constructor() {
     super();

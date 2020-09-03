@@ -53,6 +53,16 @@ template.innerHTML = `
 
 let __count = 0;
 
+/**
+ * @element generic-switch
+ *
+ * @cssprop --generic-switch-focus - Customizes the focus styles of the thumb
+ *
+ * @csspart label
+ * @csspart thumb
+ * @csspart track
+ * @csspart button
+ */
 export class GenericSwitch extends HTMLElement {
   constructor() {
     super();

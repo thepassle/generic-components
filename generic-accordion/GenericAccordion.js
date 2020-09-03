@@ -33,13 +33,17 @@ export class GenericAccordion extends HTMLElement {
       this.__index = 0;
     }
 
+    this.shadowRoot.addEventListener('slotchange', () => {
+      this.__buttons = [...this.querySelectorAll('button')];
+      this.__regions = [...this.querySelectorAll('[role="region"]')];
+      this.__updateActive(false);
+    });
+
     this.addEventListener('keydown', this.__onKeyDown);
     this.addEventListener('click', this.__onClick);
     this.addEventListener('focusin', this.__onFocus);
     this.__buttons = [...this.querySelectorAll('button')];
     this.__regions = [...this.querySelectorAll('[role="region"]')];
-
-    this.setAttribute('selected', this.__index);
   }
 
   static get observedAttributes() {
@@ -50,7 +54,7 @@ export class GenericAccordion extends HTMLElement {
     if (name === 'selected') {
       if (newVal !== oldVal) {
         this.__index = Number(this.getAttribute('selected'));
-        this.__updateActive();
+        this.__updateActive(true);
       }
     }
   }
@@ -105,7 +109,7 @@ export class GenericAccordion extends HTMLElement {
     this.__buttons[this.__index].focus();
   }
 
-  __updateActive() {
+  __updateActive(shouldDispatchEvent) {
     const buttons = this.__getButtons();
     const regions = this.__getRegions();
 
@@ -131,12 +135,14 @@ export class GenericAccordion extends HTMLElement {
       }
     });
 
-    const { __index } = this;
-    this.dispatchEvent(
-      new CustomEvent('selected-changed', {
-        detail: __index,
-      }),
-    );
+    if (shouldDispatchEvent) {
+      const { __index } = this;
+      this.dispatchEvent(
+        new CustomEvent('selected-changed', {
+          detail: __index,
+        }),
+      );
+    }
   }
 
   __getButtons() {

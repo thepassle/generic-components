@@ -44,13 +44,15 @@ export class GenericTabs extends HTMLElement {
       this.__index = 0;
     }
 
+    this.shadowRoot.addEventListener('slotchange', () => {
+      this.__updateActive(false);
+    });
+
     this.__tablist = this.shadowRoot.querySelector('div[role="tablist"]');
     this.__tablist.addEventListener('keydown', this.__onKeyDown);
 
     this.__tablist.setAttribute('aria-label', this.getAttribute('label') || 'tablist');
     this.__tablist.addEventListener('click', this.__onTabClicked);
-
-    this.setAttribute('selected', this.__index);
   }
 
   static get observedAttributes() {
@@ -62,7 +64,7 @@ export class GenericTabs extends HTMLElement {
     if (name === 'selected') {
       if (newVal !== oldVal) {
         this.__index = Number(this.getAttribute('selected'));
-        this.__updateActive();
+        this.__updateActive(true);
       }
     }
   }
@@ -112,7 +114,7 @@ export class GenericTabs extends HTMLElement {
     this.__focus();
   }
 
-  __updateActive() {
+  __updateActive(shouldDispatchEvent) {
     const tabs = this.__getTabs();
     const panels = this.__getPanels();
 
@@ -140,12 +142,14 @@ export class GenericTabs extends HTMLElement {
       panels[i].setAttribute('aria-labelledby', `generic-tab-${i}`);
     });
 
-    const { __index } = this;
-    this.dispatchEvent(
-      new CustomEvent('selected-changed', {
-        detail: __index,
-      }),
-    );
+    if (shouldDispatchEvent) {
+      const { __index } = this;
+      this.dispatchEvent(
+        new CustomEvent('selected-changed', {
+          detail: __index,
+        }),
+      );
+    }
   }
 
   __onTabClicked(e) {

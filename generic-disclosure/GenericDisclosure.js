@@ -8,13 +8,12 @@ template.innerHTML = `
       border-bottom: lightgrey solid 1px;
     }
 
-    :host([expanded]) ::slotted([slot="detail"]) {
-      display: block;
-      padding: 10px;
+    :host slot[name="detail"] {
+      display: none;
     }
 
-    :host ::slotted([slot="detail"]) {
-      display: none;
+    :host([expanded]) slot[name="detail"] {
+      display: block;
     }
 
     ::slotted(button) {

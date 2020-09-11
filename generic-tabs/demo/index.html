@@ -17,6 +17,13 @@
     button[selected] {
       border-bottom: solid 3px blue;
     }
+
+    generic-tabs[vertical] p {
+      margin: 0;
+    }
+    generic-tabs[vertical] div {
+      height: 100%;
+    }
   </style>
 
   <title>generic-components</title>
@@ -137,7 +144,7 @@
 
 
 
-      <!-- <h3>Selected:</h3>
+      <h3>Selected:</h3>
       <details>
           <summary>Show code</summary>
       <pre><code class="language-markup"><script type="prism-html-markup"><generic-tabs selected="1" label="people">
@@ -173,7 +180,52 @@
             <p>I am Jack. I am opened by default.</p>
           </div>
         </generic-tabs>
-      </div> -->
+      </div>
+
+      <h3>Vertical:</h3>
+      <details>
+          <summary>Show code</summary>
+      <pre><code class="language-markup"><script type="prism-html-markup"><generic-tabs vertical label="people">
+  <button slot="tab">
+      Jim
+    </button>
+    <div slot="panel">
+      <p>And my name is Jim. Im not opened by default.</p>
+    </div>
+
+    <button slot="tab">
+      Jack
+    </button>
+    <div slot="panel">
+      <p>I am Jack. I am opened by default.</p>
+    </div>
+</generic-tabs>
+</script></code></pre>
+</details>
+      <div class="demo">
+        <generic-tabs vertical label="people">
+          <button slot="tab">
+            Jeff
+          </button>
+          <div slot="panel">
+            <p>My name is Jeff.</p>
+          </div>
+
+          <button slot="tab">
+            Jack
+          </button>
+          <div slot="panel">
+            <p>I am Jack.</p>
+          </div>
+
+          <button slot="tab">
+            James
+          </button>
+          <div slot="panel">
+            <p>I am James.</p>
+          </div>
+        </generic-tabs>
+      </div>
 <!--
       <div id="foo"></div>
 

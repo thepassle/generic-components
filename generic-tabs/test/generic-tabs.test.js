@@ -1,4 +1,5 @@
-import { html, fixture, expect, oneEvent } from '@open-wc/testing';
+import { html, fixture, fixtureSync, expect } from '@open-wc/testing';
+import { stub } from 'sinon';
 import '../../generic-tabs.js';
 
 const tabsFixture = html`
@@ -39,15 +40,13 @@ const tabsFixtureSelected = html`
 
 describe('generic-tabs', () => {
   it('a11y', async () => {
-    const el = await fixture(html`
-      <generic-tabs></generic-tabs>
-    `);
-
+    const el = await fixture(tabsFixture);
     await expect(el).to.be.accessible();
   });
 
   it('has required aria attributes', async () => {
     const el = await fixture(tabsFixture);
+
     const tablist = el.shadowRoot.querySelector('[role="tablist"]');
     const panel = el.querySelector('div[slot="panel"]');
     const button = el.querySelector('button[slot="tab"]');
@@ -66,6 +65,7 @@ describe('generic-tabs', () => {
 
   it('reacts to slotchanged', async () => {
     const el = await fixture(tabsFixture);
+
     const tablist = el.shadowRoot.querySelector('[role="tablist"]');
     const panel = el.querySelector('div[slot="panel"]');
     const button = el.querySelector('button[slot="tab"]');
@@ -88,8 +88,7 @@ describe('generic-tabs', () => {
     el.append(btn);
     el.append(div);
 
-    const listener = oneEvent(el.shadowRoot, 'slotchange');
-    await listener;
+    await el.updateComplete;
 
     const newpanel = el.querySelectorAll('div[slot="panel"]')[2];
     const newbutton = el.querySelectorAll('button[slot="tab"]')[2];
@@ -130,6 +129,7 @@ describe('generic-tabs', () => {
   it('reacts to selected property changed', async () => {
     const el = await fixture(tabsFixture);
     el.selected = 1;
+    await el.updateComplete;
     const buttons = el.querySelectorAll('button');
 
     expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
@@ -143,6 +143,7 @@ describe('generic-tabs', () => {
   it('reacts to selected attribute changed', async () => {
     const el = await fixture(tabsFixture);
     el.setAttribute('selected', '1');
+    await el.updateComplete;
     const buttons = el.querySelectorAll('button');
 
     expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
@@ -159,6 +160,7 @@ describe('generic-tabs', () => {
     const buttons = el.querySelectorAll('button');
 
     buttons[1].click();
+    await el.updateComplete;
 
     expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
     expect(buttons[1].hasAttribute('selected')).to.equal(true);
@@ -168,6 +170,7 @@ describe('generic-tabs', () => {
     expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
 
     buttons[0].click();
+    await el.updateComplete;
 
     expect(buttons[0].getAttribute('aria-selected')).to.equal('true');
     expect(buttons[0].hasAttribute('selected')).to.equal(true);
@@ -183,6 +186,7 @@ describe('generic-tabs', () => {
     const buttons = el.querySelectorAll('button');
 
     buttons[1].click();
+    await el.updateComplete;
 
     expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
     expect(buttons[1].hasAttribute('selected')).to.equal(true);
@@ -200,6 +204,7 @@ describe('generic-tabs', () => {
     wrapper.appendChild(el);
 
     buttons[0].click();
+    await el.updateComplete;
 
     expect(buttons[0].getAttribute('aria-selected')).to.equal('true');
     expect(buttons[0].hasAttribute('selected')).to.equal(true);
@@ -215,6 +220,7 @@ describe('generic-tabs', () => {
       const buttons = el.querySelectorAll('button');
 
       el.__onKeyDown({ preventDefault: () => {}, keyCode: 37 });
+      await el.updateComplete;
 
       expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
       expect(buttons[1].hasAttribute('selected')).to.equal(true);
@@ -230,6 +236,7 @@ describe('generic-tabs', () => {
 
       el.__onKeyDown({ preventDefault: () => {}, keyCode: 37 });
       el.__onKeyDown({ preventDefault: () => {}, keyCode: 37 });
+      await el.updateComplete;
 
       expect(buttons[0].getAttribute('aria-selected')).to.equal('true');
       expect(buttons[0].hasAttribute('selected')).to.equal(true);
@@ -244,6 +251,7 @@ describe('generic-tabs', () => {
       const buttons = el.querySelectorAll('button');
 
       el.__onKeyDown({ preventDefault: () => {}, keyCode: 39 });
+      await el.updateComplete;
 
       expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
       expect(buttons[1].hasAttribute('selected')).to.equal(true);
@@ -259,6 +267,7 @@ describe('generic-tabs', () => {
 
       el.__onKeyDown({ preventDefault: () => {}, keyCode: 39 });
       el.__onKeyDown({ preventDefault: () => {}, keyCode: 39 });
+      await el.updateComplete;
 
       expect(buttons[0].getAttribute('aria-selected')).to.equal('true');
       expect(buttons[0].hasAttribute('selected')).to.equal(true);
@@ -287,6 +296,96 @@ describe('generic-tabs', () => {
       const buttons = el.querySelectorAll('button');
 
       el.__onKeyDown({ preventDefault: () => {}, keyCode: 35 });
+      await el.updateComplete;
+
+      expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
+      expect(buttons[1].hasAttribute('selected')).to.equal(true);
+
+      expect(buttons[0].getAttribute('aria-selected')).to.equal('false');
+      expect(buttons[0].hasAttribute('selected')).to.equal(false);
+      expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
+    });
+  });
+
+  describe('events', () => {
+    it('doesnt dispatch on first update', async () => {
+      const el = fixtureSync(tabsFixture);
+      const dispatchStub = stub(el, '__dispatch');
+      await el.updateComplete;
+      expect(dispatchStub).callCount(0);
+      dispatchStub.restore();
+    });
+
+    it('doesnt dispatch when the vertical attribute is set', async () => {
+      const el = fixtureSync(tabsFixture);
+      const dispatchStub = stub(el, '__dispatch');
+      el.setAttribute('vertical', '');
+      await el.updateComplete;
+      expect(dispatchStub).callCount(0);
+      dispatchStub.restore();
+    });
+
+    it('doesnt dispatch on slotchange', async () => {
+      const el = await fixture(tabsFixture);
+      const dispatchStub = stub(el, '__dispatch');
+
+      const btn = document.createElement('button');
+      btn.setAttribute('slot', 'tab');
+      const div = document.createElement('div');
+      div.setAttribute('slot', 'panel');
+      el.append(btn);
+      el.append(div);
+
+      await el.updateComplete;
+      expect(dispatchStub).callCount(0);
+      dispatchStub.restore();
+    });
+
+    it('fires event on attr change', async () => {
+      const el = await fixture(tabsFixture);
+      const dispatchStub = stub(el, '__dispatch');
+      el.setAttribute('selected', '1');
+      await el.updateComplete;
+      expect(dispatchStub).callCount(1);
+      dispatchStub.restore();
+    });
+
+    it('fires event on prop change', async () => {
+      const el = await fixture(tabsFixture);
+      const dispatchStub = stub(el, '__dispatch');
+      el.selected = 1;
+      await el.updateComplete;
+      expect(dispatchStub).callCount(1);
+      dispatchStub.restore();
+    });
+
+    it('fires event on keydown', async () => {
+      const el = await fixture(tabsFixture);
+      const dispatchStub = stub(el, '__dispatch');
+      el.__onKeyDown({ preventDefault: () => {}, keyCode: 37 });
+      await el.updateComplete;
+      expect(dispatchStub).callCount(1);
+      dispatchStub.restore();
+    });
+
+    it('fires event on click', async () => {
+      const el = await fixture(tabsFixture);
+      const dispatchStub = stub(el, '__dispatch');
+      el.querySelectorAll('button')[1].click();
+      await el.updateComplete;
+      expect(dispatchStub).callCount(1);
+      dispatchStub.restore();
+    });
+  });
+
+  describe('vertical', () => {
+    it('changes accepted keys in vertical mode', async () => {
+      const el = await fixture(tabsFixture);
+      el.setAttribute('vertical', '');
+      el.__onKeyDown({ preventDefault: () => {}, keyCode: 40 });
+      await el.updateComplete;
+
+      const buttons = el.querySelectorAll('button');
 
       expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
       expect(buttons[1].hasAttribute('selected')).to.equal(true);

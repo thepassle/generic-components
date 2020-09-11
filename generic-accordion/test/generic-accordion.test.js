@@ -1,4 +1,5 @@
-import { html, fixture, expect, oneEvent } from '@open-wc/testing';
+import { html, fixture, expect, fixtureSync } from '@open-wc/testing';
+import { stub } from 'sinon';
 import '../../generic-accordion.js';
 
 const defaultFixture = html`
@@ -23,19 +24,6 @@ describe('generic-accordion', () => {
     const el = await fixture(defaultFixture);
 
     await expect(el).to.be.accessible();
-  });
-
-  it('throws error if no buttons or regions are provided', async () => {
-    try {
-      // eslint-disable-next-line
-      const el = await fixture(
-        html`
-          <generic-accordion></generic-accordion>
-        `,
-      );
-    } catch {
-      expect(true).to.equal(true);
-    }
   });
 
   it('has the required aria attributes', async () => {
@@ -67,6 +55,7 @@ describe('generic-accordion', () => {
     const regions = el.querySelectorAll('[role="region"]');
 
     btns[1].click();
+    await el.updateComplete;
 
     expect(btns[1].getAttribute('aria-expanded')).to.equal('true');
     expect(regions[1].hasAttribute('hidden')).to.equal(false);
@@ -78,6 +67,7 @@ describe('generic-accordion', () => {
     const regions = el.querySelectorAll('[role="region"]');
 
     btns[1].click();
+    await el.updateComplete;
 
     expect(btns[1].getAttribute('aria-expanded')).to.equal('true');
     expect(regions[1].hasAttribute('hidden')).to.equal(false);
@@ -91,6 +81,7 @@ describe('generic-accordion', () => {
     wrapper.appendChild(el);
 
     btns[2].click();
+    await el.updateComplete;
 
     expect(btns[2].getAttribute('aria-expanded')).to.equal('true');
     expect(regions[2].hasAttribute('hidden')).to.equal(false);
@@ -102,6 +93,7 @@ describe('generic-accordion', () => {
     const regions = el.querySelectorAll('[role="region"]');
 
     btns[1].click();
+    await el.updateComplete;
 
     expect(btns[1].getAttribute('aria-expanded')).to.equal('true');
     expect(regions[1].hasAttribute('hidden')).to.equal(false);
@@ -112,8 +104,7 @@ describe('generic-accordion', () => {
     el.append(btn);
     el.append(div);
 
-    const listener = oneEvent(el.shadowRoot, 'slotchange');
-    await listener;
+    await el.updateComplete;
 
     expect(el.querySelectorAll('button')[3].getAttribute('aria-expanded')).to.equal('false');
     expect(el.querySelectorAll('[role="region"]')[3].hasAttribute('hidden')).to.equal(true);
@@ -125,6 +116,7 @@ describe('generic-accordion', () => {
     const regions = el.querySelectorAll('[role="region"]');
 
     el.selected = 1;
+    await el.updateComplete;
 
     expect(btns[1].getAttribute('aria-expanded')).to.equal('true');
     expect(regions[1].hasAttribute('hidden')).to.equal(false);
@@ -135,11 +127,7 @@ describe('generic-accordion', () => {
       const el = await fixture(defaultFixture);
       const btns = el.querySelectorAll('button');
 
-      el.__onKeyDown({
-        preventDefault: () => {},
-        keyCode: 40,
-        target: { id: 'generic-accordion-' },
-      });
+      el.__onKeyDown({ preventDefault: () => {}, keyCode: 40 });
 
       expect(btns[1]).to.equal(document.activeElement);
     });
@@ -148,16 +136,8 @@ describe('generic-accordion', () => {
       const el = await fixture(defaultFixture);
       const btns = el.querySelectorAll('button');
 
-      el.__onKeyDown({
-        preventDefault: () => {},
-        keyCode: 40,
-        target: { id: 'generic-accordion-' },
-      });
-      el.__onKeyDown({
-        preventDefault: () => {},
-        keyCode: 40,
-        target: { id: 'generic-accordion-' },
-      });
+      el.__onKeyDown({ preventDefault: () => {}, keyCode: 40 });
+      el.__onKeyDown({ preventDefault: () => {}, keyCode: 40 });
 
       expect(btns[2]).to.equal(document.activeElement);
     });
@@ -166,11 +146,7 @@ describe('generic-accordion', () => {
       const el = await fixture(defaultFixture);
       const btns = el.querySelectorAll('button');
 
-      el.__onKeyDown({
-        preventDefault: () => {},
-        keyCode: 38,
-        target: { id: 'generic-accordion-' },
-      });
+      el.__onKeyDown({ preventDefault: () => {}, keyCode: 38 });
 
       expect(btns[2]).to.equal(document.activeElement);
     });
@@ -179,16 +155,8 @@ describe('generic-accordion', () => {
       const el = await fixture(defaultFixture);
       const btns = el.querySelectorAll('button');
 
-      el.__onKeyDown({
-        preventDefault: () => {},
-        keyCode: 38,
-        target: { id: 'generic-accordion-' },
-      });
-      el.__onKeyDown({
-        preventDefault: () => {},
-        keyCode: 38,
-        target: { id: 'generic-accordion-' },
-      });
+      el.__onKeyDown({ preventDefault: () => {}, keyCode: 38 });
+      el.__onKeyDown({ preventDefault: () => {}, keyCode: 38 });
 
       expect(btns[1]).to.equal(document.activeElement);
     });
@@ -197,11 +165,7 @@ describe('generic-accordion', () => {
       const el = await fixture(defaultFixture);
       const btns = el.querySelectorAll('button');
 
-      el.__onKeyDown({
-        preventDefault: () => {},
-        keyCode: 36,
-        target: { id: 'generic-accordion-' },
-      });
+      el.__onKeyDown({ preventDefault: () => {}, keyCode: 36 });
 
       expect(btns[0]).to.equal(document.activeElement);
     });
@@ -210,13 +174,70 @@ describe('generic-accordion', () => {
       const el = await fixture(defaultFixture);
       const btns = el.querySelectorAll('button');
 
-      el.__onKeyDown({
-        preventDefault: () => {},
-        keyCode: 35,
-        target: { id: 'generic-accordion-' },
-      });
+      el.__onKeyDown({ preventDefault: () => {}, keyCode: 35 });
 
       expect(btns[2]).to.equal(document.activeElement);
+    });
+  });
+
+  describe('events', () => {
+    it('doesnt dispatch on first update', async () => {
+      const el = fixtureSync(defaultFixture);
+      const dispatchStub = stub(el, '__dispatch');
+      await el.updateComplete;
+      expect(dispatchStub).callCount(0);
+      dispatchStub.restore();
+    });
+
+    it('doesnt dispatch on slotchange', async () => {
+      const el = await fixture(defaultFixture);
+      const dispatchStub = stub(el, '__dispatch');
+
+      const div = document.createElement('div');
+      const btn = document.createElement('button');
+      div.setAttribute('role', 'region');
+      el.append(btn);
+      el.append(div);
+
+      await el.updateComplete;
+      expect(dispatchStub).callCount(0);
+      dispatchStub.restore();
+    });
+
+    it('doesnt dispatch on keydown', async () => {
+      const el = await fixture(defaultFixture);
+      const dispatchStub = stub(el, '__dispatch');
+
+      el.__onKeyDown({ preventDefault: () => {}, keyCode: 40 });
+      expect(dispatchStub).callCount(0);
+      dispatchStub.restore();
+    });
+
+    it('fires event on attr change', async () => {
+      const el = await fixture(defaultFixture);
+      const dispatchStub = stub(el, '__dispatch');
+      el.setAttribute('selected', '1');
+      await el.updateComplete;
+      expect(dispatchStub).callCount(1);
+      dispatchStub.restore();
+    });
+
+    it('fires event on prop change', async () => {
+      const el = await fixture(defaultFixture);
+      const dispatchStub = stub(el, '__dispatch');
+      el.selected = 1;
+      await el.updateComplete;
+      expect(dispatchStub).callCount(1);
+      dispatchStub.restore();
+    });
+
+    it('fires event on click', async () => {
+      const el = await fixture(defaultFixture);
+      const dispatchStub = stub(el, '__dispatch');
+      el.querySelectorAll('button')[1].click();
+      await el.updateComplete;
+      expect(dispatchStub).callCount(1);
+      dispatchStub.restore();
     });
   });
 });

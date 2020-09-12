@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="Description" content="Put your description here.">
   <link rel="stylesheet" type="text/css" href="../../demo/styles.css">
+  <script type="module" src="../../generic-disclosure.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css">
   <script src="https://unpkg.com/prismjs@1.20.0/prism.js"></script>
@@ -62,9 +63,6 @@
             <a href="/generic-tabs/demo/index.html">generic-tabs</a>
           </li>
           <li>
-            <a href="/generic-tooltip/demo/index.html">generic-tooltip</a>
-          </li>
-          <li>
             <a href="/generic-visually-hidden/demo/index.html">generic-visually-hidden</a>
           </li>
           <hr>
@@ -77,75 +75,158 @@
     <main class="content">
       <h1>generic-accordion</h1>
       <a href="https://www.w3.org/TR/wai-aria-practices/#accordion">WAI ARIA Practices</a>
-      <br/>
-      <br/>
+
       <p class="description">An accordion is a vertically stacked set of interactive headings that each contain a title, content snippet, or thumbnail representing a section of content.</p>
+      <h2>API:</h2>
+      <div class="demo">
+        <generic-disclosure>
+          <button slot="toggle">Events</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>detail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>selected-changed</td>
+                  <td>number</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+        <generic-disclosure>
+          <button slot="toggle">Attributes</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>selected</td>
+                  <td>number</td>
+                </tr>
+                <tr>
+                  <td>vertical</td>
+                  <td>boolean</td>
+                </tr>
+                <tr>
+                  <td>label</td>
+                  <td>string</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+        <generic-disclosure>
+          <button slot="toggle">Properties</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>selected</td>
+                  <td>number</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+        <generic-disclosure>
+          <button slot="toggle">Slots</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>default</td>
+                  <td>Provide a button element as lightdom, and content nodes with a <code>role="region"</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+      </div>
+
       <h2>Usage:</h2>
       <p>The accordion requires a button as trigger, and a content element that contains a <code>role="region"</code>. You can find an example down below.</p>
-      <h3>Default:</h3>
-      <details><summary>Show code</summary>
-      <pre><code class="language-markup"><script type="prism-html-markup"><generic-accordion>
-  <button>One</button>
+      <div class="demo">
+        <h3>Default:</h3>
+        <details><summary>Show code</summary>
+        <pre><code class="language-markup"><script type="prism-html-markup"><generic-accordion>
+  <button>Home</button>
   <div role="region">
-    <p>foo</p>
-    <a href="/">asdfa</a>
-    <p>foo</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <a href="/">eiusmod tempor</a> incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
   </div>
 
-  <button>Two</button>
-  <div role="region">Hi</div>
+  <button>About</button>
+  <div role="region">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</div>
 
-  <button>Three</button>
-  <div role="region">Bar</div>
-</generic-accordion></script></code></pre>
-      </details>
-      <div class="demo">
+  <button>Contact</button>
+  <div role="region">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.</div>
+</generic-accordion>
+</script></code></pre>
+        </details>
+        <hr/>
         <generic-accordion>
-          <button>One</button>
+          <button>Home</button>
           <div role="region">
-            <p>foo</p>
-            <a href="/">asdfa</a>
-            <p>foo</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <a href="/">eiusmod tempor</a> incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           </div>
 
-          <button>Two</button>
-          <div role="region">Hi</div>
+          <button>About</button>
+          <div role="region">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</div>
 
-          <button>Three</button>
-          <div role="region">Bar</div>
+          <button>Contact</button>
+          <div role="region">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.</div>
         </generic-accordion>
       </div>
-      <h3>Selected:</h3>
-      <details><summary>Show code</summary>
-      <pre><code class="language-markup"><script type="prism-html-markup"><generic-accordion selected="1">
-  <button>One</button>
+      <div class="demo">
+        <h3>Selected:</h3>
+        <details><summary>Show code</summary>
+        <pre><code class="language-markup"><script type="prism-html-markup"><generic-accordion selected="1">
+  <button>Home</button>
   <div role="region">
-    <p>foo</p>
-    <a href="/">asdfa</a>
-    <p>foo</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <a href="/">eiusmod tempor</a> incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
   </div>
 
-  <button>Two</button>
-  <div role="region">Hi</div>
+  <button>About</button>
+  <div role="region">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</div>
 
-  <button>Three</button>
-  <div role="region">Bar</div>
-</generic-accordion></script></code></pre>
-      </details>
-      <div class="demo">
+  <button>Contact</button>
+  <div role="region">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.</div>
+</generic-accordion>
+</script></code></pre>
+        </details>
+        <hr/>
         <generic-accordion selected="1">
-          <button>One</button>
+          <button>Home</button>
           <div role="region">
-            <p>foo</p>
-            <a href="/">asdfa</a>
-            <p>foo</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <a href="/">eiusmod tempor</a> incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           </div>
 
-          <button>Two</button>
-          <div role="region">Hi</div>
+          <button>About</button>
+          <div role="region">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</div>
 
-          <button>Three</button>
-          <div role="region">Bar</div>
+          <button>Contact</button>
+          <div role="region">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.</div>
         </generic-accordion>
       </div>
 

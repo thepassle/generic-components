@@ -16,14 +16,14 @@
     "format:prettier": "prettier \"**/*.js\" --write --ignore-path .prettierignore",
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "format": "npm run format:eslint && npm run format:prettier",
-    "test": "web-test-runner generic-*/test/*.test.js --coverage --node-resolve",
-    "test:watch": "web-test-runner generic-*/test/*.test.js --coverage --node-resolve --watch"
+    "test": "web-test-runner **/*/*.test.js --coverage --node-resolve",
+    "test:watch": "web-test-runner **/*/*.test.js --coverage --node-resolve --watch"
   },
   "devDependencies": {
     "@open-wc/eslint-config": "^1.0.0",
     "@open-wc/prettier-config": "^0.1.10",
     "@open-wc/testing": "^2.5.17",
-    "@web/test-runner": "^0.6.26",
+    "@web/test-runner": "^0.7.21",
     "es-dev-server": "^1.57.2",
     "eslint": "^6.1.0",
     "husky": "^1.0.0",

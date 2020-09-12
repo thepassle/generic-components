@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="Description" content="Put your description here.">
   <link rel="stylesheet" type="text/css" href="../../demo/styles.css">
+  <script type="module" src="../../generic-disclosure.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css">
   <script src="https://unpkg.com/prismjs@1.20.0/prism.js"></script>
@@ -16,6 +17,18 @@
 
     button[selected] {
       border-bottom: solid 3px blue;
+    }
+
+    generic-tabs[vertical] p {
+      margin: 0;
+      margin-left: 20px;
+    }
+    generic-tabs[vertical] div {
+      height: 100%;
+    }
+    generic-tabs[vertical] button[selected] {
+      border-bottom: none;
+      border-right: solid 3px blue;
     }
   </style>
 
@@ -57,9 +70,6 @@
             <a href="/generic-tabs/demo/index.html">generic-tabs</a>
           </li>
           <li>
-            <a href="/generic-tooltip/demo/index.html">generic-tooltip</a>
-          </li>
-          <li>
             <a href="/generic-visually-hidden/demo/index.html">generic-visually-hidden</a>
           </li>
 
@@ -74,113 +84,240 @@
     <main id="main" class="content">
       <h1>generic-tabs</h1>
       <a href="https://www.w3.org/TR/wai-aria-practices/#tabpanel">WAI ARIA Practices</a>
-      <br/>
-      <br/>
+
       <p class="description">Tabs are a set of layered sections of content, known as tab panels, that display one panel of content at a time.</p>
+      <h2>API:</h2>
+      <div class="demo">
+        <generic-disclosure>
+          <button slot="toggle">Events</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>detail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>selected-changed</td>
+                  <td>number</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+        <generic-disclosure>
+          <button slot="toggle">Attributes</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>selected</td>
+                  <td>number</td>
+                </tr>
+                <tr>
+                  <td>vertical</td>
+                  <td>boolean</td>
+                </tr>
+                <tr>
+                  <td>label</td>
+                  <td>string</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+        <generic-disclosure>
+          <button slot="toggle">Properties</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>selected</td>
+                  <td>number</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+        <generic-disclosure>
+          <button slot="toggle">Slots</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>tab</td>
+                  <td>Provide a button element as lightdom</td>
+                </tr>
+                <tr>
+                  <td>panel</td>
+                  <td>Provide a content node as lightdom</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+      </div>
       <h2>Usage:</h2>
+
       <p>The tabs component requires a button with a <code>slot="tab"</code> as trigger, and a corresponding panel node with a <code>slot="panel"</code>.</p>
 
-      <h3>Default:</h3>
-      <details>
-          <summary>Show code</summary>
-      <pre><code class="language-markup"><script type="prism-html-markup"><generic-tabs label="people">
-  <button slot="tab">
-    John
-  </button>
-  <div slot="panel">
-    <p>My name is John. I like dogs.</p>
-    <button>click</button>
-    <p>some text</p>
-    <button>click</button>
-  </div>
-
-  <button slot="tab">
-    Mark
-  </button>
-  <div slot="panel">
-    <p>And I am Mark. I dont like dogs!</p>
-  </div>
-
-  <button slot="tab">
-    Ron
-  </button>
-  <div slot="panel">
-    <p>Hello I am Ron</p>
-    <a href="/">foo</a>
-    <p>i like cats</p>
-    <button>click</button>
-  </div>
-</generic-tabs>
-</script></code></pre>
-</details>
 
       <div class="demo">
-        <generic-tabs label="people">
+        <h3>Default:</h3>
+        <hr>
+              <details>
+                  <summary>Show code</summary>
+              <pre><code class="language-markup"><script type="prism-html-markup"><generic-tabs label="people">
+  <button slot="tab">
+    About
+  </button>
+
+  <button slot="tab">
+    Contact
+  </button>
+
+  <div slot="panel">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+
+  <div slot="panel">
+    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+  </div>
+</generic-tabs>
+        </script></code></pre>
+        </details>
+        <hr>
+        <generic-tabs label="Menu">
           <button slot="tab">
-            John
+            About
           </button>
-          <div slot="panel">
-            <p>My name is John. I like dogs.</p>
-            <button>click</button>
-            <p>some text</p>
-            <button>click</button>
-          </div>
 
           <button slot="tab">
-            Mark
+            Contact
           </button>
+
           <div slot="panel">
-            <p>And I am Mark. I dont like dogs!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           </div>
 
-          <button slot="tab">
-            Ron
-          </button>
           <div slot="panel">
-            <p>Hello I am Ron</p>
-            <a href="/">foo</a>
-            <p>i like cats</p>
-            <button>click</button>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
           </div>
         </generic-tabs>
       </div>
 
 
 
-      <h3>Selected:</h3>
-      <details>
-          <summary>Show code</summary>
-      <pre><code class="language-markup"><script type="prism-html-markup"><generic-tabs selected="1" label="people">
-  <button slot="tab">
-      Jim
-    </button>
-    <div slot="panel">
-      <p>And my name is Jim. Im not opened by default.</p>
-    </div>
-
-    <button slot="tab">
-      Jack
-    </button>
-    <div slot="panel">
-      <p>I am Jack. I am opened by default.</p>
-    </div>
-</generic-tabs>
-</script></code></pre>
-</details>
       <div class="demo">
+        <h3>Selected:</h3>
+        <hr/>
+        <details>
+            <summary>Show code</summary>
+        <pre><code class="language-markup"><script type="prism-html-markup"><generic-tabs selected="1" label="people">
+  <button slot="tab">
+    About
+  </button>
+  <div slot="panel">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+
+  <button slot="tab">
+    Contact
+  </button>
+  <div slot="panel">
+    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+  </div>
+</generic-tabs>
+  </script></code></pre>
+  </details>
+  <hr>
         <generic-tabs selected="1" label="people">
           <button slot="tab">
-            Jim
+            About
           </button>
           <div slot="panel">
-            <p>And my name is Jim. Im not opened by default.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           </div>
 
           <button slot="tab">
-            Jack
+            Contact
           </button>
           <div slot="panel">
-            <p>I am Jack. I am opened by default.</p>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+          </div>
+        </generic-tabs>
+      </div>
+
+      <div class="demo">
+        <h3>Vertical:</h3>
+        <hr/>
+        <details>
+            <summary>Show code</summary>
+        <pre><code class="language-markup"><script type="prism-html-markup"><generic-tabs vertical label="people">
+  <button slot="tab">
+    Home
+  </button>
+  <div slot="panel">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+
+  <button slot="tab">
+    About
+  </button>
+  <div slot="panel">
+    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+  </div>
+
+  <button slot="tab">
+    Contact
+  </button>
+  <div slot="panel">
+    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.</p>
+  </div>
+</generic-tabs>
+  </script></code></pre>
+  </details>
+  <hr>
+        <generic-tabs vertical label="people">
+          <button slot="tab">
+            Home
+          </button>
+          <div slot="panel">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+
+          <button slot="tab">
+            About
+          </button>
+          <div slot="panel">
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+          </div>
+
+          <button slot="tab">
+            Contact
+          </button>
+          <div slot="panel">
+            <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.</p>
           </div>
         </generic-tabs>
       </div>

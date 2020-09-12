@@ -1,4 +1,5 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { html, fixture, expect, fixtureSync } from '@open-wc/testing';
+import { stub } from 'sinon';
 import '../../generic-listbox.js';
 
 const defaultFixture = html`
@@ -43,16 +44,16 @@ describe('generic-listbox', () => {
     expect(ul.getAttribute('role')).to.equal('listbox');
     expect(ul.getAttribute('tabindex')).to.equal('0');
     expect(ul.getAttribute('aria-label')).to.equal('list of items');
-    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-0');
+    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-1-0');
 
     // 1st list item
-    expect(firstLi.id).to.equal('generic-listbox-0');
+    expect(firstLi.id).to.equal('generic-listbox-1-0');
     expect(firstLi.getAttribute('role')).to.equal('option');
     expect(firstLi.getAttribute('aria-selected')).to.equal('true');
     expect(firstLi.hasAttribute('selected')).to.equal(true);
 
     // 2nd list item
-    expect(secondLi.id).to.equal('generic-listbox-1');
+    expect(secondLi.id).to.equal('generic-listbox-1-1');
     expect(secondLi.getAttribute('role')).to.equal('option');
     expect(secondLi.hasAttribute('aria-selected')).to.equal(false);
     expect(secondLi.hasAttribute('selected')).to.equal(false);
@@ -64,13 +65,14 @@ describe('generic-listbox', () => {
     const ul = el.querySelector('ul');
     const firstLi = el.querySelectorAll('li')[1];
 
-    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-0');
+    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-2-0');
     expect(firstLi.hasAttribute('aria-selected')).to.equal(false);
     expect(firstLi.hasAttribute('selected')).to.equal(false);
 
     firstLi.click();
+    await el.updateComplete;
 
-    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-1');
+    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-2-1');
     expect(firstLi.getAttribute('aria-selected')).to.equal('true');
     expect(firstLi.hasAttribute('selected')).to.equal(true);
   });
@@ -81,13 +83,14 @@ describe('generic-listbox', () => {
     const ul = el.querySelector('ul');
     const listItems = el.querySelectorAll('li');
 
-    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-0');
+    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-3-0');
     expect(listItems[1].hasAttribute('aria-selected')).to.equal(false);
     expect(listItems[1].hasAttribute('selected')).to.equal(false);
 
     listItems[1].click();
+    await el.updateComplete;
 
-    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-1');
+    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-3-1');
     expect(listItems[1].getAttribute('aria-selected')).to.equal('true');
     expect(listItems[1].hasAttribute('selected')).to.equal(true);
 
@@ -100,8 +103,9 @@ describe('generic-listbox', () => {
     wrapper.appendChild(el);
 
     listItems[2].click();
+    await el.updateComplete;
 
-    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-2');
+    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-3-2');
     expect(listItems[2].getAttribute('aria-selected')).to.equal('true');
     expect(listItems[2].hasAttribute('selected')).to.equal(true);
   });
@@ -112,16 +116,19 @@ describe('generic-listbox', () => {
     const ul = el.querySelector('ul');
     const firstLi = el.querySelectorAll('li')[1];
 
-    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-0');
+    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-4-0');
     expect(firstLi.hasAttribute('aria-selected')).to.equal(false);
     expect(firstLi.hasAttribute('selected')).to.equal(false);
 
     el.selected = 1;
+    await el.updateComplete;
 
-    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-1');
+    expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-4-1');
     expect(firstLi.getAttribute('aria-selected')).to.equal('true');
     expect(firstLi.hasAttribute('selected')).to.equal(true);
   });
+
+  // @TODO: do I expect listbox to fire an event on keydown?
 
   describe('keycodes', () => {
     it('up', async () => {
@@ -130,8 +137,9 @@ describe('generic-listbox', () => {
       const li = el.querySelectorAll('li');
 
       el.__onKeyDown({ preventDefault: () => {}, keyCode: 38, target: { localName: 'ul' } });
+      await el.updateComplete;
 
-      expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-16');
+      expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-5-16');
       expect(li[16].getAttribute('aria-selected')).to.equal('true');
       expect(li[16].hasAttribute('selected')).to.equal(true);
     });
@@ -142,7 +150,9 @@ describe('generic-listbox', () => {
       const li = el.querySelectorAll('li');
 
       el.__onKeyDown({ preventDefault: () => {}, keyCode: 40, target: { localName: 'ul' } });
-      expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-1');
+      await el.updateComplete;
+
+      expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-6-1');
       expect(li[1].getAttribute('aria-selected')).to.equal('true');
       expect(li[1].hasAttribute('selected')).to.equal(true);
     });
@@ -153,16 +163,64 @@ describe('generic-listbox', () => {
       const li = el.querySelectorAll('li');
 
       el.__onKeyDown({ preventDefault: () => {}, keyCode: 35, target: { localName: 'ul' } });
+      await el.updateComplete;
 
-      expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-16');
+      expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-7-16');
       expect(li[16].getAttribute('aria-selected')).to.equal('true');
       expect(li[16].hasAttribute('selected')).to.equal(true);
 
       el.__onKeyDown({ preventDefault: () => {}, keyCode: 36, target: { localName: 'ul' } });
+      await el.updateComplete;
 
-      expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-0');
+      expect(ul.getAttribute('aria-activedescendant')).to.equal('generic-listbox-7-0');
       expect(li[0].getAttribute('aria-selected')).to.equal('true');
       expect(li[0].hasAttribute('selected')).to.equal(true);
+    });
+  });
+
+  describe('events', () => {
+    it('doesnt dispatch on first update', async () => {
+      const el = fixtureSync(defaultFixture);
+      const dispatchStub = stub(el, '__dispatch');
+      await el.updateComplete;
+      expect(dispatchStub).callCount(0);
+      dispatchStub.restore();
+    });
+
+    it('fires event on attr change', async () => {
+      const el = await fixture(defaultFixture);
+      const dispatchStub = stub(el, '__dispatch');
+      el.setAttribute('selected', '1');
+      await el.updateComplete;
+      expect(dispatchStub).callCount(1);
+      dispatchStub.restore();
+    });
+
+    it('fires event on prop change', async () => {
+      const el = await fixture(defaultFixture);
+      const dispatchStub = stub(el, '__dispatch');
+      el.selected = 1;
+      await el.updateComplete;
+      expect(dispatchStub).callCount(1);
+      dispatchStub.restore();
+    });
+
+    it('fires event on keydown', async () => {
+      const el = await fixture(defaultFixture);
+      const dispatchStub = stub(el, '__dispatch');
+      el.__onKeyDown({ preventDefault: () => {}, keyCode: 40 });
+      await el.updateComplete;
+      expect(dispatchStub).callCount(1);
+      dispatchStub.restore();
+    });
+
+    it('fires event on click', async () => {
+      const el = await fixture(defaultFixture);
+      const dispatchStub = stub(el, '__dispatch');
+      el.querySelectorAll('li')[1].click();
+      await el.updateComplete;
+      expect(dispatchStub).callCount(1);
+      dispatchStub.restore();
     });
   });
 });

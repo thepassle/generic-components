@@ -33,17 +33,6 @@ class Dialog extends EventTargetShim {
     this.__closeOnEscape = closeOnEscape;
     this.__closeOnOutsideClick = closeOnOutsideClick;
 
-    if (!invokerNode) {
-      throw new Error(`
-        No invoker node found. This is required to reset the focus when the dialog closes.
-
-        You can add an invoker node like so:
-        dialog.open({
-          invokerNode: /* reference to a node */
-        });
-      `);
-    }
-
     if (this.__closeOnEscape) {
       window.addEventListener('keydown', this.__onKeyDown.bind(this), true);
     }

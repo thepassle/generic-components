@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="Description" content="Put your description here.">
   <link rel="stylesheet" type="text/css" href="../../demo/styles.css">
+  <script type="module" src="../../generic-disclosure.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css">
   <script src="https://unpkg.com/prismjs@1.20.0/prism.js"></script>
@@ -97,9 +98,6 @@
             <a href="/generic-tabs/demo/index.html">generic-tabs</a>
           </li>
           <li>
-            <a href="/generic-tooltip/demo/index.html">generic-tooltip</a>
-          </li>
-          <li>
             <a href="/generic-visually-hidden/demo/index.html">generic-visually-hidden</a>
           </li>
           <hr>
@@ -112,21 +110,140 @@
     <main id="main" class="content">
       <h1>generic-switch</h1>
       <a href="https://www.w3.org/TR/wai-aria-1.1/#switch">WAI ARIA Practices</a>
-      <br/>
-      <br/>
-
       <p class="description">A switch is a button that toggles between true or false.</p>
+
+      <h2>API:</h2>
+      <div class="demo">
+        <generic-disclosure>
+          <button slot="toggle">Events</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>detail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>checked-changed</td>
+                  <td>boolean</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+        <generic-disclosure>
+          <button slot="toggle">Attributes</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>disabled</td>
+                  <td>boolean</td>
+                </tr>
+                <tr>
+                  <td>checked</td>
+                  <td>boolean</td>
+                </tr>
+                <tr>
+                  <td>label</td>
+                  <td>string</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+        <generic-disclosure>
+          <button slot="toggle">CSS Properties</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>--generic-switch-focus</td>
+                  <td>Customizes the focus styles of the thumb</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+        <generic-disclosure>
+          <button slot="toggle">CSS Shadow Parts</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>label</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>thumb</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>track</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>button</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+        <generic-disclosure>
+          <button slot="toggle">Slots</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>default</td>
+                  <td>Provide a label node as lightdom</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+      </div>
+
       <h2>Usage:</h2>
       <p>The switch component requires a label, which you can provide as a textnode. You can see an example down below.</p>
 
-      <h3>Default:</h3>
-      <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch></generic-switch></script></code></pre></details>
       <div class="demo">
+        <h3>Default:</h3>
+        <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch></generic-switch></script></code></pre></details>
+        <hr/>
         <generic-switch>Default</generic-switch><br/><br/>
       </div>
-      <h3>Label:</h3>
-      <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch label="darkmode"></generic-switch></script></code></pre></details>
       <div class="demo">
+        <h3>Label:</h3>
+        <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch label="darkmode"></generic-switch></script></code></pre></details>
+        <hr/>
         <generic-switch label="darkmode"></generic-switch><br/><br/>
       </div>
       <!-- <h3>Darkmode toggle:</h3>
@@ -134,24 +251,28 @@
         <div class="demo">
           <generic-switch id="dark">Default</generic-switch><br/><br/>
         </div> -->
-      <h3>Custom label:</h3>
-      <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch>Custom label</generic-switch></script></code></pre></details>
-      <div class="demo">
-        <generic-switch>Custom label</generic-switch><br/><br/>
+        <div class="demo">
+          <h3>Custom label:</h3>
+          <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch>Custom label</generic-switch></script></code></pre></details>
+          <hr/>
+          <generic-switch>Custom label</generic-switch><br/><br/>
       </div>
-      <h3>Disabled:</h3>
-      <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch disabled>Disabled</generic-switch></script></code></pre></details>
       <div class="demo">
+        <h3>Disabled:</h3>
+        <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch disabled>Disabled</generic-switch></script></code></pre></details>
+        <hr/>
         <generic-switch disabled>Disabled</generic-switch><br/><br/>
       </div>
-      <h3>Checked:</h3>
-      <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch checked>Checked</generic-switch></script></code></pre></details>
       <div class="demo">
+        <h3>Checked:</h3>
+        <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch checked>Checked</generic-switch></script></code></pre></details>
+        <hr/>
         <generic-switch checked>Checked</generic-switch><br/><br/>
       </div>
-      <h3>Checked and disabled:</h3>
-      <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch checked disabled>Checked and disabled</generic-skiplink></script></code></pre></details>
       <div class="demo">
+        <h3>Checked and disabled:</h3>
+        <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch checked disabled>Checked and disabled</generic-skiplink></script></code></pre></details>
+        <hr/>
         <generic-switch checked disabled>Checked and disabled</generic-switch><br/><br/>
       </div>
 

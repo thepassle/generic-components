@@ -84,20 +84,26 @@ generic-disclosure button:focus {
 }
 
 table.tg {
+  table-layout: fixed;
+  text-align: left;
   margin-top: 20px;
   margin-bottom: 40px;
   width: 100%;
   background-color: #FFFFFF;
   border-collapse: collapse;
   border-width: 1px;
-  border-color: #000000;
+  border-color: #cecece;
   border-style: solid;
   color: #000000;
 }
 
+generic-disclosure:not(:defined) {
+  display: none;
+}
+
 table.tg td, table.tg th {
   border-width: 1px;
-  border-color: #000000;
+  border-color: #cecece;
   border-style: solid;
   padding: 5px;
 }

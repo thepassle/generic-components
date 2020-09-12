@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="Description" content="Put your description here.">
   <link rel="stylesheet" type="text/css" href="../../demo/styles.css">
+  <script type="module" src="../../generic-disclosure.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css">
   <script src="https://unpkg.com/prismjs@1.20.0/prism.js"></script>
@@ -66,9 +67,6 @@
             <a href="/generic-tabs/demo/index.html">generic-tabs</a>
           </li>
           <li>
-            <a href="/generic-tooltip/demo/index.html">generic-tooltip</a>
-          </li>
-          <li>
             <a href="/generic-visually-hidden/demo/index.html">generic-visually-hidden</a>
           </li>
           <hr>
@@ -81,19 +79,84 @@
     <main id="main" class="content">
       <h1>generic-skiplink</h1>
       <a href="https://webaim.org/techniques/skipnav/">WebAIM</a>
-      <br/>
-      <br/>
+
 
       <p class="description">Skiplinks allow users to quickly reach the main content of a page.</p>
+      <h2>API:</h2>
+      <div class="demo">
+        <generic-disclosure>
+          <button slot="toggle">Attributes</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>for</td>
+                  <td>string</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+        <generic-disclosure>
+          <button slot="toggle">Slots</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>default</td>
+                  <td>Provide the text for the skiplink as lightdom</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+        <generic-disclosure>
+          <button slot="toggle">CSS Shadow Parts</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>anchor</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+      </div>
       <h2>Usage:</h2>
       <p>The skiplink component requires a <code>for="id"</code> attribute, this id should correspond to the id of the element you want to skip to. See the examples for more information.</p>
       <p>You can then place the component at the top of your <code>body</code>.</p>
 
-      <h3>Example</h3>
-      <p>Try tabbing from the browser URL bar into the page, and the skiplinks will show up.</p>
+      <div class="demo">
+      <h3>Default:</h3>
+      <p>Try tabbing from the browser URL bar into the page, and the skiplink will show up.</p>
+      <hr/>
       <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-skiplink for="main">Continue to main content</generic-skiplink>
-<main id="main"></main></script></code></pre></details>
-      <p>You can override styles like so:</p>
+<main id="main"></main></script></code></pre></details></div>
+
+      <div class="demo">
+        <h3>Custom styles:</h3>
+        <p>You can override styles like so:</p>
+        <hr/>
       <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><style>
   .custom-style::part(anchor) {
     background-color: lightgrey;
@@ -102,6 +165,7 @@
 </style>
 <generic-skiplink for="main" class="custom-style">Go to main content</generic-skiplink>
 <main id="main"></main></script></code></pre></details>
+</div>
 
       <!-- <script type="module">
         import { render, html } from 'https://unpkg.com/lit-html@1.2.1/lit-html.js?module';

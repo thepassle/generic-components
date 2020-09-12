@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="Description" content="Put your description here.">
   <link rel="stylesheet" type="text/css" href="../../demo/styles.css">
+  <script type="module" src="../../generic-disclosure.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css">
   <script src="https://unpkg.com/prismjs@1.20.0/prism.js"></script>
@@ -58,9 +59,6 @@
             <a href="/generic-tabs/demo/index.html">generic-tabs</a>
           </li>
           <li>
-            <a href="/generic-tooltip/demo/index.html">generic-tooltip</a>
-          </li>
-          <li>
             <a href="/generic-visually-hidden/demo/index.html">generic-visually-hidden</a>
           </li>
           <hr>
@@ -73,37 +71,121 @@
     <main class="content">
       <h1>generic-listbox</h1>
       <a href="https://www.w3.org/TR/wai-aria-practices/#Listbox">WAI ARIA Practices</a>
-      <br/>
-      <br/>
+
       <p class="description">A listbox widget presents a list of options and allows a user to select one or more of them.</p>
+      <h2>API:</h2>
+      <div class="demo">
+        <generic-disclosure>
+          <button slot="toggle">Events</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>detail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>selected-changed</td>
+                  <td>number</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+        <generic-disclosure>
+          <button slot="toggle">Attributes</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>selected</td>
+                  <td>number</td>
+                </tr>
+                <tr>
+                  <td>label</td>
+                  <td>string</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+        <generic-disclosure>
+          <button slot="toggle">Properties</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>selected</td>
+                  <td>number</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+        <generic-disclosure>
+          <button slot="toggle">Slots</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>default</td>
+                  <td>Provide an unordered list element with list item children as lightdom</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+      </div>
+
       <h2>Usage:</h2>
       <p>The listbox requires a <code>ul</code> with <code>li</code> children, as well as a <code>label</code> attribute.
-      <h3>Default:</h3>
-      <details><summary>Show code</summary>
-      <pre><code class="language-markup"><script type="prism-html-markup"><generic-listbox label="list of items">
-  <ul>
-    <li>item 1</li>
-    <li>item 2</li>
-    <li>item 3</li>
-    <li>item 4</li>
-    <li>item 5</li>
-    <li>item 6</li>
-    <li>item 7</li>
-    <li>item 8</li>
-    <li>item 9</li>
-    <li>item 10</li>
-    <li>item 11</li>
-    <li>item 12</li>
-    <li>item 13</li>
-    <li>item 14</li>
-    <li>item 15</li>
-    <li>item 16</li>
-    <li>item 17</li>
-  </ul>
-</generic-listbox>
-      </script></code></pre>
-      </details>
-      <div class="demo">
+        <div class="demo">
+          <h3>Default:</h3>
+          <details><summary>Show code</summary>
+          <pre><code class="language-markup"><script type="prism-html-markup"><generic-listbox label="list of items">
+      <ul>
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+        <li>item 4</li>
+        <li>item 5</li>
+        <li>item 6</li>
+        <li>item 7</li>
+        <li>item 8</li>
+        <li>item 9</li>
+        <li>item 10</li>
+        <li>item 11</li>
+        <li>item 12</li>
+        <li>item 13</li>
+        <li>item 14</li>
+        <li>item 15</li>
+        <li>item 16</li>
+        <li>item 17</li>
+      </ul>
+    </generic-listbox>
+          </script></code></pre>
+          </details>
+          <hr/>
         <generic-listbox label="list of items">
         <ul>
           <li>item 1</li>
@@ -126,32 +208,33 @@
         </generic-listbox>
       </div>
 
-      <h3>Selected:</h3>
-      <details><summary>Show code</summary>
-      <pre><code class="language-markup"><script type="prism-html-markup"><generic-listbox label="list of items" selected="8">
-  <ul>
-    <li>item 1</li>
-    <li>item 2</li>
-    <li>item 3</li>
-    <li>item 4</li>
-    <li>item 5</li>
-    <li>item 6</li>
-    <li>item 7</li>
-    <li>item 8</li>
-    <li>item 9</li>
-    <li>item 10</li>
-    <li>item 11</li>
-    <li>item 12</li>
-    <li>item 13</li>
-    <li>item 14</li>
-    <li>item 15</li>
-    <li>item 16</li>
-    <li>item 17</li>
-  </ul>
-</generic-listbox>
-      </script></code></pre>
-      </details>
       <div class="demo">
+        <h3>Selected:</h3>
+        <details><summary>Show code</summary>
+        <pre><code class="language-markup"><script type="prism-html-markup"><generic-listbox label="list of items" selected="8">
+    <ul>
+      <li>item 1</li>
+      <li>item 2</li>
+      <li>item 3</li>
+      <li>item 4</li>
+      <li>item 5</li>
+      <li>item 6</li>
+      <li>item 7</li>
+      <li>item 8</li>
+      <li>item 9</li>
+      <li>item 10</li>
+      <li>item 11</li>
+      <li>item 12</li>
+      <li>item 13</li>
+      <li>item 14</li>
+      <li>item 15</li>
+      <li>item 16</li>
+      <li>item 17</li>
+    </ul>
+  </generic-listbox>
+        </script></code></pre>
+        </details>
+        <hr/>
         <generic-listbox label="list of items" selected="8">
           <ul>
             <li>item 1</li>

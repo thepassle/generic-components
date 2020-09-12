@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="Description" content="Put your description here.">
   <link rel="stylesheet" type="text/css" href="../../demo/styles.css">
+  <script type="module" src="../../generic-disclosure.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css">
   <script src="https://unpkg.com/prismjs@1.20.0/prism.js"></script>
@@ -53,9 +54,6 @@
             <a href="/generic-tabs/demo/index.html">generic-tabs</a>
           </li>
           <li>
-            <a href="/generic-tooltip/demo/index.html">generic-tooltip</a>
-          </li>
-          <li>
             <a href="/generic-visually-hidden/demo/index.html">generic-visually-hidden</a>
           </li>
           <hr>
@@ -68,35 +66,150 @@
     <main class="content">
       <h1>generic-dialog</h1>
       <a href="https://www.w3.org/TR/wai-aria-practices/#dialog_modal">WAI ARIA Practices</a>
-      <br/>
-      <br/>
+
 
       <p class="description">A dialog is a window overlaid on either the primary window or another dialog window. Windows under a modal dialog are inert.</p>
       <h2>Usage:</h2>
       <p>You can use the dialog through a JavaScript API or as a web component.</p>
 
-      <h3>Closes on escape, and outside click:</h3>
       <div class="demo">
+        <h3>Closes on escape, and outside click:</h3>
+        <details><summary>Show code</summary>
+          <pre><code class="language-javascript">
+import { dialog } from '@thepassle/generic-components';
+defaultExample.addEventListener('click', (e) => {
+  dialog.open({
+    invokerNode: e.target,
+    content: (dialogNode) => {
+
+      dialogNode.innerHTML = 'default example, closes on escape, and on outside click';
+
+      const button = document.createElement('button');
+      button.innerHTML = 'close';
+
+      button.addEventListener('click', () => {
+        dialog.close();
+      })
+
+      dialogNode.appendChild(button);
+    }
+  });
+});
+          </code></pre>
+        </details>
+        <hr/>
         <button id="defaultExample">open</button><br/>
       </div>
 
-      <h3>Closes on escape:</h3>
       <div class="demo">
+        <h3>Closes on escape:</h3>
+        <details><summary>Show code</summary>
+          <pre><code class="language-javascript">
+import { dialog } from '@thepassle/generic-components';
+closeOnEscape.addEventListener('click', (e) => {
+  dialog.open({
+    invokerNode: e.target,
+    closeOnOutsideClick: false,
+    content: (dialogNode) => {
+
+      dialogNode.innerHTML = 'only closes on escape';
+      const button = document.createElement('button');
+      button.innerHTML = 'close';
+
+      button.addEventListener('click', () => {
+        dialog.close();
+      })
+
+      dialogNode.appendChild(button);
+    }
+  });
+});
+          </code></pre>
+        </details>
+        <hr/>
         <button id="closeOnEscape">open</button><br/>
       </div>
 
-      <h3>Only closes on button click:</h3>
       <div class="demo">
+        <h3>Only closes on button click:</h3>
+        <details><summary>Show code</summary>
+          <pre><code class="language-javascript">
+import { dialog } from '@thepassle/generic-components';
+closeOnButtonClick.addEventListener('click', (e) => {
+  dialog.open({
+    invokerNode: e.target,
+    closeOnEscape: false,
+    closeOnOutsideClick: false,
+    content: (dialogNode) => {
+
+      dialogNode.innerHTML = 'doesnt close on escape or outside click';
+      const button = document.createElement('button');
+      button.innerHTML = 'close';
+
+      button.addEventListener('click', () => {
+        dialog.close();
+      })
+
+      dialogNode.appendChild(button);
+    }
+  });
+});
+          </code></pre>
+        </details>
+        <hr/>
         <button id="closeOnButtonClick">open</button><br/>
       </div>
 
-      <h3>Rendered with lit-html:</h3>
       <div class="demo">
+        <h3>Rendered with lit-html:</h3>
+        <details><summary>Show code</summary>
+          <pre><code class="language-javascript">
+import { dialog } from '@thepassle/generic-components';
+import { render, html } from 'lit-html';
+litHtml.addEventListener('click', (e) => {
+  dialog.open({
+    invokerNode: e.target,
+    content: (dialogNode) => {
+      dialogNode.style.width = '400px';
+      dialogNode.style.height = '400px';
+
+      render(html`
+        <h1>Im rendered by lit-html!</h1>
+        <button @click=${() => dialog.close()}>Close</button>
+        <button @click=${() => dialog.close()}>Close</button>
+        <button @click=${() => dialog.close()}>Close</button>
+      `, dialogNode);
+    }
+  });
+});
+          </code></pre>
+        </details>
+        <hr/>
         <button id="litHtml">open</button><br/>
       </div>
 
-      <h3>Usage as web component:</h3>
       <div class="demo">
+        <h3>Usage as web component:</h3>
+        <details><summary>Show code</summary>
+          <pre><code class="language-markup"><script type="prism-html-markup"><generic-dialog id="myDialog">
+  <button slot="invoker">open</button>
+  <div slot="content">
+    <h1>Im used as a web component!</h1>
+    <p>dialog content</p>
+    <button id="closebtn">close</button>
+  </div>
+</generic-dialog>
+</script></code></pre>
+<pre><code class="language-javascript">
+  closebtn.addEventListener('click', () => {
+    myDialog.close();
+  });
+    </code></pre>
+  </details>
+  <script>
+
+  </script>
+        <hr/>
         <generic-dialog id="myDialog">
           <button slot="invoker">open</button>
           <div slot="content">

@@ -133,6 +133,7 @@ details {
 }
 
 .nav {
+  z-index: 0;
   position: sticky;
   top: 0;
 }

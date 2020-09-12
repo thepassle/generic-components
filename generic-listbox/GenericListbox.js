@@ -23,6 +23,7 @@ export class GenericListbox extends SelectedMixin(BatchingElement) {
       orientation: 'vertical',
       shouldFocus: false,
       activateOnKeydown: true,
+      disabled: false,
     };
   }
 

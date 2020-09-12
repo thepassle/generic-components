@@ -32,6 +32,12 @@ describe('BatchingElement', () => {
         set foo(_) {
           this.requestUpdate(true);
         }
+
+        static get config() {
+          return {
+            disabled: false,
+          };
+        }
       },
     );
     const el = await fixtureSync(`<${tag}></${tag}>`);

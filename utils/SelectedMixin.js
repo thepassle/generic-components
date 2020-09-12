@@ -81,6 +81,7 @@ export const SelectedMixin = superclass =>
     }
 
     __onClick(e) {
+      if (this.constructor.config.disabled && this.hasAttribute('disabled')) return;
       const focusableElements = this.__getFocusableElements();
       if (![...focusableElements].includes(e.target)) return;
       this.__index = focusableElements.indexOf(e.target);
@@ -91,6 +92,7 @@ export const SelectedMixin = superclass =>
     }
 
     __onKeyDown(event) {
+      if (this.constructor.config.disabled && this.hasAttribute('disabled')) return;
       const elements = this.__getFocusableElements();
       // eslint-disable-next-line
       let { orientation, multiDirectional } = this.constructor.config;
@@ -143,6 +145,8 @@ export const SelectedMixin = superclass =>
 
     set selected(val) {
       this.__index = val;
-      this.setAttribute('selected', this.__index);
+      if (val !== null) {
+        this.setAttribute('selected', this.__index);
+      }
     }
   };

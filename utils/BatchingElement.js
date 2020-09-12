@@ -13,7 +13,11 @@ export class BatchingElement extends HTMLElement {
       await 0;
       this.update();
       if (dispatchEvent) {
-        this.__dispatch();
+        if (this.constructor.config.disabled && this.hasAttribute('disabled')) {
+          /** noop */
+        } else {
+          this.__dispatch();
+        }
       }
 
       this.__res();

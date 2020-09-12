@@ -26,13 +26,14 @@ export class GenericAccordion extends SelectedMixin(BatchingElement) {
           focusTarget: true,
         },
         regions: {
-          selector: el => el.querySelectorAll("[role='region']"),
+          selector: el => el.querySelectorAll('generic-accordion > *:not(button)'),
         },
       },
       multiDirectional: false,
       orientation: 'vertical',
       shouldFocus: true,
       activateOnKeydown: false,
+      disabled: false,
     };
   }
 
@@ -44,6 +45,7 @@ export class GenericAccordion extends SelectedMixin(BatchingElement) {
 
   update() {
     const { buttons, regions } = this.getElements();
+
     buttons.forEach((_, i) => {
       if (i === this.selected) {
         this.setAttribute('selected', this.selected);
@@ -62,6 +64,7 @@ export class GenericAccordion extends SelectedMixin(BatchingElement) {
       if (!buttons[i].id.startsWith('generic-accordion-')) {
         buttons[i].id = `generic-accordion-${this.__uuid}-${i}`;
         regions[i].setAttribute('aria-labelledby', `generic-accordion-${this.__uuid}-${i}`);
+        regions[i].setAttribute('role', 'region');
       }
     });
   }

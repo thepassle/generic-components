@@ -1,3 +1,5 @@
+import { hostVisuallyHidden } from './visually-hidden.js';
+
 export class GenericVisuallyHidden extends HTMLElement {
   constructor() {
     super();
@@ -8,16 +10,7 @@ export class GenericVisuallyHidden extends HTMLElement {
     this.removeAttribute('hidden');
     this.shadowRoot.innerHTML = `
       <style>
-        :host {
-          clip: rect(1px, 1px, 1px, 1px);
-          clip-path: inset(50%);
-          height: 1px;
-          width: 1px;
-          margin: -1px;
-          overflow: hidden;
-          padding: 0;
-          position: absolute;
-        }
+        ${hostVisuallyHidden}
       </style>
 
       <slot></slot>

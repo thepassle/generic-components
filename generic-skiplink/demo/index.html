@@ -9,13 +9,14 @@
   <script type="module" src="../../generic-disclosure.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css">
+  <link rel="stylesheet" type="text/css" href="../skiplink.css">
   <script src="https://unpkg.com/prismjs@1.20.0/prism.js"></script>
   <style>
     generic-skiplink:not(:defined) {
       display: none;
     }
 
-    generic-skiplink::part(anchor) {
+    generic-skiplink::part(anchor), #global {
       z-index: 1;
     }
 
@@ -35,6 +36,7 @@
 <body>
   <generic-skiplink for="main"></generic-skiplink>
   <generic-skiplink for="main" class="custom-style">Go to main content</generic-skiplink>
+  <a id="global" href="#main" skiplink>Continue to main, used with global CSS</a>
   <div id="foo"></div>
 
   <div class="app">
@@ -172,6 +174,28 @@
 </style>
 <generic-skiplink for="main" class="custom-style">Go to main content</generic-skiplink>
 <main id="main"></main></script></code></pre></details>
+</div>
+
+      <div class="demo">
+        <h3>Import as CSS</h3>
+        <p>Alternatively you can import the global CSS file, which allows you to use a <code>skiplink</code> attribute on an anchor tag.</p>
+        <hr/>
+      <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><link rel="stylesheet" type="text/css" href="https://unpkg.com/browse/@thepassle/generic-components@1.0.0/generic-skiplink/skiplink.css">
+<a href="#main" skiplink>Continue to main</a>
+      </script></code></pre></details>
+</div>
+
+      <div class="demo">
+        <h3>Import as JS</h3>
+        <p>Alternatively you can import the skiplink styles as JS string, this can be useful for usage in shadow roots.</p>
+        <hr/>
+      <details><summary>Show code</summary><pre><code class="language-javascript"><script type="prism-html-markup">import { skiplink } from '@thepassle/generic-components';
+
+const sheet = new CSSStyleSheet();
+sheet.replaceSync(skiplink);
+
+myCustomElement.adoptedStyleSheets = [sheet];
+      </script></code></pre></details>
 </div>
 
       <!-- <script type="module">

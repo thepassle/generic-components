@@ -46,6 +46,7 @@ export class GenericTabs extends SelectedMixin(BatchingElement) {
       orientation: 'horizontal',
       shouldFocus: true,
       activateOnKeydown: true,
+      disabled: false,
     };
   }
 

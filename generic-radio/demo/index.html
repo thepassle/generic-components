@@ -11,20 +11,15 @@
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css">
   <script src="https://unpkg.com/prismjs@1.20.0/prism.js"></script>
   <style>
-    generic-accordion {
-      width: 200px;
-    }
-
-    generic-accordion div {
-      height: 200px;
-      overflow: auto;
-      border: solid 1px black;
+    generic-radio:not(:defined) {
+      display: none;
     }
 
     button[selected] {
       border-bottom: solid 3px blue;
     }
   </style>
+
   <title>generic-components</title>
 </head>
 
@@ -68,18 +63,20 @@
           <li>
             <a href="/generic-visually-hidden/demo/index.html">generic-visually-hidden</a>
           </li>
+
           <hr>
+
           <li>
             <a href="https://github.com/thepassle/generic-components">Github</a>
           </li>
         </ul>
       </nav>
     </div>
-    <main class="content">
-      <h1>generic-accordion</h1>
-      <a href="https://www.w3.org/TR/wai-aria-practices/#accordion">WAI ARIA Practices</a>
+    <main id="main" class="content">
+      <h1>generic-radio</h1>
+      <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#radiobutton">WAI ARIA Practices</a>
 
-      <p class="description">An accordion is a vertically stacked set of interactive headings that each contain a title, content snippet, or thumbnail representing a section of content.</p>
+      <p class="description">A radio group is a set of checkable buttons, known as radio buttons, where no more than one of the buttons can be checked at a time.</p>
       <h2>API:</h2>
       <div class="demo">
         <generic-disclosure>
@@ -121,6 +118,10 @@
                   <td>boolean</td>
                 </tr>
                 <tr>
+                  <td>disabled</td>
+                  <td>boolean</td>
+                </tr>
+                <tr>
                   <td>label</td>
                   <td>string</td>
                 </tr>
@@ -137,15 +138,15 @@
                   <th>name</th>
                   <th>type</th>
                 </tr>
-                <tr>
-                  <td>value</td>
-                  <td>string</td>
-                </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>selected</td>
                   <td>number</td>
+                </tr>
+                <tr>
+                  <td>value</td>
+                  <td>string</td>
                 </tr>
               </tbody>
             </table>
@@ -164,82 +165,125 @@
               <tbody>
                 <tr>
                   <td>default</td>
-                  <td>Provide button elements and content nodes as lightdom</code></td>
+                  <td>Provide nodes as lightdom</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+        <generic-disclosure>
+          <button slot="toggle">CSS Shadow Parts</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>group</td>
+                  <td></td>
                 </tr>
               </tbody>
             </table>
           </div>
         </generic-disclosure>
       </div>
-
       <h2>Usage:</h2>
-      <p>The accordion requires a button as trigger, and content elements. You can find an example down below.</p>
+
+      <p>The tabs component requires a button with a <code>slot="tab"</code> as trigger, and a corresponding panel node with a <code>slot="panel"</code>.</p>
+
+
       <div class="demo">
         <h3>Default:</h3>
-        <details><summary>Show code</summary>
-        <pre><code class="language-markup"><script type="prism-html-markup"><generic-accordion>
-  <button>Home</button>
-  <div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <a href="/">eiusmod tempor</a> incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  </div>
-
-  <button>About</button>
-  <div>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</div>
-
-  <button>Contact</button>
-  <div>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.</div>
-</generic-accordion>
-</script></code></pre>
+        <hr>
+              <details>
+                  <summary>Show code</summary>
+              <pre><code class="language-markup"><script type="prism-html-markup"><generic-radio label="radio group">
+  <div>foo</div>
+  <div>bar</div>
+  <div>baz</div>
+</generic-radio>
+        </script></code></pre>
         </details>
-        <hr/>
-        <generic-accordion>
-          <button>Home</button>
-          <div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <a href="/">eiusmod tempor</a> incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          </div>
+        <hr>
 
-          <button>About</button>
-          <div>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</div>
-
-          <button>Contact</button>
-          <div>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.</div>
-        </generic-accordion>
+        <generic-radio label="radio group">
+          <div>foo</div>
+          <div>bar</div>
+          <div>baz</div>
+        </generic-radio>
       </div>
+
       <div class="demo">
         <h3>Selected:</h3>
-        <details><summary>Show code</summary>
-        <pre><code class="language-markup"><script type="prism-html-markup"><generic-accordion selected="1">
-  <button>Home</button>
-  <div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <a href="/">eiusmod tempor</a> incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  </div>
-
-  <button>About</button>
-  <div>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</div>
-
-  <button>Contact</button>
-  <div>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.</div>
-</generic-accordion>
-</script></code></pre>
+        <hr>
+              <details>
+                  <summary>Show code</summary>
+              <pre><code class="language-markup"><script type="prism-html-markup"><generic-radio selected="1" label="radio group">
+  <div>foo</div>
+  <div>bar</div>
+  <div>baz</div>
+</generic-radio>
+        </script></code></pre>
         </details>
-        <hr/>
-        <generic-accordion selected="1">
-          <button>Home</button>
-          <div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <a href="/">eiusmod tempor</a> incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          </div>
+        <hr>
 
-          <button>About</button>
-          <div>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</div>
-
-          <button>Contact</button>
-          <div>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.</div>
-        </generic-accordion>
+        <generic-radio selected="1" label="radio group">
+          <div>foo</div>
+          <div>bar</div>
+          <div>baz</div>
+        </generic-radio>
       </div>
 
-      <script type="module" src="../../generic-accordion.js"></script>
+      <div class="demo">
+        <h3>Vertical:</h3>
+        <hr>
+              <details>
+                  <summary>Show code</summary>
+              <pre><code class="language-markup"><script type="prism-html-markup"><generic-radio vertical label="radio group">
+  <div>foo</div>
+  <div>bar</div>
+  <div>baz</div>
+</generic-radio>
+        </script></code></pre>
+        </details>
+        <hr>
+
+        <generic-radio vertical label="radio group">
+          <div>foo</div>
+          <div>bar</div>
+          <div>baz</div>
+        </generic-radio>
+      </div>
+
+      <div class="demo">
+        <h3>Disabled:</h3>
+        <hr>
+              <details>
+                  <summary>Show code</summary>
+              <pre><code class="language-markup"><script type="prism-html-markup"><generic-radio disabled label="radio group">
+  <div>foo</div>
+  <div>bar</div>
+  <div>baz</div>
+</generic-radio>
+        </script></code></pre>
+        </details>
+        <hr>
+
+        <generic-radio disabled label="radio group">
+          <div>foo</div>
+          <div>bar</div>
+          <div>baz</div>
+        </generic-radio>
+      </div>
+
+      <script type="module" src="../../generic-radio.js"></script>
     </main>
   </div>
 
 </body>
 </html>
+

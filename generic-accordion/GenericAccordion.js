@@ -48,7 +48,7 @@ export class GenericAccordion extends SelectedMixin(BatchingElement) {
 
     buttons.forEach((_, i) => {
       if (i === this.selected) {
-        this.setAttribute('selected', this.selected);
+        this.requestUpdate(true);
         buttons[i].setAttribute('selected', '');
         buttons[i].setAttribute('aria-expanded', 'true');
         buttons[i].setAttribute('aria-disabled', 'true');

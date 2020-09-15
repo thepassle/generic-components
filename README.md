@@ -18,8 +18,8 @@ You can use these components to build an app, or compose them and build your own
 
 ## Usage
     
-### Via npm
-Components can be installed via npm:
+### Via NPM
+Components can be installed via NPM:
 
 ```bash
 npm i --save @thepassle/generic-components
@@ -35,7 +35,7 @@ import '@thepassle/generic-components/generic-switch.js';
 Alternatively you can load the components from a CDN and drop them in your HTML file as a script tag
 
 ```html
-<script src="https://unpkg.com/@thepassle/generic-components@0.1.0/generic-switch.js" type="module"></script>
+<script src="https://unpkg.com/@thepassle/generic-components@1.0.0/generic-switch.js" type="module"></script>
 ```
 
 ```html
@@ -48,7 +48,7 @@ Alternatively you can load the components from a CDN and drop them in your HTML 
 |---------------------------------------------------------------|---------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|---------------|
 | [generic-accordion](/generic-accordion/README.md)             | [demo](https://genericcomponents.netlify.app/generic-accordion/demo/index.html)       | [WAI-ARIA Practices](https://www.w3.org/TR/wai-aria-practices/#accordion)   | ✅            |        
 | [generic-alert](/generic-alert/README.md)                     | [demo](https://genericcomponents.netlify.app/generic-alert/demo/index.html)           | [WAI-ARIA Practices](https://www.w3.org/TR/wai-aria-practices/#alert)       | ✅            |               
-| [generic-dialog](/generic-dialog/README.md)                   | [demo](https://genericcomponents.netlify.app/generic-dialog/demo/index.html)          | [WAI-ARIA Practices](https://www.w3.org/TR/wai-aria-practices/#dialog_modal)| 🏗            |     
+| [generic-dialog](/generic-dialog/README.md)                   | [demo](https://genericcomponents.netlify.app/generic-dialog/demo/index.html)          | [WAI-ARIA Practices](https://www.w3.org/TR/wai-aria-practices/#dialog_modal)| ✅            |     
 | [generic-disclosure](/generic-disclosure/README.md)           | [demo](https://genericcomponents.netlify.app/generic-disclosure/demo/index.html)      | [WAI-ARIA Practices](https://www.w3.org/TR/wai-aria-practices/#disclosure)  | ✅            |      
 | [generic-listbox](/generic-listbox/README.md)                 | [demo](https://genericcomponents.netlify.app/generic-listbox/demo/index.html)         | [WAI-ARIA Practices](https://www.w3.org/TR/wai-aria-practices-1.1/#radiobutton)     | ✅            |      
 | [generic-radio](/generic-radio/README.md)                 | [demo](https://genericcomponents.netlify.app/generic-radio/demo/index.html)         | [WAI-ARIA Practices](https://www.w3.org/TR/wai-aria-practices/#Listbox)     | ✅            |      
@@ -58,12 +58,3 @@ Alternatively you can load the components from a CDN and drop them in your HTML 
 | [generic-visually-hidden](/generic-visually-hidden/README.md) | [demo](https://genericcomponents.netlify.app/generic-visually-hidden/demo/index.html) | [WebAIM](https://webaim.org/techniques/css/invisiblecontent/)               | ✅            |         
 
 
-## Todo:
-
-### general
-- Convert docs to [11ty](https://www.11ty.dev/) + [mdjs](https://github.com/open-wc/open-wc/tree/master/packages/mdjs) 
-- Add api table for components with [custom-elements.json](https://github.com/webcomponents/custom-elements-json)
-
-### generic-dialog
-- Tests
-- Finish implementation as web component

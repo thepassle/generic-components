@@ -52,7 +52,7 @@ export class GenericListbox extends SelectedMixin(BatchingElement) {
       }
 
       if (i === this.selected) {
-        this.setAttribute('selected', this.selected);
+        this.requestUpdate(true);
         li[i].setAttribute('aria-selected', 'true');
         li[i].setAttribute('selected', '');
         ul.setAttribute('aria-activedescendant', li[i].id);

@@ -24,7 +24,7 @@ export const SelectedMixin = superclass =>
         this.__index = Number(this.getAttribute('selected'));
       } else {
         this.__index = 0;
-        this.setAttribute('selected', this.__index);
+        this.requestUpdate(false);
       }
 
       this.shadowRoot.addEventListener('click', this.__onClick);
@@ -41,9 +41,6 @@ export const SelectedMixin = superclass =>
 
     attributeChangedCallback(name, oldVal, newVal) {
       if (name === 'selected') {
-        if (oldVal === null) {
-          this.requestUpdate(false);
-        }
         if (newVal !== oldVal) {
           this.__index = Number(this.getAttribute('selected'));
           this.requestUpdate(true);
@@ -85,7 +82,7 @@ export const SelectedMixin = superclass =>
       const focusableElements = this.__getFocusableElements();
       if (![...focusableElements].includes(e.target)) return;
       this.__index = focusableElements.indexOf(e.target);
-      this.setAttribute('selected', this.__index);
+      this.requestUpdate(true);
       if (this.constructor.config.shouldFocus) {
         this.__focus();
       }
@@ -131,7 +128,7 @@ export const SelectedMixin = superclass =>
       event.preventDefault();
 
       if (this.constructor.config.activateOnKeydown) {
-        this.setAttribute('selected', this.__index);
+        this.requestUpdate(true);
       }
 
       if (this.constructor.config.shouldFocus) {
@@ -146,7 +143,7 @@ export const SelectedMixin = superclass =>
     set selected(val) {
       this.__index = val;
       if (val !== null) {
-        this.setAttribute('selected', this.__index);
+        this.requestUpdate(true);
       }
     }
   };

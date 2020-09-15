@@ -19,6 +19,7 @@ export class GenericDialog extends HTMLElement {
   close() {
     this.content.forEach(element => {
       element.setAttribute('hidden', '');
+      element.setAttribute('slot', 'content');
       this.append(element);
     });
     dialog.close();
@@ -38,6 +39,7 @@ export class GenericDialog extends HTMLElement {
         content: dialogNode => {
           this.content.forEach(element => {
             element.removeAttribute('hidden');
+            element.removeAttribute('slot');
             dialogNode.append(element);
           });
         },

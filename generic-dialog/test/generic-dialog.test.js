@@ -54,9 +54,9 @@ describe('generic-dialog', () => {
       button.click();
 
       const dialogNode = document.body.querySelector('generic-dialog-overlay');
-      const dialogFrame = dialogNode.shadowRoot.querySelector('[part="dialog"]');
-      expect(dialogFrame.innerHTML.trim()).to.equal(
-        `<div slot="content">
+
+      expect(dialogNode.innerHTML.trim()).to.equal(
+        `<div>
       <h1>Im used as a web component!</h1>
       <p>dialog content</p>
       <button id="closebtn">close</button>
@@ -194,8 +194,7 @@ describe('generic-dialog', () => {
       });
 
       const dialogNode = document.body.querySelector('generic-dialog-overlay');
-      const dialogFrame = dialogNode.shadowRoot.querySelector('[part="dialog"]');
-      expect(dialogFrame.innerHTML).to.equal(content);
+      expect(dialogNode.innerHTML).to.equal(content);
       dialog.close();
     });
 

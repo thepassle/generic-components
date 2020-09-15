@@ -147,6 +147,30 @@ generic-disclosure button:hover {
   padding: 10px 20px;
 }
 
+
+generic-dialog-overlay::part(dialog) {
+  width: 400px;
+  height: 400px;
+  background-color: var(--col-dark);
+  color: white;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+generic-dialog-overlay::part(dialog) .dialog-button {
+  background-color: #8ea2ea;
+  color: black;
+  border: 0;
+  border-radius: 5px;
+  font-weight: bold;
+  display: block;
+  padding: 10px 20px;
+}
+
+generic-dialog-overlay::part(dialog) .dialog-button:hover {
+  background-color: #768ad4;
+}
+
 .centered {
   margin-left: auto;
   margin-top: 60px;

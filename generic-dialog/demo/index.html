@@ -14,6 +14,11 @@
     generic-dialog:not(:defined) {
       display: none;
     }
+
+    generic-dialog-overlay::part(dialog) {
+      width: 400px;
+      height: 400px;
+    }
   </style>
 
   <title>generic-components</title>
@@ -345,8 +350,6 @@ litHtml.addEventListener('click', (e) => {
   dialog.open({
     invokerNode: e.target,
     content: (dialogNode) => {
-      dialogNode.style.width = '400px';
-      dialogNode.style.height = '400px';
 
       render(html`
         &lt;h1&gt;Im rendered by lit-html!&lt;/h1&gt;
@@ -366,7 +369,7 @@ litHtml.addEventListener('click', (e) => {
 
       <script type="module">
         import { dialog } from '../dialog.js';
-        import '../../generic-dialog.js';
+        import '../../dialog.js';
         import { render, html } from 'https://unpkg.com/lit-html@1.2.1/lit-html.js?module';
 
         closebtn.addEventListener('click', () => {
@@ -383,8 +386,6 @@ litHtml.addEventListener('click', (e) => {
           dialog.open({
             invokerNode: e.target,
             content: (dialogNode) => {
-              dialogNode.style.width = '400px';
-              dialogNode.style.height = '400px';
 
               dialogNode.innerHTML = 'default example, closes on escape, and on outside click';
 
@@ -405,8 +406,6 @@ litHtml.addEventListener('click', (e) => {
             invokerNode: e.target,
             closeOnOutsideClick: false,
             content: (dialogNode) => {
-              dialogNode.style.width = '400px';
-              dialogNode.style.height = '400px';
 
               dialogNode.innerHTML = 'only closes on escape';
               const button = document.createElement('button');
@@ -427,8 +426,6 @@ litHtml.addEventListener('click', (e) => {
             closeOnEscape: false,
             closeOnOutsideClick: false,
             content: (dialogNode) => {
-              dialogNode.style.width = '400px';
-              dialogNode.style.height = '400px';
 
               dialogNode.innerHTML = 'doesnt close on escape or outside click';
               const button = document.createElement('button');
@@ -447,8 +444,6 @@ litHtml.addEventListener('click', (e) => {
           dialog.open({
             invokerNode: e.target,
             content: (dialogNode) => {
-              dialogNode.style.width = '400px';
-              dialogNode.style.height = '400px';
 
               render(html`
                 <h1>Im rendered by lit-html!</h1>

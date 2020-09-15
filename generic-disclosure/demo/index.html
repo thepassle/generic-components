@@ -171,17 +171,19 @@
       </div>
 
       <h2>Usage:</h2>
-      <p>The disclosure component requires a button child with a <code>slot="toggle"</code> for the trigger, and a generic content node <code>slot="detail"</code> for the content.</p>
+      <p>The disclosure component requires a button child with a <code>slot="toggle"</code> for the trigger, and a
+        generic content node <code>slot="detail"</code> for the content.</p>
 
       <div class="demo">
         <h3>Default:</h3>
-        <details><summary>Show code</summary>
-        <pre><code class="language-markup"><script type="prism-html-markup"><generic-disclosure>
+        <details>
+          <summary>Show code</summary>
+          <pre><code class="language-markup"><script type="prism-html-markup"><generic-disclosure>
     <button slot="toggle">toggle me</button>
     <p slot="content">i am content</p>
   </generic-disclosure></script></code></pre>
         </details>
-        <hr/>
+        <hr />
         <generic-disclosure>
           <button slot="toggle">toggle me</button>
           <p slot="detail">i am content</p>
@@ -190,19 +192,20 @@
 
       <div class="demo">
         <h3>Expanded:</h3>
-        <details><summary>Show code</summary>
-        <pre><code class="language-markup"><script type="prism-html-markup"><generic-disclosure expanded>
+        <details>
+          <summary>Show code</summary>
+          <pre><code class="language-markup"><script type="prism-html-markup"><generic-disclosure expanded>
     <button slot="toggle">toggle me</button>
     <p slot="content">i am content</p>
   </generic-disclosure></script></code></pre>
         </details>
-        <hr/>
+        <hr />
         <generic-disclosure expanded>
           <button slot="toggle">toggle me</button>
           <p slot="detail">i am expanded!</p>
         </generic-disclosure>
       </div>
-      <br/>
+      <br />
 
       <!-- <div id="foo"></div>
 
@@ -226,4 +229,5 @@
   </div>
 
 </body>
+
 </html>

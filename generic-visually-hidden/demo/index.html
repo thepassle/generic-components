@@ -71,7 +71,8 @@
       <h1>generic-visually-hidden</h1>
       <a href="https://webaim.org/techniques/css/invisiblecontent/">WAI ARIA Practices</a>
 
-      <p class="description">There are occasional instances where content should be made available to screen reader users, but hidden from sighted users.</p>
+      <p class="description">There are occasional instances where content should be made available to screen reader
+        users, but hidden from sighted users.</p>
       <h2>API:</h2>
       <div class="demo">
         <generic-disclosure>
@@ -101,35 +102,46 @@
         <h3>Default</h3>
 
         <p>Under here is some visually hidden text:</p>
-        <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-visually-hidden>I am hidden</generic-visually-hidden></script></code></pre></details>
-        <hr/>
+        <details>
+          <summary>Show code</summary>
+          <pre><code class="language-markup"><script type="prism-html-markup"><generic-visually-hidden>I am hidden</generic-visually-hidden></script></code></pre>
+        </details>
+        <hr />
         <generic-visually-hidden hidden>I am visually hidden!</generic-visually-hidden>
       </div>
 
       <div class="demo">
         <h3>Import as CSS</h3>
 
-        <p>Alternatively you can import the global CSS file, which allows you to use a <code>visually-hidden</code> attribute on any arbitrary element.</p>
-        <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><link rel="stylesheet" type="text/css" href="https://unpkg.com/@thepassle/generic-components@1.0.0/generic-visually-hidden/visually-hidden.css">
+        <p>Alternatively you can import the global CSS file, which allows you to use a <code>visually-hidden</code>
+          attribute on any arbitrary element.</p>
+        <details>
+          <summary>Show code</summary>
+          <pre><code class="language-markup"><script type="prism-html-markup"><link rel="stylesheet" type="text/css" href="https://unpkg.com/@thepassle/generic-components@1.0.0/generic-visually-hidden/visually-hidden.css">
 <div visually-hidden>I'm hidden!</div>
-        </script></code></pre></details>
-        <hr/>
+        </script></code></pre>
+        </details>
+        <hr />
         <div visually-hidden>I'm hidden!</div>
       </div>
 
       <div class="demo">
         <h3>Import as JS</h3>
 
-        <p>Alternatively you can import the visually-hidden styles as JS string, this can be useful for usage in shadow roots.</p>
-        <details><summary>Show code</summary><pre><code class="language-javascript"><script type="prism-html-markup">import { visuallyHidden } from '@thepassle/generic-components';
+        <p>Alternatively you can import the visually-hidden styles as JS string, this can be useful for usage in shadow
+          roots.</p>
+        <details>
+          <summary>Show code</summary>
+          <pre><code class="language-javascript"><script type="prism-html-markup">import { visuallyHidden } from '@thepassle/generic-components';
 
 const sheet = new CSSStyleSheet();
 sheet.replaceSync(visuallyHidden);
 
 myCustomElement.adoptedStyleSheets = [sheet];
 
-        </script></code></pre></details>
-        <hr/>
+        </script></code></pre>
+        </details>
+        <hr />
       </div>
 
       <script type="module" src="../../generic-visually-hidden.js"></script>
@@ -137,4 +149,5 @@ myCustomElement.adoptedStyleSheets = [sheet];
   </div>
 
 </body>
+
 </html>

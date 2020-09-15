@@ -70,14 +70,183 @@
       <h1>generic-dialog</h1>
       <a href="https://www.w3.org/TR/wai-aria-practices/#dialog_modal">WAI ARIA Practices</a>
 
+      <p class="description">A dialog is a window overlaid on either the primary window or another dialog window.
+        Windows under a modal dialog are inert.</p>
 
-      <p class="description">A dialog is a window overlaid on either the primary window or another dialog window. Windows under a modal dialog are inert.</p>
+      <h2>API:</h2>
+      <div class="demo">
+        <generic-disclosure>
+          <button slot="toggle">Attributes</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>close-on-escape</td>
+                  <td>boolean</td>
+                </tr>
+                <tr>
+                  <td>close-on-outside-click</td>
+                  <td>boolean</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+        <generic-disclosure>
+          <button slot="toggle">Events</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>detail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>dialog-opened</td>
+                  <td>boolean</td>
+                </tr>
+                <tr>
+                  <td>dialog-closed</td>
+                  <td>boolean</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+        <generic-disclosure>
+          <button slot="toggle">Slots</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>invoker</td>
+                  <td>Provide a button element to open the dialog. When the dialog is closed, focus will be reset to the
+                    invoker node</td>
+                </tr>
+                <tr>
+                  <td>content</td>
+                  <td>Provide content nodes for the dialogs content</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
+      </div>
+
       <h2>Usage:</h2>
       <p>You can use the dialog through a JavaScript API or as a web component.</p>
 
       <div class="demo">
+        <h3>Usage as web component:</h3>
+        <details>
+          <summary>Show code</summary>
+          <pre><code class="language-markup"><script type="prism-html-markup"><generic-dialog id="myDialog">
+  <button slot="invoker">open</button>
+  <div slot="content">
+    <h1>Im used as a web component!</h1>
+    <p>dialog content</p>
+    <button id="closebtn">close</button>
+  </div>
+</generic-dialog>
+</script></code></pre>
+          <pre><code class="language-javascript">
+  closebtn.addEventListener('click', () => {
+    myDialog.close();
+  });
+    </code></pre>
+        </details>
+
+        <hr />
+        <generic-dialog id="myDialog">
+          <button slot="invoker">open</button>
+          <div slot="content">
+            <h1>Im used as a web component!</h1>
+            <p>dialog content</p>
+            <button id="closebtn">close</button>
+          </div>
+        </generic-dialog>
+      </div>
+
+      <div class="demo">
+        <h3>Usage as web component, closes on escape:</h3>
+        <details>
+          <summary>Show code</summary>
+          <pre><code class="language-markup"><script type="prism-html-markup"><generic-dialog close-on-escape id="myDialog">
+  <button slot="invoker">open</button>
+  <div slot="content">
+    <h1>Im used as a web component!</h1>
+    <p>dialog content</p>
+    <button id="closebtn">close</button>
+  </div>
+</generic-dialog>
+</script></code></pre>
+          <pre><code class="language-javascript">
+  closebtn.addEventListener('click', () => {
+    myDialog.close();
+  });
+    </code></pre>
+        </details>
+        <hr />
+        <generic-dialog close-on-escape id="myDialog2">
+          <button slot="invoker">open</button>
+          <div slot="content">
+            <h1>Im used as a web component!</h1>
+            <p>dialog content</p>
+            <button id="closebtn2">close</button>
+          </div>
+        </generic-dialog>
+      </div>
+
+      <div class="demo">
+        <h3>Usage as web component, closes on escape and outside click:</h3>
+        <details>
+          <summary>Show code</summary>
+          <pre><code class="language-markup"><script type="prism-html-markup"><generic-dialog close-on-outside-click close-on-escape id="myDialog">
+  <button slot="invoker">open</button>
+  <div slot="content">
+    <h1>Im used as a web component!</h1>
+    <p>dialog content</p>
+    <button id="closebtn">close</button>
+  </div>
+</generic-dialog>
+</script></code></pre>
+          <pre><code class="language-javascript">
+  closebtn.addEventListener('click', () => {
+    myDialog.close();
+  });
+    </code></pre>
+        </details>
+        <hr />
+        <generic-dialog close-on-outside-click close-on-escape id="myDialog3">
+          <button slot="invoker">open</button>
+          <div slot="content">
+            <h1>Im used as a web component!</h1>
+            <p>dialog content</p>
+            <button id="closebtn3">close</button>
+          </div>
+        </generic-dialog>
+      </div>
+
+      <h2>Usage via JavaScript API:</h2>
+
+      <div class="demo">
         <h3>Closes on escape, and outside click:</h3>
-        <details><summary>Show code</summary>
+        <details>
+          <summary>Show code</summary>
           <pre><code class="language-javascript">
 import { dialog } from '@generic-components/components';
 defaultExample.addEventListener('click', (e) => {
@@ -100,13 +269,14 @@ defaultExample.addEventListener('click', (e) => {
 });
           </code></pre>
         </details>
-        <hr/>
-        <button id="defaultExample">open</button><br/>
+        <hr />
+        <button id="defaultExample">open</button><br />
       </div>
 
       <div class="demo">
         <h3>Closes on escape:</h3>
-        <details><summary>Show code</summary>
+        <details>
+          <summary>Show code</summary>
           <pre><code class="language-javascript">
 import { dialog } from '@generic-components/components';
 closeOnEscape.addEventListener('click', (e) => {
@@ -129,13 +299,14 @@ closeOnEscape.addEventListener('click', (e) => {
 });
           </code></pre>
         </details>
-        <hr/>
-        <button id="closeOnEscape">open</button><br/>
+        <hr />
+        <button id="closeOnEscape">open</button><br />
       </div>
 
       <div class="demo">
         <h3>Only closes on button click:</h3>
-        <details><summary>Show code</summary>
+        <details>
+          <summary>Show code</summary>
           <pre><code class="language-javascript">
 import { dialog } from '@generic-components/components';
 closeOnButtonClick.addEventListener('click', (e) => {
@@ -159,13 +330,14 @@ closeOnButtonClick.addEventListener('click', (e) => {
 });
           </code></pre>
         </details>
-        <hr/>
-        <button id="closeOnButtonClick">open</button><br/>
+        <hr />
+        <button id="closeOnButtonClick">open</button><br />
       </div>
 
       <div class="demo">
         <h3>Rendered with lit-html:</h3>
-        <details><summary>Show code</summary>
+        <details>
+          <summary>Show code</summary>
           <pre><code class="language-javascript">
 import { dialog } from '@generic-components/components';
 import { render, html } from 'lit-html';
@@ -177,51 +349,20 @@ litHtml.addEventListener('click', (e) => {
       dialogNode.style.height = '400px';
 
       render(html`
-        <h1>Im rendered by lit-html!</h1>
-        <button @click=${() => dialog.close()}>Close</button>
-        <button @click=${() => dialog.close()}>Close</button>
-        <button @click=${() => dialog.close()}>Close</button>
+        &lt;h1&gt;Im rendered by lit-html!&lt;/h1&gt;
+        &lt;button @click=${() =&gt; dialog.close()}&gt;Close&lt;/button&gt;
+        &lt;button @click=${() =&gt; dialog.close()}&gt;Close&lt;/button&gt;
+        &lt;button @click=${() =&gt; dialog.close()}&gt;Close&lt;/button&gt;
       `, dialogNode);
     }
   });
 });
           </code></pre>
         </details>
-        <hr/>
-        <button id="litHtml">open</button><br/>
+        <hr />
+        <button id="litHtml">open</button><br />
       </div>
 
-      <div class="demo">
-        <h3>Usage as web component:</h3>
-        <details><summary>Show code</summary>
-          <pre><code class="language-markup"><script type="prism-html-markup"><generic-dialog id="myDialog">
-  <button slot="invoker">open</button>
-  <div slot="content">
-    <h1>Im used as a web component!</h1>
-    <p>dialog content</p>
-    <button id="closebtn">close</button>
-  </div>
-</generic-dialog>
-</script></code></pre>
-<pre><code class="language-javascript">
-  closebtn.addEventListener('click', () => {
-    myDialog.close();
-  });
-    </code></pre>
-  </details>
-  <script>
-
-  </script>
-        <hr/>
-        <generic-dialog id="myDialog">
-          <button slot="invoker">open</button>
-          <div slot="content">
-            <h1>Im used as a web component!</h1>
-            <p>dialog content</p>
-            <button id="closebtn">close</button>
-          </div>
-        </generic-dialog>
-      </div>
 
       <script type="module">
         import { dialog } from '../dialog.js';
@@ -229,6 +370,12 @@ litHtml.addEventListener('click', (e) => {
         import { render, html } from 'https://unpkg.com/lit-html@1.2.1/lit-html.js?module';
 
         closebtn.addEventListener('click', () => {
+          myDialog.close();
+        });
+        closebtn2.addEventListener('click', () => {
+          myDialog.close();
+        });
+        closebtn3.addEventListener('click', () => {
           myDialog.close();
         });
 
@@ -325,4 +472,5 @@ litHtml.addEventListener('click', (e) => {
   </div>
 
 </body>
+
 </html>

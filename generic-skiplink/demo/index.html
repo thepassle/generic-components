@@ -16,7 +16,8 @@
       display: none;
     }
 
-    generic-skiplink::part(anchor), #global {
+    generic-skiplink::part(anchor),
+    #global {
       z-index: 1;
     }
 
@@ -152,29 +153,37 @@
         </generic-disclosure>
       </div>
       <h2>Usage:</h2>
-      <p>The skiplink component requires a <code>for="id"</code> attribute, this id should correspond to the id of the element you want to skip to. See the examples for more information.</p>
+      <p>The skiplink component requires a <code>for="id"</code> attribute, this id should correspond to the id of the
+        element you want to skip to. See the examples for more information.</p>
       <p>You can then place the component at the top of your <code>body</code>.</p>
 
       <div class="demo">
-      <h3>Default:</h3>
-      <p>Try tabbing from the browser URL bar into the page, and the skiplink will show up.</p>
-      <hr/>
-      <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-skiplink for="main">Continue to main content</generic-skiplink>
-<main id="main"></main></script></code></pre></details></div>
+        <h3>Default:</h3>
+        <p>Try tabbing from the browser URL bar into the page, and the skiplink will show up.</p>
+        <hr />
+        <details>
+          <summary>Show code</summary>
+          <pre><code class="language-markup"><script type="prism-html-markup"><generic-skiplink for="main">Continue to main content</generic-skiplink>
+<main id="main"></main></script></code></pre>
+        </details>
+      </div>
 
       <div class="demo">
         <h3>Custom styles:</h3>
         <p>You can override styles like so:</p>
-        <hr/>
-      <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><style>
+        <hr />
+        <details>
+          <summary>Show code</summary>
+          <pre><code class="language-markup"><script type="prism-html-markup"><style>
   .custom-style::part(anchor) {
     background-color: lightgrey;
     border: solid 2px blue;
   }
 </style>
 <generic-skiplink for="main" class="custom-style">Go to main content</generic-skiplink>
-<main id="main"></main></script></code></pre></details>
-</div>
+<main id="main"></main></script></code></pre>
+        </details>
+      </div>
 
       <div class="demo">
         <h3>Import as CSS</h3>
@@ -182,8 +191,9 @@
         <hr/>
       <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><link rel="stylesheet" type="text/css" href="https://unpkg.com/@generic-components/components@1.0.0/generic-skiplink/skiplink.css">
 <a href="#main" skiplink>Continue to main</a>
-      </script></code></pre></details>
-</div>
+      </script></code></pre>
+        </details>
+      </div>
 
       <div class="demo">
         <h3>Import as JS</h3>
@@ -195,8 +205,9 @@ const sheet = new CSSStyleSheet();
 sheet.replaceSync(skiplink);
 
 myCustomElement.adoptedStyleSheets = [sheet];
-      </script></code></pre></details>
-</div>
+      </script></code></pre>
+        </details>
+      </div>
 
       <!-- <script type="module">
         import { render, html } from 'https://unpkg.com/lit-html@1.2.1/lit-html.js?module';
@@ -210,4 +221,5 @@ myCustomElement.adoptedStyleSheets = [sheet];
   </div>
 
 </body>
+
 </html>

@@ -1,6 +1,6 @@
 import { html, fixture, expect, fixtureSync } from '@open-wc/testing';
 import { stub } from 'sinon';
-import '../../generic-listbox.js';
+import '../../listbox.js';
 
 const defaultFixture = html`
   <generic-listbox label="list of items">

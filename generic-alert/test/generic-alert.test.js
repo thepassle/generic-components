@@ -1,5 +1,5 @@
 import { html, fixture, expect } from '@open-wc/testing';
-import '../../generic-alert.js';
+import '../../alert.js';
 
 describe('generic-alert', () => {
   it('a11y', async () => {

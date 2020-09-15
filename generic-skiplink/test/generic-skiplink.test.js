@@ -1,5 +1,5 @@
 import { html, fixture, expect } from '@open-wc/testing';
-import '../../generic-skiplink.js';
+import '../../skiplink.js';
 
 describe('generic-skiplink', () => {
   it('a11y', async () => {

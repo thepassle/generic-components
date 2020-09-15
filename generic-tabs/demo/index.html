@@ -23,9 +23,11 @@
       margin: 0;
       margin-left: 20px;
     }
+
     generic-tabs[vertical] div {
       height: 100%;
     }
+
     generic-tabs[vertical] button[selected] {
       border-bottom: none;
       border-right: solid 3px blue;
@@ -88,7 +90,8 @@
       <h1>generic-tabs</h1>
       <a href="https://www.w3.org/TR/wai-aria-practices/#tabpanel">WAI ARIA Practices</a>
 
-      <p class="description">Tabs are a set of layered sections of content, known as tab panels, that display one panel of content at a time.</p>
+      <p class="description">Tabs are a set of layered sections of content, known as tab panels, that display one panel
+        of content at a time.</p>
       <h2>API:</h2>
       <div class="demo">
         <generic-disclosure>
@@ -186,15 +189,16 @@
       </div>
       <h2>Usage:</h2>
 
-      <p>The tabs component requires a button with a <code>slot="tab"</code> as trigger, and a corresponding panel node with a <code>slot="panel"</code>.</p>
+      <p>The tabs component requires a button with a <code>slot="tab"</code> as trigger, and a corresponding panel node
+        with a <code>slot="panel"</code>.</p>
 
 
       <div class="demo">
         <h3>Default:</h3>
         <hr>
-              <details>
-                  <summary>Show code</summary>
-              <pre><code class="language-markup"><script type="prism-html-markup"><generic-tabs label="people">
+        <details>
+          <summary>Show code</summary>
+          <pre><code class="language-markup"><script type="prism-html-markup"><generic-tabs label="people">
   <button slot="tab">
     About
   </button>
@@ -224,11 +228,15 @@
           </button>
 
           <div slot="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat.</p>
           </div>
 
           <div slot="panel">
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+              rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+              explicabo.</p>
           </div>
         </generic-tabs>
       </div>
@@ -237,10 +245,10 @@
 
       <div class="demo">
         <h3>Selected:</h3>
-        <hr/>
+        <hr />
         <details>
-            <summary>Show code</summary>
-        <pre><code class="language-markup"><script type="prism-html-markup"><generic-tabs selected="1" label="people">
+          <summary>Show code</summary>
+          <pre><code class="language-markup"><script type="prism-html-markup"><generic-tabs selected="1" label="people">
   <button slot="tab">
     About
   </button>
@@ -256,31 +264,35 @@
   </div>
 </generic-tabs>
   </script></code></pre>
-  </details>
-  <hr>
+        </details>
+        <hr>
         <generic-tabs selected="1" label="people">
           <button slot="tab">
             About
           </button>
           <div slot="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat.</p>
           </div>
 
           <button slot="tab">
             Contact
           </button>
           <div slot="panel">
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+              rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+              explicabo.</p>
           </div>
         </generic-tabs>
       </div>
 
       <div class="demo">
         <h3>Vertical:</h3>
-        <hr/>
+        <hr />
         <details>
-            <summary>Show code</summary>
-        <pre><code class="language-markup"><script type="prism-html-markup"><generic-tabs vertical label="people">
+          <summary>Show code</summary>
+          <pre><code class="language-markup"><script type="prism-html-markup"><generic-tabs vertical label="people">
   <button slot="tab">
     Home
   </button>
@@ -303,32 +315,37 @@
   </div>
 </generic-tabs>
   </script></code></pre>
-  </details>
-  <hr>
+        </details>
+        <hr>
         <generic-tabs vertical label="people">
           <button slot="tab">
             Home
           </button>
           <div slot="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat.</p>
           </div>
 
           <button slot="tab">
             About
           </button>
           <div slot="panel">
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+              rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+              explicabo.</p>
           </div>
 
           <button slot="tab">
             Contact
           </button>
           <div slot="panel">
-            <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.</p>
+            <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid
+              ex ea commodi consequatur.</p>
           </div>
         </generic-tabs>
       </div>
-<!--
+      <!--
       <div id="foo"></div>
 
       <script type="module">
@@ -381,5 +398,5 @@
   </div>
 
 </body>
-</html>
 
+</html>

@@ -28,9 +28,11 @@
       height: calc(100% - 2px);
       background-color: white;
     }
+
     generic-switch#dark[checked]::part(thumb) {
       right: 0px;
     }
+
     generic-switch#dark::part(track) {
       border-top-left-radius: 10px;
       border-bottom-left-radius: 10px;
@@ -235,51 +237,70 @@
       </div>
 
       <h2>Usage:</h2>
-      <p>The switch component requires a label, which you can provide as a textnode. You can see an example down below.</p>
+      <p>The switch component requires a label, which you can provide as a textnode. You can see an example down below.
+      </p>
 
       <div class="demo">
         <h3>Default:</h3>
-        <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch></generic-switch></script></code></pre></details>
-        <hr/>
-        <generic-switch>Default</generic-switch><br/><br/>
+        <details>
+          <summary>Show code</summary>
+          <pre><code class="language-markup"><script type="prism-html-markup"><generic-switch></generic-switch></script></code></pre>
+        </details>
+        <hr />
+        <generic-switch>Default</generic-switch><br /><br />
       </div>
       <div class="demo">
         <h3>Label:</h3>
-        <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch label="darkmode"></generic-switch></script></code></pre></details>
-        <hr/>
-        <generic-switch label="darkmode"></generic-switch><br/><br/>
+        <details>
+          <summary>Show code</summary>
+          <pre><code class="language-markup"><script type="prism-html-markup"><generic-switch label="darkmode"></generic-switch></script></code></pre>
+        </details>
+        <hr />
+        <generic-switch label="darkmode"></generic-switch><br /><br />
       </div>
       <!-- <h3>Darkmode toggle:</h3>
       <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch></generic-switch></script></code></pre></details>
         <div class="demo">
           <generic-switch id="dark">Default</generic-switch><br/><br/>
         </div> -->
-        <div class="demo">
-          <h3>Custom label:</h3>
-          <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch>Custom label</generic-switch></script></code></pre></details>
-          <hr/>
-          <generic-switch>Custom label</generic-switch><br/><br/>
+      <div class="demo">
+        <h3>Custom label:</h3>
+        <details>
+          <summary>Show code</summary>
+          <pre><code class="language-markup"><script type="prism-html-markup"><generic-switch>Custom label</generic-switch></script></code></pre>
+        </details>
+        <hr />
+        <generic-switch>Custom label</generic-switch><br /><br />
       </div>
       <div class="demo">
         <h3>Disabled:</h3>
-        <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch disabled>Disabled</generic-switch></script></code></pre></details>
-        <hr/>
-        <generic-switch disabled>Disabled</generic-switch><br/><br/>
+        <details>
+          <summary>Show code</summary>
+          <pre><code class="language-markup"><script type="prism-html-markup"><generic-switch disabled>Disabled</generic-switch></script></code></pre>
+        </details>
+        <hr />
+        <generic-switch disabled>Disabled</generic-switch><br /><br />
       </div>
       <div class="demo">
         <h3>Checked:</h3>
-        <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch checked>Checked</generic-switch></script></code></pre></details>
-        <hr/>
-        <generic-switch checked>Checked</generic-switch><br/><br/>
+        <details>
+          <summary>Show code</summary>
+          <pre><code class="language-markup"><script type="prism-html-markup"><generic-switch checked>Checked</generic-switch></script></code></pre>
+        </details>
+        <hr />
+        <generic-switch checked>Checked</generic-switch><br /><br />
       </div>
       <div class="demo">
         <h3>Checked and disabled:</h3>
-        <details><summary>Show code</summary><pre><code class="language-markup"><script type="prism-html-markup"><generic-switch checked disabled>Checked and disabled</generic-skiplink></script></code></pre></details>
-        <hr/>
-        <generic-switch checked disabled>Checked and disabled</generic-switch><br/><br/>
+        <details>
+          <summary>Show code</summary>
+          <pre><code class="language-markup"><script type="prism-html-markup"><generic-switch checked disabled>Checked and disabled</generic-skiplink></script></code></pre>
+        </details>
+        <hr />
+        <generic-switch checked disabled>Checked and disabled</generic-switch><br /><br />
       </div>
 
-      <br/><br/>
+      <br /><br />
       <!-- <div id="foo"></div>
 
       <script type="module">
@@ -314,4 +335,5 @@
   </div>
 
 </body>
+
 </html>

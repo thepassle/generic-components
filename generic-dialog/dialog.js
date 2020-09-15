@@ -48,6 +48,7 @@ class Dialog extends EventTargetShim {
         }
       }
     });
+
     document.querySelector('generic-dialog-overlay').remove();
 
     this.__invokerNode.focus();

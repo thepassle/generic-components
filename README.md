@@ -22,20 +22,20 @@ You can use these components to build an app, or compose them and build your own
 Components can be installed via npm:
 
 ```bash
-npm i --save @thepassle/generic-components
+npm i --save @generic-components/components
 ```
 
 And imported in your code via ES imports:
 
 ```js
-import '@thepassle/generic-components/generic-switch.js';
+import '@generic-components/components/switch.js';
 ```
 
 ### Via CDN
 Alternatively you can load the components from a CDN and drop them in your HTML file as a script tag
 
 ```html
-<script src="https://unpkg.com/@thepassle/generic-components@0.1.0/generic-switch.js" type="module"></script>
+<script src="https://unpkg.com/@generic-components/components@1.0.0/switch.js" type="module"></script>
 ```
 
 ```html

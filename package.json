@@ -1,5 +1,5 @@
 {
-  "name": "@thepassle/generic-components",
+  "name": "@generic-components/components",
   "version": "0.2.1",
   "description": "Set of generic, accessible, zero dependency components",
   "author": "Pascal Schilp",

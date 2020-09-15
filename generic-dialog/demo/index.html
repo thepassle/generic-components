@@ -79,7 +79,7 @@
         <h3>Closes on escape, and outside click:</h3>
         <details><summary>Show code</summary>
           <pre><code class="language-javascript">
-import { dialog } from '@thepassle/generic-components';
+import { dialog } from '@generic-components/components';
 defaultExample.addEventListener('click', (e) => {
   dialog.open({
     invokerNode: e.target,
@@ -108,7 +108,7 @@ defaultExample.addEventListener('click', (e) => {
         <h3>Closes on escape:</h3>
         <details><summary>Show code</summary>
           <pre><code class="language-javascript">
-import { dialog } from '@thepassle/generic-components';
+import { dialog } from '@generic-components/components';
 closeOnEscape.addEventListener('click', (e) => {
   dialog.open({
     invokerNode: e.target,
@@ -137,7 +137,7 @@ closeOnEscape.addEventListener('click', (e) => {
         <h3>Only closes on button click:</h3>
         <details><summary>Show code</summary>
           <pre><code class="language-javascript">
-import { dialog } from '@thepassle/generic-components';
+import { dialog } from '@generic-components/components';
 closeOnButtonClick.addEventListener('click', (e) => {
   dialog.open({
     invokerNode: e.target,
@@ -167,7 +167,7 @@ closeOnButtonClick.addEventListener('click', (e) => {
         <h3>Rendered with lit-html:</h3>
         <details><summary>Show code</summary>
           <pre><code class="language-javascript">
-import { dialog } from '@thepassle/generic-components';
+import { dialog } from '@generic-components/components';
 import { render, html } from 'lit-html';
 litHtml.addEventListener('click', (e) => {
   dialog.open({

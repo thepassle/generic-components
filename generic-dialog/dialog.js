@@ -1,32 +1,9 @@
 import { EventTargetShim } from '../utils/EventTargetShim.js';
 import { KEYCODES } from '../utils/keycodes.js';
-import '../web_modules/@a11y/focus-trap.js';
-
-/**
- * TODO:
- * when setting everything else as aria-hidden, check if something already has aria-hidden, if it does, dont touch it
- * same for resetting the aria-hidden
- * add media query to be fullscreen on mobile
- *
- * Maybe refactor to use a web component internally to remove a bunch of imperative code
- */
+// eslint-disable-next-line
+import './generic-dialog-overlay.js';
 
 class Dialog extends EventTargetShim {
-  constructor() {
-    super();
-
-    const style = document.createElement('style');
-    style.innerHTML = `
-      #genericDialog {
-        width: auto;
-        height: auto;
-        background-color: white;
-      }
-    `;
-    document.head.prepend(style);
-  }
-
-  // eslint-disable-next-line
   open({ closeOnEscape = true, closeOnOutsideClick = true, invokerNode, content }) {
     this.__dialogOpen = true;
     this.__invokerNode = invokerNode;
@@ -47,48 +24,14 @@ class Dialog extends EventTargetShim {
       }
     });
 
-    // backdrop
-    const dialogOverlay = document.createElement('div');
+    const dialogOverlay = document.createElement('generic-dialog-overlay');
     this.__dialogOverlay = dialogOverlay;
-    dialogOverlay.id = '__dialogOverlay';
-    dialogOverlay.style.width = '100vw';
-    dialogOverlay.style.height = '100vh';
-    dialogOverlay.style.display = 'flex';
-    dialogOverlay.style.alignItems = 'center';
-    dialogOverlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-    dialogOverlay.style.position = 'fixed';
-    dialogOverlay.style.top = '0';
-
     if (this.__closeOnOutsideClick) {
-      this.__dialogOverlay.addEventListener('click', this.__onClick.bind(this), true);
+      dialogOverlay.setAttribute('close-on-outside-click', '');
     }
-
-    const focusTrap = document.createElement('focus-trap');
-    focusTrap.style.marginLeft = 'auto';
-    focusTrap.style.marginRight = 'auto';
-    dialogOverlay.appendChild(focusTrap);
-
-    // container
-    const dialogContainer = document.createElement('div');
-    this.__dialogContainer = dialogContainer;
-    dialogContainer.id = 'genericDialog';
-    dialogContainer.setAttribute('role', 'dialog');
-    focusTrap.appendChild(dialogContainer);
-
     document.body.appendChild(dialogOverlay);
 
-    dialogContainer.setAttribute('tabindex', '-1');
-    dialogContainer.focus();
-
-    ['click', 'blur'].forEach(event => {
-      dialogContainer.addEventListener(event, () => {
-        dialogContainer.removeAttribute('tabindex');
-      });
-    });
-
-    window.addEventListener('focusin', this.__onFocusIn.bind(this));
-
-    content(dialogContainer);
+    content(dialogOverlay.shadowRoot.querySelector('[role="dialog"]'));
     this.dispatchEvent(new Event('dialog-opened'));
   }
 
@@ -105,12 +48,11 @@ class Dialog extends EventTargetShim {
         }
       }
     });
-    document.getElementById('__dialogOverlay').remove();
+    document.querySelector('generic-dialog-overlay').remove();
 
     this.__invokerNode.focus();
     this.__invokerNode = null;
 
-    window.removeEventListener('focusin', this.__onFocusIn.bind(this));
     this.dispatchEvent(new Event('dialog-closed'));
   }
 
@@ -118,22 +60,6 @@ class Dialog extends EventTargetShim {
     if (e.keyCode === KEYCODES.ESC && this.__dialogOpen && this.__closeOnEscape) {
       this.close();
       window.removeEventListener('keydown', this.__onKeyDown.bind(this), true);
-    }
-  }
-
-  __onClick(e) {
-    if (e.target === this.__dialogOverlay && this.__dialogOpen && this.__closeOnOutsideClick) {
-      this.__dialogOverlay.removeEventListener('click', this.__onClick.bind(this), true);
-      this.close();
-    }
-  }
-
-  __onFocusIn() {
-    if (this.__dialogOpen) {
-      if (!this.__dialogOverlay.contains(document.activeElement)) {
-        this.__dialogContainer.setAttribute('tabindex', '-1');
-        this.__dialogContainer.focus();
-      }
     }
   }
 }

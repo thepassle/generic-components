@@ -33,6 +33,8 @@ export class GenericDialog extends HTMLElement {
     invoker.addEventListener('click', e => {
       dialog.open({
         invokerNode: e.target,
+        closeOnEscape: this.hasAttribute('close-on-escape'),
+        closeOnOutsideClick: this.hasAttribute('close-on-outside-click'),
         content: dialogNode => {
           this.content.forEach(element => {
             element.removeAttribute('hidden');
@@ -40,6 +42,14 @@ export class GenericDialog extends HTMLElement {
           });
         },
       });
+    });
+
+    dialog.addEventListener('dialog-opened', () => {
+      this.dispatchEvent(new CustomEvent('dialog-opened', { detail: true }));
+    });
+
+    dialog.addEventListener('dialog-closed', () => {
+      this.dispatchEvent(new CustomEvent('dialog-closed', { detail: true }));
     });
   }
 }

@@ -1,6 +1,6 @@
 import { html, fixture, fixtureSync, expect } from '@open-wc/testing';
 import { stub } from 'sinon';
-import '../../generic-tabs.js';
+import '../../tabs.js';
 
 const tabsFixture = html`
   <generic-tabs>

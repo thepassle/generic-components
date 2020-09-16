@@ -22,20 +22,20 @@ You can use these components to build an app, or compose them and build your own
 Components can be installed via NPM:
 
 ```bash
-npm i --save @thepassle/generic-components
+npm i --save @generic-components/components
 ```
 
 And imported in your code via ES imports:
 
 ```js
-import '@thepassle/generic-components/generic-switch.js';
+import '@generic-components/components/switch.js';
 ```
 
 ### Via CDN
 Alternatively you can load the components from a CDN and drop them in your HTML file as a script tag
 
 ```html
-<script src="https://unpkg.com/@thepassle/generic-components@1.0.0/generic-switch.js" type="module"></script>
+<script src="https://unpkg.com/@generic-components/components@1.0.0/switch.js" type="module"></script>
 ```
 
 ```html
@@ -50,8 +50,8 @@ Alternatively you can load the components from a CDN and drop them in your HTML 
 | [generic-alert](/generic-alert/README.md)                     | [demo](https://genericcomponents.netlify.app/generic-alert/demo/index.html)           | [WAI-ARIA Practices](https://www.w3.org/TR/wai-aria-practices/#alert)       | ✅            |               
 | [generic-dialog](/generic-dialog/README.md)                   | [demo](https://genericcomponents.netlify.app/generic-dialog/demo/index.html)          | [WAI-ARIA Practices](https://www.w3.org/TR/wai-aria-practices/#dialog_modal)| ✅            |     
 | [generic-disclosure](/generic-disclosure/README.md)           | [demo](https://genericcomponents.netlify.app/generic-disclosure/demo/index.html)      | [WAI-ARIA Practices](https://www.w3.org/TR/wai-aria-practices/#disclosure)  | ✅            |      
-| [generic-listbox](/generic-listbox/README.md)                 | [demo](https://genericcomponents.netlify.app/generic-listbox/demo/index.html)         | [WAI-ARIA Practices](https://www.w3.org/TR/wai-aria-practices-1.1/#radiobutton)     | ✅            |      
-| [generic-radio](/generic-radio/README.md)                 | [demo](https://genericcomponents.netlify.app/generic-radio/demo/index.html)         | [WAI-ARIA Practices](https://www.w3.org/TR/wai-aria-practices/#Listbox)     | ✅            |      
+| [generic-listbox](/generic-listbox/README.md)                 | [demo](https://genericcomponents.netlify.app/generic-listbox/demo/index.html)         | [WAI-ARIA Practices](https://www.w3.org/TR/wai-aria-practices/#Listbox)     | ✅            |      
+| [generic-radio](/generic-radio/README.md)                 | [demo](https://genericcomponents.netlify.app/generic-radio/demo/index.html)         | [WAI-ARIA Practices](https://www.w3.org/TR/wai-aria-practices-1.1/#radiobutton)     | ✅            |      
 | [generic-skiplink](/generic-skiplink/README.md)               | [demo](https://genericcomponents.netlify.app/generic-skiplink/demo/index.html)        | [WebAIM](https://webaim.org/techniques/skipnav/)                | ✅            |               
 | [generic-switch](/generic-switch/README.md)                   | [demo](https://genericcomponents.netlify.app/generic-switch/demo/index.html)          | [WAI-ARIA Practices](https://www.w3.org/TR/wai-aria-1.1/#switch)            | ✅            |        
 | [generic-tabs](/generic-tabs/README.md)                       | [demo](https://genericcomponents.netlify.app/generic-tabs/demo/index.html)            | [WAI-ARIA Practices](https://www.w3.org/TR/wai-aria-practices/#tabpanel)    | ✅            |        

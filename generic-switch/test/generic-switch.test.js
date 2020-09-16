@@ -1,5 +1,5 @@
 import { html, fixture, expect } from '@open-wc/testing';
-import '../../generic-switch.js';
+import '../../switch.js';
 
 describe('generic-switch', () => {
   it('a11y', async () => {

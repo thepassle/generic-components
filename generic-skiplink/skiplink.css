@@ -1,18 +1,33 @@
 a[skiplink] {
-  background-color: white;
-  border-radius: 5px;
-  padding: 10px 20px 10px 20px;
-  position: absolute;
-  left: -999px;
-  width: 1px;
-  height: 1px;
-  top: auto;
+  position: fixed !important;
+  /* keep it on viewport */
+  top: 0px !important;
+  left: 0px !important;
+  /* give it non-zero size, VoiceOver on Safari requires at least 2 pixels
+     before allowing buttons to be activated. */
+  width: 4px !important;
+  height: 4px !important;
+  /* visually hide it with overflow and opacity */
+  opacity: 0 !important;
+  overflow: hidden !important;
+  /* remove any margin or padding */
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  /* ensure no other style sets display to none */
+  display: block !important;
+  visibility: visible !important;
+  pointer-events: none !important;
 }
 
 a[skiplink]:focus {
-  top: 0px;
-  left: 0px;
-  height: auto;
-  width: auto;
-  margin: auto;
+  position: absolute !important;
+  top: 0px !important;
+  left: 0px !important;
+  height: auto !important;
+  width: auto !important;
+  margin: auto !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  background-color: white;
 }

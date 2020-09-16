@@ -1,6 +1,6 @@
 import { html, fixture, fixtureSync, expect } from '@open-wc/testing';
 import { stub } from 'sinon';
-import '../../generic-radio.js';
+import '../../radio.js';
 
 const radioFixture = html`
   <generic-radio label="radiogroup">

@@ -23,7 +23,7 @@ template.innerHTML = `
     }
   </style>
   <focus-trap>
-    <div role="dialog" part="dialog"></div>
+    <div role="dialog" part="dialog"><slot></slot></div>
   </focus-trap>
 `;
 

@@ -31,7 +31,7 @@ class Dialog extends EventTargetShim {
     }
     document.body.appendChild(dialogOverlay);
 
-    content(dialogOverlay.shadowRoot.querySelector('[role="dialog"]'));
+    content(dialogOverlay);
     this.dispatchEvent(new Event('dialog-opened'));
   }
 

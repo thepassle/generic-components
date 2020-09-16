@@ -1,5 +1,5 @@
 import { html, fixture, expect, oneEvent } from '@open-wc/testing';
-import '../../generic-disclosure.js';
+import '../../disclosure.js';
 
 describe('generic-disclosure', () => {
   it('a11y', async () => {

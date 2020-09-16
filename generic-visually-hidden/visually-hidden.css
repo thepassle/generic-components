@@ -1,10 +1,21 @@
 [visually-hidden] {
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
-  height: 1px;
-  width: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
+  position: fixed !important;
+  /* keep it on viewport */
+  top: 0px !important;
+  left: 0px !important;
+  /* give it non-zero size, VoiceOver on Safari requires at least 2 pixels
+     before allowing buttons to be activated. */
+  width: 4px !important;
+  height: 4px !important;
+  /* visually hide it with overflow and opacity */
+  opacity: 0 !important;
+  overflow: hidden !important;
+  /* remove any margin or padding */
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  /* ensure no other style sets display to none */
+  display: block !important;
+  visibility: visible !important;
+  pointer-events: none !important;
 }

@@ -13,6 +13,7 @@ export const skiplink = `
     width: auto;
     margin: auto;
     opacity: 1;
+    pointer-events: auto;
     background-color: white;
   }
 `;

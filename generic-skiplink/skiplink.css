@@ -28,5 +28,6 @@ a[skiplink]:focus {
   width: auto !important;
   margin: auto !important;
   opacity: 1 !important;
-  background-color: white !important;
+  pointer-events: auto !important;
+  background-color: white;
 }

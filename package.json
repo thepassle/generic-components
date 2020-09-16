@@ -1,6 +1,6 @@
 {
   "name": "@generic-components/components",
-  "version": "1.0.0",
+  "version": "1.0.0-rc.1",
   "description": "Set of generic, accessible, zero dependency components",
   "author": "Pascal Schilp",
   "license": "MIT",
@@ -20,6 +20,7 @@
     "test:watch": "web-test-runner **/*/*.test.js --coverage --node-resolve --watch"
   },
   "devDependencies": {
+    "@a11y/focus-trap": "^1.0.5",
     "@open-wc/eslint-config": "^1.0.0",
     "@open-wc/prettier-config": "^0.1.10",
     "@open-wc/testing": "^2.5.17",
@@ -53,8 +54,5 @@
       "prettier --write",
       "git add"
     ]
-  },
-  "dependencies": {
-    "@a11y/focus-trap": "^1.0.5"
   }
 }

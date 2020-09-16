@@ -12,6 +12,10 @@ body {
   transition: box-shadow 0.1s ease-in-out;
 }
 
+.nav *:focus {
+  box-shadow: 0 0 0 1px white, 0 0 0px 3px #145dce !important;
+}
+
 .nav {
   font-family: 'Roboto Slab';
 }

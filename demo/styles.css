@@ -16,10 +16,6 @@ body {
   font-family: 'Roboto Slab';
 }
 
-.content h1, h2, h3, a {
-  /* font-family: 'Roboto Slab'; */
-}
-
 pre code span {
   font-family: monospace;
   font-size: 15px;

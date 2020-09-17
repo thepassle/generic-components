@@ -1,6 +1,6 @@
 {
   "name": "@generic-components/components",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0-rc.2",
   "description": "Set of generic, accessible, zero dependency components",
   "author": "Pascal Schilp",
   "license": "MIT",

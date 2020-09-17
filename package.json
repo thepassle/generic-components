@@ -4,6 +4,7 @@
   "description": "Set of generic, accessible, zero dependency components",
   "author": "Pascal Schilp",
   "license": "MIT",
+  "type": "module",
   "main": "index.js",
   "module": "index.js",
   "homepage": "https://genericcomponents.netlify.app/",

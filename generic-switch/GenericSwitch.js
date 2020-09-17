@@ -87,8 +87,8 @@ export class GenericSwitch extends HTMLElement {
     this.__track.id = `track-${__count}`;
     this.__thumb.id = `thumb-${__count}`;
 
-    this.__button.addEventListener('click', this.__onClick);
-    this.__button.addEventListener('keydown', this.__onKeyDown);
+    this.addEventListener('click', this.__onClick);
+    this.addEventListener('keydown', this.__onKeyDown);
     this.__button.setAttribute('role', 'switch');
 
     if (!this.hasAttribute('label')) {
@@ -101,7 +101,7 @@ export class GenericSwitch extends HTMLElement {
 
     this.__checked = this.hasAttribute('checked') || false;
 
-    this.__update();
+    this.__update(false);
     this.__handleDisabled();
     __count++; // eslint-disable-line
   }
@@ -149,7 +149,7 @@ export class GenericSwitch extends HTMLElement {
     }
   }
 
-  __update() {
+  __update(dispatch) {
     if (this.__checked && !this.hasAttribute('disabled')) {
       this.__button.setAttribute('aria-checked', 'true');
       this.__button.setAttribute('checked', '');
@@ -158,8 +158,10 @@ export class GenericSwitch extends HTMLElement {
       this.__button.removeAttribute('checked');
     }
 
-    const { __checked } = this;
-    this.dispatchEvent(new CustomEvent('checked-changed', { detail: __checked }));
+    if (dispatch) {
+      const { __checked } = this;
+      this.dispatchEvent(new CustomEvent('checked-changed', { detail: __checked }));
+    }
   }
 
   attributeChangedCallback(name, oldVal, newVal) {
@@ -172,7 +174,7 @@ export class GenericSwitch extends HTMLElement {
           break;
         case 'checked':
           this.__checked = !this.__checked;
-          this.__update();
+          this.__update(true);
           break;
         case 'label':
           this.__button.setAttribute('aria-label', newVal);

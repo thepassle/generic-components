@@ -1,4 +1,5 @@
 import { html, fixture, expect } from '@open-wc/testing';
+import { stub } from 'sinon';
 import '../../switch.js';
 
 describe('generic-switch', () => {
@@ -8,6 +9,69 @@ describe('generic-switch', () => {
     `);
 
     await expect(el).to.be.accessible();
+  });
+
+  describe('events', () => {
+    it('doesnt fire an event on first update', async () => {
+      const el = await fixture(html`
+        <generic-switch></generic-switch>
+      `);
+      const dispatchStub = stub(el, 'dispatchEvent');
+      el.connectedCallback();
+      expect(dispatchStub).callCount(0);
+      dispatchStub.restore();
+    });
+
+    it('doesnt fire an event on disabled change', async () => {
+      const el = await fixture(html`
+        <generic-switch></generic-switch>
+      `);
+      const dispatchStub = stub(el, 'dispatchEvent');
+      el.setAttribute('disabled', '');
+      expect(dispatchStub).callCount(0);
+      dispatchStub.restore();
+    });
+
+    it('fires an event on checked attr change', async () => {
+      const el = await fixture(html`
+        <generic-switch></generic-switch>
+      `);
+      const dispatchStub = stub(el, 'dispatchEvent');
+      el.setAttribute('checked', '');
+      expect(dispatchStub).callCount(1);
+      dispatchStub.restore();
+    });
+
+    it('fires an event on checked property change', async () => {
+      const el = await fixture(html`
+        <generic-switch></generic-switch>
+      `);
+      const dispatchStub = stub(el, 'dispatchEvent');
+      el.setAttribute('checked', '');
+      expect(dispatchStub).callCount(1);
+      dispatchStub.restore();
+    });
+
+    it('fires event on keydown', async () => {
+      const el = await fixture(html`
+        <generic-switch></generic-switch>
+      `);
+      const dispatchStub = stub(el, 'dispatchEvent');
+      el.__onKeyDown({ preventDefault: () => {}, keyCode: 13 });
+      el.__onKeyDown({ preventDefault: () => {}, keyCode: 32 });
+      expect(dispatchStub).callCount(2);
+      dispatchStub.restore();
+    });
+
+    it('fires event on click', async () => {
+      const el = await fixture(html`
+        <generic-switch></generic-switch>
+      `);
+      const dispatchStub = stub(el, 'dispatchEvent');
+      el.click();
+      expect(dispatchStub).callCount(1);
+      dispatchStub.restore();
+    });
   });
 
   it('has role switch and tabindex 0', async () => {

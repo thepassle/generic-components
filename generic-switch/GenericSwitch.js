@@ -164,6 +164,18 @@ export class GenericSwitch extends HTMLElement {
     }
   }
 
+  set checked(val) {
+    if (val) {
+      this.setAttribute('checked', '');
+    } else {
+      this.removeAttribute('checked');
+    }
+  }
+
+  get checked() {
+    return this.__checked;
+  }
+
   attributeChangedCallback(name, oldVal, newVal) {
     if (!this.__button) return;
     if (newVal !== oldVal) {

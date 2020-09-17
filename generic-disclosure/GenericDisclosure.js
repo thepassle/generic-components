@@ -69,7 +69,7 @@ export class GenericDisclosure extends HTMLElement {
     });
 
     if (this.hasAttribute('expanded')) {
-      this.__open();
+      this.__open(false);
     }
   }
 
@@ -83,21 +83,23 @@ export class GenericDisclosure extends HTMLElement {
       if (newVal !== oldVal) {
         if (this.hasAttribute('expanded')) {
           this.__expanded = true;
-          this.__open();
+          this.__open(true);
         } else {
           this.__expanded = false;
-          this.__close();
+          this.__close(true);
         }
       }
     }
   }
 
-  __open() {
-    this.dispatchEvent(
-      new CustomEvent('opened-changed', {
-        detail: true,
-      }),
-    );
+  __open(dispatch) {
+    if (dispatch) {
+      this.dispatchEvent(
+        new CustomEvent('opened-changed', {
+          detail: true,
+        }),
+      );
+    }
     this.__button.setAttribute('aria-expanded', 'true');
   }
 

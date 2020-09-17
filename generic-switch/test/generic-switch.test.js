@@ -22,6 +22,16 @@ describe('generic-switch', () => {
       dispatchStub.restore();
     });
 
+    it('doesnt fire an event on first update when checked', async () => {
+      const el = await fixture(html`
+        <generic-switch checked></generic-switch>
+      `);
+      const dispatchStub = stub(el, 'dispatchEvent');
+      el.connectedCallback();
+      expect(dispatchStub).callCount(0);
+      dispatchStub.restore();
+    });
+
     it('doesnt fire an event on disabled change', async () => {
       const el = await fixture(html`
         <generic-switch></generic-switch>
@@ -47,7 +57,7 @@ describe('generic-switch', () => {
         <generic-switch></generic-switch>
       `);
       const dispatchStub = stub(el, 'dispatchEvent');
-      el.setAttribute('checked', '');
+      el.checked = true;
       expect(dispatchStub).callCount(1);
       dispatchStub.restore();
     });
@@ -72,6 +82,36 @@ describe('generic-switch', () => {
       expect(dispatchStub).callCount(1);
       dispatchStub.restore();
     });
+  });
+
+  it('property to attr', async () => {
+    const el = await fixture(html`
+      <generic-switch></generic-switch>
+    `);
+    const dispatchStub = stub(el, 'dispatchEvent');
+
+    el.checked = true;
+    expect(el.hasAttribute('checked')).to.equal(true);
+
+    el.checked = false;
+    expect(el.hasAttribute('checked')).to.equal(false);
+
+    expect(dispatchStub).callCount(2);
+  });
+
+  it('attr to prop', async () => {
+    const el = await fixture(html`
+      <generic-switch></generic-switch>
+    `);
+    const dispatchStub = stub(el, 'dispatchEvent');
+
+    el.setAttribute('checked', '');
+    expect(el.checked).to.equal(true);
+
+    el.removeAttribute('checked');
+    expect(el.checked).to.equal(false);
+
+    expect(dispatchStub).callCount(2);
   });
 
   it('has role switch and tabindex 0', async () => {

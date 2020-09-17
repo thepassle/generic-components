@@ -1,4 +1,5 @@
 import { html, fixture, expect, oneEvent } from '@open-wc/testing';
+import { stub } from 'sinon';
 import '../../disclosure.js';
 
 describe('generic-disclosure', () => {
@@ -97,5 +98,17 @@ describe('generic-disclosure', () => {
 
     const { detail } = await listener;
     expect(detail).to.equal(false);
+  });
+
+  it('doesnt fire an event on first update', async () => {
+    const el = await fixture(html`
+      <generic-disclosure expanded>
+        <button slot="toggle"></button><span slot="detail"></span>
+      </generic-disclosure>
+    `);
+    const dispatchStub = stub(el, 'dispatchEvent');
+    el.connectedCallback();
+    expect(dispatchStub).callCount(0);
+    dispatchStub.restore();
   });
 });

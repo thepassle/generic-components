@@ -6,7 +6,6 @@ template.innerHTML = `
     :host {
       display: flex;
       align-items: center;
-      height: 16px;
     }
 
     :host([checked]) .thumb {
@@ -20,7 +19,7 @@ template.innerHTML = `
     .button {
       display: inline-block;
       position: relative;
-      height: 100%;
+      height: 16px;
       width: 36px;
     }
 

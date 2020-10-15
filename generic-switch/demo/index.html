@@ -60,6 +60,14 @@
     generic-switch#dark {
       --generic-switch-focus: 0 0 2px 3px #0099e0;
     }
+
+    generic-switch#narrow {
+      display: flex;
+      width: 24ch;
+    }
+    generic-switch#narrow::part(button) {
+      flex-shrink: 0;
+    }
   </style>
 
   <title>generic-components</title>
@@ -315,6 +323,25 @@
         </details>
         <hr />
         <generic-switch checked disabled>Checked and disabled</generic-switch><br /><br />
+      </div>
+
+      <div class="demo">
+        <h3>With a long text in a small place:</h3>
+        <details>
+          <summary>Show code</summary>
+          <pre><code class="language-markup"><script type="prism-html-markup"><style>
+  generic-switch#narrow {
+    display: flex;
+    width: 24ch;
+  }
+  generic-switch#narrow::part(button) {
+    flex-shrink: 0;
+  }
+</style>
+<generic-switch checked disabled>Very very loooong text in a smale space</generic-skiplink></script></code></pre>
+        </details>
+        <hr />
+        <generic-switch id="narrow">Very very loooong text in a smale space</generic-switch><br /><br />
       </div>
 
       <br /><br />

@@ -35,7 +35,7 @@ import '@generic-components/components/switch.js';
 Alternatively you can load the components from a CDN and drop them in your HTML file as a script tag
 
 ```html
-<script src="https://unpkg.com/@generic-components/components@1.0.0/switch.js" type="module"></script>
+<script src="https://unpkg.com/@generic-components/components@latest/switch.js" type="module"></script>
 ```
 
 ```html

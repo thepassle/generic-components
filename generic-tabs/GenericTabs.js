@@ -70,11 +70,29 @@ export class GenericTabs extends SelectedMixin(BatchingElement) {
 
   constructor() {
     super();
+
+    // Check if slots were setup
+    // If not, assume heading structure and preprocess light DOM
+    if (!this.querySelector('[slot]')) {
+      const unformattedEls = [...this.children];
+      unformattedEls.forEach(node => {
+        if (['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(node.tagName.toLowerCase())) {
+          const button = document.createElement('button');
+          button.textContent = node.textContent;
+          button.setAttribute('slot', 'tab');
+          node.parentNode.replaceChild(button, node);
+        } else {
+          node.setAttribute('slot', 'panel');
+        }
+      });
+    }
+
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
   update() {
+    // Preprocess markup for headings
     const { tabs, panels } = this.getElements();
     tabs.forEach((_, i) => {
       if (i === this.selected) {

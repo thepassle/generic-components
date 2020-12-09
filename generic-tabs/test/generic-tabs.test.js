@@ -20,6 +20,23 @@ const tabsFixture = html`
   </generic-tabs>
 `;
 
+const tabsWithHeadingsFixture = html`
+  <generic-tabs>
+    <h1>
+      Jim
+    </h1>
+    <div>
+      My name is Jim.
+    </div>
+    <h1>
+      Jack
+    </h1>
+    <div>
+      And I am Jack.
+    </div>
+  </generic-tabs>
+`;
+
 const tabsFixtureSelected = html`
   <generic-tabs selected="1">
     <button slot="tab">
@@ -393,6 +410,27 @@ describe('generic-tabs', () => {
       expect(buttons[0].getAttribute('aria-selected')).to.equal('false');
       expect(buttons[0].hasAttribute('selected')).to.equal(false);
       expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
+    });
+  });
+
+  describe('headings', () => {
+    it('works with headings and no slots', async () => {
+      const el = await fixture(tabsWithHeadingsFixture);
+      const buttons = el.querySelectorAll('button');
+      buttons[1].click();
+      await el.updateComplete;
+      expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
+      expect(buttons[1].hasAttribute('selected')).to.equal(true);
+      expect(buttons[0].getAttribute('aria-selected')).to.equal('false');
+      expect(buttons[0].hasAttribute('selected')).to.equal(false);
+      expect(buttons[0].getAttribute('tabindex')).to.equal('-1');
+      buttons[0].click();
+      await el.updateComplete;
+      expect(buttons[0].getAttribute('aria-selected')).to.equal('true');
+      expect(buttons[0].hasAttribute('selected')).to.equal(true);
+      expect(buttons[1].getAttribute('aria-selected')).to.equal('false');
+      expect(buttons[1].hasAttribute('selected')).to.equal(false);
+      expect(buttons[1].getAttribute('tabindex')).to.equal('-1');
     });
   });
 });

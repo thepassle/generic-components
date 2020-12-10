@@ -76,7 +76,7 @@ export class GenericTabs extends SelectedMixin(BatchingElement) {
     if (!this.querySelector('[slot]')) {
       const unformattedEls = [...this.children];
       unformattedEls.forEach(node => {
-        if (['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(node.tagName.toLowerCase())) {
+        if (node instanceof HTMLHeadingElement) {
           const button = document.createElement('button');
           button.textContent = node.textContent;
           button.setAttribute('slot', 'tab');

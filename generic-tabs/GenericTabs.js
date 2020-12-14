@@ -70,29 +70,12 @@ export class GenericTabs extends SelectedMixin(BatchingElement) {
 
   constructor() {
     super();
-
-    // Check if slots were setup
-    // If not, assume heading structure and preprocess light DOM
-    if (!this.querySelector('[slot]')) {
-      const unformattedEls = [...this.children];
-      unformattedEls.forEach(node => {
-        if (node instanceof HTMLHeadingElement) {
-          const button = document.createElement('button');
-          button.textContent = node.textContent;
-          button.setAttribute('slot', 'tab');
-          node.parentNode.replaceChild(button, node);
-        } else {
-          node.setAttribute('slot', 'panel');
-        }
-      });
-    }
-
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
   update() {
-    // Preprocess markup for headings
+    this._preprocess();
     const { tabs, panels } = this.getElements();
     tabs.forEach((_, i) => {
       if (i === this.selected) {
@@ -117,5 +100,23 @@ export class GenericTabs extends SelectedMixin(BatchingElement) {
         panels[i].setAttribute('aria-labelledby', `generic-tab-${this.__uuid}-${i}`);
       }
     });
+  }
+
+  _preprocess() {
+    // Check if slots were setup in light DOM
+    // If not, assume heading structure and preprocess light DOM
+    if (!this.querySelector('[slot]')) {
+      const unformattedEls = [...this.children];
+      unformattedEls.forEach(node => {
+        if (node instanceof HTMLHeadingElement) {
+          const button = document.createElement('button');
+          button.textContent = node.textContent;
+          button.setAttribute('slot', 'tab');
+          node.parentNode.replaceChild(button, node);
+        } else {
+          node.setAttribute('slot', 'panel');
+        }
+      });
+    }
   }
 }

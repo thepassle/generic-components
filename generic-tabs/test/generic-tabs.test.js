@@ -457,7 +457,6 @@ describe('generic-tabs', () => {
           And I am John.
         </div>
       `;
-      console.log(el.innerHTML);
       buttons = el.querySelectorAll('button');
       expect(buttons.length).to.equal(3);
     });

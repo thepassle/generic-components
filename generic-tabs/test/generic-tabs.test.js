@@ -413,10 +413,10 @@ describe('generic-tabs', () => {
     });
   });
 
-  describe('preprocessor', () => {
-    it('works with headings and no slots', async () => {
+  describe('headings', () => {
+    it('works with headings and no predefined slots', async () => {
       const el = await fixture(tabsWithHeadingsFixture);
-      const buttons = el.querySelectorAll('button');
+      const buttons = el.querySelectorAll('[slot="tab"]');
       buttons[1].click();
       await el.updateComplete;
       expect(buttons[1].getAttribute('aria-selected')).to.equal('true');
@@ -431,34 +431,6 @@ describe('generic-tabs', () => {
       expect(buttons[1].getAttribute('aria-selected')).to.equal('false');
       expect(buttons[1].hasAttribute('selected')).to.equal(false);
       expect(buttons[1].getAttribute('tabindex')).to.equal('-1');
-    });
-
-    it('works with DOM updates', async () => {
-      const el = await fixture(tabsWithHeadingsFixture);
-      let buttons = el.querySelectorAll('button');
-      expect(buttons.length).to.equal(2);
-      el.innerHTML = `
-        <h1>
-          Jim
-        </h1>
-        <div>
-          My name is Jim.
-        </div>
-        <h1>
-          Jack
-        </h1>
-        <div>
-          And I am Jack.
-        </div>
-        <h1>
-          John
-        </h1>
-        <div>
-          And I am John.
-        </div>
-      `;
-      buttons = el.querySelectorAll('button');
-      expect(buttons.length).to.equal(3);
     });
   });
 });

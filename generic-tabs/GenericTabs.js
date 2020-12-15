@@ -35,11 +35,19 @@ export class GenericTabs extends SelectedMixin(BatchingElement) {
     return {
       selectors: {
         tabs: {
-          selector: el => el.querySelectorAll("[slot='tab']"),
+          selector: el =>
+            Array.from(el.children).filter(node =>
+              node.matches('h1, h2, h3, h4, h5, h6, [slot="tab"]'),
+            ),
           focusTarget: true,
         },
         panels: {
-          selector: el => el.querySelectorAll("[slot='panel']"),
+          selector: el =>
+            Array.from(el.children).filter(
+              node =>
+                node.matches('h1 ~ *, h2 ~ *, h3 ~ *, h4 ~ *, h5 ~ *, h6 ~ *, [slot="panel"]') &&
+                !node.matches('h1, h2, h3, h4, h5, h6, [slot="tab"]'),
+            ),
         },
       },
       multiDirectional: true,
@@ -75,13 +83,13 @@ export class GenericTabs extends SelectedMixin(BatchingElement) {
   }
 
   update() {
-    this._preprocess();
     const { tabs, panels } = this.getElements();
     tabs.forEach((_, i) => {
+      tabs[i].slot = 'tab';
       if (i === this.selected) {
         tabs[i].setAttribute('selected', '');
         tabs[i].setAttribute('aria-selected', 'true');
-        tabs[i].removeAttribute('tabindex');
+        tabs[i].setAttribute('tabindex', '0');
         panels[i].removeAttribute('hidden');
         this.value = tabs[i].textContent.trim();
       } else {
@@ -100,23 +108,8 @@ export class GenericTabs extends SelectedMixin(BatchingElement) {
         panels[i].setAttribute('aria-labelledby', `generic-tab-${this.__uuid}-${i}`);
       }
     });
-  }
-
-  _preprocess() {
-    // Check if slots were setup in light DOM
-    // If not, assume heading structure and preprocess light DOM
-    if (!this.querySelector('[slot]')) {
-      const unformattedEls = [...this.children];
-      unformattedEls.forEach(node => {
-        if (node instanceof HTMLHeadingElement) {
-          const button = document.createElement('button');
-          button.textContent = node.textContent;
-          button.setAttribute('slot', 'tab');
-          node.parentNode.replaceChild(button, node);
-        } else {
-          node.setAttribute('slot', 'panel');
-        }
-      });
-    }
+    panels.forEach((_, i) => {
+      panels[i].slot = 'panel';
+    });
   }
 }

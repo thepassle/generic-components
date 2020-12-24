@@ -42,6 +42,10 @@ template.innerHTML = `
       box-shadow: var(--generic-switch-focus, 0 0 0 2px skyblue);
     }
 
+    label[part="label"] {
+      user-select: none;
+    }
+
   </style>
   <label part="label"><slot></slot></label>
   <div part="button" class="button">

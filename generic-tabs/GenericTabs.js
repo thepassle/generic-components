@@ -27,6 +27,7 @@ template.innerHTML = `
 
   <div part="panel">
     <slot name="panel"></slot>
+    <slot></slot>
   </div>
 `;
 

@@ -20,6 +20,8 @@ template.innerHTML = `
       display: flex;
     }
   </style>
+  
+  <slot></slot>
 
   <div part="tablist" role="tablist">
     <slot name="tab"></slot>

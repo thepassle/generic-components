@@ -10,6 +10,7 @@
   "homepage": "https://genericcomponents.netlify.app/",
   "repository": "https://github.com/thepassle/generic-components",
   "scripts": {
+    "analyze": "cem analyze",
     "start": "es-dev-server --node-resolve --open --watch",
     "lint:eslint": "eslint --ext .js . --ignore-path .gitignore --ignore-pattern web_modules/**/*.*",
     "format:eslint": "eslint --ext .js,.html . --fix --ignore-path .gitignore --ignore-pattern web_modules/**/*.*",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@a11y/focus-trap": "^1.0.5",
+    "@custom-elements-manifest/analyzer": "^0.1.2",
     "@open-wc/eslint-config": "^1.0.0",
     "@open-wc/prettier-config": "^0.1.10",
     "@open-wc/testing": "^2.5.17",
@@ -55,5 +57,6 @@
       "prettier --write",
       "git add"
     ]
-  }
+  },
+  "customElementsManifest": "custom-elements.json"
 }

@@ -1,0 +1,1951 @@
+{
+  "schemaVersion": "experimental",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "./accordion.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "generic-accordion",
+          "declaration": {
+            "name": "GenericAccordion",
+            "module": "./generic-accordion/GenericAccordion.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./alert.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "generic-alert",
+          "declaration": {
+            "name": "GenericAlert",
+            "module": "./generic-alert/GenericAlert.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./dialog.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "generic-dialog",
+          "declaration": {
+            "name": "GenericDialog",
+            "module": "./generic-dialog/GenericDialog.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./disclosure.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "generic-disclosure",
+          "declaration": {
+            "name": "GenericDisclosure",
+            "module": "./generic-disclosure/GenericDisclosure.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GenericAccordion",
+          "declaration": {
+            "name": "GenericAccordion",
+            "module": "./generic-accordion/GenericAccordion.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "GenericAlert",
+          "declaration": {
+            "name": "GenericAlert",
+            "module": "./generic-alert/GenericAlert.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "GenericDialog",
+          "declaration": {
+            "name": "GenericDialog",
+            "module": "./generic-dialog/GenericDialog.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "dialog",
+          "declaration": {
+            "name": "dialog",
+            "module": "./generic-dialog/dialog.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "GenericDisclosure",
+          "declaration": {
+            "name": "GenericDisclosure",
+            "module": "./generic-disclosure/GenericDisclosure.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "GenericListbox",
+          "declaration": {
+            "name": "GenericListbox",
+            "module": "./generic-listbox/GenericListbox.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "GenericRadio",
+          "declaration": {
+            "name": "GenericRadio",
+            "module": "./generic-radio/GenericRadio.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "GenericSkiplink",
+          "declaration": {
+            "name": "GenericSkiplink",
+            "module": "./generic-skiplink/GenericSkiplink.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "skiplink",
+          "declaration": {
+            "name": "skiplink",
+            "module": "./generic-skiplink/skiplink.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "GenericSwitch",
+          "declaration": {
+            "name": "GenericSwitch",
+            "module": "./generic-switch/GenericSwitch.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "GenericTabs",
+          "declaration": {
+            "name": "GenericTabs",
+            "module": "./generic-tabs/GenericTabs.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "GenericVisuallyHidden",
+          "declaration": {
+            "name": "GenericVisuallyHidden",
+            "module": "./generic-visually-hidden/GenericVisuallyHidden.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "visuallyHidden",
+          "declaration": {
+            "name": "visuallyHidden",
+            "module": "./generic-visually-hidden/visually-hidden.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "EventTargetShim",
+          "declaration": {
+            "name": "EventTargetShim",
+            "module": "./utils/EventTargetShim.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SelectedMixin",
+          "declaration": {
+            "name": "SelectedMixin",
+            "module": "./utils/SelectedMixin.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "BatchingElement",
+          "declaration": {
+            "name": "BatchingElement",
+            "module": "./utils/BatchingElement.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "KEYCODES",
+          "declaration": {
+            "name": "KEYCODES",
+            "module": "./utils/keycodes.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./listbox.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "generic-listbox",
+          "declaration": {
+            "name": "GenericListbox",
+            "module": "./generic-listbox/GenericListbox.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./radio.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "generic-radio",
+          "declaration": {
+            "name": "GenericRadio",
+            "module": "./generic-radio/GenericRadio.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./skiplink.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "generic-skiplink",
+          "declaration": {
+            "name": "GenericSkiplink",
+            "module": "./generic-skiplink/GenericSkiplink.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./switch.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "generic-switch",
+          "declaration": {
+            "name": "GenericSwitch",
+            "module": "./generic-switch/GenericSwitch.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./tabs.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "generic-tabs",
+          "declaration": {
+            "name": "GenericTabs",
+            "module": "./generic-tabs/GenericTabs.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./visually-hidden.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "generic-visually-hidden",
+          "declaration": {
+            "name": "GenericVisuallyHidden",
+            "module": "./generic-visually-hidden/GenericVisuallyHidden.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./generic-accordion/GenericAccordion.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "GenericAccordion",
+          "mixins": [
+            {
+              "name": "SelectedMixin",
+              "module": "/utils/SelectedMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "BatchingElement",
+            "module": "/utils/BatchingElement.js"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "config",
+              "static": true,
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "update",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "connectedCallback",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "attributeChangedCallback",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "oldVal"
+                },
+                {
+                  "name": "newVal"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getElements",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__getFocusableElements",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__dispatch",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__focus",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__onClick",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__onKeyDown",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "requestUpdate",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "dispatchEvent"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BatchingElement",
+                "module": "./utils/BatchingElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__resolver",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "BatchingElement",
+                "module": "./utils/BatchingElement.js"
+              }
+            }
+          ],
+          "tagName": "generic-accordion",
+          "attributes": [
+            {
+              "name": "selected",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "selected-changed",
+              "type": {
+                "type": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GenericAccordion",
+          "declaration": {
+            "name": "GenericAccordion",
+            "module": "./generic-accordion/GenericAccordion.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./generic-alert/GenericAlert.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "GenericAlert",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "members": [
+            {
+              "kind": "method",
+              "name": "connectedCallback",
+              "privacy": "public"
+            }
+          ],
+          "tagName": "generic-alert"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GenericAlert",
+          "declaration": {
+            "name": "GenericAlert",
+            "module": "./generic-alert/GenericAlert.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./generic-dialog/GenericDialog.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "GenericDialog",
+          "events": [
+            {
+              "name": "dialog-opened",
+              "type": {
+                "type": "CustomEvent"
+              }
+            },
+            {
+              "name": "dialog-closed",
+              "type": {
+                "type": "CustomEvent"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "members": [
+            {
+              "kind": "method",
+              "name": "close",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "connectedCallback",
+              "privacy": "public"
+            }
+          ],
+          "tagName": "generic-dialog"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GenericDialog",
+          "declaration": {
+            "name": "GenericDialog",
+            "module": "./generic-dialog/GenericDialog.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./generic-dialog/dialog.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "dialog"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "dialog",
+          "declaration": {
+            "name": "dialog",
+            "module": "./generic-dialog/dialog.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./generic-dialog/generic-dialog-overlay.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "GenericDialogOverlay",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "members": [
+            {
+              "kind": "method",
+              "name": "connectedCallback",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "disconnectedCallback",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "__onFocusIn",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "__onClick",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            }
+          ],
+          "tagName": "generic-dialog-overlay"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GenericDialogOverlay",
+          "declaration": {
+            "name": "GenericDialogOverlay",
+            "module": "./generic-dialog/generic-dialog-overlay.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "generic-dialog-overlay",
+          "declaration": {
+            "name": "GenericDialogOverlay",
+            "module": "./generic-dialog/generic-dialog-overlay.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./generic-disclosure/GenericDisclosure.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "GenericDisclosure",
+          "attributes": [
+            {
+              "name": "expanded"
+            }
+          ],
+          "events": [
+            {
+              "name": "opened-changed",
+              "type": {
+                "type": "CustomEvent"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "members": [
+            {
+              "kind": "method",
+              "name": "connectedCallback",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "attributeChangedCallback",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "newVal"
+                },
+                {
+                  "name": "oldVal"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__open",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "dispatch"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__close",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "expanded",
+              "privacy": "public"
+            }
+          ],
+          "tagName": "generic-disclosure"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GenericDisclosure",
+          "declaration": {
+            "name": "GenericDisclosure",
+            "module": "./generic-disclosure/GenericDisclosure.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./generic-listbox/GenericListbox.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "GenericListbox",
+          "mixins": [
+            {
+              "name": "SelectedMixin",
+              "module": "/utils/SelectedMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "BatchingElement",
+            "module": "/utils/BatchingElement.js"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "config",
+              "static": true,
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "connectedCallback",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "update",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "__scrollIntoView",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "li"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "attributeChangedCallback",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "oldVal"
+                },
+                {
+                  "name": "newVal"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getElements",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__getFocusableElements",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__dispatch",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__focus",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__onClick",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__onKeyDown",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "requestUpdate",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "dispatchEvent"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BatchingElement",
+                "module": "./utils/BatchingElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__resolver",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "BatchingElement",
+                "module": "./utils/BatchingElement.js"
+              }
+            }
+          ],
+          "tagName": "generic-listbox",
+          "attributes": [
+            {
+              "name": "selected",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "selected-changed",
+              "type": {
+                "type": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GenericListbox",
+          "declaration": {
+            "name": "GenericListbox",
+            "module": "./generic-listbox/GenericListbox.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./generic-radio/GenericRadio.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "GenericRadio",
+          "attributes": [
+            {
+              "name": "vertical"
+            },
+            {
+              "name": "disabled"
+            },
+            {
+              "name": "selected",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "SelectedMixin",
+              "module": "/utils/SelectedMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "BatchingElement",
+            "module": "/utils/BatchingElement.js"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "config",
+              "static": true,
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "attributeChangedCallback",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "old"
+                },
+                {
+                  "name": "val"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "connectedCallback",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "update",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "getElements",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__getFocusableElements",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__dispatch",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__focus",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__onClick",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__onKeyDown",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "requestUpdate",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "dispatchEvent"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BatchingElement",
+                "module": "./utils/BatchingElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__resolver",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "BatchingElement",
+                "module": "./utils/BatchingElement.js"
+              }
+            }
+          ],
+          "tagName": "generic-radio",
+          "events": [
+            {
+              "name": "selected-changed",
+              "type": {
+                "type": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GenericRadio",
+          "declaration": {
+            "name": "GenericRadio",
+            "module": "./generic-radio/GenericRadio.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./generic-skiplink/GenericSkiplink.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "GenericSkiplink",
+          "parts": [
+            {
+              "name": "anchor",
+              "description": ""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "for"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "members": [
+            {
+              "kind": "method",
+              "name": "connectedCallback",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "attributeChangedCallback",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "privacy": "public"
+            }
+          ],
+          "tagName": "generic-skiplink"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GenericSkiplink",
+          "declaration": {
+            "name": "GenericSkiplink",
+            "module": "./generic-skiplink/GenericSkiplink.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./generic-skiplink/skiplink.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "skiplink"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "skiplink",
+          "declaration": {
+            "name": "skiplink",
+            "module": "./generic-skiplink/skiplink.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./generic-switch/GenericSwitch.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "GenericSwitch",
+          "cssProperties": [
+            {
+              "name": "--generic-switch-focus",
+              "description": "Customizes the focus styles of the thumb"
+            }
+          ],
+          "parts": [
+            {
+              "name": "label",
+              "description": ""
+            },
+            {
+              "name": "thumb",
+              "description": ""
+            },
+            {
+              "name": "track",
+              "description": ""
+            },
+            {
+              "name": "button",
+              "description": ""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "disabled"
+            },
+            {
+              "name": "checked"
+            },
+            {
+              "name": "label"
+            }
+          ],
+          "events": [
+            {
+              "name": "checked-changed",
+              "type": {
+                "type": "CustomEvent"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "members": [
+            {
+              "kind": "method",
+              "name": "connectedCallback",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "disconnectedCallback",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "__handleDisabled",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "__onClick",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "__onKeyDown",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__update",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "dispatch"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "checked",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "attributeChangedCallback",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "oldVal"
+                },
+                {
+                  "name": "newVal"
+                }
+              ]
+            }
+          ],
+          "tagName": "generic-switch"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GenericSwitch",
+          "declaration": {
+            "name": "GenericSwitch",
+            "module": "./generic-switch/GenericSwitch.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./generic-tabs/GenericTabs.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "GenericTabs",
+          "attributes": [
+            {
+              "name": "vertical"
+            },
+            {
+              "name": "selected",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "SelectedMixin",
+              "module": "/utils/SelectedMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "BatchingElement",
+            "module": "/utils/BatchingElement.js"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "config",
+              "static": true,
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "attributeChangedCallback",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "old"
+                },
+                {
+                  "name": "val"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "connectedCallback",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "update",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "getElements",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__getFocusableElements",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__dispatch",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__focus",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__onClick",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__onKeyDown",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "requestUpdate",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "dispatchEvent"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BatchingElement",
+                "module": "./utils/BatchingElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__resolver",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "BatchingElement",
+                "module": "./utils/BatchingElement.js"
+              }
+            }
+          ],
+          "tagName": "generic-tabs",
+          "events": [
+            {
+              "name": "selected-changed",
+              "type": {
+                "type": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "./utils/SelectedMixin.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GenericTabs",
+          "declaration": {
+            "name": "GenericTabs",
+            "module": "./generic-tabs/GenericTabs.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./generic-visually-hidden/GenericVisuallyHidden.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "GenericVisuallyHidden",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "members": [
+            {
+              "kind": "method",
+              "name": "connectedCallback",
+              "privacy": "public"
+            }
+          ],
+          "tagName": "generic-visually-hidden"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GenericVisuallyHidden",
+          "declaration": {
+            "name": "GenericVisuallyHidden",
+            "module": "./generic-visually-hidden/GenericVisuallyHidden.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./generic-visually-hidden/visually-hidden.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "visuallyHidden",
+          "description": "For usage as constructible stylesheet"
+        },
+        {
+          "kind": "variable",
+          "name": "hostVisuallyHidden",
+          "description": "For usage inside a web component"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "visuallyHidden",
+          "declaration": {
+            "name": "visuallyHidden",
+            "module": "./generic-visually-hidden/visually-hidden.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "hostVisuallyHidden",
+          "declaration": {
+            "name": "hostVisuallyHidden",
+            "module": "./generic-visually-hidden/visually-hidden.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./utils/BatchingElement.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "BatchingElement",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "members": [
+            {
+              "kind": "method",
+              "name": "update",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "requestUpdate",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "dispatchEvent"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__dispatch",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "__resolver",
+              "privacy": "public"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BatchingElement",
+          "declaration": {
+            "name": "BatchingElement",
+            "module": "./utils/BatchingElement.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./utils/EventTargetShim.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "EventTargetShim"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "EventTargetShim",
+          "declaration": {
+            "name": "EventTargetShim",
+            "module": "./utils/EventTargetShim.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./utils/SelectedMixin.js",
+      "declarations": [
+        {
+          "kind": "mixin",
+          "name": "SelectedMixin",
+          "attributes": [
+            {
+              "name": "selected"
+            }
+          ],
+          "events": [
+            {
+              "name": "selected-changed",
+              "type": {
+                "type": "CustomEvent"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "superclass",
+            "module": "./utils/SelectedMixin.js"
+          },
+          "members": [
+            {
+              "kind": "method",
+              "name": "connectedCallback",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "attributeChangedCallback",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "oldVal"
+                },
+                {
+                  "name": "newVal"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getElements",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "__getFocusableElements",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "__dispatch",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "__focus",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "__onClick",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__onKeyDown",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "privacy": "public"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SelectedMixin",
+          "declaration": {
+            "name": "SelectedMixin",
+            "module": "./utils/SelectedMixin.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./utils/keycodes.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "KEYCODES"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KEYCODES",
+          "declaration": {
+            "name": "KEYCODES",
+            "module": "./utils/keycodes.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./utils/visually-hidden.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_visuallyHidden"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "_visuallyHidden",
+          "declaration": {
+            "name": "_visuallyHidden",
+            "module": "./utils/visually-hidden.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./web_modules/@a11y/focus-trap.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "FocusTrap",
+          "slots": [
+            {
+              "name": "",
+              "description": "Default content."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "inactive"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "inactive",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "focused",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "connectedCallback",
+              "privacy": "public",
+              "description": "Hooks up the element."
+            },
+            {
+              "kind": "method",
+              "name": "disconnectedCallback",
+              "privacy": "public",
+              "description": "Tears down the element."
+            },
+            {
+              "kind": "method",
+              "name": "attributeChangedCallback",
+              "privacy": "public",
+              "description": "When the attributes changes we need to re-render the template."
+            },
+            {
+              "kind": "method",
+              "name": "focusFirstElement",
+              "privacy": "public",
+              "description": "Focuses the first focusable element in the focus trap."
+            },
+            {
+              "kind": "method",
+              "name": "focusLastElement",
+              "privacy": "public",
+              "description": "Focuses the last focusable element in the focus trap."
+            },
+            {
+              "kind": "method",
+              "name": "getFocusableElements",
+              "privacy": "public",
+              "description": "Returns a list of the focusable children found within the element."
+            },
+            {
+              "kind": "method",
+              "name": "trapFocus",
+              "privacy": "public",
+              "description": "Focuses on either the last or first focusable element.",
+              "parameters": [
+                {
+                  "name": "trapToEnd",
+                  "type": {
+                    "type": "boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "onFocusIn",
+              "privacy": "public",
+              "description": "When the element gains focus this function is called."
+            },
+            {
+              "kind": "method",
+              "name": "onFocusOut",
+              "privacy": "public",
+              "description": "When the element looses its focus this function is called."
+            },
+            {
+              "kind": "method",
+              "name": "updateFocused",
+              "privacy": "public",
+              "description": "Updates the focused property and updates the view.\nThe update is debounced because the focusin and focusout out\nmight fire multiple times in a row. We only want to render\nthe element once, therefore waiting until the focus is \"stable\".",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "privacy": "public",
+              "description": "Updates the template."
+            }
+          ],
+          "tagName": "focus-trap"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "focus-trap",
+          "declaration": {
+            "name": "FocusTrap",
+            "module": "./web_modules/@a11y/focus-trap.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "FocusTrap",
+          "declaration": {
+            "name": "FocusTrap",
+            "module": "./web_modules/@a11y/focus-trap.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "isDisabled",
+          "declaration": {
+            "name": "isDisabled",
+            "module": "./web_modules/@a11y/focus-trap.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "isFocusable",
+          "declaration": {
+            "name": "isFocusable",
+            "module": "./web_modules/@a11y/focus-trap.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "isHidden",
+          "declaration": {
+            "name": "isHidden",
+            "module": "./web_modules/@a11y/focus-trap.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "queryShadowRoot",
+          "declaration": {
+            "name": "queryShadowRoot",
+            "module": "./web_modules/@a11y/focus-trap.js"
+          }
+        }
+      ]
+    }
+  ]
+}

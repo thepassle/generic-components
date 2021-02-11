@@ -9,6 +9,7 @@
   "module": "index.js",
   "homepage": "https://genericcomponents.netlify.app/",
   "repository": "https://github.com/thepassle/generic-components",
+  "sideEffects": false,
   "scripts": {
     "analyze": "cem analyze",
     "start": "es-dev-server --node-resolve --open --watch",

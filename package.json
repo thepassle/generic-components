@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@a11y/focus-trap": "^1.0.5",
-    "@custom-elements-manifest/analyzer": "^0.1.2",
+    "@custom-elements-manifest/analyzer": "^0.1.5",
     "@open-wc/eslint-config": "^1.0.0",
     "@open-wc/prettier-config": "^0.1.10",
     "@open-wc/testing": "^2.5.17",

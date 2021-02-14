@@ -297,6 +297,37 @@
     },
     {
       "kind": "javascript-module",
+      "path": "./generic-alert/GenericAlert.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "GenericAlert",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "members": [
+            {
+              "kind": "method",
+              "name": "connectedCallback",
+              "privacy": "public"
+            }
+          ],
+          "tagName": "generic-alert"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GenericAlert",
+          "declaration": {
+            "name": "GenericAlert",
+            "module": "./generic-alert/GenericAlert.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "./generic-accordion/GenericAccordion.js",
       "declarations": [
         {
@@ -464,7 +495,7 @@
             {
               "name": "selected-changed",
               "type": {
-                "type": "CustomEvent"
+                "text": "CustomEvent"
               },
               "inheritedFrom": {
                 "name": "SelectedMixin",
@@ -487,37 +518,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "./generic-alert/GenericAlert.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "GenericAlert",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "members": [
-            {
-              "kind": "method",
-              "name": "connectedCallback",
-              "privacy": "public"
-            }
-          ],
-          "tagName": "generic-alert"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "GenericAlert",
-          "declaration": {
-            "name": "GenericAlert",
-            "module": "./generic-alert/GenericAlert.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "./generic-dialog/GenericDialog.js",
       "declarations": [
         {
@@ -527,13 +527,13 @@
             {
               "name": "dialog-opened",
               "type": {
-                "type": "CustomEvent"
+                "text": "CustomEvent"
               }
             },
             {
               "name": "dialog-closed",
               "type": {
-                "type": "CustomEvent"
+                "text": "CustomEvent"
               }
             }
           ],
@@ -661,7 +661,7 @@
             {
               "name": "opened-changed",
               "type": {
-                "type": "CustomEvent"
+                "text": "CustomEvent"
               }
             }
           ],
@@ -900,7 +900,7 @@
             {
               "name": "selected-changed",
               "type": {
-                "type": "CustomEvent"
+                "text": "CustomEvent"
               },
               "inheritedFrom": {
                 "name": "SelectedMixin",
@@ -1088,7 +1088,7 @@
             {
               "name": "selected-changed",
               "type": {
-                "type": "CustomEvent"
+                "text": "CustomEvent"
               },
               "inheritedFrom": {
                 "name": "SelectedMixin",
@@ -1111,83 +1111,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "./generic-skiplink/GenericSkiplink.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "GenericSkiplink",
-          "parts": [
-            {
-              "name": "anchor",
-              "description": ""
-            }
-          ],
-          "attributes": [
-            {
-              "name": "for"
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "members": [
-            {
-              "kind": "method",
-              "name": "connectedCallback",
-              "privacy": "public"
-            },
-            {
-              "kind": "method",
-              "name": "attributeChangedCallback",
-              "privacy": "public",
-              "parameters": [
-                {
-                  "name": "name"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "render",
-              "privacy": "public"
-            }
-          ],
-          "tagName": "generic-skiplink"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "GenericSkiplink",
-          "declaration": {
-            "name": "GenericSkiplink",
-            "module": "./generic-skiplink/GenericSkiplink.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "./generic-skiplink/skiplink.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "skiplink"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "skiplink",
-          "declaration": {
-            "name": "skiplink",
-            "module": "./generic-skiplink/skiplink.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "./generic-switch/GenericSwitch.js",
       "declarations": [
         {
@@ -1199,7 +1122,7 @@
               "description": "Customizes the focus styles of the thumb"
             }
           ],
-          "parts": [
+          "cssParts": [
             {
               "name": "label",
               "description": ""
@@ -1232,7 +1155,7 @@
             {
               "name": "checked-changed",
               "type": {
-                "type": "CustomEvent"
+                "text": "CustomEvent"
               }
             }
           ],
@@ -1312,6 +1235,83 @@
           "declaration": {
             "name": "GenericSwitch",
             "module": "./generic-switch/GenericSwitch.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./generic-skiplink/GenericSkiplink.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "GenericSkiplink",
+          "cssParts": [
+            {
+              "name": "anchor",
+              "description": ""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "for"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "members": [
+            {
+              "kind": "method",
+              "name": "connectedCallback",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "attributeChangedCallback",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "privacy": "public"
+            }
+          ],
+          "tagName": "generic-skiplink"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GenericSkiplink",
+          "declaration": {
+            "name": "GenericSkiplink",
+            "module": "./generic-skiplink/GenericSkiplink.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./generic-skiplink/skiplink.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "skiplink"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "skiplink",
+          "declaration": {
+            "name": "skiplink",
+            "module": "./generic-skiplink/skiplink.js"
           }
         }
       ]
@@ -1480,7 +1480,7 @@
             {
               "name": "selected-changed",
               "type": {
-                "type": "CustomEvent"
+                "text": "CustomEvent"
               },
               "inheritedFrom": {
                 "name": "SelectedMixin",
@@ -1652,14 +1652,10 @@
             {
               "name": "selected-changed",
               "type": {
-                "type": "CustomEvent"
+                "text": "CustomEvent"
               }
             }
           ],
-          "superclass": {
-            "name": "superclass",
-            "module": "./utils/SelectedMixin.js"
-          },
           "members": [
             {
               "kind": "method",
@@ -1858,7 +1854,7 @@
                 {
                   "name": "trapToEnd",
                   "type": {
-                    "type": "boolean"
+                    "text": "boolean"
                   }
                 }
               ]

@@ -18,6 +18,7 @@ template.innerHTML = `
 
     div[role="tablist"] {
       display: flex;
+      gap: 0.5rem;
     }
   </style>
   

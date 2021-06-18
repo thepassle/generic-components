@@ -1,6 +1,6 @@
 {
   "name": "@generic-components/components",
-  "version": "1.0.0-rc.4",
+  "version": "1.0.0",
   "description": "Set of generic, accessible, zero dependency components",
   "author": "Pascal Schilp",
   "license": "MIT",
@@ -10,7 +10,8 @@
   "homepage": "https://genericcomponents.netlify.app/",
   "repository": "https://github.com/thepassle/generic-components",
   "scripts": {
-    "analyze": "cem analyze",
+    "prepublishOnly": "npm run test & npm run analyze",
+    "analyze": "custom-elements-manifest analyze",
     "start": "es-dev-server --node-resolve --open --watch",
     "lint:eslint": "eslint --ext .js . --ignore-path .gitignore --ignore-pattern web_modules/**/*.*",
     "format:eslint": "eslint --ext .js,.html . --fix --ignore-path .gitignore --ignore-pattern web_modules/**/*.*",
@@ -23,7 +24,7 @@
   },
   "devDependencies": {
     "@a11y/focus-trap": "^1.0.5",
-    "@custom-elements-manifest/analyzer": "^0.1.5",
+    "@custom-elements-manifest/analyzer": "^0.2.1",
     "@open-wc/eslint-config": "^1.0.0",
     "@open-wc/prettier-config": "^0.1.10",
     "@open-wc/testing": "^2.5.17",
@@ -34,6 +35,7 @@
     "lint-staged": "^8.0.0",
     "lit-html": "1.1.1",
     "sinon": "^7.5.0",
+    "test-analyzer-ignore": "0.0.1",
     "webpack-merge": "^4.1.5"
   },
   "eslintConfig": {
@@ -58,5 +60,5 @@
       "git add"
     ]
   },
-  "customElementsManifest": "custom-elements.json"
+  "customElements": "custom-elements.json"
 }

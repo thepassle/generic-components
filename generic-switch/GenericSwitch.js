@@ -176,6 +176,9 @@ export class GenericSwitch extends HTMLElement {
     }
   }
 
+  /**
+   * @attr
+   */
   set checked(val) {
     if (val) {
       this.setAttribute('checked', '');

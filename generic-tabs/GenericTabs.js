@@ -33,6 +33,9 @@ template.innerHTML = `
   </div>
 `;
 
+/**
+ * @attr label
+ */
 export class GenericTabs extends SelectedMixin(BatchingElement) {
   static get config() {
     return {

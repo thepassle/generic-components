@@ -112,6 +112,9 @@ export class GenericDisclosure extends HTMLElement {
     this.__button.setAttribute('aria-expanded', 'false');
   }
 
+  /**
+   * @attr
+   */
   get expanded() {
     return this.__expanded;
   }

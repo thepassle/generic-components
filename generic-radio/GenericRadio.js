@@ -76,6 +76,10 @@ template.innerHTML = `
   </div>
 `;
 
+/**
+ * @attr {boolean} vertical
+ * @attr {boolean} disabled
+ */
 export class GenericRadio extends SelectedMixin(BatchingElement) {
   static get config() {
     return {

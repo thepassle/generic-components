@@ -7,6 +7,9 @@ template.innerHTML = `
   </slot>
 `;
 
+/**
+ * @attr label
+ */
 export class GenericListbox extends SelectedMixin(BatchingElement) {
   static get config() {
     return {

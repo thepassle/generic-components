@@ -136,6 +136,9 @@ export const SelectedMixin = superclass =>
       }
     }
 
+    /** 
+     * @attr
+     */
     get selected() {
       return this.__index;
     }

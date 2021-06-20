@@ -106,8 +106,8 @@ export default function reactify({ exclude, attributeMapping }) {
   return {
     name: 'reactify',
     packageLinkPhase({ customElementsManifest }) {
-      if (!fs.existsSync(`react`)) {
-        fs.mkdirSync(`react`);
+      if (!fs.existsSync(`legacy`)) {
+        fs.mkdirSync(`legacy`);
       }
 
       const components = [];
@@ -243,13 +243,13 @@ export function ${component.name}({children${params ? ',' : ''} ${params}}) {
   ${useEffect ? `const ref = useRef(null);` : ''}
 
   ${has(events) ? '/** Event listeners - run once */' : ''}
-${events?.join('') || ''}
+  ${events?.join('') || ''}
   ${has(booleanAttrs) ? '/** Boolean attributes - run whenever an attr has changed */' : ''}
-${booleanAttrs?.join('') || ''}
+  ${booleanAttrs?.join('') || ''}
   ${has(attrs) ? '/** Attributes - run whenever an attr has changed */' : ''}
-${attrs?.join('') || ''}
+  ${attrs?.join('') || ''}
   ${has(props) ? '/** Properties - run whenever a property has changed */' : ''}
-${props?.join('') || ''}
+  ${props?.join('') || ''}
 
   return (
     <${component.tagName} ${useEffect ? 'ref={ref}' : ''} ${[...booleanAttributes, ...attributes]
@@ -261,7 +261,7 @@ ${props?.join('') || ''}
 }
           `;
         fs.writeFileSync(
-          `react/${component.name}.jsx`,
+          `legacy/${component.name}.jsx`,
           prettier.format(result, { parser: 'babel' }),
         );
       });

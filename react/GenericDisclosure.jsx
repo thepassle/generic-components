@@ -2,19 +2,29 @@
 import React, {useEffect, useRef} from "react";
 import '@generic-components/components/disclosure.js';
 
-const addedEvents = new Set();
-
 export function GenericDisclosure({children, onOpenedChanged, expanded}) {
-  
   const ref = useRef(null);
+
+  /** Event listeners - run once */
+
   useEffect(() => {
-    if(onOpenedChanged && !addedEvents.has('opened-changed')) { 
+    if(onOpenedChanged !== undefined) {
       ref.current.addEventListener('opened-changed', onOpenedChanged);
-      addedEvents.add('opened-changed');
     }
-    if(typeof expanded !== 'undefined') ref.current.expanded = expanded;
+  }, [])
+
+  
+
+  
+
+  /** Properties - run whenever a property has changed */
+
+  useEffect(() => {
+    if(expanded !== undefined && ref.current.expanded !== expanded) {
+      ref.current.expanded = expanded;
+    }
   }, [expanded])
-    
+        
 
   return (
     <generic-disclosure ref={ref} >

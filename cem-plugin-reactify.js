@@ -127,18 +127,39 @@ export default function reactify({ exclude, attributeMapping }) {
             member.privacy !== 'private' &&
             member.privacy !== 'protected',
         );
-        const attributes = component?.attributes
+
+        const booleanAttributes = [];
+        const attributes = [];
+
+        component?.attributes
           ?.filter(attr => !attr.fieldName)
-          ?.map(attr => {
+          ?.forEach(attr => {
+            /** Handle reserved keyword attributes */
             if (RESERVED_WORDS.includes(attr?.name)) {
+              /** If we have a user-specified mapping, rename */
               if (attr.name in attributeMapping) {
-                return { ...attr, originalName: attr.name, name: attributeMapping[attr.name] };
+                const attribute = {
+                  ...attr,
+                  originalName: attr.name,
+                  name: attributeMapping[attr.name],
+                };
+                if (attr?.type?.text === 'boolean') {
+                  booleanAttributes.push(attribute);
+                } else {
+                  attributes.push(attribute);
+                }
+                return;
               }
               throw new Error(
                 `Attribute \`${attr.name}\` in custom element \`${component.name}\` is a reserved keyword and cannot be used. Please provide an \`attributeMapping\` in the plugin options to rename the JavaScript variable that gets passed to the attribute.`,
               );
             }
-            return attr;
+
+            if (attr?.type?.text === 'boolean') {
+              booleanAttributes.push(attr);
+            } else {
+              attributes.push(attr);
+            }
           });
 
         let params = [];
@@ -154,27 +175,62 @@ export default function reactify({ exclude, attributeMapping }) {
           params.push(camelize(attr.name));
         });
 
+        booleanAttributes?.forEach(attr => {
+          params.push(camelize(attr.name));
+        });
+
         params = params?.join(', ');
 
+        const createEventName = event => `on${capitalizeFirstLetter(camelize(event.name))}`;
+
         const events = component?.events?.map(
-          event => `if(on${capitalizeFirstLetter(camelize(event.name))} && !addedEvents.has('${
-            event.name
-          }')) { 
-      ref.current.addEventListener('${event.name}', on${capitalizeFirstLetter(
-            camelize(event.name),
-          )});
-      addedEvents.add('${event.name}');
-    }`,
-        );
-        const attrs = attributes?.map(
-          attr => `${attr.originalName ?? attr.name}={${camelize(attr.name)}} `,
-        );
-        const props = fields?.map(
-          member =>
-            `if(typeof ${member.name} !== 'undefined') ref.current.${member.name} = ${member.name};`,
+          event => `
+  useEffect(() => {
+    if(${createEventName(event)} !== undefined) {
+      ref.current.addEventListener('${event.name}', ${createEventName(event)});
+    }
+  }, [])
+`,
         );
 
-        if (has(events) || has(props)) {
+        const booleanAttrs = booleanAttributes?.map(
+          attr => `
+  useEffect(() => {
+    if(${attr?.name ?? attr.originalName} !== undefined) {
+      if(${attr?.name ?? attr.originalName}) {
+        ref.current.setAttribute('${attr.name}', '');
+      } else {
+        ref.current.removeAttribute('${attr.name}');
+      }
+    }
+  }, [${attr?.originalName ?? attr.name}])
+`,
+        );
+
+        const attrs = attributes?.map(
+          attr => `
+  useEffect(() => {
+    if(${attr?.name ??
+      attr.originalName} !== undefined && ref.current.getAttribute('${attr?.originalName ??
+            attr.name}') !== String(${attr?.name ?? attr.originalName})) {
+      ref.current.setAttribute('${attr?.originalName ?? attr.name}', ${attr?.name ??
+            attr.originalName})
+    }
+  }, [${attr?.name ?? attr.originalName}])
+        `,
+        );
+
+        const props = fields?.map(
+          member => `
+  useEffect(() => {
+    if(${member.name} !== undefined && ref.current.${member.name} !== ${member.name}) {
+      ref.current.${member.name} = ${member.name};
+    }
+  }, [${member.name}])
+        `,
+        );
+
+        if (has(events) || has(props) || has(attrs) || has(booleanAttrs)) {
           useEffect = true;
         }
 
@@ -182,23 +238,22 @@ export default function reactify({ exclude, attributeMapping }) {
 import React${useEffect ? ', {useEffect, useRef}' : ''} from "react";
 import '@generic-components/components/${component.tagName.replace('generic-', '')}.js';
 
-${has(events) ? 'const addedEvents = new Set();' : ''}
-
 export function ${component.name}({children${params ? ',' : ''} ${params}}) {
-  ${
-    useEffect
-      ? `
-  const ref = useRef(null);
-  useEffect(() => {
-    ${events?.join('\n    ')}
-    ${props?.join('\n    ')}
-  }, [${fields?.map(field => field.name)?.join(', ')}])
-    `
-      : ''
-  }
+  ${useEffect ? `const ref = useRef(null);` : ''}
+
+  ${has(events) ? '/** Event listeners - run once */' : ''}
+${events?.join('') || ''}
+  ${has(booleanAttrs) ? '/** Boolean attributes - run whenever an attr has changed */' : ''}
+${booleanAttrs?.join('') || ''}
+  ${has(attrs) ? '/** Attributes - run whenever an attr has changed */' : ''}
+${attrs?.join('') || ''}
+  ${has(props) ? '/** Properties - run whenever a property has changed */' : ''}
+${props?.join('') || ''}
 
   return (
-    <${component.tagName} ${useEffect ? 'ref={ref}' : ''} ${attrs?.join(' ') || ''}>
+    <${component.tagName} ${useEffect ? 'ref={ref}' : ''} ${[...booleanAttributes, ...attributes]
+          .map(attr => `${attr?.originalName ?? attr.name}={${attr?.name ?? attr.originalName}}`)
+          .join(' ')}>
       {children}
     </${component.tagName}>
   )

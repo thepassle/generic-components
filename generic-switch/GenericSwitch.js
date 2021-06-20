@@ -74,6 +74,8 @@ let __count = 0;
  * @csspart thumb
  * @csspart track
  * @csspart button
+ *
+ * @attr {boolean} disabled
  */
 export class GenericSwitch extends HTMLElement {
   constructor() {
@@ -178,6 +180,7 @@ export class GenericSwitch extends HTMLElement {
 
   /**
    * @attr
+   * @type {boolean}
    */
   set checked(val) {
     if (val) {

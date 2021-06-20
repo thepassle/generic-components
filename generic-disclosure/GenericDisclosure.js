@@ -114,6 +114,7 @@ export class GenericDisclosure extends HTMLElement {
 
   /**
    * @attr
+   * @type {boolean}
    */
   get expanded() {
     return this.__expanded;

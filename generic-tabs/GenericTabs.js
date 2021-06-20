@@ -35,6 +35,7 @@ template.innerHTML = `
 
 /**
  * @attr label
+ * @attr {boolean} vertical
  */
 export class GenericTabs extends SelectedMixin(BatchingElement) {
   static get config() {

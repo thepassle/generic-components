@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="Description" content="Put your description here.">
+  <link rel="stylesheet" type="text/css" href="../../demo/styles.css">
+  <script type="module" src="../../disclosure.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="https://unpkg.com/prismjs@1.20.0/prism.js"></script>
+  <style>
+   
+  </style>
+
+  <title>generic-components</title>
+</head>
+
+<body>
+  <div class="app">
+    <div class="nav">
+      <h1 class="title"><a href="/index.html">generic</a></h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="/demo/demo-app.html">showcase app</a>
+          </li>
+          <li>
+            <a href="/generic-accordion/demo/index.html">generic-accordion</a>
+          </li>
+          <li>
+            <a href="/generic-alert/demo/index.html">generic-alert</a>
+          </li>
+          <li>
+            <a href="/generic-dialog/demo/index.html">generic-dialog</a>
+          </li>
+          <li>
+            <a href="/generic-disclosure/demo/index.html">generic-disclosure</a>
+          </li>
+          <li>
+            <a href="/generic-listbox/demo/index.html">generic-listbox</a>
+          </li>
+          <li>
+            <a href="/generic-radio/demo/index.html">generic-radio</a>
+          </li>
+          <li>
+            <a href="/generic-skiplink/demo/index.html">generic-skiplink</a>
+          </li>
+          <li>
+            <a href="/generic-switch/demo/index.html">generic-switch</a>
+          </li>
+          <li>
+            <a href="/generic-tabs/demo/index.html">generic-tabs</a>
+          </li>
+          <li>
+            <a href="/generic-visually-hidden/demo/index.html">generic-visually-hidden</a>
+          </li>
+          <li>
+            <a href="https://github.com/thepassle/generic-components">Github</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <main id="main" class="content">
+      <img id="legacyLogo" alt="legacy software" src="assets/legacy-logo.png"/>
+      <h1>generic-react-components</h1>
+      <p class="description">A library of non-reusable, but accessible components, for your legacy projects</p>
+
+      <h2>Usage</h2>
+      <h3>Via npm</h3>
+      <p>Make sure you've installed all your required dependencies</p>
+      <pre><code class="language-bash">npm i @babel/core babel-loader @babel/preset-env @babel/preset-react webpack webpack-cli react react-dom redux react-redux html-webpack-plugin are-you-tired-yet html-loader webpack-dev-server</code></pre>
+      <p>Then install generic components</p>
+      <pre><code class="language-bash">npm i --save @generic-components/components</code></pre>
+      <p>And import in your code via ES imports:</p>
+      <pre><code class="language-js">import { GenericSwitch } from '@generic-components/components/legacy/GenericSwitch.jsx';</code></pre>
+
+      <h2>Examples</h2>
+      <h3>GenericSwitch</h3>
+      <generic-switch>Toggle me</generic-switch>
+      <pre><code class="language-markup"><script type="prism-html-markup"><GenericSwitch/></script></code></pre>
+      <br/><br/>
+      
+      <generic-switch checked disabled label="foo"></generic-switch>
+      <pre><code class="language-markup"><script type="prism-html-markup"><GenericSwitch
+  disabled={true}
+  checked={true}
+  label={'foo'}
+  onCheckedChanged={e => console.log(e)}
+/></script></code></pre>
+      
+      <h3>GenericDisclosure</h3>
+      <generic-disclosure>
+        <button slot="toggle">Click me</button>
+        <div slot="detail">Hello world</div>
+      </generic-disclosure>
+      <pre><code class="language-markup"><script type="prism-html-markup"><GenericDisclosure>
+  <button slot="toggle">Click me</button>
+  <div slot="detail">Hello world</div>
+</GenericDisclosure>
+      </script></code></pre>
+
+
+      <h3>GenericTabs</h3>
+      <generic-tabs label="people">
+        <button slot="tab">
+          Home
+        </button>
+        <div slot="panel">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+      
+        <button slot="tab">
+          About
+        </button>
+        <div slot="panel">
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+        </div>
+      
+        <button slot="tab">
+          Contact
+        </button>
+        <div slot="panel">
+          <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.</p>
+        </div>
+      </generic-tabs>
+      <pre><code class="language-markup"><script type="prism-html-markup"><GenericTabs 
+  onSelectedChanged={e => console.log(e)} 
+  vertical={false} 
+  label={'people'}
+>
+  <button slot="tab">
+    Home
+  </button>
+  <div slot="panel">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+
+  <button slot="tab">
+    About
+  </button>
+  <div slot="panel">
+    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+  </div>
+
+  <button slot="tab">
+    Contact
+  </button>
+  <div slot="panel">
+    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.</p>
+  </div>
+</GenericTabs>
+        </script></code></pre>
+
+      <p class="description">Fuckery aside, these components were automatically generated by a <a href="https://github.com/open-wc/custom-elements-manifest"><code>@custom-elements-manifest/analyzer</code></a> plugin, which is pretty cool.</a></p>
+      </div>
+
+
+      <script type="module" src="../../switch.js"></script>
+      <script type="module" src="../../tabs.js"></script>
+    </main>
+  </div>
+
+</body>
+
+</html>

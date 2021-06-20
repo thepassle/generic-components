@@ -1,6 +1,7 @@
 /* eslint-disable */
 
 import fs from 'fs';
+import prettier from 'prettier';
 
 function camelize(str) {
   const arr = str.split('-');
@@ -259,7 +260,10 @@ ${props?.join('') || ''}
   )
 }
           `;
-        fs.writeFileSync(`react/${component.name}.jsx`, result);
+        fs.writeFileSync(
+          `react/${component.name}.jsx`,
+          prettier.format(result, { parser: 'babel' }),
+        );
       });
     },
   };

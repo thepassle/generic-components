@@ -41,7 +41,7 @@
           "name": "default",
           "parameters": [
             {
-              "name": "{exclude}"
+              "name": "{exclude, attributeMapping}"
             }
           ],
           "description": "ATTRIBUTE/PROPERTY NAME CLASHES:\nIt could be the case that an attr/property are not correctly linked together (e.g.: the attr does not have a `fieldName` pointing\nto the property). In that case, there will be two props passed to the React component function with the same name, which will break things\nMake sure to document components correctly (in most cases, all you have to do is add an @attr jsdoc to the field)\n\nAttrs and properties are distinguished by an attr's `fieldName`. If an attr has a `fieldName`, we ignore it as being an attribute, and\nonly use the property (which is whatever the `fieldName` points to). If an attr does not have a `fieldName`, we apply it as an attr\n\nEVENTS:\n`'selected-changed'` event expects a function passed as `onSelectedChanged` (we add the 'on', and we camelize and capitalize the event name)"
@@ -836,6 +836,68 @@
     },
     {
       "kind": "javascript-module",
+      "path": "generic-skiplink/GenericSkiplink.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GenericSkiplink",
+          "cssParts": [
+            {
+              "name": "anchor"
+            }
+          ],
+          "members": [
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "for"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "generic-skiplink",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GenericSkiplink",
+          "declaration": {
+            "name": "GenericSkiplink",
+            "module": "generic-skiplink/GenericSkiplink.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "generic-skiplink/skiplink.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "skiplink"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "skiplink",
+          "declaration": {
+            "name": "skiplink",
+            "module": "generic-skiplink/skiplink.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "generic-radio/GenericRadio.js",
       "declarations": [
         {
@@ -994,68 +1056,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "generic-skiplink/GenericSkiplink.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "GenericSkiplink",
-          "cssParts": [
-            {
-              "name": "anchor"
-            }
-          ],
-          "members": [
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "for"
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "generic-skiplink",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "GenericSkiplink",
-          "declaration": {
-            "name": "GenericSkiplink",
-            "module": "generic-skiplink/GenericSkiplink.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "generic-skiplink/skiplink.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "skiplink"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "skiplink",
-          "declaration": {
-            "name": "skiplink",
-            "module": "generic-skiplink/skiplink.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "generic-switch/GenericSwitch.js",
       "declarations": [
         {
@@ -1148,6 +1148,66 @@
           "declaration": {
             "name": "GenericSwitch",
             "module": "generic-switch/GenericSwitch.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "generic-visually-hidden/GenericVisuallyHidden.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GenericVisuallyHidden",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "generic-visually-hidden",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GenericVisuallyHidden",
+          "declaration": {
+            "name": "GenericVisuallyHidden",
+            "module": "generic-visually-hidden/GenericVisuallyHidden.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "generic-visually-hidden/visually-hidden.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "visuallyHidden",
+          "description": "For usage as constructible stylesheet"
+        },
+        {
+          "kind": "variable",
+          "name": "hostVisuallyHidden",
+          "description": "For usage inside a web component"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "visuallyHidden",
+          "declaration": {
+            "name": "visuallyHidden",
+            "module": "generic-visually-hidden/visually-hidden.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "hostVisuallyHidden",
+          "declaration": {
+            "name": "hostVisuallyHidden",
+            "module": "generic-visually-hidden/visually-hidden.js"
           }
         }
       ]
@@ -1306,66 +1366,6 @@
           "declaration": {
             "name": "GenericTabs",
             "module": "generic-tabs/GenericTabs.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "generic-visually-hidden/GenericVisuallyHidden.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "GenericVisuallyHidden",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "generic-visually-hidden",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "GenericVisuallyHidden",
-          "declaration": {
-            "name": "GenericVisuallyHidden",
-            "module": "generic-visually-hidden/GenericVisuallyHidden.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "generic-visually-hidden/visually-hidden.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "visuallyHidden",
-          "description": "For usage as constructible stylesheet"
-        },
-        {
-          "kind": "variable",
-          "name": "hostVisuallyHidden",
-          "description": "For usage inside a web component"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "visuallyHidden",
-          "declaration": {
-            "name": "visuallyHidden",
-            "module": "generic-visually-hidden/visually-hidden.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "hostVisuallyHidden",
-          "declaration": {
-            "name": "hostVisuallyHidden",
-            "module": "generic-visually-hidden/visually-hidden.js"
           }
         }
       ]

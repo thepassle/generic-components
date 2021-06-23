@@ -449,6 +449,32 @@
     },
     {
       "kind": "javascript-module",
+      "path": "generic-alert/GenericAlert.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GenericAlert",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "generic-alert",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GenericAlert",
+          "declaration": {
+            "name": "GenericAlert",
+            "module": "generic-alert/GenericAlert.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "generic-dialog/GenericDialog.js",
       "declarations": [
         {
@@ -558,32 +584,6 @@
           "declaration": {
             "name": "GenericDialogOverlay",
             "module": "generic-dialog/generic-dialog-overlay.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "generic-alert/GenericAlert.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "GenericAlert",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "generic-alert",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "GenericAlert",
-          "declaration": {
-            "name": "GenericAlert",
-            "module": "generic-alert/GenericAlert.js"
           }
         }
       ]
@@ -983,68 +983,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "generic-skiplink/GenericSkiplink.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "GenericSkiplink",
-          "cssParts": [
-            {
-              "name": "anchor"
-            }
-          ],
-          "members": [
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "for"
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "generic-skiplink",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "GenericSkiplink",
-          "declaration": {
-            "name": "GenericSkiplink",
-            "module": "generic-skiplink/GenericSkiplink.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "generic-skiplink/skiplink.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "skiplink"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "skiplink",
-          "declaration": {
-            "name": "skiplink",
-            "module": "generic-skiplink/skiplink.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "generic-switch/GenericSwitch.js",
       "declarations": [
         {
@@ -1146,6 +1084,68 @@
           "declaration": {
             "name": "GenericSwitch",
             "module": "generic-switch/GenericSwitch.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "generic-skiplink/GenericSkiplink.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GenericSkiplink",
+          "cssParts": [
+            {
+              "name": "anchor"
+            }
+          ],
+          "members": [
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "for"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "generic-skiplink",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GenericSkiplink",
+          "declaration": {
+            "name": "GenericSkiplink",
+            "module": "generic-skiplink/GenericSkiplink.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "generic-skiplink/skiplink.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "skiplink"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "skiplink",
+          "declaration": {
+            "name": "skiplink",
+            "module": "generic-skiplink/skiplink.js"
           }
         }
       ]

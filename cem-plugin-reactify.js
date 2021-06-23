@@ -1,7 +1,23 @@
 /* eslint-disable */
 
 import fs from 'fs';
+import path from 'path';
 import prettier from 'prettier';
+
+const packageJsonPath = `${process.cwd()}${path.sep}package.json`;
+const packageJson = JSON.parse(fs.readFileSync(packageJsonPath).toString());
+
+function getDefineCallForElement(cem, tagName) {
+  let result = undefined;
+
+  cem?.modules?.forEach(_module => {
+    _module?.exports?.forEach(ex => {
+      if (ex.kind === 'custom-element-definition' && ex.name === tagName) result = _module.path;
+    });
+  });
+
+  return result;
+}
 
 function camelize(str) {
   const arr = str.split('-');
@@ -102,7 +118,7 @@ const RESERVED_WORDS = [
  * `'selected-changed'` event expects a function passed as `onSelectedChanged` (we add the 'on', and we camelize and capitalize the event name)
  */
 
-export default function reactify({ exclude, attributeMapping }) {
+export default function reactify({ exclude = [], attributeMapping = {} }) {
   return {
     name: 'reactify',
     packageLinkPhase({ customElementsManifest }) {
@@ -235,9 +251,14 @@ export default function reactify({ exclude, attributeMapping }) {
           useEffect = true;
         }
 
+        const moduleSpecifier = path.join(
+          packageJson.name,
+          getDefineCallForElement(customElementsManifest, component.tagName),
+        );
+
         const result = `
 import React${useEffect ? ', {useEffect, useRef}' : ''} from "react";
-import '@generic-components/components/${component.tagName.replace('generic-', '')}.js';
+import '${moduleSpecifier}';
 
 export function ${component.name}({children${params ? ',' : ''} ${params}}) {
   ${useEffect ? `const ref = useRef(null);` : ''}

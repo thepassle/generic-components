@@ -408,7 +408,8 @@
             }
           ],
           "superclass": {
-            "name": "BatchingElement"
+            "name": "BatchingElement",
+            "module": "/utils/BatchingElement.js"
           },
           "tagName": "generic-accordion",
           "customElement": true,
@@ -443,32 +444,6 @@
           "declaration": {
             "name": "GenericAccordion",
             "module": "generic-accordion/GenericAccordion.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "generic-alert/GenericAlert.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "GenericAlert",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "generic-alert",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "GenericAlert",
-          "declaration": {
-            "name": "GenericAlert",
-            "module": "generic-alert/GenericAlert.js"
           }
         }
       ]
@@ -584,6 +559,32 @@
           "declaration": {
             "name": "GenericDialogOverlay",
             "module": "generic-dialog/generic-dialog-overlay.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "generic-alert/GenericAlert.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GenericAlert",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "generic-alert",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GenericAlert",
+          "declaration": {
+            "name": "GenericAlert",
+            "module": "generic-alert/GenericAlert.js"
           }
         }
       ]
@@ -788,7 +789,8 @@
             }
           ],
           "superclass": {
-            "name": "BatchingElement"
+            "name": "BatchingElement",
+            "module": "/utils/BatchingElement.js"
           },
           "tagName": "generic-listbox",
           "customElement": true,
@@ -952,7 +954,8 @@
             }
           ],
           "superclass": {
-            "name": "BatchingElement"
+            "name": "BatchingElement",
+            "module": "/utils/BatchingElement.js"
           },
           "tagName": "generic-radio",
           "customElement": true,
@@ -977,113 +980,6 @@
           "declaration": {
             "name": "GenericRadio",
             "module": "generic-radio/GenericRadio.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "generic-switch/GenericSwitch.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "GenericSwitch",
-          "cssProperties": [
-            {
-              "description": "- Customizes the focus styles of the thumb",
-              "name": "--generic-switch-focus"
-            }
-          ],
-          "cssParts": [
-            {
-              "name": "label"
-            },
-            {
-              "name": "thumb"
-            },
-            {
-              "name": "track"
-            },
-            {
-              "name": "button"
-            }
-          ],
-          "members": [
-            {
-              "kind": "method",
-              "name": "__handleDisabled"
-            },
-            {
-              "kind": "method",
-              "name": "__onClick"
-            },
-            {
-              "kind": "method",
-              "name": "__onKeyDown",
-              "parameters": [
-                {
-                  "name": "event"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "__update",
-              "parameters": [
-                {
-                  "name": "dispatch"
-                }
-              ]
-            },
-            {
-              "kind": "field",
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              }
-            }
-          ],
-          "events": [
-            {
-              "name": "checked-changed",
-              "type": {
-                "text": "CustomEvent"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              },
-              "fieldName": "checked"
-            },
-            {
-              "name": "label"
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "generic-switch",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "GenericSwitch",
-          "declaration": {
-            "name": "GenericSwitch",
-            "module": "generic-switch/GenericSwitch.js"
           }
         }
       ]
@@ -1282,7 +1178,8 @@
             }
           ],
           "superclass": {
-            "name": "BatchingElement"
+            "name": "BatchingElement",
+            "module": "/utils/BatchingElement.js"
           },
           "tagName": "generic-tabs",
           "customElement": true,
@@ -1307,6 +1204,113 @@
           "declaration": {
             "name": "GenericTabs",
             "module": "generic-tabs/GenericTabs.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "generic-switch/GenericSwitch.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GenericSwitch",
+          "cssProperties": [
+            {
+              "description": "Customizes the focus styles of the thumb",
+              "name": "--generic-switch-focus"
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "label"
+            },
+            {
+              "name": "thumb"
+            },
+            {
+              "name": "track"
+            },
+            {
+              "name": "button"
+            }
+          ],
+          "members": [
+            {
+              "kind": "method",
+              "name": "__handleDisabled"
+            },
+            {
+              "kind": "method",
+              "name": "__onClick"
+            },
+            {
+              "kind": "method",
+              "name": "__onKeyDown",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__update",
+              "parameters": [
+                {
+                  "name": "dispatch"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "checked-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "checked"
+            },
+            {
+              "name": "label"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "generic-switch",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GenericSwitch",
+          "declaration": {
+            "name": "GenericSwitch",
+            "module": "generic-switch/GenericSwitch.js"
           }
         }
       ]
@@ -1526,7 +1530,10 @@
       "declarations": [
         {
           "kind": "variable",
-          "name": "KEYCODES"
+          "name": "KEYCODES",
+          "type": {
+            "text": "object"
+          }
         }
       ],
       "exports": [
@@ -1639,7 +1646,7 @@
           "slots": [
             {
               "description": "Default content.",
-              "name": "-"
+              "name": ""
             }
           ],
           "members": [

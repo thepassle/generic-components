@@ -5,8 +5,8 @@ export function GenericSwitch({
   children,
   onCheckedChanged,
   checked,
-  label,
-  disabled
+  disabled,
+  label
 }) {
   const ref = useRef(null);
 

@@ -5,8 +5,8 @@ export function GenericTabs({
   children,
   onSelectedChanged,
   selected,
-  label,
-  vertical
+  vertical,
+  label
 }) {
   const ref = useRef(null);
 

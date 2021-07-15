@@ -118,12 +118,12 @@ const RESERVED_WORDS = [
  * `'selected-changed'` event expects a function passed as `onSelectedChanged` (we add the 'on', and we camelize and capitalize the event name)
  */
 
-export default function reactify({ exclude = [], attributeMapping = {} }) {
+export default function reactify({ exclude = [], attributeMapping = {}, outdir = 'legacy' }) {
   return {
     name: 'reactify',
     packageLinkPhase({ customElementsManifest }) {
-      if (!fs.existsSync(`legacy`)) {
-        fs.mkdirSync(`legacy`);
+      if (!fs.existsSync(outdir)) {
+        fs.mkdirSync(outdir);
       }
 
       const components = [];
@@ -188,11 +188,7 @@ export default function reactify({ exclude = [], attributeMapping = {} }) {
           params.push(member.name);
         });
 
-        attributes?.forEach(attr => {
-          params.push(camelize(attr.name));
-        });
-
-        booleanAttributes?.forEach(attr => {
+        [...(booleanAttributes || []), ...(attributes || [])]?.forEach(attr => {
           params.push(camelize(attr.name));
         });
 
@@ -202,48 +198,48 @@ export default function reactify({ exclude = [], attributeMapping = {} }) {
 
         const events = component?.events?.map(
           event => `
-  useEffect(() => {
-    if(${createEventName(event)} !== undefined) {
-      ref.current.addEventListener('${event.name}', ${createEventName(event)});
-    }
-  }, [])
+            useEffect(() => {
+              if(${createEventName(event)} !== undefined) {
+                ref.current.addEventListener('${event.name}', ${createEventName(event)});
+              }
+            }, [])
 `,
         );
 
         const booleanAttrs = booleanAttributes?.map(
           attr => `
-  useEffect(() => {
-    if(${attr?.name ?? attr.originalName} !== undefined) {
-      if(${attr?.name ?? attr.originalName}) {
-        ref.current.setAttribute('${attr.name}', '');
-      } else {
-        ref.current.removeAttribute('${attr.name}');
-      }
-    }
-  }, [${attr?.originalName ?? attr.name}])
+            useEffect(() => {
+              if(${attr?.name ?? attr.originalName} !== undefined) {
+                if(${attr?.name ?? attr.originalName}) {
+                  ref.current.setAttribute('${attr.name}', '');
+                } else {
+                  ref.current.removeAttribute('${attr.name}');
+                }
+              }
+            }, [${attr?.originalName ?? attr.name}])
 `,
         );
 
         const attrs = attributes?.map(
           attr => `
-  useEffect(() => {
-    if(${attr?.name ??
-      attr.originalName} !== undefined && ref.current.getAttribute('${attr?.originalName ??
+            useEffect(() => {
+              if(${attr?.name ??
+                attr.originalName} !== undefined && ref.current.getAttribute('${attr?.originalName ??
             attr.name}') !== String(${attr?.name ?? attr.originalName})) {
-      ref.current.setAttribute('${attr?.originalName ?? attr.name}', ${attr?.name ??
+                ref.current.setAttribute('${attr?.originalName ?? attr.name}', ${attr?.name ??
             attr.originalName})
-    }
-  }, [${attr?.name ?? attr.originalName}])
+              }
+            }, [${attr?.name ?? attr.originalName}])
         `,
         );
 
         const props = fields?.map(
           member => `
-  useEffect(() => {
-    if(${member.name} !== undefined && ref.current.${member.name} !== ${member.name}) {
-      ref.current.${member.name} = ${member.name};
-    }
-  }, [${member.name}])
+            useEffect(() => {
+              if(${member.name} !== undefined && ref.current.${member.name} !== ${member.name}) {
+                ref.current.${member.name} = ${member.name};
+              }
+            }, [${member.name}])
         `,
         );
 
@@ -257,32 +253,40 @@ export default function reactify({ exclude = [], attributeMapping = {} }) {
         );
 
         const result = `
-import React${useEffect ? ', {useEffect, useRef}' : ''} from "react";
-import '${moduleSpecifier}';
+          import React${useEffect ? ', {useEffect, useRef}' : ''} from "react";
+          import '${moduleSpecifier}';
 
-export function ${component.name}({children${params ? ',' : ''} ${params}}) {
-  ${useEffect ? `const ref = useRef(null);` : ''}
+          export function ${component.name}({children${params ? ',' : ''} ${params}}) {
+            ${useEffect ? `const ref = useRef(null);` : ''}
 
-  ${has(events) ? '/** Event listeners - run once */' : ''}
-  ${events?.join('') || ''}
-  ${has(booleanAttrs) ? '/** Boolean attributes - run whenever an attr has changed */' : ''}
-  ${booleanAttrs?.join('') || ''}
-  ${has(attrs) ? '/** Attributes - run whenever an attr has changed */' : ''}
-  ${attrs?.join('') || ''}
-  ${has(props) ? '/** Properties - run whenever a property has changed */' : ''}
-  ${props?.join('') || ''}
+            ${has(events) ? '/** Event listeners - run once */' : ''}
+            ${events?.join('') || ''}
+            ${
+              has(booleanAttrs)
+                ? '/** Boolean attributes - run whenever an attr has changed */'
+                : ''
+            }
+            ${booleanAttrs?.join('') || ''}
+            ${has(attrs) ? '/** Attributes - run whenever an attr has changed */' : ''}
+            ${attrs?.join('') || ''}
+            ${has(props) ? '/** Properties - run whenever a property has changed */' : ''}
+            ${props?.join('') || ''}
 
-  return (
-    <${component.tagName} ${useEffect ? 'ref={ref}' : ''} ${[...booleanAttributes, ...attributes]
+            return (
+              <${component.tagName} ${useEffect ? 'ref={ref}' : ''} ${[
+          ...booleanAttributes,
+          ...attributes,
+        ]
           .map(attr => `${attr?.originalName ?? attr.name}={${attr?.name ?? attr.originalName}}`)
           .join(' ')}>
-      {children}
-    </${component.tagName}>
-  )
-}
-          `;
+                {children}
+              </${component.tagName}>
+            )
+          }
+        `;
+
         fs.writeFileSync(
-          `legacy/${component.name}.jsx`,
+          path.join(outdir, `${component.name}.jsx`),
           prettier.format(result, { parser: 'babel' }),
         );
       });

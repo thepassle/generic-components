@@ -52,6 +52,7 @@ pre {
 .content {
   overflow: auto;
   max-width: 720px;
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
   /* width: calc(100% - 100px); */
@@ -168,7 +169,7 @@ details {
   padding-top: 30px;
 }
 
-.nav ul li:nth-child(11) {
+.nav ul li:nth-child(12) {
   padding-bottom: 10px;
 }
 
@@ -232,6 +233,7 @@ pre {
 
   .content {
     height: auto;
+    width: calc(100% - 100px);
   }
 }
 

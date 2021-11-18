@@ -5,6 +5,8 @@ export function GenericTabs({
   children,
   onSelectedChanged,
   selected,
+  updateComplete,
+  __uuid,
   vertical,
   label
 }) {
@@ -48,6 +50,21 @@ export function GenericTabs({
       ref.current.selected = selected;
     }
   }, [selected]);
+
+  useEffect(() => {
+    if (
+      updateComplete !== undefined &&
+      ref.current.updateComplete !== updateComplete
+    ) {
+      ref.current.updateComplete = updateComplete;
+    }
+  }, [updateComplete]);
+
+  useEffect(() => {
+    if (__uuid !== undefined && ref.current.__uuid !== __uuid) {
+      ref.current.__uuid = __uuid;
+    }
+  }, [__uuid]);
 
   return (
     <generic-tabs ref={ref} vertical={vertical} label={label}>

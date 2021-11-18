@@ -5,6 +5,8 @@ export function GenericRadio({
   children,
   onSelectedChanged,
   selected,
+  updateComplete,
+  __uuid,
   vertical,
   disabled
 }) {
@@ -47,6 +49,21 @@ export function GenericRadio({
       ref.current.selected = selected;
     }
   }, [selected]);
+
+  useEffect(() => {
+    if (
+      updateComplete !== undefined &&
+      ref.current.updateComplete !== updateComplete
+    ) {
+      ref.current.updateComplete = updateComplete;
+    }
+  }, [updateComplete]);
+
+  useEffect(() => {
+    if (__uuid !== undefined && ref.current.__uuid !== __uuid) {
+      ref.current.__uuid = __uuid;
+    }
+  }, [__uuid]);
 
   return (
     <generic-radio ref={ref} vertical={vertical} disabled={disabled}>

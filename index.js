@@ -7,6 +7,7 @@ export { GenericListbox } from './generic-listbox/GenericListbox.js';
 export { GenericRadio } from './generic-radio/GenericRadio.js';
 export { GenericSkiplink } from './generic-skiplink/GenericSkiplink.js';
 export { skiplink } from './generic-skiplink/skiplink.js';
+export { GenericSpinner } from './generic-spinner/GenericSpinner.js';
 export { GenericSwitch } from './generic-switch/GenericSwitch.js';
 export { GenericTabs } from './generic-tabs/GenericTabs.js';
 export { GenericVisuallyHidden } from './generic-visually-hidden/GenericVisuallyHidden.js';

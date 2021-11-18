@@ -14,6 +14,8 @@ export class GenericDialog extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
+
+    this._connected = false;
   }
 
   close() {
@@ -26,6 +28,12 @@ export class GenericDialog extends HTMLElement {
   }
 
   connectedCallback() {
+    if (this._connected) {
+      return;
+    }
+
+    this._connected = true;
+
     this.shadowRoot.appendChild(template.content.cloneNode(true));
 
     const invoker = this.shadowRoot.querySelector('slot[name="invoker"]');

@@ -146,6 +146,20 @@ describe('generic-dialog', () => {
 
       expect(document.activeElement).to.equal(button);
     });
+
+    it('calls connectedCallback once', async () => {
+      const el = await fixture(defaultFixture);
+      const container = el.parentElement;
+
+      expect(el.shadowRoot.querySelectorAll('slot[name="invoker"]').length).to.equal(1);
+      expect(el.shadowRoot.querySelectorAll('slot[name="content"]').length).to.equal(1);
+
+      el.remove();
+      container.append(el);
+
+      expect(el.shadowRoot.querySelectorAll('slot[name="invoker"]').length).to.equal(1);
+      expect(el.shadowRoot.querySelectorAll('slot[name="content"]').length).to.equal(1);
+    });
   });
 
   describe('JavaScript API', () => {

@@ -1,7 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import "@generic-components/components/disclosure.js";
 
-export function GenericDisclosure({ children, onOpenedChanged, expanded }) {
+export function GenericDisclosure({
+  children,
+  onOpenedChanged,
+  expanded,
+  __expanded
+}) {
   const ref = useRef(null);
 
   /** Event listeners - run once */
@@ -19,6 +24,12 @@ export function GenericDisclosure({ children, onOpenedChanged, expanded }) {
       ref.current.expanded = expanded;
     }
   }, [expanded]);
+
+  useEffect(() => {
+    if (__expanded !== undefined && ref.current.__expanded !== __expanded) {
+      ref.current.__expanded = __expanded;
+    }
+  }, [__expanded]);
 
   return <generic-disclosure ref={ref}>{children}</generic-disclosure>;
 }

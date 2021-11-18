@@ -9,6 +9,7 @@
   "module": "index.js",
   "homepage": "https://genericcomponents.netlify.app/",
   "repository": "https://github.com/thepassle/generic-components",
+  "sideEffects": false,
   "scripts": {
     "prepublishOnly": "npm run test & npm run analyze",
     "analyze": "custom-elements-manifest analyze",

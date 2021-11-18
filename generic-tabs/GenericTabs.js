@@ -18,6 +18,7 @@ template.innerHTML = `
 
     div[role="tablist"] {
       display: flex;
+      gap: 0.5rem;
     }
   </style>
   
@@ -32,6 +33,10 @@ template.innerHTML = `
   </div>
 `;
 
+/**
+ * @attr label
+ * @attr {boolean} vertical
+ */
 export class GenericTabs extends SelectedMixin(BatchingElement) {
   static get config() {
     return {

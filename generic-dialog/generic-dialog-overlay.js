@@ -22,9 +22,11 @@ template.innerHTML = `
       background-color: white;
     }
   </style>
-  <focus-trap part="focustrap">
-    <div role="dialog" part="dialog"><slot></slot></div>
-  </focus-trap>
+  <div role="dialog" part="dialog">
+    <focus-trap>
+      <slot></slot>
+    </focus-trap>    
+  </div>
 `;
 
 export class GenericDialogOverlay extends HTMLElement {

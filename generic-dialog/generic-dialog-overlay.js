@@ -22,7 +22,7 @@ template.innerHTML = `
       background-color: white;
     }
   </style>
-  <focus-trap>
+  <focus-trap part="focustrap">
     <div role="dialog" part="dialog"><slot></slot></div>
   </focus-trap>
 `;

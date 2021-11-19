@@ -320,6 +320,32 @@
     },
     {
       "kind": "javascript-module",
+      "path": "generic-alert/GenericAlert.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GenericAlert",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "generic-alert",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GenericAlert",
+          "declaration": {
+            "name": "GenericAlert",
+            "module": "generic-alert/GenericAlert.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "generic-accordion/GenericAccordion.js",
       "declarations": [
         {
@@ -489,219 +515,6 @@
           "declaration": {
             "name": "GenericAccordion",
             "module": "generic-accordion/GenericAccordion.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "generic-alert/GenericAlert.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "GenericAlert",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "generic-alert",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "GenericAlert",
-          "declaration": {
-            "name": "GenericAlert",
-            "module": "generic-alert/GenericAlert.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "generic-listbox/GenericListbox.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "GenericListbox",
-          "members": [
-            {
-              "kind": "field",
-              "name": "config",
-              "static": true
-            },
-            {
-              "kind": "method",
-              "name": "update",
-              "inheritedFrom": {
-                "name": "BatchingElement",
-                "module": "utils/BatchingElement.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "__scrollIntoView",
-              "parameters": [
-                {
-                  "name": "li"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "getElements",
-              "inheritedFrom": {
-                "name": "SelectedMixin",
-                "module": "utils/SelectedMixin.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "__getFocusableElements",
-              "inheritedFrom": {
-                "name": "SelectedMixin",
-                "module": "utils/SelectedMixin.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "__dispatch",
-              "inheritedFrom": {
-                "name": "BatchingElement",
-                "module": "utils/BatchingElement.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "__focus",
-              "inheritedFrom": {
-                "name": "SelectedMixin",
-                "module": "utils/SelectedMixin.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "__onClick",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ],
-              "inheritedFrom": {
-                "name": "SelectedMixin",
-                "module": "utils/SelectedMixin.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "__onKeyDown",
-              "parameters": [
-                {
-                  "name": "event"
-                }
-              ],
-              "inheritedFrom": {
-                "name": "SelectedMixin",
-                "module": "utils/SelectedMixin.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "selected",
-              "attribute": "selected",
-              "inheritedFrom": {
-                "name": "SelectedMixin",
-                "module": "utils/SelectedMixin.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "requestUpdate",
-              "parameters": [
-                {
-                  "name": "dispatchEvent"
-                }
-              ],
-              "inheritedFrom": {
-                "name": "BatchingElement",
-                "module": "utils/BatchingElement.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "__resolver",
-              "inheritedFrom": {
-                "name": "BatchingElement",
-                "module": "utils/BatchingElement.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "updateComplete",
-              "inheritedFrom": {
-                "name": "BatchingElement",
-                "module": "utils/BatchingElement.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "__uuid",
-              "default": "BatchingElement.uuid++",
-              "inheritedFrom": {
-                "name": "BatchingElement",
-                "module": "utils/BatchingElement.js"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "label"
-            },
-            {
-              "name": "selected",
-              "fieldName": "selected",
-              "inheritedFrom": {
-                "name": "SelectedMixin",
-                "module": "utils/SelectedMixin.js"
-              }
-            }
-          ],
-          "mixins": [
-            {
-              "name": "SelectedMixin",
-              "module": "/utils/SelectedMixin.js"
-            }
-          ],
-          "superclass": {
-            "name": "BatchingElement",
-            "module": "/utils/BatchingElement.js"
-          },
-          "tagName": "generic-listbox",
-          "customElement": true,
-          "events": [
-            {
-              "name": "selected-changed",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "inheritedFrom": {
-                "name": "SelectedMixin",
-                "module": "utils/SelectedMixin.js"
-              }
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "GenericListbox",
-          "declaration": {
-            "name": "GenericListbox",
-            "module": "generic-listbox/GenericListbox.js"
           }
         }
       ]
@@ -900,6 +713,193 @@
           "declaration": {
             "name": "GenericDialogOverlay",
             "module": "generic-dialog/generic-dialog-overlay.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "generic-listbox/GenericListbox.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GenericListbox",
+          "members": [
+            {
+              "kind": "field",
+              "name": "config",
+              "static": true
+            },
+            {
+              "kind": "method",
+              "name": "update",
+              "inheritedFrom": {
+                "name": "BatchingElement",
+                "module": "utils/BatchingElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__scrollIntoView",
+              "parameters": [
+                {
+                  "name": "li"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getElements",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__getFocusableElements",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__dispatch",
+              "inheritedFrom": {
+                "name": "BatchingElement",
+                "module": "utils/BatchingElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__focus",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__onClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__onKeyDown",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "attribute": "selected",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "utils/SelectedMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "requestUpdate",
+              "parameters": [
+                {
+                  "name": "dispatchEvent"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BatchingElement",
+                "module": "utils/BatchingElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__resolver",
+              "inheritedFrom": {
+                "name": "BatchingElement",
+                "module": "utils/BatchingElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "updateComplete",
+              "inheritedFrom": {
+                "name": "BatchingElement",
+                "module": "utils/BatchingElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__uuid",
+              "default": "BatchingElement.uuid++",
+              "inheritedFrom": {
+                "name": "BatchingElement",
+                "module": "utils/BatchingElement.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label"
+            },
+            {
+              "name": "selected",
+              "fieldName": "selected",
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "utils/SelectedMixin.js"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "SelectedMixin",
+              "module": "/utils/SelectedMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "BatchingElement",
+            "module": "/utils/BatchingElement.js"
+          },
+          "tagName": "generic-listbox",
+          "customElement": true,
+          "events": [
+            {
+              "name": "selected-changed",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "SelectedMixin",
+                "module": "utils/SelectedMixin.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GenericListbox",
+          "declaration": {
+            "name": "GenericListbox",
+            "module": "generic-listbox/GenericListbox.js"
           }
         }
       ]
@@ -1156,114 +1156,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "generic-switch/GenericSwitch.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "GenericSwitch",
-          "cssProperties": [
-            {
-              "description": "Customizes the focus styles of the thumb",
-              "name": "--generic-switch-focus"
-            }
-          ],
-          "cssParts": [
-            {
-              "name": "label"
-            },
-            {
-              "name": "thumb"
-            },
-            {
-              "name": "track"
-            },
-            {
-              "name": "button"
-            }
-          ],
-          "members": [
-            {
-              "kind": "method",
-              "name": "__handleDisabled"
-            },
-            {
-              "kind": "method",
-              "name": "__onClick"
-            },
-            {
-              "kind": "method",
-              "name": "__onKeyDown",
-              "parameters": [
-                {
-                  "name": "event"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "__update",
-              "parameters": [
-                {
-                  "name": "dispatch"
-                }
-              ]
-            },
-            {
-              "kind": "field",
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              },
-              "attribute": "checked"
-            }
-          ],
-          "events": [
-            {
-              "name": "checked-changed",
-              "type": {
-                "text": "CustomEvent"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              },
-              "fieldName": "checked"
-            },
-            {
-              "name": "label"
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "generic-switch",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "GenericSwitch",
-          "declaration": {
-            "name": "GenericSwitch",
-            "module": "generic-switch/GenericSwitch.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "generic-spinner/GenericSpinner.js",
       "declarations": [
         {
@@ -1507,6 +1399,114 @@
           "declaration": {
             "name": "GenericTabs",
             "module": "generic-tabs/GenericTabs.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "generic-switch/GenericSwitch.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "GenericSwitch",
+          "cssProperties": [
+            {
+              "description": "Customizes the focus styles of the thumb",
+              "name": "--generic-switch-focus"
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "label"
+            },
+            {
+              "name": "thumb"
+            },
+            {
+              "name": "track"
+            },
+            {
+              "name": "button"
+            }
+          ],
+          "members": [
+            {
+              "kind": "method",
+              "name": "__handleDisabled"
+            },
+            {
+              "kind": "method",
+              "name": "__onClick"
+            },
+            {
+              "kind": "method",
+              "name": "__onKeyDown",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__update",
+              "parameters": [
+                {
+                  "name": "dispatch"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "checked"
+            }
+          ],
+          "events": [
+            {
+              "name": "checked-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "checked"
+            },
+            {
+              "name": "label"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "generic-switch",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GenericSwitch",
+          "declaration": {
+            "name": "GenericSwitch",
+            "module": "generic-switch/GenericSwitch.js"
           }
         }
       ]

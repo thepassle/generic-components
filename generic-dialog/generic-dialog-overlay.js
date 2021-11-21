@@ -22,7 +22,7 @@ template.innerHTML = `
       background-color: white;
     }
   </style>
-  <div role="dialog" part="dialog">
+  <div role="dialog" aria-modal="true" part="dialog">
     <focus-trap>
       <slot></slot>
     </focus-trap>    

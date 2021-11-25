@@ -55,10 +55,10 @@ template.innerHTML = `
     }
 
     ::slotted([aria-checked="true"])::before  {
-      border-color: hsl(216, 80%, 50%);
-      background: hsl(217, 95%, 68%);
-      background-image: linear-gradient(to bottom, hsl(217, 95%, 68%), hsl(216, 80%, 57%));
+      border-color: var(--generic-radio-border, hsl(216, 80%, 50%));
+      background: var(--generic-radio-fill, hsl(217, 95%, 68%));
     }
+    
     ::slotted([aria-checked="true"])::after  {
       display: block;
       border: 0.1875em solid #fff;

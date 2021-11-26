@@ -18,6 +18,15 @@
     button[selected] {
       border-bottom: solid 3px blue;
     }
+
+    generic-radio.styled {
+      --generic-radio-border: #570350;
+      --generic-radio-fill: #cb0abb;
+    }
+    generic-radio.styled div:focus {
+      border-radius: 4px;
+      box-shadow: #cb0abb 0px 0px 12px, #cb0abb 0px 0px 0px 1px!important;
+    }
   </style>
 
   <title>generic-components</title>
@@ -190,6 +199,29 @@
             </table>
           </div>
         </generic-disclosure>
+        <generic-disclosure>
+          <button slot="toggle">CSS Properties</button>
+          <div slot="detail">
+            <table class="tg">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>--generic-radio-border</td>
+                  <td>Controls the color of the border when selected</td>
+                </tr>
+                <tr>
+                  <td>--generic-radio-fill</td>
+                  <td>Controls the fill color when selected</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </generic-disclosure>
       </div>
       <h2>Usage:</h2>
 
@@ -274,6 +306,37 @@
         <hr>
 
         <generic-radio disabled label="radio group">
+          <div>foo</div>
+          <div>bar</div>
+          <div>baz</div>
+        </generic-radio>
+      </div>
+
+      <div class="demo">
+        <h3>Color:</h3>
+        <hr>
+        <details>
+          <summary>Show code</summary>
+          <pre><code class="language-markup"><script type="prism-html-markup"><style>
+generic-radio.styled {
+  --generic-radio-border: #570350;
+  --generic-radio-fill: #cb0abb;
+}
+generic-radio.styled div:focus {
+  border-radius: 4px;
+  box-shadow: #cb0abb 0px 0px 12px, #cb0abb 0px 0px 0px 1px!important;
+}
+</style>
+<generic-radio label="radio group">
+  <div>foo</div>
+  <div>bar</div>
+  <div>baz</div>
+</generic-radio>
+        </script></code></pre>
+        </details>
+        <hr>
+
+        <generic-radio class="styled" label="radio group">
           <div>foo</div>
           <div>bar</div>
           <div>baz</div>

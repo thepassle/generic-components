@@ -258,9 +258,9 @@ import { dialog } from '@generic-components/components';
 defaultExample.addEventListener('click', (e) => {
   dialog.open({
     invokerNode: e.target,
-    content: (dialogNode) => {
+    content: (dialogOverlayNode, dialogNode) => {
 
-      dialogNode.innerHTML = 'default example, closes on escape, and on outside click';
+      dialogOverlayNode.innerHTML = 'default example, closes on escape, and on outside click';
 
       const button = document.createElement('button');
       button.innerHTML = 'close';
@@ -269,7 +269,7 @@ defaultExample.addEventListener('click', (e) => {
         dialog.close();
       })
 
-      dialogNode.appendChild(button);
+      dialogOverlayNode.appendChild(button);
     }
   });
 });
@@ -289,9 +289,9 @@ closeOnEscape.addEventListener('click', (e) => {
   dialog.open({
     invokerNode: e.target,
     closeOnOutsideClick: false,
-    content: (dialogNode) => {
+    content: (dialogOverlayNode, dialogNode) => {
 
-      dialogNode.innerHTML = 'only closes on escape';
+      dialogOverlayNode.innerHTML = 'only closes on escape';
       const button = document.createElement('button');
       button.innerHTML = 'close';
 
@@ -299,7 +299,7 @@ closeOnEscape.addEventListener('click', (e) => {
         dialog.close();
       })
 
-      dialogNode.appendChild(button);
+      dialogOverlayNode.appendChild(button);
     }
   });
 });
@@ -320,9 +320,9 @@ closeOnButtonClick.addEventListener('click', (e) => {
     invokerNode: e.target,
     closeOnEscape: false,
     closeOnOutsideClick: false,
-    content: (dialogNode) => {
+    content: (dialogOverlayNode, dialogNode) => {
 
-      dialogNode.innerHTML = 'doesnt close on escape or outside click';
+      dialogOverlayNode.innerHTML = 'doesnt close on escape or outside click';
       const button = document.createElement('button');
       button.innerHTML = 'close';
 
@@ -330,7 +330,7 @@ closeOnButtonClick.addEventListener('click', (e) => {
         dialog.close();
       })
 
-      dialogNode.appendChild(button);
+      dialogOverlayNode.appendChild(button);
     }
   });
 });
@@ -350,14 +350,14 @@ import { render, html } from 'lit-html';
 litHtml.addEventListener('click', (e) => {
   dialog.open({
     invokerNode: e.target,
-    content: (dialogNode) => {
+    content: (dialogOverlayNode, dialogNode) => {
 
       render(html`
         &lt;h1&gt;Im rendered by lit-html!&lt;/h1&gt;
         &lt;button @click=${() =&gt; dialog.close()}&gt;Close&lt;/button&gt;
         &lt;button @click=${() =&gt; dialog.close()}&gt;Close&lt;/button&gt;
         &lt;button @click=${() =&gt; dialog.close()}&gt;Close&lt;/button&gt;
-      `, dialogNode);
+      `, dialogOverlayNode);
     }
   });
 });
@@ -386,9 +386,9 @@ litHtml.addEventListener('click', (e) => {
         defaultExample.addEventListener('click', (e) => {
           dialog.open({
             invokerNode: e.target,
-            content: (dialogNode) => {
+            content: (dialogOverlayNode, dialogNode) => {
 
-              dialogNode.innerHTML = 'default example, closes on escape, and on outside click';
+              dialogOverlayNode.innerHTML = 'default example, closes on escape, and on outside click';
 
               const button = document.createElement('button');
               button.innerHTML = 'close';
@@ -397,7 +397,7 @@ litHtml.addEventListener('click', (e) => {
                 dialog.close();
               })
 
-              dialogNode.appendChild(button);
+              dialogOverlayNode.appendChild(button);
             }
           });
         });
@@ -406,9 +406,9 @@ litHtml.addEventListener('click', (e) => {
           dialog.open({
             invokerNode: e.target,
             closeOnOutsideClick: false,
-            content: (dialogNode) => {
+            content: (dialogOverlayNode, dialogNode) => {
 
-              dialogNode.innerHTML = 'only closes on escape';
+              dialogOverlayNode.innerHTML = 'only closes on escape';
               const button = document.createElement('button');
               button.innerHTML = 'close';
 
@@ -416,7 +416,7 @@ litHtml.addEventListener('click', (e) => {
                 dialog.close();
               })
 
-              dialogNode.appendChild(button);
+              dialogOverlayNode.appendChild(button);
             }
           });
         });
@@ -426,9 +426,9 @@ litHtml.addEventListener('click', (e) => {
             invokerNode: e.target,
             closeOnEscape: false,
             closeOnOutsideClick: false,
-            content: (dialogNode) => {
+            content: (dialogOverlayNode, dialogNode) => {
 
-              dialogNode.innerHTML = 'doesnt close on escape or outside click';
+              dialogOverlayNode.innerHTML = 'doesnt close on escape or outside click';
               const button = document.createElement('button');
               button.innerHTML = 'close';
 
@@ -436,7 +436,7 @@ litHtml.addEventListener('click', (e) => {
                 dialog.close();
               })
 
-              dialogNode.appendChild(button);
+              dialogOverlayNode.appendChild(button);
             }
           });
         });
@@ -444,14 +444,14 @@ litHtml.addEventListener('click', (e) => {
         litHtml.addEventListener('click', (e) => {
           dialog.open({
             invokerNode: e.target,
-            content: (dialogNode) => {
+            content: (dialogOverlayNode, dialogNode) => {
 
               render(html`
                 <h1>Im rendered by lit-html!</h1>
                 <button @click=${() => dialog.close()}>Close</button>
                 <button @click=${() => dialog.close()}>Close</button>
                 <button @click=${() => dialog.close()}>Close</button>
-              `, dialogNode);
+              `, dialogOverlayNode);
             }
           });
         });

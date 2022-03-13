@@ -24,14 +24,16 @@ class Dialog extends EventTargetShim {
       }
     });
 
-    const dialogOverlay = document.createElement('generic-dialog-overlay');
-    this.__dialogOverlay = dialogOverlay;
-    if (this.__closeOnOutsideClick) {
-      dialogOverlay.setAttribute('close-on-outside-click', '');
-    }
-    document.body.appendChild(dialogOverlay);
+    const dialogOverlayNode = document.createElement('generic-dialog-overlay');
+    const dialogNode = dialogOverlayNode.shadowRoot.querySelector('[role="dialog"]');
 
-    content(dialogOverlay);
+    this.__dialogOverlay = dialogOverlayNode;
+    if (this.__closeOnOutsideClick) {
+      dialogOverlayNode.setAttribute('close-on-outside-click', '');
+    }
+    document.body.appendChild(dialogOverlayNode);
+
+    content(dialogOverlayNode, dialogNode);
     this.dispatchEvent(new Event('dialog-opened'));
   }
 

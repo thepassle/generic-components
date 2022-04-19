@@ -16,6 +16,8 @@ template.innerHTML = `
 `;
 
 export class GenericAlert extends HTMLElement {
+  static is = 'generic-alert';
+
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });

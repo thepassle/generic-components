@@ -78,6 +78,8 @@ let __count = 0;
  * @attr {boolean} disabled
  */
 export class GenericSwitch extends HTMLElement {
+  static is = 'generic-switch';
+
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });

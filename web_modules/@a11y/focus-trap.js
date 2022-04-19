@@ -102,10 +102,10 @@ function isFocusable($elem) {
     (($elem instanceof HTMLAnchorElement || $elem instanceof HTMLAreaElement) &&
       $elem.hasAttribute('href')) ||
     // Form elements which are not disabled
-    ($elem instanceof HTMLButtonElement ||
+    $elem instanceof HTMLButtonElement ||
       $elem instanceof HTMLInputElement ||
       $elem instanceof HTMLTextAreaElement ||
-      $elem instanceof HTMLSelectElement) ||
+      $elem instanceof HTMLSelectElement ||
     // IFrames
     $elem instanceof HTMLIFrameElement
   );
@@ -150,6 +150,8 @@ template.innerHTML = `
  * @slot - Default content.
  */
 class FocusTrap extends HTMLElement {
+  static is = 'focus-trap';
+
   /**
    * Attaches the shadow root.
    */
@@ -311,6 +313,6 @@ class FocusTrap extends HTMLElement {
     this.focused ? this.setAttribute('focused', '') : this.removeAttribute('focused');
   }
 }
-window.customElements.define('focus-trap', FocusTrap);
+window.customElements.define(FocusTrap.is, FocusTrap);
 
 export { FocusTrap, isDisabled, isFocusable, isHidden, queryShadowRoot };

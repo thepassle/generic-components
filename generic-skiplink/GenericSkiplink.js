@@ -6,6 +6,8 @@ import { skiplink } from './skiplink.js';
  * @csspart anchor
  */
 export class GenericSkiplink extends HTMLElement {
+  static is = 'generic-skiplink';
+
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });

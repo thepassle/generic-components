@@ -81,6 +81,8 @@ template.innerHTML = `
  * @attr {boolean} disabled
  */
 export class GenericRadio extends SelectedMixin(BatchingElement) {
+  static is = 'generic-radio';
+
   static get config() {
     return {
       selectors: {

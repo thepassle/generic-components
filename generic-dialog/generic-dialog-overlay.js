@@ -30,6 +30,8 @@ template.innerHTML = `
 `;
 
 export class GenericDialogOverlay extends HTMLElement {
+  static is = 'generic-dialog-overlay';
+
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
@@ -81,4 +83,4 @@ export class GenericDialogOverlay extends HTMLElement {
   }
 }
 
-customElements.define('generic-dialog-overlay', GenericDialogOverlay);
+customElements.define(GenericDialogOverlay.is, GenericDialogOverlay);

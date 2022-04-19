@@ -86,6 +86,8 @@ template.innerHTML = `
  * @csspart circle - Style the circle SVG
  */
 export class GenericSpinner extends HTMLElement {
+  static is = 'generic-spinner';
+
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });

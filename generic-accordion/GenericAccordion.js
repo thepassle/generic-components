@@ -18,6 +18,8 @@ template.innerHTML = `
 `;
 
 export class GenericAccordion extends SelectedMixin(BatchingElement) {
+  static is = 'generic-accordion';
+
   static get config() {
     return {
       selectors: {

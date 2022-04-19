@@ -1,3 +1,3 @@
 import { GenericAlert } from './generic-alert/GenericAlert.js';
 
-customElements.define('generic-alert', GenericAlert);
+customElements.define(GenericAlert.is, GenericAlert);

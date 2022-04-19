@@ -11,6 +11,8 @@ template.innerHTML = `
 `;
 
 export class GenericDialog extends HTMLElement {
+  static is = 'generic-dialog';
+
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });

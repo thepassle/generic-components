@@ -47,6 +47,8 @@ template.innerHTML = `
 `;
 
 export class GenericDisclosure extends HTMLElement {
+  static is = 'generic-disclosure';
+
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });

@@ -43,14 +43,14 @@ export class GenericDialogOverlay extends HTMLElement {
 
   connectedCallback() {
     if (this.hasAttribute('close-on-outside-click')) {
-      this.addEventListener('click', this.__onClick, true);
+      this.addEventListener('mousedown', this.__onClick, true);
     }
 
     this.dialog = this.shadowRoot.querySelector("[role='dialog']");
     this.dialog.setAttribute('tabindex', '-1');
     this.dialog.focus();
 
-    ['click', 'blur'].forEach(event => {
+    ['mousedown', 'blur'].forEach(event => {
       this.dialog.addEventListener(event, () => {
         this.dialog.removeAttribute('tabindex');
       });

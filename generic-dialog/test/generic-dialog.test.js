@@ -108,7 +108,7 @@ describe('generic-dialog', () => {
       const button = el.querySelector('button');
       button.click();
 
-      document.body.querySelector('generic-dialog-overlay').click();
+      document.body.querySelector('generic-dialog-overlay').dispatchEvent(new Event('mousedown'));
 
       expect(dialog.__dialogOpen).to.equal(false);
       expect(document.body.querySelector('generic-dialog-overlay')).not.to.exist;
@@ -263,7 +263,7 @@ describe('generic-dialog', () => {
         content: () => {},
       });
 
-      document.body.querySelector('generic-dialog-overlay').click();
+      document.body.querySelector('generic-dialog-overlay').dispatchEvent(new Event('mousedown'));
 
       expect(dialog.__dialogOpen).to.equal(false);
       expect(document.body.querySelector('generic-dialog-overlay')).not.to.exist;

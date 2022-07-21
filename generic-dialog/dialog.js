@@ -3,7 +3,7 @@ import { KEYCODES } from '../utils/keycodes.js';
 // eslint-disable-next-line
 import './generic-dialog-overlay.js';
 
-class Dialog extends EventTargetShim {
+export class Dialog extends EventTargetShim {
   open({ closeOnEscape = true, closeOnOutsideClick = true, invokerNode, content }) {
     this.__dialogOpen = true;
     this.__invokerNode = invokerNode;
